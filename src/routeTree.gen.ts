@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VisieRouteImport } from './routes/visie'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AanbodRouteImport } from './routes/aanbod'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VisieRoute = VisieRouteImport.update({
+  id: '/visie',
+  path: '/visie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AanbodRoute = AanbodRouteImport.update({
+  id: '/aanbod',
+  path: '/aanbod',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aanbod': typeof AanbodRoute
+  '/contact': typeof ContactRoute
+  '/visie': typeof VisieRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aanbod': typeof AanbodRoute
+  '/contact': typeof ContactRoute
+  '/visie': typeof VisieRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aanbod': typeof AanbodRoute
+  '/contact': typeof ContactRoute
+  '/visie': typeof VisieRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/aanbod' | '/contact' | '/visie'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/aanbod' | '/contact' | '/visie'
+  id: '__root__' | '/' | '/aanbod' | '/contact' | '/visie'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AanbodRoute: typeof AanbodRoute
+  ContactRoute: typeof ContactRoute
+  VisieRoute: typeof VisieRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/visie': {
+      id: '/visie'
+      path: '/visie'
+      fullPath: '/visie'
+      preLoaderRoute: typeof VisieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aanbod': {
+      id: '/aanbod'
+      path: '/aanbod'
+      fullPath: '/aanbod'
+      preLoaderRoute: typeof AanbodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AanbodRoute: AanbodRoute,
+  ContactRoute: ContactRoute,
+  VisieRoute: VisieRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
