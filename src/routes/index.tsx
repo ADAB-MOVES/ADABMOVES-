@@ -7,7 +7,7 @@ import {
   ShieldCheck,
   HeartHandshake,
   Sparkles,
-
+} from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
