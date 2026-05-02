@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisieRouteImport } from './routes/visie'
-import { Route as FundamentRouteImport } from './routes/fundament'
+import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AanbodRouteImport } from './routes/aanbod'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,9 +20,9 @@ const VisieRoute = VisieRouteImport.update({
   path: '/visie',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FundamentRoute = FundamentRouteImport.update({
-  id: '/fundament',
-  path: '/fundament',
+const OverOnsRoute = OverOnsRouteImport.update({
+  id: '/over-ons',
+  path: '/over-ons',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -45,14 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
-  '/fundament': typeof FundamentRoute
+  '/over-ons': typeof OverOnsRoute
   '/visie': typeof VisieRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
-  '/fundament': typeof FundamentRoute
+  '/over-ons': typeof OverOnsRoute
   '/visie': typeof VisieRoute
 }
 export interface FileRoutesById {
@@ -60,22 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
-  '/fundament': typeof FundamentRoute
+  '/over-ons': typeof OverOnsRoute
   '/visie': typeof VisieRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aanbod' | '/contact' | '/fundament' | '/visie'
+  fullPaths: '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aanbod' | '/contact' | '/fundament' | '/visie'
-  id: '__root__' | '/' | '/aanbod' | '/contact' | '/fundament' | '/visie'
+  to: '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
+  id: '__root__' | '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AanbodRoute: typeof AanbodRoute
   ContactRoute: typeof ContactRoute
-  FundamentRoute: typeof FundamentRoute
+  OverOnsRoute: typeof OverOnsRoute
   VisieRoute: typeof VisieRoute
 }
 
@@ -88,11 +88,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisieRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/fundament': {
-      id: '/fundament'
-      path: '/fundament'
-      fullPath: '/fundament'
-      preLoaderRoute: typeof FundamentRouteImport
+    '/over-ons': {
+      id: '/over-ons'
+      path: '/over-ons'
+      fullPath: '/over-ons'
+      preLoaderRoute: typeof OverOnsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -123,7 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AanbodRoute: AanbodRoute,
   ContactRoute: ContactRoute,
-  FundamentRoute: FundamentRoute,
+  OverOnsRoute: OverOnsRoute,
   VisieRoute: VisieRoute,
 }
 export const routeTree = rootRouteImport
