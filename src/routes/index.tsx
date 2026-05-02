@@ -93,6 +93,54 @@ const impact = [
   { icon: Sparkles, title: "Karaktervorming", text: "Waarden geoefend in elke training." },
 ];
 
+const audienceImpact = [
+  {
+    icon: School,
+    audience: "Voor scholen",
+    headline: "Ontzorging én ontwikkeling",
+    stats: [
+      { k: "20+", v: "scholen werken met ons" },
+      { k: "95%", v: "scholen verlengen het programma" },
+      { k: "3×", v: "meer beweging per week" },
+    ],
+    points: [
+      "Volledig verzorgd programma — geen extra werkdruk voor leerkrachten",
+      "Zichtbaar betere groepsdynamiek in de klas",
+      "Aansluitend op kerndoelen bewegingsonderwijs",
+    ],
+  },
+  {
+    icon: HeartHandshake,
+    audience: "Voor ouders",
+    headline: "Een veilige plek waar je kind groeit",
+    stats: [
+      { k: "1.500+", v: "kinderen bereikt" },
+      { k: "9.2", v: "gemiddelde ouderbeoordeling" },
+      { k: "100%", v: "trainers met VOG" },
+    ],
+    points: [
+      "Vertrouwde, herkenbare omgeving met islamitische waarden",
+      "Kinderen worden zelfverzekerder, socialer en actiever",
+      "Heldere communicatie en vaste contactpersonen",
+    ],
+  },
+  {
+    icon: Users,
+    audience: "Voor partners & gemeenten",
+    headline: "Bewezen impact in de wijk",
+    stats: [
+      { k: "10+", v: "jaar ervaring in jeugdsport" },
+      { k: "50+", v: "events & activiteiten per jaar" },
+      { k: "8", v: "gemeenten en buurtorganisaties" },
+    ],
+    points: [
+      "Bereik van een doelgroep die andere aanbieders moeilijk vinden",
+      "Professionele uitvoering, rapportage en evaluatie",
+      "Bijdrage aan gezondheid, participatie en sociale cohesie",
+    ],
+  },
+];
+
 const pillars = [
   { icon: ShieldCheck, name: "Adab", text: "Gedrag als basis." },
   { icon: Compass, name: "Niyyah", text: "Bewust bewegen." },
