@@ -373,6 +373,7 @@ function HomePage() {
 
       {/* IMPACT */}
       <section className="container-x py-20 md:py-28">
+        <div className="grid md:grid-cols-2 gap-10 items-end mb-12">
           <div>
             <span className="eyebrow">Resultaten & impact</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
