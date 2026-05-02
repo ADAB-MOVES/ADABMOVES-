@@ -137,8 +137,8 @@ function HomePage() {
             </div>
             <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
               {[
+                { k: "10+", v: "jaar ervaring" },
                 { k: "3", v: "aanbodlijnen" },
-                { k: "100%", v: "VOG-trainers" },
                 { k: "1", v: "duidelijke methode" },
               ].map((s) => (
                 <div key={s.v}>
