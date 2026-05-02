@@ -15,6 +15,7 @@ export function SiteFooter() {
           <h4 className="text-sm font-semibold uppercase tracking-widest text-white/60">Ontdek</h4>
           <ul className="mt-4 space-y-2 text-sm">
             <li><Link to="/aanbod" className="hover:text-[var(--coral)]">Aanbod</Link></li>
+            <li><Link to="/fundament" className="hover:text-[var(--coral)]">Ons Fundament</Link></li>
             <li><Link to="/visie" className="hover:text-[var(--coral)]">Visie & methodiek</Link></li>
             <li><Link to="/contact" className="hover:text-[var(--coral)]">Contact</Link></li>
           </ul>
