@@ -319,15 +319,68 @@ function HomePage() {
       <section className="container-x py-20 md:py-28">
         <div className="grid md:grid-cols-2 gap-10 items-end mb-12">
           <div>
-            <span className="eyebrow">Resultaten</span>
+            <span className="eyebrow">Resultaten & impact</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
-              Wat kinderen, ouders en scholen ervaren.
+              Concrete resultaten voor scholen, ouders en partners.
             </h2>
           </div>
           <p className="text-muted-foreground md:text-lg leading-relaxed">
-            Onze aanpak is gericht op zichtbare ontwikkeling — in beweging, in gedrag en in de
-            groep.
+            Met meer dan 10 jaar ervaring in jeugdsport bouwen wij aan zichtbare ontwikkeling — op
+            de mat, in de klas en in de wijk.
           </p>
+        </div>
+
+        {/* Per doelgroep */}
+        <div className="grid md:grid-cols-3 gap-5 mb-10">
+          {audienceImpact.map((a) => (
+            <article
+              key={a.audience}
+              className="rounded-3xl border border-border bg-card p-7 flex flex-col hover:shadow-[var(--shadow-soft)] transition-shadow"
+            >
+              <div className="flex items-center gap-3">
+                <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]">
+                  <a.icon size={20} />
+                </div>
+                <span className="eyebrow">{a.audience}</span>
+              </div>
+              <h3 className="mt-5 text-2xl font-semibold text-foreground leading-snug">
+                {a.headline}
+              </h3>
+              <div className="mt-6 grid grid-cols-3 gap-3 border-y border-border py-5">
+                {a.stats.map((s) => (
+                  <div key={s.v}>
+                    <div
+                      className="text-2xl md:text-3xl font-semibold text-[var(--coral-deep)]"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {s.k}
+                    </div>
+                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1 leading-tight">
+                      {s.v}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <ul className="mt-5 space-y-2 text-sm text-foreground/80">
+                {a.points.map((p) => (
+                  <li key={p} className="flex items-start gap-2">
+                    <CheckCircle2
+                      size={16}
+                      className="mt-0.5 shrink-0 text-[var(--coral-deep)]"
+                    />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        {/* Wat kinderen leren */}
+        <div className="mb-8">
+          <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
+            Wat kinderen bij ons ontwikkelen.
+          </h3>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {impact.map((i) => (
