@@ -315,9 +315,64 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ONS FUNDAMENT — TEASER */}
+      <section className="container-x py-20 md:py-28">
+        <div className="relative overflow-hidden rounded-3xl bg-[var(--ink)] text-[var(--cream)] p-10 md:p-16">
+          <div className="absolute -left-24 -bottom-24 h-96 w-96 rounded-full bg-[var(--coral)]/20 blur-3xl" />
+          <div className="relative grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7">
+              <span className="eyebrow text-[var(--coral)]">Ons Fundament</span>
+              <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-[1.1]">
+                De islam als basis. <span className="italic text-[var(--coral)]">Veiligheid</span>{" "}
+                als belofte.
+              </h2>
+              <p className="mt-6 text-white/75 md:text-lg leading-relaxed max-w-2xl">
+                Bij ADAB MOVES is de islam niet een toevoeging — het is het fundament onder alles
+                wat wij doen. Wij maken ons hard om islamitische normen en waarden zichtbaar terug
+                te laten komen in elke training, en creëren een veilige sportomgeving waarin elk
+                kind zichzelf kan zijn.
+              </p>
+              <div className="mt-7 grid sm:grid-cols-3 gap-4">
+                {[
+                  { k: "7", v: "islamitische fundamenten" },
+                  { k: "100%", v: "trainers met VOG" },
+                  { k: "Halal", v: "omgeving & inhoud" },
+                ].map((s) => (
+                  <div key={s.v} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                    <div
+                      className="text-2xl font-semibold text-[var(--coral)]"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {s.k}
+                    </div>
+                    <div className="text-xs uppercase tracking-widest text-white/60 mt-1">
+                      {s.v}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/fundament" className="btn-primary">
+                  Lees ons fundament <ArrowRight size={18} />
+                </Link>
+              </div>
+            </div>
+            <div className="lg:col-span-5 hidden lg:block">
+              <div className="rounded-2xl overflow-hidden">
+                <img
+                  src={community}
+                  alt="Kinderen sporten in een veilige, herkenbare omgeving"
+                  loading="lazy"
+                  className="w-full h-[420px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* IMPACT */}
       <section className="container-x py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-10 items-end mb-12">
           <div>
             <span className="eyebrow">Resultaten & impact</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
