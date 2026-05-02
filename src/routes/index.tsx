@@ -259,11 +259,6 @@ function HomePage() {
         </div>
       </section>
 
-      <ul className="hidden">
-        <li>
-          <CheckCircle2 size={1} />
-        </li>
-      </ul>
     </>
   );
 }
