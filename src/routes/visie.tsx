@@ -310,6 +310,70 @@ function VisiePage() {
           </div>
         </div>
       </section>
+      {/* FAQ */}
+      <section className="container-x pb-20">
+        <div className="grid lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-4">
+            <span className="eyebrow">Veelgestelde vragen</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
+              Antwoord op de vragen die er echt toe doen.
+            </h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              Staat jouw vraag er niet tussen? Neem gerust contact op — we denken graag mee.
+            </p>
+            <div className="mt-6 inline-flex items-center gap-2 text-[var(--coral-deep)]">
+              <HelpCircle size={18} />
+              <Link to="/contact" className="font-semibold underline-offset-4 hover:underline">
+                Stel je vraag
+              </Link>
+            </div>
+          </div>
+          <div className="lg:col-span-8">
+            <Accordion type="single" collapsible className="rounded-3xl border border-border bg-card divide-y divide-border overflow-hidden">
+              {[
+                {
+                  q: "Voor welke doelgroep is Adab Moves bedoeld?",
+                  a: "Onze trainingen richten zich op kinderen in de basisschoolleeftijd (ongeveer 6 t/m 12 jaar). We werken met groepen op scholen, in de community en bij events — telkens afgestemd op het niveau en de leeftijd van de kinderen.",
+                },
+                {
+                  q: "Hoe waarborgen jullie de veiligheid tijdens trainingen?",
+                  a: "Veiligheid staat voorop: we werken met VOG-gecontroleerde trainers, duidelijke gedragsregels en een vaste structuur per training. Materialen en ruimtes worden vooraf gecheckt en groepsgroottes blijven beheersbaar zodat elk kind gezien wordt.",
+                },
+                {
+                  q: "Hoe start een traject met onze school of organisatie?",
+                  a: "We beginnen met een vrijblijvend kennismakingsgesprek waarin we doelen, doelgroep en randvoorwaarden bespreken. Daarna stellen we een passend programma voor, plannen we een proefperiode en evalueren we samen voordat we opschalen.",
+                },
+                {
+                  q: "Welke sporten worden aangeboden?",
+                  a: "We bieden multisport: voetbal, basketbal, kickboks, archery tag, fitness en algemene beweegvormen. Het accent ligt op variatie, plezier en het oefenen van waarden — niet op één specialisatie.",
+                },
+                {
+                  q: "Welke rol speelt karaktervorming in de training?",
+                  a: "Karaktervorming is verweven in elke werkvorm. Trainers benoemen waarden in het moment zelf — bij winst, verlies, conflict of samenwerking — zodat kinderen ze leren herkennen en toepassen.",
+                },
+                {
+                  q: "Werken jullie alleen met jongens?",
+                  a: "Onze huidige groepen zijn gericht op jongens, met mannelijke trainers. Dit past bij onze pedagogische aanpak en de wensen van de gezinnen en partners waarmee we werken.",
+                },
+                {
+                  q: "Wat kost een traject?",
+                  a: "Kosten hangen af van groepsgrootte, frequentie, locatie en duur. Na het kennismakingsgesprek ontvang je een transparante offerte op maat.",
+                },
+              ].map((item, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="border-b-0 px-6 md:px-8">
+                  <AccordionTrigger className="py-5 text-left text-base md:text-lg font-semibold text-foreground hover:no-underline">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-5 text-muted-foreground leading-relaxed">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
 
       {/* CTA */}
       <section className="container-x pb-24">
