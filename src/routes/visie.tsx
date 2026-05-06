@@ -13,7 +13,14 @@ import {
   Flame,
   BookOpen,
   Quote,
+  HelpCircle,
 } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
