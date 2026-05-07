@@ -252,7 +252,7 @@ function HomePage() {
                 src={community}
                 alt="Kinderen geven elkaar een high-five"
                 loading="lazy"
-                className="w-full h-72 object-cover"
+                className="w-full h-auto aspect-[4/3] object-cover"
               />
             </div>
           </div>
