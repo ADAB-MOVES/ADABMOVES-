@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisieRouteImport } from './routes/visie'
+import { Route as StijlgidsRouteImport } from './routes/stijlgids'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AanbodRouteImport } from './routes/aanbod'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const VisieRoute = VisieRouteImport.update({
   id: '/visie',
   path: '/visie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StijlgidsRoute = StijlgidsRouteImport.update({
+  id: '/stijlgids',
+  path: '/stijlgids',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OverOnsRoute = OverOnsRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
   '/over-ons': typeof OverOnsRoute
+  '/stijlgids': typeof StijlgidsRoute
   '/visie': typeof VisieRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
   '/over-ons': typeof OverOnsRoute
+  '/stijlgids': typeof StijlgidsRoute
   '/visie': typeof VisieRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,28 @@ export interface FileRoutesById {
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
   '/over-ons': typeof OverOnsRoute
+  '/stijlgids': typeof StijlgidsRoute
   '/visie': typeof VisieRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
+  fullPaths:
+    | '/'
+    | '/aanbod'
+    | '/contact'
+    | '/over-ons'
+    | '/stijlgids'
+    | '/visie'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
-  id: '__root__' | '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
+  to: '/' | '/aanbod' | '/contact' | '/over-ons' | '/stijlgids' | '/visie'
+  id:
+    | '__root__'
+    | '/'
+    | '/aanbod'
+    | '/contact'
+    | '/over-ons'
+    | '/stijlgids'
+    | '/visie'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +98,7 @@ export interface RootRouteChildren {
   AanbodRoute: typeof AanbodRoute
   ContactRoute: typeof ContactRoute
   OverOnsRoute: typeof OverOnsRoute
+  StijlgidsRoute: typeof StijlgidsRoute
   VisieRoute: typeof VisieRoute
 }
 
@@ -86,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/visie'
       fullPath: '/visie'
       preLoaderRoute: typeof VisieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stijlgids': {
+      id: '/stijlgids'
+      path: '/stijlgids'
+      fullPath: '/stijlgids'
+      preLoaderRoute: typeof StijlgidsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/over-ons': {
@@ -124,8 +154,18 @@ const rootRouteChildren: RootRouteChildren = {
   AanbodRoute: AanbodRoute,
   ContactRoute: ContactRoute,
   OverOnsRoute: OverOnsRoute,
+  StijlgidsRoute: StijlgidsRoute,
   VisieRoute: VisieRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
