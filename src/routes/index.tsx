@@ -12,6 +12,9 @@ import hero from "@/assets/hero.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
+import { Scene, SportIcon, type SportName } from "@/components/illustrations";
+
+const sportList: SportName[] = ["voetbal", "basketbal", "kickboks", "archery", "fitness"];
 
 export const Route = createFileRoute("/")({
   head: () => ({
