@@ -12,6 +12,9 @@ import hero from "@/assets/hero.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
+import { Scene, SportIcon, type SportName } from "@/components/illustrations";
+
+const sportList: SportName[] = ["voetbal", "basketbal", "kickboks", "archery", "fitness"];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -110,14 +113,13 @@ function HomePage() {
           </div>
           <div className="lg:col-span-6 relative">
             <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-[var(--coral)]/10 blur-2xl" />
-            <div className="relative rounded-[1.75rem] overflow-hidden shadow-[var(--shadow-soft)]">
-              <img
-                src={hero}
-                alt="Kinderen die multisport beoefenen"
-                width={1600}
-                height={1100}
-                className="w-full h-auto object-cover"
-              />
+            <div className="relative rounded-[1.75rem] overflow-hidden shadow-[var(--shadow-soft)] bg-[var(--cream)]">
+              <Scene variant="playground" className="w-full h-auto" />
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2 justify-center">
+              {sportList.map((s) => (
+                <SportIcon key={s} sport={s} size={44} />
+              ))}
             </div>
           </div>
         </div>
