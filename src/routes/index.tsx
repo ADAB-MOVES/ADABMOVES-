@@ -7,6 +7,10 @@ import {
   ShieldCheck,
   HeartHandshake,
   Sparkles,
+  Compass,
+  Scale,
+  Flame,
+  Star,
 } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import community from "@/assets/community.jpg";
