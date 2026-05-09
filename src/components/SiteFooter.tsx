@@ -18,7 +18,6 @@ export function SiteFooter() {
             <li><Link to="/over-ons" className="hover:text-[var(--coral)]">Over ons</Link></li>
             <li><Link to="/visie" className="hover:text-[var(--coral)]">Visie & methodiek</Link></li>
             <li><Link to="/contact" className="hover:text-[var(--coral)]">Contact</Link></li>
-            <li><Link to="/stijlgids" className="hover:text-[var(--coral)]">Stijlgids</Link></li>
           </ul>
         </div>
         <div>
