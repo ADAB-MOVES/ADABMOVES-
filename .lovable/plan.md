@@ -1,37 +1,38 @@
 ## Doel
-Alle foto's op de site vervangen door een consistente, vrolijke beeldstijl die past bij ADAB Moves: blije kinderen met bedekte awrah, geen gezichten in beeld (achterhoofden of lichaam), trainers van achter met identieke baard/kapsel en logo op de kleding. Stijl en kleurpalet sluiten aan bij het logo en de typografie (warm cream, deep navy, coral accent).
+De introvideo `adab-moves-intro.mp4` uitbreiden met meer bullet-gedreven scènes die het belang van ADAB MOVES en het voordeel van onze aanpak duidelijk maken — zodat scholen, ouders, gemeenten en moskeeën direct voelen waarom samenwerken loont.
 
-## Afbeeldingen om te vervangen
-Vier bestaande assets worden 1-op-1 vervangen (zelfde paden, zodat geen imports breken):
+## Wat verandert er
 
-1. `src/assets/hero.jpg` — Hero homepage
-   - Groep blije kinderen van achteren, sportkleding (lange mouwen + lange broek, meisjes met hoofddoek), springend/handen omhoog in een lichte sporthal. Warme natuurlijke belichting.
+**Twee nieuwe scènes** worden ingevoegd tussen de huidige "Visie & Missie" en "Focus visualisatie":
 
-2. `src/assets/community.jpg` — ADAB Moves Community
-   - Kinderen van achter/zijkant in beweging tijdens multisport (voetbal/basketbal), bedekte kleding, dynamische sfeer. Geen gezichten zichtbaar.
+### Nieuwe Scene — "Het voordeel van onze aanpak"
+Bullet-lijst die één voor één instaggert (links naar rechts fade), 6 punten:
+1. Pedagogisch onderbouwd — sport als middel, karakter als doel.
+2. VOG-gescreende coaches met islamitische identiteit.
+3. Vaste structuur: wekelijks programma, geen losse flodders.
+4. Veilige, halal omgeving voor jongens én meisjes.
+5. Aansluitend op school, ouders en moskee — één lijn.
+6. Meetbare impact: gedrag, focus en zelfvertrouwen groeien.
 
-3. `src/assets/coach.jpg` — Trainers / scholen aanbod
-   - Twee trainers van achteren gefotografeerd, beide met dezelfde korte baard en hetzelfde nette kapsel, identieke ADAB Moves trainingsjas met logo op de rug, kijkend naar een groep kinderen op een schoolplein/gymzaal.
+Titel: **"Waarom organisaties met ons kiezen."**
+Duur: ~220 frames (~7s).
 
-4. `src/assets/event.jpg` — ADAB Day events
-   - Vrolijke eventsfeer: kinderen van achteren met armen omhoog, vlaggetjes/decor in coral + navy, buiten of in een grote hal. Geen gezichten.
+### Nieuwe Scene — "Waarom samenwerken"
+2×2 grid met 4 kaarten, één per doelgroep:
+- **Scholen** — Verhoog beweegnorm, sociaal welzijn en gedrag — kant-en-klaar programma.
+- **Ouders** — Je kind groeit in karakter en geloof — niet alleen in techniek.
+- **Gemeenten** — Bereik moeilijk bereikbare jeugd via vertrouwde gezichten in de wijk.
+- **Moskeeën** — Activeer jongeren met een programma dat past bij jullie waarden.
 
-## Stijlrichtlijnen (consistent over alle 4)
-- Palet: warm cream achtergrond, deep navy en coral accenten (matchend met site).
-- Licht: zacht, natuurlijk, warm — geen harde flits.
-- Compositie: cinematisch, ruimte voor tekstoverlay (vooral hero).
-- Mensen: uitsluitend achterhoofden, silhouetten of lichaam vanaf de schouders/rug. Awrah bedekt (lange mouwen, lange broeken/rokken, meisjes met hoofddoek).
-- Trainers: identieke uitstraling (baard + kapsel), logo zichtbaar op kleding.
-- Sfeer: blij, energiek, netjes, professioneel.
-- Geen tekst in de afbeelding zelf.
+Titel: **"Eén partner, vier antwoorden."**
+Duur: ~200 frames (~6,5s).
 
-## Aanpak (technisch)
-- Gebruik Nano Banana Pro (`google/gemini-3-pro-image-preview`) via de Lovable AI Gateway voor hoge kwaliteit.
-- Eén Node-script `/tmp/gen-images.ts` dat 4 prompts achter elkaar uitvoert en de PNG's direct schrijft naar `src/assets/{hero,community,coach,event}.jpg` (overschrijft bestaande bestanden, imports blijven werken).
-- Per afbeelding een aspectratio-passende prompt (hero breed, overige standaard).
-- Geen codewijzigingen aan routes of componenten nodig — alleen assets vervangen.
-- Na generatie visueel controleren (`code--view` op de bestanden) en bevestigen dat de stijl klopt.
+## Technische wijzigingen
+- `remotion/src/MainVideo.tsx` — twee nieuwe scènecomponenten (`SceneBenefits`, `SceneWhy`) + `Bullet` subcomponent toegevoegd, in `TransitionSeries` ingevoegd tussen Scene3 en Scene4 met fade/wipe transities die matchen met de bestaande stijl.
+- `remotion/src/Root.tsx` — `durationInFrames` verhogen van 730 naar ~1180 om de nieuwe scènes te accommoderen.
+- Hergebruik bestaande palet (navy/cream/coral), Sora + Plus Jakarta Sans fonts, en bestaande spring/fade animatie-taal — visuele consistentie blijft behouden.
+- Geen nieuwe assets nodig.
+- Render via bestaand script naar `/mnt/documents/adab-moves-intro.mp4` (versioning: nieuwe versie overschrijft de huidige).
 
-## Geen wijzigingen aan
-- Routes, componenten, navigatie, typografie of kleuren.
-- Logo-bestanden.
+## Resultaat
+Een langere, sterkere video (~38s i.p.v. ~24s) waarin de kijker concreet ziet wát ADAB MOVES uniek maakt en waarom samenwerking voor elke doelgroep voordelig is — voordat de CTA komt.

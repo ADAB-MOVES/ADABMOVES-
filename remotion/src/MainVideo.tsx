@@ -165,6 +165,108 @@ const Scene3: React.FC = () => {
   );
 };
 
+// ===== Scene 3b: Bullet list — Het voordeel van onze aanpak =====
+const Bullet: React.FC<{ text: string; delay: number; idx: number }> = ({ text, delay, idx }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame: frame - delay, fps, config: { damping: 18 } });
+  const x = interpolate(s, [0, 1], [-50, 0]);
+  return (
+    <div style={{
+      display: "flex", alignItems: "flex-start", gap: 24,
+      opacity: s, transform: `translateX(${x}px)`,
+      padding: "14px 0",
+      borderBottom: `1px solid ${CREAM}1a`,
+    }}>
+      <div style={{
+        ...fontD, color: CORAL, fontSize: 22, fontWeight: 800,
+        width: 56, flexShrink: 0, letterSpacing: 2,
+        paddingTop: 8,
+      }}>0{idx}</div>
+      <div style={{ ...fontD, color: CREAM, fontSize: 34, fontWeight: 600, lineHeight: 1.25 }}>
+        {text}
+      </div>
+    </div>
+  );
+};
+
+const SceneBenefits: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const op = interpolate(frame, [0, 15, 200, 220], [0, 1, 1, 0]);
+  const titleS = spring({ frame, fps, config: { damping: 18 } });
+  const bullets = [
+    "Pedagogisch onderbouwd — sport als middel, karakter als doel.",
+    "VOG-gescreende coaches met islamitische identiteit.",
+    "Vaste structuur: wekelijks programma, geen losse flodders.",
+    "Veilige, halal omgeving voor jongens én meisjes.",
+    "Aansluitend op school, ouders en moskee — één lijn.",
+    "Meetbare impact: gedrag, focus en zelfvertrouwen groeien.",
+  ];
+  return (
+    <AbsoluteFill style={{ justifyContent: "center", padding: "0 200px", opacity: op }}>
+      <div style={{
+        ...fontB, color: CORAL, letterSpacing: 8, fontSize: 22,
+        fontWeight: 700, textTransform: "uppercase",
+        opacity: titleS, transform: `translateY(${interpolate(titleS,[0,1],[20,0])}px)`,
+      }}>Het voordeel van onze aanpak</div>
+      <div style={{
+        ...fontD, color: CREAM, fontSize: 72, fontWeight: 800, marginTop: 16,
+        marginBottom: 32, lineHeight: 1.05,
+        transform: `translateY(${interpolate(titleS,[0,1],[30,0])}px)`,
+      }}>Waarom organisaties <span style={{ color: CORAL, fontStyle: "italic" }}>met ons</span> kiezen.</div>
+      <div>
+        {bullets.map((t, i) => (
+          <Bullet key={t} text={t} delay={20 + i * 14} idx={i + 1} />
+        ))}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ===== Scene 3c: Why partner with us — split layout =====
+const SceneWhy: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const op = interpolate(frame, [0, 15, 180, 200], [0, 1, 1, 0]);
+  const titleS = spring({ frame, fps, config: { damping: 18 } });
+  const reasons = [
+    { tag: "Voor scholen", text: "Verhoog beweegnorm, sociaal welzijn en gedrag — kant-en-klaar programma." },
+    { tag: "Voor ouders", text: "Je kind groeit in karakter en geloof — niet alleen in techniek." },
+    { tag: "Voor gemeenten", text: "Bereik moeilijk bereikbare jeugd via vertrouwde gezichten in de wijk." },
+    { tag: "Voor moskeeën", text: "Activeer jongeren met een programma dat past bij jullie waarden." },
+  ];
+  return (
+    <AbsoluteFill style={{ justifyContent: "center", padding: "0 160px", opacity: op }}>
+      <div style={{
+        ...fontB, color: CORAL, letterSpacing: 8, fontSize: 22,
+        fontWeight: 700, textTransform: "uppercase",
+        opacity: titleS, transform: `translateY(${interpolate(titleS,[0,1],[20,0])}px)`,
+      }}>Waarom samenwerken</div>
+      <div style={{
+        ...fontD, color: CREAM, fontSize: 78, fontWeight: 800, marginTop: 16,
+        marginBottom: 56, lineHeight: 1.05,
+        transform: `translateY(${interpolate(titleS,[0,1],[30,0])}px)`,
+      }}>Eén partner, <span style={{ color: CORAL, fontStyle: "italic" }}>vier antwoorden.</span></div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+        {reasons.map((r, i) => {
+          const s = spring({ frame: frame - (30 + i * 14), fps, config: { damping: 16 } });
+          return (
+            <div key={r.tag} style={{
+              padding: 32, borderRadius: 22,
+              background: `${CREAM}0c`, border: `1.5px solid ${CORAL}40`,
+              opacity: s, transform: `translateY(${interpolate(s,[0,1],[40,0])}px)`,
+            }}>
+              <div style={{ ...fontB, color: CORAL, fontSize: 18, fontWeight: 700, letterSpacing: 4, textTransform: "uppercase" }}>{r.tag}</div>
+              <div style={{ ...fontD, color: CREAM, fontSize: 30, fontWeight: 600, marginTop: 14, lineHeight: 1.3 }}>{r.text}</div>
+            </div>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // ===== Scene 4: Focus visualization — three orbits =====
 const Scene4: React.FC = () => {
   const frame = useCurrentFrame();
