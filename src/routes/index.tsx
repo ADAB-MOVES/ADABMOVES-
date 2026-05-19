@@ -319,8 +319,8 @@ function HomePage() {
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden hover-lift">
-              <img src={community} alt="Broeders bouwen aan de ADAB MOVES community" loading="lazy" className="w-full h-full aspect-[4/5] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/60 to-transparent" />
+              <MascotPanel pose="wave" tone="creamDeep" className="aspect-[4/5]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/60 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5 right-5 text-white">
                 <div className="text-xs uppercase tracking-widest opacity-80">Oprichters</div>
                 <div className="text-lg font-semibold">Vanuit broederschap, voor de volgende generatie.</div>
