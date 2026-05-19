@@ -19,6 +19,7 @@ import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AanbodRouteImport } from './routes/aanbod'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AanbodIndexRouteImport } from './routes/aanbod.index'
 
 const VoorwaardenRoute = VoorwaardenRouteImport.update({
   id: '/voorwaarden',
@@ -70,10 +71,15 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AanbodIndexRoute = AanbodIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AanbodRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/aanbod': typeof AanbodRoute
+  '/aanbod': typeof AanbodRouteWithChildren
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -82,10 +88,10 @@ export interface FileRoutesByFullPath {
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
+  '/aanbod/': typeof AanbodIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -94,11 +100,12 @@ export interface FileRoutesByTo {
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
+  '/aanbod': typeof AanbodIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/aanbod': typeof AanbodRoute
+  '/aanbod': typeof AanbodRouteWithChildren
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -107,6 +114,7 @@ export interface FileRoutesById {
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
+  '/aanbod/': typeof AanbodIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,10 +129,10 @@ export interface FileRouteTypes {
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
+    | '/aanbod/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/aanbod'
     | '/contact'
     | '/cookies'
     | '/disclaimer'
@@ -133,6 +141,7 @@ export interface FileRouteTypes {
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
+    | '/aanbod'
   id:
     | '__root__'
     | '/'
@@ -145,11 +154,12 @@ export interface FileRouteTypes {
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
+    | '/aanbod/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AanbodRoute: typeof AanbodRoute
+  AanbodRoute: typeof AanbodRouteWithChildren
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   DisclaimerRoute: typeof DisclaimerRoute
@@ -232,12 +242,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aanbod/': {
+      id: '/aanbod/'
+      path: '/'
+      fullPath: '/aanbod/'
+      preLoaderRoute: typeof AanbodIndexRouteImport
+      parentRoute: typeof AanbodRoute
+    }
   }
 }
 
+interface AanbodRouteChildren {
+  AanbodIndexRoute: typeof AanbodIndexRoute
+}
+
+const AanbodRouteChildren: AanbodRouteChildren = {
+  AanbodIndexRoute: AanbodIndexRoute,
+}
+
+const AanbodRouteWithChildren =
+  AanbodRoute._addFileChildren(AanbodRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AanbodRoute: AanbodRoute,
+  AanbodRoute: AanbodRouteWithChildren,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   DisclaimerRoute: DisclaimerRoute,
