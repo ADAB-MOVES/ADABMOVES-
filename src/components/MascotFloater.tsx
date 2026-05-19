@@ -1,30 +1,32 @@
-import { Character } from "@/components/illustrations/Character";
-import { illu } from "@/components/illustrations/tokens";
+import mascotWave from "@/assets/mascot-wave.png";
 
 interface Props {
   className?: string;
   size?: number;
-  /** "wave" mascotte standaard; "back" voor trainer-achterzijde */
-  pose?: "wave" | "back" | "point" | "whistle";
+  pose?: "wave" | "jump" | "point" | "coach";
 }
 
 /**
- * Drijvende ADAB MOVES mascotte. Subtiele idle-animatie + hover-wave.
- * Bewust geen interactie nodig — pure sfeer.
+ * Drijvende ADAB MOVES mascotte (transparante PNG).
+ * Pure sfeer — geen interactie.
  */
 export function MascotFloater({ className, size = 160, pose = "wave" }: Props) {
-  const variant =
-    pose === "back"
-      ? "coach-back"
-      : pose === "point"
-        ? "coach-point"
-        : pose === "whistle"
-          ? "coach-whistle"
-          : "coach-mascot";
+  // Voor nu alleen wave; uitbreidbaar later.
+  void pose;
   return (
-    <div className={`relative inline-block animate-floaty pointer-events-none select-none ${className ?? ""}`}>
-      <div aria-hidden className="absolute inset-x-6 bottom-1 h-3 rounded-full bg-[var(--ink)]/15 blur-md" />
-      <Character variant={variant} size={size} outfit={illu.coral} />
+    <div
+      className={`relative inline-block animate-floaty pointer-events-none select-none ${className ?? ""}`}
+      style={{ width: size, height: size }}
+    >
+      <div
+        aria-hidden
+        className="absolute inset-x-6 bottom-1 h-3 rounded-full bg-[var(--ink)]/15 blur-md"
+      />
+      <img
+        src={mascotWave}
+        alt=""
+        className="h-full w-full object-contain drop-shadow-xl"
+      />
     </div>
   );
 }
