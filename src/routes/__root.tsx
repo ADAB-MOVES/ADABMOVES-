@@ -60,9 +60,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   // Re-run reveal observer whenever the route changes so new content fades in.
   const location = useRouterState({ select: (s) => s.location.pathname });
-  useReveal();
-  // Reference location so the hook re-mounts the observer on navigation.
-  void location;
+  useReveal(location);
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
