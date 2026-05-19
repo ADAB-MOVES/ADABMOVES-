@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, School, Users, CalendarDays, Package, Mail, Phone } from "lucide-react";
-import event from "@/assets/event.jpg";
-import community from "@/assets/community.jpg";
-import coach from "@/assets/coach.jpg";
-import scholen from "@/assets/scholen.jpg";
+import { ArrowRight, School, Users, CalendarDays, Package, Mail, Phone, MessageCircle } from "lucide-react";
+import { WA, PHONE_DISPLAY, PHONE_TEL, EMAIL } from "@/lib/whatsapp";
+import event from "@/assets/scene-adab-day.jpg";
+import community from "@/assets/scene-community-kids.jpg";
+import verhuur from "@/assets/scene-verhuur.jpg";
+import scholen from "@/assets/scene-scholen.jpg";
 
 export const Route = createFileRoute("/aanbod/")({
   head: () => ({
@@ -47,7 +48,7 @@ const offerings = [
     tag: "Spoor 04 — Binnenkort",
     title: "Materiaal- & seizoensverhuur",
     text: "In een volgende fase voegen wij materiaal- en seizoensverhuur (zoals springkussens) toe aan ons aanbod.",
-    image: coach,
+    image: verhuur,
     to: "/aanbod/verhuur",
   },
 ] as const;
@@ -112,28 +113,28 @@ function AanbodHub() {
                 Laten we samen kijken wat past bij jullie locatie.
               </h2>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/contact" className="btn-primary">
-                  Plan een gesprek <ArrowRight size={18} />
-                </Link>
+                <a href={WA.generic} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                  <MessageCircle size={18} /> WhatsApp ons
+                </a>
               </div>
             </div>
             <div className="space-y-4">
-              <a href="mailto:info@adabmoves.nl" className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
+              <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
                 <div className="h-11 w-11 rounded-xl bg-[var(--coral)] flex items-center justify-center text-[var(--ink)]">
                   <Mail size={20} />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-[var(--cream)]/60">E-mail</p>
-                  <p className="font-medium">info@adabmoves.nl</p>
+                  <p className="font-medium">{EMAIL}</p>
                 </div>
               </a>
-              <a href="tel:+31000000000" className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
+              <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
                 <div className="h-11 w-11 rounded-xl bg-[var(--coral)] flex items-center justify-center text-[var(--ink)]">
                   <Phone size={20} />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-[var(--cream)]/60">Bellen</p>
-                  <p className="font-medium">Plan via contactformulier</p>
+                  <p className="font-medium">{PHONE_DISPLAY}</p>
                 </div>
               </a>
             </div>
