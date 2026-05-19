@@ -232,7 +232,7 @@ function HomePage() {
               </div>
               <div className="text-sm">
                 <div className="font-semibold">Halal omgeving</div>
-                <div className="text-muted-foreground">VOG-gescreende coaches</div>
+                <div className="text-muted-foreground">Begonnen door drie broeders met één missie.</div>
               </div>
             </div>
             <div
