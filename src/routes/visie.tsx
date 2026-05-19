@@ -205,8 +205,7 @@ function VisiePage() {
           </div>
           <div className="lg:col-span-10">
             <p className="text-2xl md:text-3xl font-display leading-snug text-foreground" style={{ fontFamily: "var(--font-display)" }}>
-              "Een sterke gelovige is geliefder bij Allah dan een zwakke gelovige —
-              en in beiden is goedheid."
+              "Een gezond verstand in een gezond lichaam''
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
               De kracht van het lichaam staat in dienst van karakter en gemeenschap.
@@ -226,7 +225,7 @@ function VisiePage() {
                 width={1200}
                 height={1500}
                 loading="lazy"
-                className="w-full h-full object-cover aspect-[4/5]"
+                className="w-full h-full aspect-[4/5] object-contain"
               />
             </div>
             <div className="mt-6">

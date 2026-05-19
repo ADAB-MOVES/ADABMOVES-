@@ -275,7 +275,7 @@ function HomePage() {
               Begonnen door een groep <span className="italic text-[var(--coral-deep)]">broeders</span> met één missie.
             </h2>
             <div className="mt-8 relative rounded-3xl overflow-hidden hover-lift">
-              <img src={community} alt="Broeders bouwen aan de ADAB MOVES community" className="w-full h-auto object-cover aspect-[4/5]" />
+              <img src={community} alt="Broeders bouwen aan de ADAB MOVES community" className="w-full h-full aspect-[4/5] object-contain" />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/60 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 text-white">
                 <div className="text-xs uppercase tracking-widest opacity-80">Oprichters</div>
