@@ -14,9 +14,9 @@ import {
   BookOpen,
   Quote,
 } from "lucide-react";
-import community from "@/assets/community.jpg";
-import coach from "@/assets/coach.jpg";
-import event from "@/assets/event.jpg";
+import community from "@/assets/scene-community-kids.jpg";
+import coach from "@/assets/scene-scholen.jpg";
+import event from "@/assets/scene-adab-day.jpg";
 
 export const Route = createFileRoute("/over-ons/missie-visie")({
   head: () => ({

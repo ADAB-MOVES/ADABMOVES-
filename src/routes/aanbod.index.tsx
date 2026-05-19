@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, School, Users, CalendarDays, Package, Mail, Phone } from "lucide-react";
-import event from "@/assets/event.jpg";
-import community from "@/assets/community.jpg";
-import coach from "@/assets/coach.jpg";
-import scholen from "@/assets/scholen.jpg";
+import event from "@/assets/scene-adab-day.jpg";
+import community from "@/assets/scene-community-kids.jpg";
+import verhuur from "@/assets/scene-verhuur.jpg";
+import scholen from "@/assets/scene-scholen.jpg";
 
 export const Route = createFileRoute("/aanbod/")({
   head: () => ({
@@ -47,7 +47,7 @@ const offerings = [
     tag: "Spoor 04 — Binnenkort",
     title: "Materiaal- & seizoensverhuur",
     text: "In een volgende fase voegen wij materiaal- en seizoensverhuur (zoals springkussens) toe aan ons aanbod.",
-    image: coach,
+    image: verhuur,
     to: "/aanbod/verhuur",
   },
 ] as const;
