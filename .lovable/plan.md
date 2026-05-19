@@ -1,40 +1,55 @@
-# Eén beeldstijl voor de hele site
+# Faceless, modest cartoon-stijl over de hele site
 
-Doel: alle subpagina's gebruiken dezelfde fotografische stijl als de homepage (zoals `hero.jpg`, `community.jpg`, `coach.jpg`, `event.jpg`). De cartoon scene-illustraties met de springende mascotte verdwijnen van alle pagina's en worden vervangen door nieuwe afbeeldingen in homepage-stijl.
+## Wat ik fout deed
+Ik generereerde nieuwe illustraties met gezichten en blote knieën (korte broeken). Dat past niet bij ADAB MOVES.
 
-## Wat er gebeurt
+## Nieuwe richtlijn voor élke afbeelding
+- **Geen gezichten** — karakters van achteren, met petjes/skullcaps die het hoofd bedekken, of zachte abstracte silhouetten zonder oog/mond detail.
+- **Bedekte knieën** — altijd lange trainingsbroeken of jogging, nooit korte broeken.
+- **Behoud cartoon-stijl** — platte editorial vector, cream achtergrond, navy `#1F2240` + coral `#E8784E`, ADAB MOVES logo op de kleding.
+- **Doelgroep per beeld bepaalt scene** maar gezichten/knieën regels gelden altijd.
 
-1. **Nieuwe afbeeldingen genereren** in exact dezelfde stijl als de huidige homepage-foto's — warme cream/coral sfeer, zachte lichtval, redactionele uitsnede — voor elke plek waar nu een cartoon scene staat:
-   - `scholen-photo.jpg` — gymles op een school
-   - `community-kinderen.jpg` — kinderen in beweging in een sportzaal
-   - `community-tieners.jpg` — tieners trainend
-   - `community-broeders.jpg` — volwassen broeders sportend
-   - `adab-day.jpg` — event-sfeerbeeld
-   - `methode-photo.jpg` — coach met groep
-   - `verhaal-photo.jpg` — sfeerbeeld voor "Ons verhaal"
+## Aanpak
 
-2. **Scene-component vervangen** door gewone `<img>` tags op alle pagina's die nu `<Scene variant="…" />` gebruiken:
-   - `src/routes/aanbod.scholen.tsx`
-   - `src/routes/aanbod.events.tsx`
-   - `src/routes/aanbod.community.index.tsx`
-   - `src/routes/aanbod.community.kinderen.tsx`
-   - `src/routes/aanbod.community.tieners.tsx`
-   - `src/routes/aanbod.community.broeders.tsx`
-   - `src/routes/over-ons.methode.tsx` (waar `scene-methode` gebruikt zou worden)
-   - `src/routes/over-ons.verhaal.tsx` (waar `scene-verhaal` gebruikt zou worden)
+1. **Alle huidige "human face" foto's verwijderen** uit `src/assets/`:
+   - `hero.jpg`, `community.jpg`, `coach.jpg`, `event.jpg` (homepage)
+   - `community-2.jpg`, `events-2.jpg`, `methode.jpg`, `verhaal.jpg`, `scholen.jpg` (subpagina's)
+   - `scene-*.jpg` (3D-stijl set)
+   - `scholen-photo.jpg`, `community-kinderen.jpg`, `community-tieners.jpg`, `community-broeders.jpg` (mijn nieuwe foute set)
+   - `mascot.png`, `reference-*` (referentie/oud)
 
-3. **Mascotte-element verwijderen** van pagina's waar de springende jongen los geplaatst staat (`MascotFloater`) — de homepage-stijl gebruikt geen losse cartoon-mascotte. De `MascotFloater` component blijft bestaan maar wordt nergens meer ingevoegd.
+2. **Nieuwe faceless cartoon set genereren** in één consistente stijl:
+   - `hero.jpg` — coach van achteren met groep kinderen in trainingspak, sportzaal
+   - `scholen.jpg` — kinderen in lange broek tijdens gymles, van opzij/achter
+   - `community-kinderen.jpg` — kinderen in lange sportbroek met sporten, geen gezichten
+   - `community-tieners.jpg` — tieners trainend in lange broek, van achter/zij
+   - `community-broeders.jpg` — broeders sportend in lange broek
+   - `events.jpg` — sfeerbeeld ADAB Day, families van achter/zij
+   - `methode.jpg` — coach + kind van achter
+   - `verhaal.jpg` — sfeerbeeld zonder gezichten
+   - `community.jpg` — groep van achter, high-five
 
-4. **Runtime-fout oplossen**: `src/routes/index.tsx` importeert `MascotPanel.tsx` die niet bestaat — die import en het gebruik worden weggehaald.
+3. **Alle route-bestanden hergebruiken dezelfde nieuwe assets** — geen `Scene.tsx`/`Character.tsx` SVG meer nodig op pagina's; pure `<img>` met `rounded-2xl` zoals al gebeurt.
 
-5. **Oude cartoon-assets opruimen** uit `src/assets/`: `scene-*.jpg`, `mascot.png`, `reference-*.png/jpg` — deze worden nergens meer gebruikt na de vervanging.
+4. **Runtime-fout opruimen** (`MascotPanel` import als die nog ergens staat) en `MascotFloater` niet meer plaatsen op pagina's.
 
-## Wat ongemoeid blijft
+## Bestanden die updates krijgen
+Imports vervangen in:
+- `src/routes/index.tsx`
+- `src/routes/aanbod.index.tsx`
+- `src/routes/aanbod.scholen.tsx`
+- `src/routes/aanbod.events.tsx`
+- `src/routes/aanbod.community.index.tsx`
+- `src/routes/aanbod.community.kinderen.tsx`
+- `src/routes/aanbod.community.tieners.tsx`
+- `src/routes/aanbod.community.broeders.tsx`
+- `src/routes/over-ons.index.tsx`
+- `src/routes/over-ons.methode.tsx`
+- `src/routes/over-ons.verhaal.tsx`
+- `src/routes/over-ons.missie-visie.tsx`
 
-- De homepage zelf — die is al in de juiste stijl.
-- Logo's, kleuren, typografie, navigatie, WhatsApp-knop.
-- De `Scene.tsx` en `Character.tsx` componenten blijven in de codebase staan voor het geval ze later nodig zijn, maar worden niet meer aangeroepen.
+`<Scene variant="…">` aanroepen worden vervangen door `<img src={…} alt="…" className="w-full h-auto rounded-2xl" loading="lazy" />`.
 
-## Technische notitie
-
-Nieuwe afbeeldingen worden gegenereerd met `imagegen` in dezelfde prompt-stijl als de bestaande homepage-foto's (warm cream/coral palet, natuurlijke lichtval, ADAB MOVES brand-sfeer). Daarna worden alle imports in de betreffende route-bestanden bijgewerkt en wordt de `<Scene>`-aanroep vervangen door een standaard `<img>` met `rounded-2xl` zoals op de homepage.
+## Wat hetzelfde blijft
+- Layout, typografie, kleuren, navigatie, WhatsApp-knop, content/teksten.
+- Logo (`logo.png`, `logo-dark.png`).
