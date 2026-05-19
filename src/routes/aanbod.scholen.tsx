@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, School, GraduationCap, Users, Calendar } from "lucide-react";
-import { Scene } from "@/components/illustrations/Scene";
+import scholen from "@/assets/scholen.jpg";
 import { WA } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/aanbod/scholen")({
@@ -56,7 +56,7 @@ function ScholenPage() {
 
       <section className="container-x py-16 md:py-20">
         <div className="rounded-3xl overflow-hidden">
-          <Scene variant="scholen" className="w-full h-auto" />
+          <img src={scholen} alt="Coach met kinderen in een schoolgymzaal" className="w-full h-auto" loading="lazy" />
         </div>
       </section>
 

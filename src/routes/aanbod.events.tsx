@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, CalendarDays, Sparkles, Users, MapPin } from "lucide-react";
-import { Scene } from "@/components/illustrations/Scene";
+import event from "@/assets/event.jpg";
 import { WA } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/aanbod/events")({
@@ -56,7 +56,7 @@ function EventsPage() {
 
       <section className="container-x py-16 md:py-20">
         <div className="rounded-3xl overflow-hidden">
-          <Scene variant="adab-day" className="w-full h-auto" />
+          <img src={event} alt="ADAB Day sportevenement met families en kinderen" className="w-full h-auto" loading="lazy" />
         </div>
         <div className="mt-6 rounded-3xl bg-[var(--coral)]/12 p-10 text-center">
           <p className="text-2xl md:text-3xl font-semibold text-foreground leading-snug" style={{ fontFamily: "var(--font-display)" }}>

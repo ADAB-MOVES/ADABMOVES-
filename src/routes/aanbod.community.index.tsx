@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Users, Sparkles, ShieldCheck } from "lucide-react";
-import { Scene } from "@/components/illustrations/Scene";
+import kinderenImg from "@/assets/community-kinderen.jpg";
+import tienersImg from "@/assets/community-tieners.jpg";
+import broedersImg from "@/assets/community-broeders.jpg";
 import { WA } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/aanbod/community/")({
@@ -21,21 +23,24 @@ const groups = [
     eyebrow: "8 — 12 jaar",
     title: "Kinderen",
     text: "Speels, opbouwend, met vaste coaches. Multisport waar broertje en zus zich thuis voelen.",
-    scene: "community-kids" as const,
+    img: kinderenImg,
+    alt: "Kinderen sporten in een gymzaal",
   },
   {
     to: "/aanbod/community/tieners" as const,
     eyebrow: "12 — 17 jaar",
     title: "Tieners",
     text: "Voetbal, basketbal, kickboks, archery en fitness — met leeftijdgenoten uit jouw stad.",
-    scene: "community-teens" as const,
+    img: tienersImg,
+    alt: "Tieners trainen samen",
   },
   {
     to: "/aanbod/community/broeders" as const,
     eyebrow: "18+",
     title: "Broeders",
     text: "Een vaste sportplek voor volwassen broeders. Multisport en kracht — in goede sfeer.",
-    scene: "community-brothers" as const,
+    img: broedersImg,
+    alt: "Broeders trainen samen",
   },
 ];
 
@@ -71,7 +76,7 @@ function CommunityHub() {
               className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift"
             >
               <div className="aspect-[5/3] overflow-hidden bg-[var(--cream)]">
-                <Scene variant={g.scene} className="w-full h-full transition-transform duration-700 group-hover:scale-105" />
+                <img src={g.img} alt={g.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>
               <div className="p-7 flex flex-col flex-1">
                 <span className="eyebrow">{g.eyebrow}</span>
