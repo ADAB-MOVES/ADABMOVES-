@@ -438,7 +438,7 @@ function HomePage() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden hidden md:block hover-lift">
-              <img src={event} alt="ADAB Day event met jongeren" loading="lazy" className="w-full h-auto aspect-[4/3] object-cover" />
+              <MascotPanel pose="jump" tone="coral" className="aspect-[4/3]" />
             </div>
           </div>
         </div>
