@@ -35,20 +35,29 @@ export const Route = createFileRoute("/")({
         content:
           "Sport als middel voor karaktervorming. Voor basis- en middelbare scholen, ouders, partners en jongeren.",
       },
-      { property: "og:image", content: hero },
+      { property: "og:image", content: mascotJumpImg },
     ],
   }),
   component: HomePage,
 });
 
-const tracks = [
+const tracks: Array<{
+  icon: typeof School;
+  tag: string;
+  title: string;
+  text: string;
+  pose: MascotPose;
+  tone: MascotTone;
+  to: "/aanbod/scholen" | "/aanbod/community" | "/aanbod/events";
+}> = [
   {
     icon: School,
     tag: "1 — Scholen",
     title: "Basis- & middelbare scholen",
     text:
       "Sportlessen, naschoolse programma's, sportdagen en workshops voor basis- én middelbare scholen. Volledig verzorgd en aansluitend op de schoolcultuur.",
-    image: coach,
+    pose: "coach",
+    tone: "cream",
     to: "/aanbod/scholen",
   },
   {
@@ -57,7 +66,8 @@ const tracks = [
     title: "ADAB MOVES Community",
     text:
       "Wekelijkse multisport voor kinderen en tieners — inschrijving per maand of per kwartaal. Een vaste, halal sportplek met een hechte groep.",
-    image: community,
+    pose: "wave",
+    tone: "creamDeep",
     to: "/aanbod/community",
   },
   {
@@ -66,7 +76,8 @@ const tracks = [
     title: "ADAB Day",
     text:
       "Sportevenementen, themadagen en kinder- & jongerenactiviteiten op aanvraag. Voor scholen, moskeeën, gemeenten en buurthuizen.",
-    image: event,
+    pose: "jump",
+    tone: "coral",
     to: "/aanbod/events",
   },
 ];
