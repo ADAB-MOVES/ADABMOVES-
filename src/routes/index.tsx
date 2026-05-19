@@ -17,8 +17,10 @@ import {
   Star,
   Play,
 } from "lucide-react";
-import { MascotPanel, type MascotPose, type MascotTone } from "@/components/MascotPanel";
-import mascotJumpImg from "@/assets/mascot-jump.png";
+import hero from "@/assets/hero.jpg";
+import community from "@/assets/community.jpg";
+import coach from "@/assets/coach.jpg";
+import event from "@/assets/event.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,29 +37,20 @@ export const Route = createFileRoute("/")({
         content:
           "Sport als middel voor karaktervorming. Voor basis- en middelbare scholen, ouders, partners en jongeren.",
       },
-      { property: "og:image", content: mascotJumpImg },
+      { property: "og:image", content: hero },
     ],
   }),
   component: HomePage,
 });
 
-const tracks: Array<{
-  icon: typeof School;
-  tag: string;
-  title: string;
-  text: string;
-  pose: MascotPose;
-  tone: MascotTone;
-  to: "/aanbod/scholen" | "/aanbod/community" | "/aanbod/events";
-}> = [
+const tracks = [
   {
     icon: School,
     tag: "1 — Scholen",
     title: "Basis- & middelbare scholen",
     text:
       "Sportlessen, naschoolse programma's, sportdagen en workshops voor basis- én middelbare scholen. Volledig verzorgd en aansluitend op de schoolcultuur.",
-    pose: "coach",
-    tone: "cream",
+    image: coach,
     to: "/aanbod/scholen",
   },
   {
@@ -66,8 +59,7 @@ const tracks: Array<{
     title: "ADAB MOVES Community",
     text:
       "Wekelijkse multisport voor kinderen en tieners — inschrijving per maand of per kwartaal. Een vaste, halal sportplek met een hechte groep.",
-    pose: "wave",
-    tone: "creamDeep",
+    image: community,
     to: "/aanbod/community",
   },
   {
@@ -76,8 +68,7 @@ const tracks: Array<{
     title: "ADAB Day",
     text:
       "Sportevenementen, themadagen en kinder- & jongerenactiviteiten op aanvraag. Voor scholen, moskeeën, gemeenten en buurthuizen.",
-    pose: "jump",
-    tone: "coral",
+    image: event,
     to: "/aanbod/events",
   },
 ];
@@ -153,13 +144,9 @@ function HomePage() {
 
           <div className="lg:col-span-6 relative">
             <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-[var(--coral)]/15 blur-2xl animate-floaty-slow" />
-            <MascotPanel
-              pose="jump"
-              tone="cream"
-              alt="ADAB MOVES mascotte, springend met armen omhoog"
-              className="relative rounded-[1.75rem] shadow-[var(--shadow-soft)] hover-lift aspect-[4/5] border border-border"
-            />
-
+            <div className="relative rounded-[1.75rem] overflow-hidden shadow-[var(--shadow-soft)] hover-lift">
+              <img src={hero} alt="Kinderen en tieners spelen multisport in een ADAB MOVES sportzaal" width={1600} height={1100} className="w-full h-auto object-cover" />
+            </div>
             <div className="hidden sm:flex items-center gap-3 absolute -left-4 bottom-8 rounded-2xl bg-white border border-border px-4 py-3 shadow-[var(--shadow-soft)] animate-floaty">
               <div className="h-9 w-9 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><ShieldCheck size={18} /></div>
               <div className="text-sm">
@@ -211,7 +198,7 @@ function HomePage() {
             controls
             playsInline
             preload="metadata"
-            poster={mascotJumpImg}
+            poster={hero}
             className="relative w-full aspect-video object-cover"
           />
         </div>
@@ -260,7 +247,9 @@ function HomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {tracks.map((t) => (
             <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift">
-              <MascotPanel pose={t.pose} tone={t.tone} className="aspect-[4/3]" />
+              <div className="aspect-[4/3] overflow-hidden">
+                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              </div>
               <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={20} /></div>
@@ -319,8 +308,8 @@ function HomePage() {
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden hover-lift">
-              <MascotPanel pose="wave" tone="creamDeep" className="aspect-[4/5]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/60 to-transparent pointer-events-none" />
+              <img src={community} alt="Broeders bouwen aan de ADAB MOVES community" loading="lazy" className="w-full h-full aspect-[4/5] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/60 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 text-white">
                 <div className="text-xs uppercase tracking-widest opacity-80">Oprichters</div>
                 <div className="text-lg font-semibold">Vanuit broederschap, voor de volgende generatie.</div>
@@ -438,7 +427,7 @@ function HomePage() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden hidden md:block hover-lift">
-              <MascotPanel pose="jump" tone="coral" className="aspect-[4/3]" />
+              <img src={event} alt="ADAB Day event met jongeren" loading="lazy" className="w-full h-auto aspect-[4/3] object-cover" />
             </div>
           </div>
         </div>
