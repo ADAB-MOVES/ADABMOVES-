@@ -49,13 +49,13 @@ export function SiteHeader() {
               key={n.to}
               to={n.to}
               className="group relative text-sm font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
-              activeProps={{ className: "!text-foreground" }}
+              activeProps={{ className: "is-active !text-foreground" }}
               activeOptions={{ exact: n.to === "/" }}
             >
               <span>{n.label}</span>
               <span
                 aria-hidden
-                className="absolute left-0 right-0 -bottom-0.5 h-px bg-[var(--coral)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 [.\\!text-foreground_&]:scale-x-100"
+                className="absolute left-0 right-0 -bottom-0.5 h-px bg-[var(--coral)] scale-x-0 group-hover:scale-x-100 group-[.is-active]:scale-x-100 origin-left transition-transform duration-300"
               />
             </Link>
           ))}
