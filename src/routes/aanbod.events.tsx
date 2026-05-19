@@ -1,16 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, CalendarDays, Sparkles, Users, MapPin } from "lucide-react";
-import event from "@/assets/event.jpg";
-import events2 from "@/assets/events-2.jpg";
-import community from "@/assets/community.jpg";
+import { Scene } from "@/components/illustrations/Scene";
+import { WA } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/aanbod/events")({
   head: () => ({
     meta: [
-      { title: "Events — ADAB MOVES" },
-      { name: "description", content: "Sportdagen, themadagen en kinderactiviteiten op locatie — volledig verzorgd door ADAB MOVES." },
+      { title: "ADAB Day — islamitische sportdagen & events" },
+      { name: "description", content: "Sportdagen, themadagen en kinderactiviteiten op locatie — volledig verzorgd door ADAB MOVES voor scholen, moskeeën, gemeenten en buurthuizen." },
       { property: "og:title", content: "ADAB Day & evenementen" },
-      { property: "og:image", content: event },
+      { property: "og:description", content: "Een sportdag die kinderen nog weken navertellen." },
     ],
   }),
   component: EventsPage,
@@ -56,21 +55,13 @@ function EventsPage() {
       </section>
 
       <section className="container-x py-16 md:py-20">
-        <div className="grid grid-cols-12 gap-4 md:gap-5">
-          <div className="col-span-12 md:col-span-8 aspect-[16/9] rounded-3xl overflow-hidden">
-            <img src={events2} alt="Kinderen op een sportevenement" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="col-span-6 md:col-span-4 aspect-square rounded-3xl overflow-hidden">
-            <img src={event} alt="ADAB Day sfeerbeeld" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="col-span-6 md:col-span-4 aspect-square rounded-3xl overflow-hidden">
-            <img src={community} alt="Groepsfoto event" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="col-span-12 md:col-span-8 aspect-[16/9] rounded-3xl bg-[var(--coral)]/12 flex items-center justify-center p-10">
-            <p className="text-2xl md:text-3xl font-semibold text-foreground leading-snug text-center" style={{ fontFamily: "var(--font-display)" }}>
-              "Een dag waar kinderen nog weken over napraten."
-            </p>
-          </div>
+        <div className="rounded-3xl overflow-hidden">
+          <Scene variant="adab-day" className="w-full h-auto" />
+        </div>
+        <div className="mt-6 rounded-3xl bg-[var(--coral)]/12 p-10 text-center">
+          <p className="text-2xl md:text-3xl font-semibold text-foreground leading-snug" style={{ fontFamily: "var(--font-display)" }}>
+            "Een dag waar kinderen nog weken over napraten."
+          </p>
         </div>
       </section>
 
@@ -116,7 +107,7 @@ function EventsPage() {
             <p className="mt-4 text-white/70 max-w-xl">Vertel ons over de datum, locatie en doelgroep — wij maken een passend voorstel.</p>
           </div>
           <div className="lg:col-span-4 lg:text-right">
-            <Link to="/contact" className="btn-primary">Vraag een offerte <ArrowRight size={18} /></Link>
+            <a href={WA.event} target="_blank" rel="noopener noreferrer" className="btn-primary">App ons direct <ArrowRight size={18} /></a>
           </div>
         </div>
       </section>

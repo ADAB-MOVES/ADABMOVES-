@@ -28,6 +28,10 @@ import { Route as AanbodVerhuurRouteImport } from './routes/aanbod.verhuur'
 import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
 import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
 import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
+import { Route as AanbodCommunityIndexRouteImport } from './routes/aanbod.community.index'
+import { Route as AanbodCommunityTienersRouteImport } from './routes/aanbod.community.tieners'
+import { Route as AanbodCommunityKinderenRouteImport } from './routes/aanbod.community.kinderen'
+import { Route as AanbodCommunityBroedersRouteImport } from './routes/aanbod.community.broeders'
 
 const VoorwaardenRoute = VoorwaardenRouteImport.update({
   id: '/voorwaarden',
@@ -124,6 +128,26 @@ const AanbodCommunityRoute = AanbodCommunityRouteImport.update({
   path: '/community',
   getParentRoute: () => AanbodRoute,
 } as any)
+const AanbodCommunityIndexRoute = AanbodCommunityIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AanbodCommunityRoute,
+} as any)
+const AanbodCommunityTienersRoute = AanbodCommunityTienersRouteImport.update({
+  id: '/tieners',
+  path: '/tieners',
+  getParentRoute: () => AanbodCommunityRoute,
+} as any)
+const AanbodCommunityKinderenRoute = AanbodCommunityKinderenRouteImport.update({
+  id: '/kinderen',
+  path: '/kinderen',
+  getParentRoute: () => AanbodCommunityRoute,
+} as any)
+const AanbodCommunityBroedersRoute = AanbodCommunityBroedersRouteImport.update({
+  id: '/broeders',
+  path: '/broeders',
+  getParentRoute: () => AanbodCommunityRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -136,7 +160,7 @@ export interface FileRoutesByFullPath {
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
-  '/aanbod/community': typeof AanbodCommunityRoute
+  '/aanbod/community': typeof AanbodCommunityRouteWithChildren
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
@@ -145,6 +169,10 @@ export interface FileRoutesByFullPath {
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
+  '/aanbod/community/broeders': typeof AanbodCommunityBroedersRoute
+  '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
+  '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
+  '/aanbod/community/': typeof AanbodCommunityIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -155,7 +183,6 @@ export interface FileRoutesByTo {
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
-  '/aanbod/community': typeof AanbodCommunityRoute
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
@@ -164,6 +191,10 @@ export interface FileRoutesByTo {
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod': typeof AanbodIndexRoute
   '/over-ons': typeof OverOnsIndexRoute
+  '/aanbod/community/broeders': typeof AanbodCommunityBroedersRoute
+  '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
+  '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
+  '/aanbod/community': typeof AanbodCommunityIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -177,7 +208,7 @@ export interface FileRoutesById {
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
-  '/aanbod/community': typeof AanbodCommunityRoute
+  '/aanbod/community': typeof AanbodCommunityRouteWithChildren
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
@@ -186,6 +217,10 @@ export interface FileRoutesById {
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
+  '/aanbod/community/broeders': typeof AanbodCommunityBroedersRoute
+  '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
+  '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
+  '/aanbod/community/': typeof AanbodCommunityIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -209,6 +244,10 @@ export interface FileRouteTypes {
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
+    | '/aanbod/community/broeders'
+    | '/aanbod/community/kinderen'
+    | '/aanbod/community/tieners'
+    | '/aanbod/community/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -219,7 +258,6 @@ export interface FileRouteTypes {
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
-    | '/aanbod/community'
     | '/aanbod/events'
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
@@ -228,6 +266,10 @@ export interface FileRouteTypes {
     | '/over-ons/verhaal'
     | '/aanbod'
     | '/over-ons'
+    | '/aanbod/community/broeders'
+    | '/aanbod/community/kinderen'
+    | '/aanbod/community/tieners'
+    | '/aanbod/community'
   id:
     | '__root__'
     | '/'
@@ -249,6 +291,10 @@ export interface FileRouteTypes {
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
+    | '/aanbod/community/broeders'
+    | '/aanbod/community/kinderen'
+    | '/aanbod/community/tieners'
+    | '/aanbod/community/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -399,11 +445,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AanbodCommunityRouteImport
       parentRoute: typeof AanbodRoute
     }
+    '/aanbod/community/': {
+      id: '/aanbod/community/'
+      path: '/'
+      fullPath: '/aanbod/community/'
+      preLoaderRoute: typeof AanbodCommunityIndexRouteImport
+      parentRoute: typeof AanbodCommunityRoute
+    }
+    '/aanbod/community/tieners': {
+      id: '/aanbod/community/tieners'
+      path: '/tieners'
+      fullPath: '/aanbod/community/tieners'
+      preLoaderRoute: typeof AanbodCommunityTienersRouteImport
+      parentRoute: typeof AanbodCommunityRoute
+    }
+    '/aanbod/community/kinderen': {
+      id: '/aanbod/community/kinderen'
+      path: '/kinderen'
+      fullPath: '/aanbod/community/kinderen'
+      preLoaderRoute: typeof AanbodCommunityKinderenRouteImport
+      parentRoute: typeof AanbodCommunityRoute
+    }
+    '/aanbod/community/broeders': {
+      id: '/aanbod/community/broeders'
+      path: '/broeders'
+      fullPath: '/aanbod/community/broeders'
+      preLoaderRoute: typeof AanbodCommunityBroedersRouteImport
+      parentRoute: typeof AanbodCommunityRoute
+    }
   }
 }
 
+interface AanbodCommunityRouteChildren {
+  AanbodCommunityBroedersRoute: typeof AanbodCommunityBroedersRoute
+  AanbodCommunityKinderenRoute: typeof AanbodCommunityKinderenRoute
+  AanbodCommunityTienersRoute: typeof AanbodCommunityTienersRoute
+  AanbodCommunityIndexRoute: typeof AanbodCommunityIndexRoute
+}
+
+const AanbodCommunityRouteChildren: AanbodCommunityRouteChildren = {
+  AanbodCommunityBroedersRoute: AanbodCommunityBroedersRoute,
+  AanbodCommunityKinderenRoute: AanbodCommunityKinderenRoute,
+  AanbodCommunityTienersRoute: AanbodCommunityTienersRoute,
+  AanbodCommunityIndexRoute: AanbodCommunityIndexRoute,
+}
+
+const AanbodCommunityRouteWithChildren = AanbodCommunityRoute._addFileChildren(
+  AanbodCommunityRouteChildren,
+)
+
 interface AanbodRouteChildren {
-  AanbodCommunityRoute: typeof AanbodCommunityRoute
+  AanbodCommunityRoute: typeof AanbodCommunityRouteWithChildren
   AanbodEventsRoute: typeof AanbodEventsRoute
   AanbodScholenRoute: typeof AanbodScholenRoute
   AanbodVerhuurRoute: typeof AanbodVerhuurRoute
@@ -411,7 +503,7 @@ interface AanbodRouteChildren {
 }
 
 const AanbodRouteChildren: AanbodRouteChildren = {
-  AanbodCommunityRoute: AanbodCommunityRoute,
+  AanbodCommunityRoute: AanbodCommunityRouteWithChildren,
   AanbodEventsRoute: AanbodEventsRoute,
   AanbodScholenRoute: AanbodScholenRoute,
   AanbodVerhuurRoute: AanbodVerhuurRoute,

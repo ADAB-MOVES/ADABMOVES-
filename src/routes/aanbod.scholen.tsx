@@ -1,16 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, School, GraduationCap, Users, Calendar } from "lucide-react";
-import coach from "@/assets/coach.jpg";
-import scholen from "@/assets/scholen.jpg";
-import methode from "@/assets/methode.jpg";
+import { Scene } from "@/components/illustrations/Scene";
+import { WA } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/aanbod/scholen")({
   head: () => ({
     meta: [
-      { title: "Scholen — ADAB MOVES" },
-      { name: "description", content: "Tussen- en naschoolse sport, gymlessen, sportdagen en workshops voor basis- en middelbare scholen." },
+      { title: "Sport op school — ADAB MOVES voor basis- en middelbare scholen" },
+      { name: "description", content: "Professionele islamitische sportlessen, sportdagen en naschools programma voor basis- en middelbare scholen in de Metropoolregio Amsterdam." },
       { property: "og:title", content: "Scholen — ADAB MOVES" },
-      { property: "og:image", content: scholen },
+      { property: "og:description", content: "Een vast gezicht in de gymzaal." },
     ],
   }),
   component: ScholenPage,
@@ -56,18 +55,8 @@ function ScholenPage() {
       </section>
 
       <section className="container-x py-16 md:py-20">
-        <div className="grid grid-cols-12 gap-4 md:gap-5">
-          <div className="col-span-12 md:col-span-7 aspect-[4/3] md:aspect-[16/10] rounded-3xl overflow-hidden">
-            <img src={scholen} alt="Kinderen sporten in een schoolgymzaal" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="col-span-12 md:col-span-5 grid grid-rows-2 gap-4 md:gap-5">
-            <div className="rounded-3xl overflow-hidden">
-              <img src={coach} alt="Coach begeleidt sportles" loading="lazy" className="w-full h-full object-cover" />
-            </div>
-            <div className="rounded-3xl overflow-hidden">
-              <img src={methode} alt="Pedagogische sportles" loading="lazy" className="w-full h-full object-cover" />
-            </div>
-          </div>
+        <div className="rounded-3xl overflow-hidden">
+          <Scene variant="scholen" className="w-full h-auto" />
         </div>
       </section>
 
@@ -128,7 +117,7 @@ function ScholenPage() {
             <p className="mt-4 text-white/70 max-w-xl">We maken graag een vrijblijvend voorstel op maat — afgestemd op locatie, groepsgrootte en jaarplanning.</p>
           </div>
           <div className="lg:col-span-4 lg:text-right">
-            <Link to="/contact" className="btn-primary">Plan een gesprek <ArrowRight size={18} /></Link>
+            <a href={WA.school} target="_blank" rel="noopener noreferrer" className="btn-primary">App ons direct <ArrowRight size={18} /></a>
           </div>
         </div>
       </section>
