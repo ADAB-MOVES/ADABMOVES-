@@ -17,10 +17,8 @@ import {
   Star,
   Play,
 } from "lucide-react";
-import hero from "@/assets/hero.jpg";
-import community from "@/assets/community.jpg";
-import coach from "@/assets/coach.jpg";
-import event from "@/assets/event.jpg";
+import { MascotPanel, type MascotPose, type MascotTone } from "@/components/MascotPanel";
+import mascotJumpImg from "@/assets/mascot-jump.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
