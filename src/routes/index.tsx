@@ -17,10 +17,10 @@ import {
   Star,
   Play,
 } from "lucide-react";
-import hero from "@/assets/hero.jpg";
-import community from "@/assets/community.jpg";
-import coach from "@/assets/coach.jpg";
-import event from "@/assets/event.jpg";
+import hero from "@/assets/scene-hero.jpg";
+import community from "@/assets/scene-community-kids.jpg";
+import coach from "@/assets/scene-scholen.jpg";
+import event from "@/assets/scene-adab-day.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
