@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Quote } from "lucide-react";
-import verhaal from "@/assets/scene-verhaal.jpg";
-import community from "@/assets/scene-community-kids.jpg";
+import verhaal from "@/assets/verhaal.jpg";
+import community from "@/assets/community.jpg";
 
 export const Route = createFileRoute("/over-ons/verhaal")({
   head: () => ({

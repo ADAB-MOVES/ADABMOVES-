@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Sparkles, Target } from "lucide-react";
-import community from "@/assets/scene-community-kids.jpg";
-import verhaal from "@/assets/scene-verhaal.jpg";
-import methode from "@/assets/scene-methode.jpg";
+import community from "@/assets/community.jpg";
+import verhaal from "@/assets/verhaal.jpg";
+import methode from "@/assets/methode.jpg";
 
 export const Route = createFileRoute("/over-ons/")({
   head: () => ({

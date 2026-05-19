@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck, Compass, Users, Scale, Flame, HeartHandshake, Star } from "lucide-react";
-import methode from "@/assets/scene-methode.jpg";
-import coach from "@/assets/scene-scholen.jpg";
+import methode from "@/assets/methode.jpg";
+import coach from "@/assets/coach.jpg";
 
 export const Route = createFileRoute("/over-ons/methode")({
   head: () => ({

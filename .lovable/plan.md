@@ -1,112 +1,134 @@
-# Plan — Eén beeldstijl + duidelijkere, rustigere site
 
-## Doel
+# Plan — rustiger, vetter, vindbaar
 
-1. Eén consistente illustratie­stijl (zoals de geüploade ADAB-gymzaal afbeelding) op de hele site.
-2. Minder tekst, minder doorklikken, direct duidelijk: **wat we doen** en **voor wie**.
+Doel: minder knoppen, één duidelijke lijn, alleen cartoons (geen AI-foto's), bewegende mascotte, sterke SEO en directe WhatsApp-contact via 0611879789.
 
 ---
 
-## Deel 1 — Eén beeldstijl op de hele site
+## 1. Rust in de navigatie & CTA's
 
-**De referentiestijl** (geüploade afbeelding): vlakke cartoon-illustratie, navy #1F2240 + coral #E8784E + cream #FBF7EE, zachte schaduwen, ADAB MOVES logo zichtbaar op kleding, diverse kinderen/coach, sportzaal-setting.
+**Eén CTA per scherm.** Nu staat "Plan een gesprek" overal — die wordt teruggebracht tot één primaire actie per sectie. Header krijgt geen losse knop meer; in plaats daarvan een rustig "Contact" linkje en een vaste WhatsApp-knop rechtsonder als enige permanente actie.
 
-### Audit van huidige afbeeldingen
+**Mega-menu onder "Aanbod".** Klikken op /aanbod opent niet meer de index-pagina maar een dropdown (desktop) / accordeon (mobiel) met:
+- Scholen (basis & middelbaar)
+- Community (kinderen)
+- Community (tieners)
+- Community (broeders)
+- Events / ADAB Day
+- Verhuur (concept)
 
-Op de site staan nog mixed assets. Twee groepen:
+Hetzelfde patroon voor "Over ons" → ADAB Methode · Ons verhaal · Missie & visie.
 
-- **Oude AI-foto-stijl** (vervangen): `hero.jpg`, `community.jpg`, `coach.jpg`, `event.jpg`, `scholen.jpg`, `methode.jpg`, `verhaal.jpg`, `community-2.jpg`, `events-2.jpg`, `event.jpg`
-- **Recent in nieuwe stijl** (behouden, mogelijk bijwerken voor consistentie): `scene-hero.jpg`, `scene-community-kids.jpg`, `scene-community-teens.jpg`, `scene-community-brothers.jpg`, `scene-scholen.jpg`, `scene-adab-day.jpg`, `scene-methode.jpg`, `scene-verhaal.jpg`, `mascot.png`
-
-### Aanpak
-
-1. **Eén stijl-prompt** definiëren op basis van de geüploade referentie (vlakke cartoon, navy/coral/cream, ADAB logo op kleding, geen realisme).
-2. **Alle oude foto-imports vervangen** door de `scene-*.jpg` variant die past bij het onderwerp:
-  - `index.tsx`: hero → `scene-hero`, community blok → `scene-community-kids`, event blok → `scene-adab-day`
-  - `aanbod.index.tsx`: 4 tegels → `scene-scholen`, `scene-community-kids`, `scene-adab-day`, (verhuur → nieuw `scene-verhuur`)
-  - `over-ons.index.tsx`, `over-ons.verhaal.tsx`, `over-ons.methode.tsx`, `over-ons.missie-visie.tsx`: idem
-3. **Ontbrekende scenes bijgenereren** in dezelfde stijl: `scene-verhuur.jpg` (lege gymzaal met ADAB-vloer), `scene-tieners.jpg` (voor tieners-pagina als die nog generic image gebruikt), eventueel `scene-coach.jpg` voor missie-visie.
-4. **Oude `.jpg` assets verwijderen** zodra niets ze meer importeert, zodat de bundle schoon is.
-5. **QA**: elke pagina visueel checken — alle beelden zelfde kleurenpalet, zelfde lijnvoering, zelfde "vlakke cartoon" energie.
+**Knoppen ontdubbelen.** Op homepage, aanbod-subpagina's en over-ons worden dubbele "Plan een gesprek" CTA's weggehaald. Per pagina max één primaire CTA + één secundaire link.
 
 ---
 
-## Deel 2 — Duidelijker & minder van-kastje-naar-muur
+## 2. WhatsApp wordt het hoofdcontactkanaal
 
-### A. Eén glasheldere homepage-opening
+- WhatsAppButton krijgt het echte nummer **+31 6 11879789** en bericht: *"Salam aleikum, ik wil graag meer weten over jullie aanbod."*
+- Community-pagina: inschrijfformulier wordt vervangen door twee WhatsApp-knoppen:
+  - "Ik wil mijn kind inschrijven" → prefilled bericht
+  - "Ik heb een vraag" → prefilled bericht
+- Footer toont prominent het telefoonnummer als klikbare `tel:` + WhatsApp-link + e-mail.
 
-Direct boven de fold, in 3 regels:
+---
 
-> **ADAB MOVES**  
-> Multisport met betekenis voor kinderen, tieners en broeders  
-> [Bekijk aanbod] [WhatsApp ons]
+## 3. Mascotte & bewegende elementen (het "vette")
 
-. De mascotte/scene doet het visuele werk.
+**Losse cartoon-mascotte** (de hoofdtrainer uit `Character.tsx` variant `coach-back`) wordt:
+- Als losstaande SVG geplaatst op hero (rechtsonder, zwevend), op CTA-secties (links naast tekst) en op 404-pagina.
+- Voorzien van subtiele idle-animatie (lichte op-en-neer beweging, knipoog/wave op hover).
 
-Voeg cijfers toe : 10+ Jaar ervaring.  In 6+ steden 
+**Extra cartoon-varianten toevoegen aan `Character.tsx`:**
+- `coach-whistle` — trainer met fluitje
+- `coach-point` — trainer wijst
+- `kid-archery` — kind met pijl & boog
+- `kid-kick` — kind kickbokst
+- `kid-basket` — kind met basketbal
+- `team-huddle` — groepje broeders
 
-### B. "Voor wie" blok meteen na de hero
+Alle gestileerd zoals huidige cartoons: baard zonder snor, achterzijde, ADAB-trainingspak, gelijk kapsel zonder overloop. Geen AI-foto's, alleen SVG.
 
-Vier iconen-tegels, één zin elk, klikbaar naar de juiste sub-pagina: scholen boven aan
+**Meer marquee-balken.** De huidige sportenbalk wordt herhaald (één boven aanbod-sectie, één boven footer) en krijgt een tegenovergestelde richting voor ritme.
 
-- **Kinderen (6–12)** → `/aanbod/community/kinderen`
-- **Tieners (13–17)** → `/aanbod/community/tieners`
-- **Broeders (18+)** → `/aanbod/community/broeders`
-- **Scholen** → `/aanbod/scholen`
+**Subtiele scroll-animaties.** Bestaande `useReveal` wordt breder toegepast: cards faden + tillen lichtjes op bij in-view.
 
-Hiermee weet elke bezoeker binnen 5 seconden of de site voor hem/haar is.
+---
 
-### C. Navigatie versimpelen
+## 4. Cartoons vervangen AI-foto's op subpagina's
 
-Huidige header heeft mega-menu's met veel items. Voorstel:
+`src/assets/scholen.jpg`, `community-2.jpg`, `events-2.jpg`, `methode.jpg`, `verhaal.jpg` worden niet meer als foto getoond. In plaats daarvan: nieuwe `Scene.tsx`-composities per pagina met:
+- **Scholen** — kinderen in gymzaal met trainer
+- **Community kinderen** — kring van kinderen met bal
+- **Community tieners** — tieners stretchen
+- **Community broeders** — groep volwassenen
+- **Events / ADAB Day** — kinderen vieren overwinning (titel wordt **"ADAB Day"**, niet "Happy ADAB Event Day")
+- **Methode / verhaal / missie** — eigen illustratieve scènes
 
+De eerste hero-afbeelding (`hero.jpg`) blijft staan — die werkt goed.
+
+---
+
+## 5. Pagina-structuur uitbreiden
+
+Nieuwe routes:
+- `src/routes/aanbod.community.kinderen.tsx`
+- `src/routes/aanbod.community.tieners.tsx`
+- `src/routes/aanbod.community.broeders.tsx`
+
+De huidige `aanbod.community.tsx` wordt een overzichtspagina die naar deze drie linkt.
+
+Aanbod-index krijgt een rustige hub-layout: 4 grote tegels (Scholen · Community · Events · Verhuur) met cartoon erbij, geen overdaad aan tekst.
+
+---
+
+## 6. SEO — vindbaar op Google
+
+**Doelzoekwoorden:** adab, adab moves, islamitische sport, halal sport, bewegen islam, kinderen sport, moslim sport kinderen, multisport amsterdam, islamitische sportclub.
+
+Aanpassingen:
+- `__root.tsx`: site-brede JSON-LD `SportsOrganization` met naam, telefoon, regio, sporttypes.
+- Per route: unieke `<title>` en `<meta description>` met doelzoekwoorden natuurlijk verwerkt.
+- Homepage H1 wordt aangevuld met "islamitische sport" semantisch (zonder spammy te worden).
+- `public/sitemap.xml` + `public/robots.txt` genereren met alle routes.
+- `og:image` per pagina met cartoon-scène.
+- Image `alt`-teksten met zoekwoorden.
+- Snelle laadtijd: `loading="lazy"` op alle non-hero images (al deels gedaan).
+
+> Let op: ranking op "adab" of "islamitische sport" #1 hangt af van backlinks en autoriteit — wij regelen on-page SEO 100% correct; organische top-positie kost daarna weken/maanden.
+
+---
+
+## 7. Footer opfrissen
+
+- Telefoon: **+31 6 11879789** (klikbaar, met WhatsApp-icoon ernaast)
+- E-mail
+- Adres / regio (Metropoolregio Amsterdam)
+- Korte sitemap (Aanbod-subitems, Over ons-subitems)
+- Social links als icoontjes (rustig, niet schreeuwerig)
+
+---
+
+## Technische uitvoering
+
+```text
+src/components/SiteHeader.tsx          → mega-menu dropdown + mobile accordion, CTA weg
+src/components/SiteFooter.tsx          → telefoon/WhatsApp/e-mail prominent
+src/components/WhatsAppButton.tsx      → echt nummer + bericht
+src/components/MascotFloater.tsx       → nieuwe drijvende SVG mascotte
+src/components/illustrations/
+  Character.tsx                        → 6 nieuwe varianten
+  Scene.tsx                            → nieuwe scènes per pagina
+src/routes/
+  aanbod.tsx + aanbod.index.tsx        → hub layout, geen dubbele CTA
+  aanbod.community.tsx                 → overzicht → split in 3
+  aanbod.community.kinderen.tsx        (nieuw)
+  aanbod.community.tieners.tsx         (nieuw)
+  aanbod.community.broeders.tsx        (nieuw)
+  aanbod.events.tsx                    → titel "ADAB Day"
+  index.tsx                            → CTA's ontdubbeld, mascotte, extra marquee
+__root.tsx                             → JSON-LD SportsOrganization
+public/robots.txt, sitemap.xml         (nieuw)
 ```
-Home   Aanbod ▾   Over ons ▾   Contact
-```
 
-- **Aanbod** dropdown: Scholen • Kinderen · Tieners · Broeders  · ADAB Event · Verhuur (6 items, één klik diep)
-- **Over ons** dropdown: Ons verhaal · De ADAB-methode · Missie & visie (3 items)
--  "Plan een gesprek" knop in de header — en een één rustig telefoon-icoon + WhatsApp-floater rechtsonder (al aanwezig).
-
-### D. Pagina-CTA's: één per pagina
-
-Op elke sub-pagina exact **één** primaire actie onderaan ("WhatsApp ons over [onderwerp]"). Geen dubbele "Plan een gesprek / Samenwerken / Contact" blokken meer.
-
-### E. Homepage afslanken
-
-Huidige `index.tsx` heeft veel secties. Inkorten naar:
-
-1. Hero + tagline + 2 CTA's
-2. "Voor wie" (4 tegels)
-3. "Wat we doen" — 3 kaartjes (Community, Scholen, Events) met scene-afbeelding + 1 zin
-4. Korte "Waarom ADAB MOVES" — 3 pijlers met icoon + 1 zin
-5. Video (intro.mp4) — al aanwezig, behouden
-6. Eén slot-CTA: WhatsApp + telefoon
-
-Secties verwijderen: dubbele testimonials, overlappende "samenwerken" blokken, lange tekstpassages.
-
-### F. Tekst opschonen
-
-Alle paragrafen >3 zinnen halveren. Bullets > paragrafen. Sub-pagina's krijgen format:
-
-- 1 hero-zin "wat is dit"
-- 1 scene-afbeelding
-- 3 bullets "voor wie / wanneer / waar"
-- 1 WhatsApp-CTA
-
----
-
-## Technische impact (beknopt)
-
-- **Bestanden bewerkt**: `src/routes/index.tsx`, `aanbod.index.tsx`, `over-ons.index.tsx`, `over-ons.verhaal.tsx`, `over-ons.methode.tsx`, `over-ons.missie-visie.tsx`, `SiteHeader.tsx`
-- **Nieuwe assets**: 1–3 extra `scene-*.jpg` (verhuur, evt. tieners/coach)
-- **Verwijderd**: oude foto-jpg's na vervanging
-- **Geen** wijzigingen aan backend, auth of routes-structuur (sub-pagina's blijven bestaan, alleen toegang via mega-menu wordt rustiger)
-
----
-
-## Vragen voor jou
-
-1. Akkoord met homepage afslanken naar 6 secties (testimonials/overlap weg)?
-2. Mag ik de oude AI-foto's definitief verwijderen na vervanging?
-3. "Voor wie" tegels: leeftijdscategorieën zoals hierboven, of liever andere indeling (bv. "Ouders / Scholen / Organisaties")?
+Geen wijzigingen aan bestaande hero-foto en bestaande cartoon-illustraties op de homepage — die werken al.
