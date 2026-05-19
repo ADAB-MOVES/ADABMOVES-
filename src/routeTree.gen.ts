@@ -19,6 +19,15 @@ import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AanbodRouteImport } from './routes/aanbod'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OverOnsIndexRouteImport } from './routes/over-ons.index'
+import { Route as AanbodIndexRouteImport } from './routes/aanbod.index'
+import { Route as OverOnsVerhaalRouteImport } from './routes/over-ons.verhaal'
+import { Route as OverOnsMissieVisieRouteImport } from './routes/over-ons.missie-visie'
+import { Route as OverOnsMethodeRouteImport } from './routes/over-ons.methode'
+import { Route as AanbodVerhuurRouteImport } from './routes/aanbod.verhuur'
+import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
+import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
+import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
 
 const VoorwaardenRoute = VoorwaardenRouteImport.update({
   id: '/voorwaarden',
@@ -70,43 +79,113 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OverOnsIndexRoute = OverOnsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => OverOnsRoute,
+} as any)
+const AanbodIndexRoute = AanbodIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AanbodRoute,
+} as any)
+const OverOnsVerhaalRoute = OverOnsVerhaalRouteImport.update({
+  id: '/verhaal',
+  path: '/verhaal',
+  getParentRoute: () => OverOnsRoute,
+} as any)
+const OverOnsMissieVisieRoute = OverOnsMissieVisieRouteImport.update({
+  id: '/missie-visie',
+  path: '/missie-visie',
+  getParentRoute: () => OverOnsRoute,
+} as any)
+const OverOnsMethodeRoute = OverOnsMethodeRouteImport.update({
+  id: '/methode',
+  path: '/methode',
+  getParentRoute: () => OverOnsRoute,
+} as any)
+const AanbodVerhuurRoute = AanbodVerhuurRouteImport.update({
+  id: '/verhuur',
+  path: '/verhuur',
+  getParentRoute: () => AanbodRoute,
+} as any)
+const AanbodScholenRoute = AanbodScholenRouteImport.update({
+  id: '/scholen',
+  path: '/scholen',
+  getParentRoute: () => AanbodRoute,
+} as any)
+const AanbodEventsRoute = AanbodEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AanbodRoute,
+} as any)
+const AanbodCommunityRoute = AanbodCommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => AanbodRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/aanbod': typeof AanbodRoute
+  '/aanbod': typeof AanbodRouteWithChildren
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/over-ons': typeof OverOnsRoute
+  '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
+  '/aanbod/community': typeof AanbodCommunityRoute
+  '/aanbod/events': typeof AanbodEventsRoute
+  '/aanbod/scholen': typeof AanbodScholenRoute
+  '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/over-ons/methode': typeof OverOnsMethodeRoute
+  '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
+  '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/aanbod/': typeof AanbodIndexRoute
+  '/over-ons/': typeof OverOnsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/over-ons': typeof OverOnsRoute
   '/privacy': typeof PrivacyRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
+  '/aanbod/community': typeof AanbodCommunityRoute
+  '/aanbod/events': typeof AanbodEventsRoute
+  '/aanbod/scholen': typeof AanbodScholenRoute
+  '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/over-ons/methode': typeof OverOnsMethodeRoute
+  '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
+  '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/aanbod': typeof AanbodIndexRoute
+  '/over-ons': typeof OverOnsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/aanbod': typeof AanbodRoute
+  '/aanbod': typeof AanbodRouteWithChildren
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/over-ons': typeof OverOnsRoute
+  '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
+  '/aanbod/community': typeof AanbodCommunityRoute
+  '/aanbod/events': typeof AanbodEventsRoute
+  '/aanbod/scholen': typeof AanbodScholenRoute
+  '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/over-ons/methode': typeof OverOnsMethodeRoute
+  '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
+  '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/aanbod/': typeof AanbodIndexRoute
+  '/over-ons/': typeof OverOnsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,18 +200,34 @@ export interface FileRouteTypes {
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
+    | '/aanbod/community'
+    | '/aanbod/events'
+    | '/aanbod/scholen'
+    | '/aanbod/verhuur'
+    | '/over-ons/methode'
+    | '/over-ons/missie-visie'
+    | '/over-ons/verhaal'
+    | '/aanbod/'
+    | '/over-ons/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/aanbod'
     | '/contact'
     | '/cookies'
     | '/disclaimer'
-    | '/over-ons'
     | '/privacy'
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
+    | '/aanbod/community'
+    | '/aanbod/events'
+    | '/aanbod/scholen'
+    | '/aanbod/verhuur'
+    | '/over-ons/methode'
+    | '/over-ons/missie-visie'
+    | '/over-ons/verhaal'
+    | '/aanbod'
+    | '/over-ons'
   id:
     | '__root__'
     | '/'
@@ -145,15 +240,24 @@ export interface FileRouteTypes {
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
+    | '/aanbod/community'
+    | '/aanbod/events'
+    | '/aanbod/scholen'
+    | '/aanbod/verhuur'
+    | '/over-ons/methode'
+    | '/over-ons/missie-visie'
+    | '/over-ons/verhaal'
+    | '/aanbod/'
+    | '/over-ons/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AanbodRoute: typeof AanbodRoute
+  AanbodRoute: typeof AanbodRouteWithChildren
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   DisclaimerRoute: typeof DisclaimerRoute
-  OverOnsRoute: typeof OverOnsRoute
+  OverOnsRoute: typeof OverOnsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   VisieRoute: typeof VisieRoute
@@ -232,16 +336,115 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/over-ons/': {
+      id: '/over-ons/'
+      path: '/'
+      fullPath: '/over-ons/'
+      preLoaderRoute: typeof OverOnsIndexRouteImport
+      parentRoute: typeof OverOnsRoute
+    }
+    '/aanbod/': {
+      id: '/aanbod/'
+      path: '/'
+      fullPath: '/aanbod/'
+      preLoaderRoute: typeof AanbodIndexRouteImport
+      parentRoute: typeof AanbodRoute
+    }
+    '/over-ons/verhaal': {
+      id: '/over-ons/verhaal'
+      path: '/verhaal'
+      fullPath: '/over-ons/verhaal'
+      preLoaderRoute: typeof OverOnsVerhaalRouteImport
+      parentRoute: typeof OverOnsRoute
+    }
+    '/over-ons/missie-visie': {
+      id: '/over-ons/missie-visie'
+      path: '/missie-visie'
+      fullPath: '/over-ons/missie-visie'
+      preLoaderRoute: typeof OverOnsMissieVisieRouteImport
+      parentRoute: typeof OverOnsRoute
+    }
+    '/over-ons/methode': {
+      id: '/over-ons/methode'
+      path: '/methode'
+      fullPath: '/over-ons/methode'
+      preLoaderRoute: typeof OverOnsMethodeRouteImport
+      parentRoute: typeof OverOnsRoute
+    }
+    '/aanbod/verhuur': {
+      id: '/aanbod/verhuur'
+      path: '/verhuur'
+      fullPath: '/aanbod/verhuur'
+      preLoaderRoute: typeof AanbodVerhuurRouteImport
+      parentRoute: typeof AanbodRoute
+    }
+    '/aanbod/scholen': {
+      id: '/aanbod/scholen'
+      path: '/scholen'
+      fullPath: '/aanbod/scholen'
+      preLoaderRoute: typeof AanbodScholenRouteImport
+      parentRoute: typeof AanbodRoute
+    }
+    '/aanbod/events': {
+      id: '/aanbod/events'
+      path: '/events'
+      fullPath: '/aanbod/events'
+      preLoaderRoute: typeof AanbodEventsRouteImport
+      parentRoute: typeof AanbodRoute
+    }
+    '/aanbod/community': {
+      id: '/aanbod/community'
+      path: '/community'
+      fullPath: '/aanbod/community'
+      preLoaderRoute: typeof AanbodCommunityRouteImport
+      parentRoute: typeof AanbodRoute
+    }
   }
 }
 
+interface AanbodRouteChildren {
+  AanbodCommunityRoute: typeof AanbodCommunityRoute
+  AanbodEventsRoute: typeof AanbodEventsRoute
+  AanbodScholenRoute: typeof AanbodScholenRoute
+  AanbodVerhuurRoute: typeof AanbodVerhuurRoute
+  AanbodIndexRoute: typeof AanbodIndexRoute
+}
+
+const AanbodRouteChildren: AanbodRouteChildren = {
+  AanbodCommunityRoute: AanbodCommunityRoute,
+  AanbodEventsRoute: AanbodEventsRoute,
+  AanbodScholenRoute: AanbodScholenRoute,
+  AanbodVerhuurRoute: AanbodVerhuurRoute,
+  AanbodIndexRoute: AanbodIndexRoute,
+}
+
+const AanbodRouteWithChildren =
+  AanbodRoute._addFileChildren(AanbodRouteChildren)
+
+interface OverOnsRouteChildren {
+  OverOnsMethodeRoute: typeof OverOnsMethodeRoute
+  OverOnsMissieVisieRoute: typeof OverOnsMissieVisieRoute
+  OverOnsVerhaalRoute: typeof OverOnsVerhaalRoute
+  OverOnsIndexRoute: typeof OverOnsIndexRoute
+}
+
+const OverOnsRouteChildren: OverOnsRouteChildren = {
+  OverOnsMethodeRoute: OverOnsMethodeRoute,
+  OverOnsMissieVisieRoute: OverOnsMissieVisieRoute,
+  OverOnsVerhaalRoute: OverOnsVerhaalRoute,
+  OverOnsIndexRoute: OverOnsIndexRoute,
+}
+
+const OverOnsRouteWithChildren =
+  OverOnsRoute._addFileChildren(OverOnsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AanbodRoute: AanbodRoute,
+  AanbodRoute: AanbodRouteWithChildren,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   DisclaimerRoute: DisclaimerRoute,
-  OverOnsRoute: OverOnsRoute,
+  OverOnsRoute: OverOnsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   ToegankelijkheidRoute: ToegankelijkheidRoute,
   VisieRoute: VisieRoute,

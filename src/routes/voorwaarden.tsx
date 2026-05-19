@@ -26,7 +26,7 @@ function VoorwaardenPage() {
         </section>
         <section>
           <h2 className="text-2xl font-semibold text-foreground">2. Inschrijving & deelname</h2>
-          <p className="mt-3">Inschrijving voor de community is gratis. Deelname aan periodieke programma's vereist een keuze tussen maand- of kwartaalinschrijving. Betaling vindt vooraf plaats per gekozen periode.</p>
+          <p className="mt-3">Deelname aan de community vereist een keuze tussen maand- of kwartaalinschrijving. Betaling vindt vooraf plaats per gekozen periode. Tarieven worden bij plaatsing gecommuniceerd.</p>
         </section>
         <section>
           <h2 className="text-2xl font-semibold text-foreground">3. Annulering</h2>
