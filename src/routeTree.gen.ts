@@ -22,6 +22,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as OverOnsIndexRouteImport } from './routes/over-ons.index'
 import { Route as AanbodIndexRouteImport } from './routes/aanbod.index'
 import { Route as OverOnsVerhaalRouteImport } from './routes/over-ons.verhaal'
+import { Route as OverOnsMissieVisieRouteImport } from './routes/over-ons.missie-visie'
 import { Route as OverOnsMethodeRouteImport } from './routes/over-ons.methode'
 import { Route as AanbodVerhuurRouteImport } from './routes/aanbod.verhuur'
 import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
@@ -93,6 +94,11 @@ const OverOnsVerhaalRoute = OverOnsVerhaalRouteImport.update({
   path: '/verhaal',
   getParentRoute: () => OverOnsRoute,
 } as any)
+const OverOnsMissieVisieRoute = OverOnsMissieVisieRouteImport.update({
+  id: '/missie-visie',
+  path: '/missie-visie',
+  getParentRoute: () => OverOnsRoute,
+} as any)
 const OverOnsMethodeRoute = OverOnsMethodeRouteImport.update({
   id: '/methode',
   path: '/methode',
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
+  '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByTo {
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
+  '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod': typeof AanbodIndexRoute
   '/over-ons': typeof OverOnsIndexRoute
@@ -174,6 +182,7 @@ export interface FileRoutesById {
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
+  '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
     | '/over-ons/methode'
+    | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
     | '/over-ons/methode'
+    | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
     | '/aanbod'
     | '/over-ons'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
     | '/over-ons/methode'
+    | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
@@ -345,6 +357,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OverOnsVerhaalRouteImport
       parentRoute: typeof OverOnsRoute
     }
+    '/over-ons/missie-visie': {
+      id: '/over-ons/missie-visie'
+      path: '/missie-visie'
+      fullPath: '/over-ons/missie-visie'
+      preLoaderRoute: typeof OverOnsMissieVisieRouteImport
+      parentRoute: typeof OverOnsRoute
+    }
     '/over-ons/methode': {
       id: '/over-ons/methode'
       path: '/methode'
@@ -404,12 +423,14 @@ const AanbodRouteWithChildren =
 
 interface OverOnsRouteChildren {
   OverOnsMethodeRoute: typeof OverOnsMethodeRoute
+  OverOnsMissieVisieRoute: typeof OverOnsMissieVisieRoute
   OverOnsVerhaalRoute: typeof OverOnsVerhaalRoute
   OverOnsIndexRoute: typeof OverOnsIndexRoute
 }
 
 const OverOnsRouteChildren: OverOnsRouteChildren = {
   OverOnsMethodeRoute: OverOnsMethodeRoute,
+  OverOnsMissieVisieRoute: OverOnsMissieVisieRoute,
   OverOnsVerhaalRoute: OverOnsVerhaalRoute,
   OverOnsIndexRoute: OverOnsIndexRoute,
 }

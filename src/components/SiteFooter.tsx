@@ -15,7 +15,7 @@ export function SiteFooter() {
           <div className="mt-7 space-y-2.5 text-sm text-white/75">
             <div className="flex items-center gap-2.5">
               <MapPin size={14} className="text-[var(--coral)]" />
-              Actief door de hele Randstad
+              Actief in de Metropoolregio Amsterdam
             </div>
             <a
               href="mailto:info@adabmoves.nl"
@@ -29,26 +29,14 @@ export function SiteFooter() {
         <div className="md:col-span-3 md:col-start-7">
           <h4 className="eyebrow !text-[var(--coral)]">Ontdek</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li>
-              <Link to="/aanbod" className="hover:text-[var(--coral)] transition-colors">
-                Aanbod
-              </Link>
-            </li>
-            <li>
-              <Link to="/over-ons" className="hover:text-[var(--coral)] transition-colors">
-                Over ons
-              </Link>
-            </li>
-            <li>
-              <Link to="/visie" className="hover:text-[var(--coral)] transition-colors">
-                Visie & methodiek
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-[var(--coral)] transition-colors">
-                Contact
-              </Link>
-            </li>
+            <li><Link to="/aanbod" className="hover:text-[var(--coral)] transition-colors">Aanbod</Link></li>
+            <li><Link to="/aanbod/scholen" className="hover:text-[var(--coral)] transition-colors">— Scholen</Link></li>
+            <li><Link to="/aanbod/community" className="hover:text-[var(--coral)] transition-colors">— Community</Link></li>
+            <li><Link to="/aanbod/events" className="hover:text-[var(--coral)] transition-colors">— Events</Link></li>
+            <li><Link to="/over-ons" className="hover:text-[var(--coral)] transition-colors">Over ons</Link></li>
+            <li><Link to="/over-ons/methode" className="hover:text-[var(--coral)] transition-colors">— De ADAB Methode</Link></li>
+            <li><Link to="/over-ons/missie-visie" className="hover:text-[var(--coral)] transition-colors">— Missie & visie</Link></li>
+            <li><Link to="/contact" className="hover:text-[var(--coral)] transition-colors">Contact</Link></li>
           </ul>
         </div>
         <div className="md:col-span-3">
