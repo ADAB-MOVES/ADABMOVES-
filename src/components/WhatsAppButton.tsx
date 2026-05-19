@@ -1,16 +1,13 @@
-const WHATSAPP_NUMBER = "31600000000"; // TODO: vervang met echte nummer
-const WHATSAPP_MSG = encodeURIComponent(
-  "Assalamu alaikum, ik heb een vraag over ADAB MOVES.",
-);
+import { WA } from "@/lib/whatsapp";
 
 export function WhatsAppButton() {
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`}
+      href={WA.generic}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Stuur ons een WhatsApp-bericht"
-      className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_rgba(37,211,102,0.45)] transition-transform hover:scale-105"
+      className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_rgba(37,211,102,0.45)] transition-transform hover:scale-110 animate-pulse-ring"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
