@@ -9,20 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VoorwaardenRouteImport } from './routes/voorwaarden'
 import { Route as VisieRouteImport } from './routes/visie'
+import { Route as ToegankelijkheidRouteImport } from './routes/toegankelijkheid'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AanbodRouteImport } from './routes/aanbod'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VoorwaardenRoute = VoorwaardenRouteImport.update({
+  id: '/voorwaarden',
+  path: '/voorwaarden',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VisieRoute = VisieRouteImport.update({
   id: '/visie',
   path: '/visie',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToegankelijkheidRoute = ToegankelijkheidRouteImport.update({
+  id: '/toegankelijkheid',
+  path: '/toegankelijkheid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OverOnsRoute = OverOnsRouteImport.update({
   id: '/over-ons',
   path: '/over-ons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -45,42 +75,100 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/over-ons': typeof OverOnsRoute
+  '/privacy': typeof PrivacyRoute
+  '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
+  '/voorwaarden': typeof VoorwaardenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/over-ons': typeof OverOnsRoute
+  '/privacy': typeof PrivacyRoute
+  '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
+  '/voorwaarden': typeof VoorwaardenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aanbod': typeof AanbodRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/over-ons': typeof OverOnsRoute
+  '/privacy': typeof PrivacyRoute
+  '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
+  '/voorwaarden': typeof VoorwaardenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
+  fullPaths:
+    | '/'
+    | '/aanbod'
+    | '/contact'
+    | '/cookies'
+    | '/disclaimer'
+    | '/over-ons'
+    | '/privacy'
+    | '/toegankelijkheid'
+    | '/visie'
+    | '/voorwaarden'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
-  id: '__root__' | '/' | '/aanbod' | '/contact' | '/over-ons' | '/visie'
+  to:
+    | '/'
+    | '/aanbod'
+    | '/contact'
+    | '/cookies'
+    | '/disclaimer'
+    | '/over-ons'
+    | '/privacy'
+    | '/toegankelijkheid'
+    | '/visie'
+    | '/voorwaarden'
+  id:
+    | '__root__'
+    | '/'
+    | '/aanbod'
+    | '/contact'
+    | '/cookies'
+    | '/disclaimer'
+    | '/over-ons'
+    | '/privacy'
+    | '/toegankelijkheid'
+    | '/visie'
+    | '/voorwaarden'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AanbodRoute: typeof AanbodRoute
   ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
+  DisclaimerRoute: typeof DisclaimerRoute
   OverOnsRoute: typeof OverOnsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   VisieRoute: typeof VisieRoute
+  VoorwaardenRoute: typeof VoorwaardenRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/voorwaarden': {
+      id: '/voorwaarden'
+      path: '/voorwaarden'
+      fullPath: '/voorwaarden'
+      preLoaderRoute: typeof VoorwaardenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/visie': {
       id: '/visie'
       path: '/visie'
@@ -88,11 +176,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisieRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/toegankelijkheid': {
+      id: '/toegankelijkheid'
+      path: '/toegankelijkheid'
+      fullPath: '/toegankelijkheid'
+      preLoaderRoute: typeof ToegankelijkheidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/over-ons': {
       id: '/over-ons'
       path: '/over-ons'
       fullPath: '/over-ons'
       preLoaderRoute: typeof OverOnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -123,8 +239,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AanbodRoute: AanbodRoute,
   ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
+  DisclaimerRoute: DisclaimerRoute,
   OverOnsRoute: OverOnsRoute,
+  PrivacyRoute: PrivacyRoute,
+  ToegankelijkheidRoute: ToegankelijkheidRoute,
   VisieRoute: VisieRoute,
+  VoorwaardenRoute: VoorwaardenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

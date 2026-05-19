@@ -35,16 +35,18 @@ export const Route = createFileRoute("/aanbod")({
 const overview = [
   {
     icon: School,
-    tag: "Scholen",
+    tag: "Scholen — basis & middelbaar",
     title: "Tussen- en naschoolse sport",
-    text: "Per locatie kijken we naar de behoefte. Soms tussenschools, soms naschools, soms een combinatie. Altijd professioneel, pedagogisch en met oog voor de groep.",
+    text: "Voor zowel basisscholen als middelbare scholen. Per locatie kijken we naar de behoefte. Soms tussenschools, soms naschools, soms een combinatie. Altijd professioneel, pedagogisch en met oog voor de groep.",
     points: [
-      "Maatwerk per school",
+      "Basis- én middelbare scholen welkom",
+      "Maatwerk per school en leeftijdsgroep",
       "Vaste hoofd- en assistent-trainers",
       "Heldere afspraken & evaluaties",
     ],
     href: "#scholen",
   },
+
   {
     icon: Users,
     tag: "Community",
@@ -86,20 +88,20 @@ type Track = {
 const tracks: Track[] = [
   {
     id: "scholen",
-    eyebrow: "Spoor 01 — Scholen",
-    title: "Een vast gezicht in de gymzaal en op het schoolplein.",
+    eyebrow: "Spoor 01 — Basis- & middelbare scholen",
+    title: "Een vast gezicht in de gymzaal — van groep 3 tot de bovenbouw.",
     intro:
-      "We werken structureel samen met scholen aan een rustig, veilig en uitdagend beweegklimaat. Onze trainers worden onderdeel van het team — herkenbaar voor kinderen, betrouwbaar voor leerkrachten.",
+      "ADAB MOVES werkt structureel samen met zowel basisscholen als middelbare scholen aan een rustig, veilig en uitdagend beweegklimaat. Onze trainers worden onderdeel van het team — herkenbaar voor kinderen en tieners, betrouwbaar voor leerkrachten en docenten.",
     image: coach,
-    imageAlt: "Trainer begeleidt een groep kinderen op het schoolplein",
+    imageAlt: "Trainer begeleidt kinderen én tieners",
     bullets: [
       {
-        title: "Tussenschoolse sport",
-        text: "Begeleide pauzemomenten met spelvormen die rust, regels en plezier combineren.",
+        title: "Basisscholen (4–12 jr)",
+        text: "Gymlessen, tussenschools en naschools — speels, opbouwend en pedagogisch verantwoord.",
       },
       {
-        title: "Naschoolse sport",
-        text: "Wekelijkse blokken met opbouwende lessen, gericht op brede motorische ontwikkeling.",
+        title: "Middelbare scholen (12–17 jr)",
+        text: "Multisport, leiderschap en karaktervorming voor onder-, midden- en bovenbouw.",
       },
       {
         title: "Vaste trainers",
@@ -110,37 +112,39 @@ const tracks: Track[] = [
         text: "Periodieke terugkoppeling aan school en ouders over voortgang en groepsdynamiek.",
       },
     ],
-    forWho: ["Basisscholen", "Brede scholen", "Islamitische scholen", "Kinderopvang"],
+    forWho: ["Basisscholen", "Middelbare scholen", "Islamitische scholen", "Brede scholen", "Kinderopvang"],
   },
+
   {
     id: "community",
     eyebrow: "Spoor 02 — Community",
-    title: "Eén community, vele sporten — de hele schooltijd door.",
+    title: "Gratis aanmelden. Wekelijks bewegen. Maand of kwartaal.",
     intro:
-      "Onze multisportcommunity is een eigen programma waarin kinderen elke periode kennismaken met een nieuwe sport. De groep blijft, de coach blijft, de sport verandert. Zo bouwen ze breed op én leren ze elkaar écht kennen.",
+      "De ADAB MOVES community is gratis om je voor aan te melden. Je wordt toegelaten op basis van leeftijd en interesses. Er vinden wekelijks activiteiten plaats, waarvoor je per maand of per kwartaal inschrijft. De groep blijft, de coach blijft — alleen de sport wisselt per periode.",
     image: community,
-    imageAlt: "Kinderen sporten samen in een groep",
+    imageAlt: "Jongeren sporten samen in een ADAB MOVES community groep",
     reverse: true,
     bullets: [
       {
-        title: "Periodieke blokken",
-        text: "Per blok een nieuwe sport — van voetbal en judo tot atletiek en turnen.",
+        title: "Gratis aanmelden",
+        text: "Geen kosten om lid te worden — vul leeftijd, stad en interesses in en wij koppelen je aan een groep.",
       },
       {
-        title: "Vaste groep",
-        text: "Kinderen blijven samen. Vriendschappen, vertrouwen en groepsgevoel groeien mee.",
+        title: "Wekelijkse activiteiten",
+        text: "Vast moment, vaste locatie in jouw stad. Multisport, voetbal, basketbal, archery, kickboks of fitness.",
+      },
+      {
+        title: "Maand of kwartaal",
+        text: "Inschrijven per maand of per 3 maanden. Flexibel, transparant en zonder lange contracten.",
       },
       {
         title: "Karaktervorming",
-        text: "We koppelen elke periode aan één van onze acht waarden, zoals geduld of respect.",
-      },
-      {
-        title: "Doorlopende leerlijn",
-        text: "Van kennismaking tot verdieping — kinderen ontdekken wat bij hen past.",
+        text: "Elke periode koppelen we aan één van onze waarden — zoals geduld, respect of dankbaarheid.",
       },
     ],
-    forWho: ["Kinderen 6–12 jaar", "Wijken & buurten", "Gezinnen die structuur zoeken"],
+    forWho: ["Kinderen 8–12 jaar", "Tieners 13–17 jaar", "Halal sportomgeving", "Gezinnen in de Randstad"],
   },
+
   {
     id: "events",
     eyebrow: "Spoor 03 — Events",
