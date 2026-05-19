@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, Mail } from "lucide-react";
+import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
 import logoDark from "@/assets/logo-dark.png";
+import { PHONE_DISPLAY, PHONE_TEL, EMAIL, WA } from "@/lib/whatsapp";
 
 export function SiteFooter() {
   return (
@@ -12,41 +13,63 @@ export function SiteFooter() {
             Bewegen met betekenis. Dé islamitische multisport- en beweegorganisatie van Nederland —
             voor kinderen én tieners.
           </p>
-          <div className="mt-7 space-y-2.5 text-sm text-white/75">
-            <div className="flex items-center gap-2.5">
-              <MapPin size={14} className="text-[var(--coral)]" />
-              Actief in de Metropoolregio Amsterdam
-            </div>
+          <div className="mt-7 space-y-3 text-sm text-white/80">
             <a
-              href="mailto:info@adabmoves.nl"
-              className="flex items-center gap-2.5 hover:text-[var(--coral)] transition-colors"
+              href={`tel:${PHONE_TEL}`}
+              className="flex items-center gap-3 hover:text-[var(--coral)] transition-colors"
             >
-              <Mail size={14} className="text-[var(--coral)]" />
-              info@adabmoves.nl
+              <span className="h-9 w-9 rounded-full bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral)]">
+                <Phone size={14} />
+              </span>
+              <span className="font-medium tracking-wide">{PHONE_DISPLAY}</span>
             </a>
+            <a
+              href={WA.generic}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 hover:text-[var(--coral)] transition-colors"
+            >
+              <span className="h-9 w-9 rounded-full bg-[#25D366]/20 flex items-center justify-center text-[#25D366]">
+                <MessageCircle size={14} />
+              </span>
+              WhatsApp ons direct
+            </a>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="flex items-center gap-3 hover:text-[var(--coral)] transition-colors"
+            >
+              <span className="h-9 w-9 rounded-full bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral)]">
+                <Mail size={14} />
+              </span>
+              {EMAIL}
+            </a>
+            <div className="flex items-center gap-3 text-white/65">
+              <span className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center">
+                <MapPin size={14} />
+              </span>
+              Metropoolregio Amsterdam
+            </div>
           </div>
         </div>
+
         <div className="md:col-span-3 md:col-start-7">
-          <h4 className="eyebrow !text-[var(--coral)]">Ontdek</h4>
+          <h4 className="eyebrow !text-[var(--coral)]">Aanbod</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link to="/aanbod" className="hover:text-[var(--coral)] transition-colors">Aanbod</Link></li>
-            <li><Link to="/aanbod/scholen" className="hover:text-[var(--coral)] transition-colors">— Scholen</Link></li>
-            <li><Link to="/aanbod/community" className="hover:text-[var(--coral)] transition-colors">— Community</Link></li>
-            <li><Link to="/aanbod/events" className="hover:text-[var(--coral)] transition-colors">— Events</Link></li>
-            <li><Link to="/over-ons" className="hover:text-[var(--coral)] transition-colors">Over ons</Link></li>
-            <li><Link to="/over-ons/methode" className="hover:text-[var(--coral)] transition-colors">— De ADAB Methode</Link></li>
-            <li><Link to="/over-ons/missie-visie" className="hover:text-[var(--coral)] transition-colors">— Missie & visie</Link></li>
-            <li><Link to="/contact" className="hover:text-[var(--coral)] transition-colors">Contact</Link></li>
+            <li><Link to="/aanbod/scholen" className="hover:text-[var(--coral)] transition-colors">Scholen</Link></li>
+            <li><Link to="/aanbod/community/kinderen" className="hover:text-[var(--coral)] transition-colors">Community — kinderen</Link></li>
+            <li><Link to="/aanbod/community/tieners" className="hover:text-[var(--coral)] transition-colors">Community — tieners</Link></li>
+            <li><Link to="/aanbod/community/broeders" className="hover:text-[var(--coral)] transition-colors">Community — broeders</Link></li>
+            <li><Link to="/aanbod/events" className="hover:text-[var(--coral)] transition-colors">ADAB Day & events</Link></li>
+            <li><Link to="/aanbod/verhuur" className="hover:text-[var(--coral)] transition-colors">Verhuur</Link></li>
           </ul>
         </div>
         <div className="md:col-span-3">
-          <h4 className="eyebrow !text-[var(--coral)]">Voor wie</h4>
-          <ul className="mt-5 space-y-3 text-sm text-white/75">
-            <li>Basis- & middelbare scholen</li>
-            <li>Ouders & gezinnen</li>
-            <li>Partners & gemeenten</li>
-            <li>Jongeren (8–17 jr)</li>
-            <li className="text-white/45">Meidentak — binnenkort</li>
+          <h4 className="eyebrow !text-[var(--coral)]">Over ons</h4>
+          <ul className="mt-5 space-y-3 text-sm">
+            <li><Link to="/over-ons/methode" className="hover:text-[var(--coral)] transition-colors">De ADAB Methode</Link></li>
+            <li><Link to="/over-ons/verhaal" className="hover:text-[var(--coral)] transition-colors">Ons verhaal</Link></li>
+            <li><Link to="/over-ons/missie-visie" className="hover:text-[var(--coral)] transition-colors">Missie & visie</Link></li>
+            <li><Link to="/contact" className="hover:text-[var(--coral)] transition-colors">Contact</Link></li>
           </ul>
         </div>
       </div>
@@ -54,21 +77,11 @@ export function SiteFooter() {
         <div className="container-x py-6 text-xs text-white/45 flex flex-col md:flex-row justify-between gap-3">
           <span>© {new Date().getFullYear()} ADAB MOVES. Alle rechten voorbehouden.</span>
           <nav className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link to="/privacy" className="hover:text-[var(--coral)] transition-colors">
-              Privacy
-            </Link>
-            <Link to="/voorwaarden" className="hover:text-[var(--coral)] transition-colors">
-              Voorwaarden
-            </Link>
-            <Link to="/cookies" className="hover:text-[var(--coral)] transition-colors">
-              Cookies
-            </Link>
-            <Link to="/disclaimer" className="hover:text-[var(--coral)] transition-colors">
-              Disclaimer
-            </Link>
-            <Link to="/toegankelijkheid" className="hover:text-[var(--coral)] transition-colors">
-              Toegankelijkheid
-            </Link>
+            <Link to="/privacy" className="hover:text-[var(--coral)] transition-colors">Privacy</Link>
+            <Link to="/voorwaarden" className="hover:text-[var(--coral)] transition-colors">Voorwaarden</Link>
+            <Link to="/cookies" className="hover:text-[var(--coral)] transition-colors">Cookies</Link>
+            <Link to="/disclaimer" className="hover:text-[var(--coral)] transition-colors">Disclaimer</Link>
+            <Link to="/toegankelijkheid" className="hover:text-[var(--coral)] transition-colors">Toegankelijkheid</Link>
           </nav>
         </div>
       </div>
