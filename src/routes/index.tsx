@@ -211,7 +211,7 @@ function HomePage() {
             controls
             playsInline
             preload="metadata"
-            poster={hero}
+            poster={mascotJumpImg}
             className="relative w-full aspect-video object-cover"
           />
         </div>
