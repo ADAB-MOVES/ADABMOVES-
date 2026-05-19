@@ -1,7 +1,8 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { useReveal } from "@/hooks/use-reveal";
 
 import appCss from "../styles.css?url";
 
@@ -57,6 +58,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  // Re-run reveal observer whenever the route changes so new content fades in.
+  const location = useRouterState({ select: (s) => s.location.pathname });
+  useReveal();
+  // Reference location so the hook re-mounts the observer on navigation.
+  void location;
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
