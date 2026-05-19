@@ -260,9 +260,7 @@ function HomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {tracks.map((t) => (
             <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              </div>
+              <MascotPanel pose={t.pose} tone={t.tone} className="aspect-[4/3]" />
               <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={20} /></div>
