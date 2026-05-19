@@ -4,7 +4,7 @@ import { useEffect } from "react";
  * Editorial scroll-reveal. Any element with the `.reveal` class fades + rises
  * once when it enters the viewport. Respects prefers-reduced-motion.
  */
-export function useReveal() {
+export function useReveal(key?: string) {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
