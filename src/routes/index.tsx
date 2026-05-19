@@ -17,10 +17,8 @@ import {
   Star,
   Play,
 } from "lucide-react";
-import hero from "@/assets/hero.jpg";
-import community from "@/assets/community.jpg";
-import coach from "@/assets/coach.jpg";
-import event from "@/assets/event.jpg";
+import { MascotPanel, type MascotPose, type MascotTone } from "@/components/MascotPanel";
+import mascotJumpImg from "@/assets/mascot-jump.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,20 +35,29 @@ export const Route = createFileRoute("/")({
         content:
           "Sport als middel voor karaktervorming. Voor basis- en middelbare scholen, ouders, partners en jongeren.",
       },
-      { property: "og:image", content: hero },
+      { property: "og:image", content: mascotJumpImg },
     ],
   }),
   component: HomePage,
 });
 
-const tracks = [
+const tracks: Array<{
+  icon: typeof School;
+  tag: string;
+  title: string;
+  text: string;
+  pose: MascotPose;
+  tone: MascotTone;
+  to: "/aanbod/scholen" | "/aanbod/community" | "/aanbod/events";
+}> = [
   {
     icon: School,
     tag: "1 — Scholen",
     title: "Basis- & middelbare scholen",
     text:
       "Sportlessen, naschoolse programma's, sportdagen en workshops voor basis- én middelbare scholen. Volledig verzorgd en aansluitend op de schoolcultuur.",
-    image: coach,
+    pose: "coach",
+    tone: "cream",
     to: "/aanbod/scholen",
   },
   {
@@ -59,7 +66,8 @@ const tracks = [
     title: "ADAB MOVES Community",
     text:
       "Wekelijkse multisport voor kinderen en tieners — inschrijving per maand of per kwartaal. Een vaste, halal sportplek met een hechte groep.",
-    image: community,
+    pose: "wave",
+    tone: "creamDeep",
     to: "/aanbod/community",
   },
   {
@@ -68,7 +76,8 @@ const tracks = [
     title: "ADAB Day",
     text:
       "Sportevenementen, themadagen en kinder- & jongerenactiviteiten op aanvraag. Voor scholen, moskeeën, gemeenten en buurthuizen.",
-    image: event,
+    pose: "jump",
+    tone: "coral",
     to: "/aanbod/events",
   },
 ];
@@ -144,9 +153,13 @@ function HomePage() {
 
           <div className="lg:col-span-6 relative">
             <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-[var(--coral)]/15 blur-2xl animate-floaty-slow" />
-            <div className="relative rounded-[1.75rem] overflow-hidden shadow-[var(--shadow-soft)] hover-lift">
-              <img src={hero} alt="Kinderen en tieners spelen multisport in een ADAB MOVES sportzaal" width={1600} height={1100} className="w-full h-auto object-cover" />
-            </div>
+            <MascotPanel
+              pose="jump"
+              tone="cream"
+              alt="ADAB MOVES mascotte, springend met armen omhoog"
+              className="relative rounded-[1.75rem] shadow-[var(--shadow-soft)] hover-lift aspect-[4/5] border border-border"
+            />
+
             <div className="hidden sm:flex items-center gap-3 absolute -left-4 bottom-8 rounded-2xl bg-white border border-border px-4 py-3 shadow-[var(--shadow-soft)] animate-floaty">
               <div className="h-9 w-9 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><ShieldCheck size={18} /></div>
               <div className="text-sm">
