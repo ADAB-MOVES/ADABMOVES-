@@ -225,7 +225,7 @@ function VisiePage() {
                 width={1200}
                 height={1500}
                 loading="lazy"
-                className="w-full h-full object-cover aspect-[4/5]"
+                className="w-full h-full aspect-[4/5] object-contain"
               />
             </div>
             <div className="mt-6">

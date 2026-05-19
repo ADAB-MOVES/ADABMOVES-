@@ -65,7 +65,7 @@ function OverOnsPage() {
               <img
                 src={community}
                 alt="Kinderen sporten samen"
-                className="w-full h-auto object-cover aspect-[4/5]"
+                className="w-full h-full aspect-[4/5] object-contain"
               />
             </div>
           </div>
@@ -141,7 +141,7 @@ function OverOnsPage() {
               src={coach}
               alt="Trainer begeleidt kinderen"
               loading="lazy"
-              className="w-full h-full object-cover aspect-[4/5]"
+              className="w-full h-full aspect-[4/5] object-contain"
             />
           </div>
           <div className="rounded-3xl bg-[var(--ink)] text-[var(--cream)] p-10 md:p-14 flex flex-col justify-center">
