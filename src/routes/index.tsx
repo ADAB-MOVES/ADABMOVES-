@@ -124,7 +124,8 @@ function HomePage() {
               voor kinderen én tieners.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              ADAB MOVES is een multisport- en beweegorganisatie voor scholen, ouders en
+              ADAB MOVES is dé islamitische multisport- en beweegorganisatie van Nederland —
+              en tegelijk een warme, toegankelijke plek voor iedereen. Voor scholen, ouders en
               gemeenschap. Eén duidelijke methode, geworteld in heldere normen en waarden —
               bewegen met betekenis.
             </p>
