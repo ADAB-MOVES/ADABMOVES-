@@ -125,7 +125,8 @@ function HomePage() {
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
               ADAB MOVES is een multisport- en beweegorganisatie voor scholen, ouders en
-              gemeenschap. Vanuit één duidelijke methode — bewegen met betekenis.
+              gemeenschap. Eén duidelijke methode, geworteld in heldere normen en waarden —
+              bewegen met betekenis.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-primary group">
@@ -338,10 +339,12 @@ function HomePage() {
                 Geen lijn, geen duidelijkheid, geen verbinding tussen sport en wie je daarbuiten bent.
               </p>
               <p>
-                Daarom startten wij ADAB MOVES: een doordachte methode waar{" "}
-                <strong className="text-foreground">manieren (adab)</strong> en{" "}
+                Daarom startten wij ADAB MOVES: een doordachte methode geworteld in een{" "}
+                <strong className="text-foreground">duidelijke fundering van normen en waarden</strong> —
+                waar <strong className="text-foreground">manieren (adab)</strong> en{" "}
                 <strong className="text-foreground">karakter</strong> samen opgroeien met techniek,
-                kracht en plezier.
+                kracht en plezier. Een vertrouwde plek waar ouders hun kind met een gerust hart
+                naartoe sturen.
               </p>
             </div>
             <Link to="/over-ons/verhaal" className="mt-8 inline-flex items-center gap-2 text-[var(--coral-deep)] font-semibold hover:gap-3 transition-all">
