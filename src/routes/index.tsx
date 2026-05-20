@@ -21,6 +21,7 @@ import hero from "@/assets/hero.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
+import { Testimonials } from "@/components/Testimonials";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -407,6 +408,9 @@ function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* TESTIMONIALS */}
+      <Testimonials />
 
       {/* CTA */}
       <section className="container-x py-20 md:py-28">

@@ -4,6 +4,7 @@ import kinderenImg from "@/assets/community-kinderen.jpg";
 import tienersImg from "@/assets/community-tieners.jpg";
 import broedersImg from "@/assets/community-broeders.jpg";
 import { WA } from "@/lib/whatsapp";
+import { FloatingDecor } from "@/components/FloatingDecor";
 
 export const Route = createFileRoute("/aanbod/community/")({
   head: () => ({
@@ -47,7 +48,8 @@ const groups = [
 function CommunityHub() {
   return (
     <>
-      <section className="bg-[var(--cream)] border-b border-border">
+      <section className="relative overflow-hidden bg-[var(--cream)] border-b border-border">
+        <FloatingDecor />
         <div className="container-x pt-14 md:pt-20 pb-14">
           <Link to="/aanbod" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
             ← Terug naar aanbod
