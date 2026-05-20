@@ -58,34 +58,35 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-40 backdrop-blur-xl transition-all duration-300 ${
+      className={`sticky top-0 z-40 relative transition-all duration-300 ${
         scrolled
-          ? "bg-background/90 border-b border-border-soft shadow-[0_1px_0_0_var(--border-soft)]"
-          : "bg-background/70 border-b border-transparent"
+          ? "bg-background border-b border-border-soft shadow-[0_1px_0_0_var(--border-soft)]"
+          : "bg-background border-b border-transparent"
       }`}
     >
-      <div className="container-x flex flex-col items-center">
+      <div className="container-x relative flex flex-col items-center">
         {/* Logo groot bovenaan */}
         <Link
           to="/"
-          className="flex items-center justify-center pt-5 pb-3 transition-all"
+          className={`flex items-center justify-center transition-all duration-300 ${scrolled ? "pt-3 pb-2" : "pt-4 pb-2 md:pt-5 md:pb-3"}`}
           onClick={() => setOpen(false)}
         >
           <img
             src={logo}
             alt="ADAB MOVES"
-            className={`w-auto transition-all duration-300 ${scrolled ? "h-16 md:h-20" : "h-24 md:h-32 lg:h-36"}`}
+            className={`w-auto select-none transition-all duration-300 ${scrolled ? "h-12 md:h-16 lg:h-20" : "h-20 sm:h-24 md:h-32 lg:h-36"}`}
+            draggable={false}
           />
           <span className="sr-only">ADAB MOVES</span>
         </Link>
 
-        {/* Mobiele toggle rechtsboven */}
+        {/* Mobiele toggle rechtsboven, verticaal gecentreerd met logo */}
         <button
           aria-label="Menu"
-          className="md:hidden absolute right-4 top-4 p-2 rounded-md text-foreground"
+          className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-md text-foreground"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Navigatie onder logo */}
