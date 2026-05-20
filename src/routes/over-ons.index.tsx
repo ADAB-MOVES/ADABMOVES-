@@ -72,7 +72,7 @@ function OverOnsHub() {
               style={{ animationDelay: `${i * 80}ms` }}
             >
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={s.image} alt={s.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src={s.image} alt={s.title} loading="lazy" className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover" />
               </div>
               <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3">
