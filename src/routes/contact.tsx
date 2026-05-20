@@ -19,6 +19,44 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setSending(true);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim().slice(0, 100),
+      org: String(fd.get("org") || "").trim().slice(0, 200),
+      email: String(fd.get("email") || "").trim().slice(0, 254),
+      phone: String(fd.get("phone") || "").trim().slice(0, 40),
+      message: String(fd.get("message") || "").trim().slice(0, 4000),
+      _subject: "Nieuw contactbericht via adabmoves.nl",
+      _template: "table",
+      _captcha: "false",
+    };
+    if (!payload.name || !payload.email || !payload.message) {
+      setError("Vul naam, e-mail en bericht in.");
+      setSending(false);
+      return;
+    }
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Versturen mislukt");
+      setSent(true);
+    } catch (err) {
+      setError("Er ging iets mis. Probeer het later opnieuw of mail ons direct.");
+    } finally {
+      setSending(false);
+    }
+  }
   return (
     <section className="relative overflow-hidden container-x pt-16 md:pt-24 pb-24">
       <FloatingDecor />
@@ -74,7 +112,7 @@ function ContactPage() {
 
         <div className="lg:col-span-7">
           <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+            onSubmit={handleSubmit}
             className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-[var(--shadow-soft)]"
           >
             {sent ? (
@@ -94,16 +132,22 @@ function ContactPage() {
                   <Field label="Telefoon" name="phone" />
                 </div>
                 <div className="mt-5">
-                  <label className="block text-sm font-medium text-foreground mb-2">Bericht</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">Bericht <span className="text-[var(--coral)]">*</span></label>
                   <textarea
+                    id="message"
+                    name="message"
                     required
                     rows={5}
+                    maxLength={4000}
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-[var(--coral)] transition-colors"
                     placeholder="Vertel ons over jullie locatie, doelgroep of wens..."
                   />
                 </div>
-                <button type="submit" className="btn-primary mt-7">
-                  Verstuur bericht <Send size={16}/>
+                {error && (
+                  <p className="mt-4 text-sm text-[var(--coral-deep)]">{error}</p>
+                )}
+                <button type="submit" disabled={sending} className="btn-primary mt-7 disabled:opacity-60">
+                  {sending ? "Versturen..." : <>Verstuur bericht <Send size={16}/></>}
                 </button>
               </>
             )}
