@@ -122,15 +122,10 @@ function AanbodHub() {
               </div>
             </div>
             <div className="space-y-4">
-              <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
-                <div className="h-11 w-11 rounded-xl bg-[var(--coral)] flex items-center justify-center text-[var(--ink)]">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-[var(--cream)]/60">E-mail</p>
-                  <p className="font-medium">{EMAIL}</p>
-                </div>
-              </a>
+              <div className="rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5">
+                <p className="text-xs uppercase tracking-wider text-[var(--cream)]/60 mb-3">E-mail</p>
+                <RevealEmail variant="dark" label="Toon e-mailadres" />
+              </div>
               <a href={WA.generic} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
                 <div className="h-11 w-11 rounded-xl bg-[#25D366] flex items-center justify-center text-white">
                   <MessageCircle size={20} />
