@@ -27,7 +27,7 @@ const included = [
   "Draaiboek en planning op maat",
   "Materiaal & spelopstellingen",
   "Begeleidende coaches & EHBO",
-  "Muziek en sfeerelementen",
+  "Sfeervolle aankleding (zonder muziek)",
   "Evaluatie & fotorapportage achteraf",
   "Optionele catering-koppeling",
 ];
@@ -51,6 +51,9 @@ function EventsPage() {
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
               Een sportdag, themadag of kinderactiviteit georganiseerd én begeleid. Wij regelen
               het programma, het materiaal en de coaches — jullie zorgen voor plek en kinderen.
+              Onze events zijn <strong className="text-foreground">altijd zonder muziek</strong>{" "}
+              en vanuit een <strong className="text-foreground">islamitische fundering</strong>,
+              maar open en toegankelijk voor iedereen.
             </p>
           </div>
         </div>

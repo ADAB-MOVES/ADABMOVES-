@@ -43,8 +43,9 @@ function MethodePage() {
               </h1>
             </div>
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
-              De ADAB Methode is onze aanpak waarmee wij sport, opvoeding en waarden samenbrengen.
-              Geen losse trainingen, maar één doordachte lijn die zichtbaar is in elk aanbod.
+              De ADAB Methode brengt sport, opvoeding en waarden samen vanuit een{" "}
+              <strong className="text-foreground">islamitische fundering</strong> — één
+              doordachte lijn die zichtbaar is in elk aanbod, en toegankelijk voor iedereen.
             </p>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Send, Phone } from "lucide-react";
 import { useState } from "react";
 import { FloatingDecor } from "@/components/FloatingDecor";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WA } from "@/lib/whatsapp";
+import { supabase } from "@/integrations/supabase/client";
 
 
 export const Route = createFileRoute("/contact")({
@@ -29,14 +30,11 @@ function ContactPage() {
     const form = e.currentTarget;
     const fd = new FormData(form);
     const payload = {
-      name: String(fd.get("name") || "").trim().slice(0, 100),
-      org: String(fd.get("org") || "").trim().slice(0, 200),
-      email: String(fd.get("email") || "").trim().slice(0, 254),
-      phone: String(fd.get("phone") || "").trim().slice(0, 40),
-      message: String(fd.get("message") || "").trim().slice(0, 4000),
-      _subject: "Nieuw contactbericht via adabmoves.nl",
-      _template: "table",
-      _captcha: "false",
+      name: String(fd.get("name") || "").trim().slice(0, 200),
+      org: String(fd.get("org") || "").trim().slice(0, 200) || null,
+      email: String(fd.get("email") || "").trim().slice(0, 320),
+      phone: String(fd.get("phone") || "").trim().slice(0, 40) || null,
+      message: String(fd.get("message") || "").trim().slice(0, 5000),
     };
     if (!payload.name || !payload.email || !payload.message) {
       setError("Vul naam, e-mail en bericht in.");
@@ -44,15 +42,16 @@ function ContactPage() {
       return;
     }
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("Versturen mislukt");
+      const { error: insertError } = await supabase
+        .from("contact_messages")
+        .insert(payload);
+      if (insertError) throw insertError;
       setSent(true);
+      form.reset();
     } catch (err) {
-      setError("Er ging iets mis. Probeer het later opnieuw of mail ons direct.");
+      setError(
+        `Er ging iets mis. Mail ons direct op ${EMAIL} of probeer later opnieuw.`,
+      );
     } finally {
       setSending(false);
     }

@@ -29,9 +29,9 @@ const painPoints = [
   },
   {
     icon: MapPinOff,
-    title: "Krapte in gymzalen en buurthuizen",
-    problem: "Er zijn te weinig veilige, vertrouwde plekken waar kinderen en tieners structureel kunnen sporten — zeker buiten schooltijd.",
-    solution: "Wij bouwen vaste multisport-locaties op, werken samen met scholen, gemeenten en buurthuizen en huren extra zaalruimte waar nodig.",
+    title: "Kinderen voelen zich nergens écht thuis",
+    problem: "Veel kinderen en tieners zwerven na schooltijd doelloos rond, hangen op straat of zitten verloren achter een scherm. Ze missen een plek waar ze gezien worden, ergens bijhoren en zichzelf mogen zijn.",
+    solution: "Wij geven ze een vaste, vertrouwde sportplek met dezelfde gezichten, dezelfde groep en duidelijke huisregels — een tweede thuis waar ze niet alleen sporten, maar ook gezien, gehoord en gewaardeerd worden.",
   },
   {
     icon: ShieldOff,
@@ -187,23 +187,24 @@ function VerhaalPage() {
         </div>
       </section>
 
-      {/* ONZE DOELEN */}
+      {/* ONZE DOELEN — als grid, geen tijdlijn */}
       <section className="bg-[var(--ink)] text-[var(--cream)]">
         <div className="container-x py-20 md:py-24 relative overflow-hidden">
           <div aria-hidden className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[var(--coral)]/20 blur-3xl animate-blob" />
           <div className="max-w-2xl mb-12 relative">
             <span className="eyebrow text-[var(--coral)]">Onze doelen</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">
-              Waar we de komende jaren naartoe werken.
+              Waar wij voor staan en naartoe werken.
             </h2>
             <p className="mt-5 text-lg text-white/70 leading-relaxed">
-              Geen losse ambities — concrete stappen om het verschil te maken voor scholen, ouders
-              en de gemeenschap.
+              Concrete ambities om vanuit onze{" "}
+              <strong className="text-white">islamitische fundering</strong> het verschil te
+              maken voor scholen, ouders en gemeenschap — open en toegankelijk voor iedereen.
             </p>
           </div>
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
             {doelen.map((d, i) => (
-              <li
+              <article
                 key={d.title}
                 className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise hover:bg-white/[0.07] transition-colors"
                 style={{ animationDelay: `${i * 80}ms` }}
@@ -211,17 +212,11 @@ function VerhaalPage() {
                 <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/20 flex items-center justify-center text-[var(--coral)]">
                   <d.icon size={18} />
                 </div>
-                <div
-                  className="mt-5 text-2xl font-semibold text-[var(--coral)]"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {d.year}
-                </div>
-                <div className="mt-2 font-semibold text-base leading-snug">{d.title}</div>
+                <div className="mt-5 font-semibold text-lg leading-snug">{d.title}</div>
                 <div className="mt-2 text-sm text-white/65 leading-relaxed">{d.text}</div>
-              </li>
+              </article>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 

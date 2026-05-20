@@ -53,8 +53,10 @@ function CommunityHub() {
               </h1>
             </div>
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
-              Twee groepen, één methode. Kies de groep die bij jouw leeftijd past — of meld
-              direct je kind aan via WhatsApp.
+              Twee groepen, één methode — vanuit een{" "}
+              <strong className="text-foreground">islamitische fundering</strong>, open voor
+              iedereen. Kies de groep die bij jouw leeftijd past, of meld je kind direct aan
+              via WhatsApp.
             </p>
           </div>
         </div>

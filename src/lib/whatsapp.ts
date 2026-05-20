@@ -4,10 +4,11 @@ export const PHONE_DISPLAY = "+31 6 11 87 97 89";
 export const PHONE_TEL = "+31611879789";
 export const EMAIL = "adabmoves@gmail.com";
 
-const base = `https://wa.me/${PHONE_RAW}`;
+// api.whatsapp.com is meer betrouwbaar op desktop dan wa.me
+const base = `https://api.whatsapp.com/send?phone=${PHONE_RAW}`;
 
 export function waLink(message: string) {
-  return `${base}?text=${encodeURIComponent(message)}`;
+  return `${base}&text=${encodeURIComponent(message)}`;
 }
 
 export const WA = {

@@ -74,7 +74,9 @@ function ScholenPage() {
             </div>
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
               ADAB MOVES werkt structureel samen met basis- en middelbare scholen aan een rustig,
-              veilig en uitdagend beweegklimaat — in lijn met de normen en waarden van jullie leerlingen.
+              veilig en uitdagend beweegklimaat — vanuit een{" "}
+              <strong className="text-foreground">islamitische fundering</strong>, open en
+              toegankelijk voor iedereen.
             </p>
           </div>
         </div>
