@@ -2,7 +2,7 @@
 export const PHONE_RAW = "31611879789"; // landcode + nummer (zonder leading 0)
 export const PHONE_DISPLAY = "+31 6 11 87 97 89";
 export const PHONE_TEL = "+31611879789";
-export const EMAIL = "anass2012@live.nl";
+export const EMAIL = "adabmoves@gmail.com";
 
 const base = `https://wa.me/${PHONE_RAW}`;
 
