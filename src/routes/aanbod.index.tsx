@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, School, Users, CalendarDays, Package, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, School, Users, CalendarDays, Package, MessageCircle } from "lucide-react";
 import event from "@/assets/event.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import scholen from "@/assets/scholen.jpg";
 import { FloatingDecor } from "@/components/FloatingDecor";
-import { WA, EMAIL } from "@/lib/whatsapp";
+import { WA } from "@/lib/whatsapp";
+import { RevealEmail } from "@/components/RevealEmail";
 
 export const Route = createFileRoute("/aanbod/")({
   head: () => ({
