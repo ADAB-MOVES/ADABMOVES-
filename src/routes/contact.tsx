@@ -3,7 +3,7 @@ import { Mail, MapPin, MessageCircle, Send, Phone } from "lucide-react";
 import { useState } from "react";
 import { FloatingDecor } from "@/components/FloatingDecor";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WA } from "@/lib/whatsapp";
-import { RevealEmail } from "@/components/RevealEmail";
+
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -77,7 +77,7 @@ function ContactPage() {
               </div>
               <div>
                 <div className="text-sm uppercase tracking-widest text-muted-foreground">E-mail</div>
-                <div className="mt-2"><RevealEmail label="Toon e-mailadres" /></div>
+                <a href={`mailto:${EMAIL}`} className="mt-2 inline-block text-lg font-medium text-foreground hover:text-[var(--coral-deep)] transition-colors">{EMAIL}</a>
               </div>
             </div>
             <a href={WA.generic} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">

@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VoorwaardenRouteImport } from './routes/voorwaarden'
 import { Route as VisieRouteImport } from './routes/visie'
 import { Route as ToegankelijkheidRouteImport } from './routes/toegankelijkheid'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
@@ -45,6 +46,11 @@ const VisieRoute = VisieRouteImport.update({
 const ToegankelijkheidRoute = ToegankelijkheidRouteImport.update({
   id: '/toegankelijkheid',
   path: '/toegankelijkheid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -151,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/disclaimer': typeof DisclaimerRoute
   '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
@@ -173,6 +180,7 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
@@ -197,6 +205,7 @@ export interface FileRoutesById {
   '/disclaimer': typeof DisclaimerRoute
   '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/over-ons'
     | '/privacy'
+    | '/sitemap.xml'
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
@@ -245,6 +255,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/disclaimer'
     | '/privacy'
+    | '/sitemap.xml'
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
@@ -268,6 +279,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/over-ons'
     | '/privacy'
+    | '/sitemap.xml'
     | '/toegankelijkheid'
     | '/visie'
     | '/voorwaarden'
@@ -293,6 +305,7 @@ export interface RootRouteChildren {
   DisclaimerRoute: typeof DisclaimerRoute
   OverOnsRoute: typeof OverOnsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   VisieRoute: typeof VisieRoute
   VoorwaardenRoute: typeof VoorwaardenRoute
@@ -319,6 +332,13 @@ declare module '@tanstack/react-router' {
       path: '/toegankelijkheid'
       fullPath: '/toegankelijkheid'
       preLoaderRoute: typeof ToegankelijkheidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -517,6 +537,7 @@ const rootRouteChildren: RootRouteChildren = {
   DisclaimerRoute: DisclaimerRoute,
   OverOnsRoute: OverOnsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ToegankelijkheidRoute: ToegankelijkheidRoute,
   VisieRoute: VisieRoute,
   VoorwaardenRoute: VoorwaardenRoute,

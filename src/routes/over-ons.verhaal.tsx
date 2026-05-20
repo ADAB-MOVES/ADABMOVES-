@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Quote, AlertTriangle, MapPinOff, UsersRound, ShieldOff, CheckCircle2, Target, Sparkles, Compass } from "lucide-react";
 import verhaal from "@/assets/verhaal.jpg";
 import community from "@/assets/community.jpg";
 import { FloatingDecor } from "@/components/FloatingDecor";
@@ -7,22 +7,74 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/over-ons/verhaal")({
   head: () => ({
     meta: [
-      { title: "Ons verhaal — ADAB MOVES" },
-      { name: "description", content: "Hoe ADAB MOVES is ontstaan: jarenlange ervaring in de sportbranche op vele scholen, en de overtuiging dat sport en karakter samen horen." },
-      { property: "og:title", content: "Ons verhaal — ADAB MOVES" },
+      { title: "Ons verhaal & onze doelen — ADAB MOVES" },
+      { name: "description", content: "Hoe ADAB MOVES is ontstaan, welke pijnpunten wij dagelijks zien op het gebied van gedrag en zaalkrapte, en wat onze concrete doelen zijn voor de volgende jaren." },
+      { property: "og:title", content: "Ons verhaal & onze doelen — ADAB MOVES" },
+      { property: "og:description", content: "Pijnpunten in gedrag en krapte — en hoe wij daar verandering in brengen." },
       { property: "og:image", content: verhaal },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/over-ons/verhaal" },
     ],
   }),
   component: VerhaalPage,
 });
 
-const milestones = [
-  { y: "2014", t: "Eerste trainingen", d: "Op zaterdagochtend in een gehuurde gymzaal — sport mét manieren als rode draad." },
-  { y: "2017", t: "Eerste scholen", d: "Sportlessen op basisscholen in Amsterdam. Een vast gezicht in de gymzaal." },
-  { y: "2020", t: "Community gelanceerd", d: "Wekelijkse multisport voor kinderen en tieners op vaste locaties." },
-  { y: "2023", t: "Events & ADAB Day", d: "Sportdagen voor scholen, gemeenten en buurthuizen door heel de regio." },
-  { y: "2025", t: "Volgende fase", d: "Verhuur, meidentak en nieuwe steden — gecontroleerd groeien zonder verlies van kwaliteit." },
+const painPoints = [
+  {
+    icon: AlertTriangle,
+    title: "Gedrag op school loopt vast",
+    problem: "Leerkrachten zien steeds vaker korte lontjes, weinig respect en moeite met luisteren — ook tijdens gym.",
+    solution: "Wij brengen één duidelijke lijn: heldere huisregels, vaste rituelen en trainers die karakter voorleven, niet alleen aanleren.",
+  },
+  {
+    icon: MapPinOff,
+    title: "Krapte in gymzalen en buurthuizen",
+    problem: "Er zijn te weinig veilige, vertrouwde plekken waar kinderen en tieners structureel kunnen sporten — zeker buiten schooltijd.",
+    solution: "Wij bouwen vaste multisport-locaties op, werken samen met scholen, gemeenten en buurthuizen en huren extra zaalruimte waar nodig.",
+  },
+  {
+    icon: ShieldOff,
+    title: "Geen verbinding tussen sport en waarden",
+    problem: "Kinderen bewegen wél, maar leren nergens hoe je je gedraagt op én naast het veld. Sport en karakter staan los van elkaar.",
+    solution: "De ADAB Methode verbindt techniek en plezier met normen, waarden en manieren (adab) — in élke training, niet als losse module.",
+  },
+  {
+    icon: UsersRound,
+    title: "Ouders zoeken een vertrouwde plek",
+    problem: "Veel ouders willen sport in een omgeving die past bij hun opvoeding en waarden — die plek is er nauwelijks.",
+    solution: "Wij zijn die plek: een warme, toegankelijke sportomgeving voor iedereen, met een duidelijke fundering en vaste, vertrouwde trainers.",
+  },
 ];
+
+const doelen = [
+  {
+    icon: Target,
+    year: "2026",
+    title: "Vaste sportlocaties in 6 steden",
+    text: "Wekelijkse multisport voor kinderen én tieners in Amsterdam, Zaandam, Amstelveen, Hoofddorp, Haarlem en Almere — met een vaste, vertrouwde groep.",
+  },
+  {
+    icon: Sparkles,
+    year: "2026",
+    title: "Lancering meidentak",
+    text: "Een eigen tak voor meiden met vrouwelijke coaches en een passende sportomgeving — zodat ook zij volwaardig kunnen meebewegen.",
+  },
+  {
+    icon: Compass,
+    year: "2027",
+    title: "ADAB Methode op 50+ scholen",
+    text: "Onze methode structureel ingebed in het sport- en pedagogisch programma van basis- en middelbare scholen door heel Nederland.",
+  },
+  {
+    icon: CheckCircle2,
+    year: "2028",
+    title: "Eigen sport- & ontwikkelcentrum",
+    text: "Een centrale plek waar trainingen, events, opleidingen en ouderbijeenkomsten samenkomen — een thuisbasis voor de gemeenschap.",
+  },
+];
+
+
 
 function VerhaalPage() {
   return (
@@ -89,24 +141,90 @@ function VerhaalPage() {
         </div>
       </section>
 
+      {/* PIJNPUNTEN — wat we zien en hoe wij dit oplossen */}
+      <section className="bg-[var(--cream-deep)] border-y border-border">
+        <div className="container-x py-20 md:py-24 relative overflow-hidden">
+          <div className="max-w-2xl mb-12">
+            <span className="eyebrow">De pijnpunten</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
+              Dit zien wij dagelijks — en zo brengen wij verandering.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              Na jaren in de sportbranche en op tientallen scholen zien we steeds dezelfde
+              knelpunten terugkomen. Wij benoemen ze eerlijk — en pakken ze structureel aan.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {painPoints.map((p, i) => (
+              <article
+                key={p.title}
+                className="rounded-3xl border border-border bg-card p-7 md:p-8 hover-lift animate-rise"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)] shrink-0">
+                    <p.icon size={20} />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground leading-snug">
+                    {p.title}
+                  </h3>
+                </div>
+                <div className="mt-5 space-y-4 text-[15px] leading-relaxed">
+                  <p className="text-muted-foreground">
+                    <span className="font-semibold text-foreground/85">Het probleem — </span>
+                    {p.problem}
+                  </p>
+                  <div className="pl-4 border-l-2 border-[var(--coral)]">
+                    <p className="text-foreground">
+                      <span className="font-semibold text-[var(--coral-deep)]">Wat ADAB MOVES doet — </span>
+                      {p.solution}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ONZE DOELEN */}
       <section className="bg-[var(--ink)] text-[var(--cream)]">
-        <div className="container-x py-20 relative overflow-hidden">
+        <div className="container-x py-20 md:py-24 relative overflow-hidden">
           <div aria-hidden className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[var(--coral)]/20 blur-3xl animate-blob" />
           <div className="max-w-2xl mb-12 relative">
-            <span className="eyebrow text-[var(--coral)]">Tijdlijn</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">Van eerste training tot landelijke ambitie.</h2>
+            <span className="eyebrow text-[var(--coral)]">Onze doelen</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">
+              Waar we de komende jaren naartoe werken.
+            </h2>
+            <p className="mt-5 text-lg text-white/70 leading-relaxed">
+              Geen losse ambities — concrete stappen om het verschil te maken voor scholen, ouders
+              en de gemeenschap.
+            </p>
           </div>
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 relative">
-            {milestones.map((m, i) => (
-              <li key={m.y} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
-                <div className="text-3xl font-semibold text-[var(--coral)]" style={{ fontFamily: "var(--font-display)" }}>{m.y}</div>
-                <div className="mt-3 font-semibold">{m.t}</div>
-                <div className="mt-1.5 text-sm text-white/70 leading-relaxed">{m.d}</div>
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+            {doelen.map((d, i) => (
+              <li
+                key={d.title}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise hover:bg-white/[0.07] transition-colors"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/20 flex items-center justify-center text-[var(--coral)]">
+                  <d.icon size={18} />
+                </div>
+                <div
+                  className="mt-5 text-2xl font-semibold text-[var(--coral)]"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {d.year}
+                </div>
+                <div className="mt-2 font-semibold text-base leading-snug">{d.title}</div>
+                <div className="mt-2 text-sm text-white/65 leading-relaxed">{d.text}</div>
               </li>
             ))}
           </ol>
         </div>
       </section>
+
 
       <section className="container-x py-20">
         <div className="rounded-3xl bg-[var(--coral)]/10 border border-[var(--coral)]/20 p-10 md:p-16 grid lg:grid-cols-12 gap-10 items-center">
