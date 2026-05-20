@@ -7,20 +7,20 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/aanbod/community/kinderen")({
   head: () => ({
     meta: [
-      { title: "Community Kinderen (8–12) — ADAB MOVES" },
-      { name: "description", content: "Wekelijkse halal multisport voor kinderen van 8 tot 12 jaar. Vaste coach, vaste groep, vaste locatie in jouw stad." },
+      { title: "Multisport Kinderen (8–12) — ADAB MOVES" },
+      { name: "description", content: "Wekelijkse multisport voor kinderen van 8 tot 12 jaar. Vaste coach, vaste groep, vaste locatie." },
       { property: "og:title", content: "Multisport voor kinderen — ADAB MOVES" },
-      { property: "og:description", content: "Halal sport voor jonge kinderen in de Metropoolregio Amsterdam." },
+      { property: "og:description", content: "Vertrouwde sport voor jonge kinderen." },
     ],
   }),
   component: Page,
 });
 
 const bullets = [
-  { icon: Users, title: "Vaste, hechte groep", text: "Dezelfde gezichten elke week — broederschap vanaf het eerste uur." },
+  { icon: Users, title: "Vaste, hechte groep", text: "Dezelfde gezichten elke week — vriendschap vanaf het eerste uur." },
   { icon: Calendar, title: "Wekelijks moment", text: "Op een vaste avond of zaterdag in jouw stad. Geen losse drop-in." },
   { icon: Heart, title: "Maand of kwartaal", text: "Flexibel betalen, geen lange contracten. Transparant tarief." },
-  { icon: ShieldCheck, title: "Halal & veilig", text: "VOG-gescreende coaches en gebed- & wuduvriendelijke programmering." },
+  { icon: ShieldCheck, title: "Veilig & vertrouwd", text: "Vaste coaches die de groep persoonlijk kennen en het goede voorbeeld geven." },
 ];
 
 function Page() {
@@ -28,15 +28,15 @@ function Page() {
     <>
       <section className="relative overflow-hidden bg-[var(--cream)] border-b border-border">
         <FloatingDecor />
-        <div className="container-x pt-14 md:pt-20 pb-12">
+        <div className="container-x pt-14 md:pt-20 pb-12 relative">
           <Link to="/aanbod/community" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-            ← Terug naar community
+            ← Terug naar multisport
           </Link>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">
-              <span className="eyebrow">Community — 8 t/m 12 jaar</span>
+              <span className="eyebrow">Multisport — 8 t/m 12 jaar</span>
               <h1 className="mt-4 text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground">
-                Halal multisport <span className="italic text-[var(--coral-deep)]">voor kinderen</span>.
+                Multisport <span className="italic text-[var(--coral-deep)]">voor kinderen</span>.
               </h1>
             </div>
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
@@ -47,8 +47,8 @@ function Page() {
       </section>
 
       <section className="container-x py-16 md:py-20">
-        <div className="rounded-3xl overflow-hidden">
-          <img src={kinderen} alt="Kinderen sporten in een gymzaal" className="w-full h-auto" loading="lazy" />
+        <div className="rounded-3xl overflow-hidden hover-lift">
+          <img src={kinderen} alt="Kinderen sporten in een gymzaal" className="w-full h-auto object-contain" loading="lazy" />
         </div>
       </section>
 
@@ -63,6 +63,10 @@ function Page() {
               Wij werken met vaste groepen op leeftijd. De coach en groep blijven — alleen de
               sport wisselt per periode (voetbal, basketbal, atletiek, multisport).
             </p>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Na inschrijving krijgen leden ook toegang tot extra activiteiten en programma's via
+              onze gesloten groep.
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={WA.community} target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Meld mijn kind aan <ArrowRight size={18} />
@@ -73,8 +77,8 @@ function Page() {
             </div>
           </div>
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-            {bullets.map((b) => (
-              <div key={b.title} className="rounded-2xl border border-border bg-card p-6 hover-lift">
+            {bullets.map((b, i) => (
+              <div key={b.title} className="rounded-2xl border border-border bg-card p-6 hover-lift animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
                 <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]">
                   <b.icon size={20} />
                 </div>
@@ -97,7 +101,7 @@ function Page() {
             sportdiscipline — je ontvangt het direct bij plaatsing.
           </p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-4 max-w-2xl">
-            {["Wekelijkse training", "Vaste coach & groep", "Materiaal & accommodatie", "Maand- of kwartaalfactuur"].map((p) => (
+            {["Wekelijkse training", "Vaste coach & groep", "Materiaal & accommodatie", "Toegang tot extra activiteiten"].map((p) => (
               <li key={p} className="flex items-start gap-3 text-foreground/85">
                 <Check size={18} className="mt-0.5 text-[var(--coral-deep)] shrink-0" /> {p}
               </li>

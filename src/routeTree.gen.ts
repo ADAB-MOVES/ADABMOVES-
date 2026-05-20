@@ -31,7 +31,6 @@ import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
 import { Route as AanbodCommunityIndexRouteImport } from './routes/aanbod.community.index'
 import { Route as AanbodCommunityTienersRouteImport } from './routes/aanbod.community.tieners'
 import { Route as AanbodCommunityKinderenRouteImport } from './routes/aanbod.community.kinderen'
-import { Route as AanbodCommunityBroedersRouteImport } from './routes/aanbod.community.broeders'
 
 const VoorwaardenRoute = VoorwaardenRouteImport.update({
   id: '/voorwaarden',
@@ -143,11 +142,6 @@ const AanbodCommunityKinderenRoute = AanbodCommunityKinderenRouteImport.update({
   path: '/kinderen',
   getParentRoute: () => AanbodCommunityRoute,
 } as any)
-const AanbodCommunityBroedersRoute = AanbodCommunityBroedersRouteImport.update({
-  id: '/broeders',
-  path: '/broeders',
-  getParentRoute: () => AanbodCommunityRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -169,7 +163,6 @@ export interface FileRoutesByFullPath {
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
-  '/aanbod/community/broeders': typeof AanbodCommunityBroedersRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
@@ -191,7 +184,6 @@ export interface FileRoutesByTo {
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod': typeof AanbodIndexRoute
   '/over-ons': typeof OverOnsIndexRoute
-  '/aanbod/community/broeders': typeof AanbodCommunityBroedersRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
   '/aanbod/community': typeof AanbodCommunityIndexRoute
@@ -217,7 +209,6 @@ export interface FileRoutesById {
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
-  '/aanbod/community/broeders': typeof AanbodCommunityBroedersRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
@@ -244,7 +235,6 @@ export interface FileRouteTypes {
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
-    | '/aanbod/community/broeders'
     | '/aanbod/community/kinderen'
     | '/aanbod/community/tieners'
     | '/aanbod/community/'
@@ -266,7 +256,6 @@ export interface FileRouteTypes {
     | '/over-ons/verhaal'
     | '/aanbod'
     | '/over-ons'
-    | '/aanbod/community/broeders'
     | '/aanbod/community/kinderen'
     | '/aanbod/community/tieners'
     | '/aanbod/community'
@@ -291,7 +280,6 @@ export interface FileRouteTypes {
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
-    | '/aanbod/community/broeders'
     | '/aanbod/community/kinderen'
     | '/aanbod/community/tieners'
     | '/aanbod/community/'
@@ -466,25 +454,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AanbodCommunityKinderenRouteImport
       parentRoute: typeof AanbodCommunityRoute
     }
-    '/aanbod/community/broeders': {
-      id: '/aanbod/community/broeders'
-      path: '/broeders'
-      fullPath: '/aanbod/community/broeders'
-      preLoaderRoute: typeof AanbodCommunityBroedersRouteImport
-      parentRoute: typeof AanbodCommunityRoute
-    }
   }
 }
 
 interface AanbodCommunityRouteChildren {
-  AanbodCommunityBroedersRoute: typeof AanbodCommunityBroedersRoute
   AanbodCommunityKinderenRoute: typeof AanbodCommunityKinderenRoute
   AanbodCommunityTienersRoute: typeof AanbodCommunityTienersRoute
   AanbodCommunityIndexRoute: typeof AanbodCommunityIndexRoute
 }
 
 const AanbodCommunityRouteChildren: AanbodCommunityRouteChildren = {
-  AanbodCommunityBroedersRoute: AanbodCommunityBroedersRoute,
   AanbodCommunityKinderenRoute: AanbodCommunityKinderenRoute,
   AanbodCommunityTienersRoute: AanbodCommunityTienersRoute,
   AanbodCommunityIndexRoute: AanbodCommunityIndexRoute,

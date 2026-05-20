@@ -16,10 +16,9 @@ const nav: NavItem[] = [
     label: "Aanbod",
     children: [
       { to: "/aanbod/scholen", label: "Scholen", desc: "Basis & middelbaar" },
-      { to: "/aanbod/community/kinderen", label: "Community — Kinderen", desc: "8–12 jaar" },
-      { to: "/aanbod/community/tieners", label: "Community — Tieners", desc: "12–17 jaar" },
-      { to: "/aanbod/community/broeders", label: "Community — Broeders", desc: "18+" },
-      { to: "/aanbod/events", label: "ADAB Day & events", desc: "Sport- en themadagen" },
+      { to: "/aanbod/community/kinderen", label: "Multisport — Kinderen", desc: "8–12 jaar" },
+      { to: "/aanbod/community/tieners", label: "Multisport — Tieners", desc: "12–17 jaar" },
+      { to: "/aanbod/events", label: "Sportdagen & events", desc: "Op locatie, op maat" },
       { to: "/aanbod/verhuur", label: "Verhuur", desc: "Materiaal & seizoenen" },
     ],
   },
@@ -61,31 +60,42 @@ export function SiteHeader() {
     <header
       className={`sticky top-0 z-40 backdrop-blur-xl transition-all duration-300 ${
         scrolled
-          ? "bg-background/85 border-b border-border-soft shadow-[0_1px_0_0_var(--border-soft)]"
-          : "bg-background/60 border-b border-transparent"
+          ? "bg-background/90 border-b border-border-soft shadow-[0_1px_0_0_var(--border-soft)]"
+          : "bg-background/70 border-b border-transparent"
       }`}
     >
-      <div
-        className={`container-x flex items-center justify-between transition-all duration-300 ${
-          scrolled ? "h-16" : "h-20"
-        }`}
-      >
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+      <div className="container-x flex flex-col items-center">
+        {/* Logo groot bovenaan */}
+        <Link
+          to="/"
+          className="flex items-center justify-center pt-4 pb-2 transition-all"
+          onClick={() => setOpen(false)}
+        >
           <img
             src={logo}
-            alt="Adab Moves"
-            className={`w-auto transition-all duration-300 ${scrolled ? "h-9" : "h-11"}`}
+            alt="ADAB MOVES"
+            className={`w-auto transition-all duration-300 ${scrolled ? "h-12 md:h-14" : "h-16 md:h-20"}`}
           />
-          <span className="sr-only">Adab Moves</span>
+          <span className="sr-only">ADAB MOVES</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-9">
+        {/* Mobiele toggle rechtsboven */}
+        <button
+          aria-label="Menu"
+          className="md:hidden absolute right-4 top-4 p-2 rounded-md text-foreground"
+          onClick={() => setOpen((o) => !o)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+
+        {/* Navigatie onder logo */}
+        <nav className="hidden md:flex items-center justify-center gap-8 lg:gap-10 pb-3">
           {nav.map((n) =>
             n.children ? (
               <div key={n.to} className="relative" onMouseEnter={() => enter(n.label)} onMouseLeave={leave}>
                 <Link
                   to={n.to}
-                  className="group relative inline-flex items-center gap-1 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
+                  className="group relative inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wider text-foreground/75 hover:text-foreground transition-colors py-2"
                   activeProps={{ className: "is-active !text-foreground" }}
                 >
                   <span>{n.label}</span>
@@ -125,7 +135,7 @@ export function SiteHeader() {
               <Link
                 key={n.to}
                 to={n.to}
-                className="group relative text-sm font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
+                className="group relative text-sm font-semibold uppercase tracking-wider text-foreground/75 hover:text-foreground transition-colors py-2"
                 activeProps={{ className: "is-active !text-foreground" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
@@ -138,14 +148,6 @@ export function SiteHeader() {
             ),
           )}
         </nav>
-
-        <button
-          aria-label="Menu"
-          className="md:hidden p-2 rounded-md text-foreground"
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
 
       {open && (

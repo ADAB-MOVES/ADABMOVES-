@@ -1,33 +1,31 @@
-import { Quote, Star } from "lucide-react";
+import { ShieldCheck, Sparkles, HeartHandshake } from "lucide-react";
 
-const testimonials = [
+/**
+ * "Onze belofte" — vervangt de oude testimonials.
+ * Drie pijlers die ouders, scholen en partners houvast geven, zonder fake quotes.
+ */
+const pillars = [
   {
-    quote:
-      "Mijn zoon kijkt elke week uit naar de training. Hij komt thuis met meer zelfvertrouwen én hij gaat met meer respect met zijn broertje om. Precies wat ik zocht.",
-    name: "Fatima",
-    role: "Moeder van Yusuf (9)",
-    accent: "coral",
+    icon: ShieldCheck,
+    title: "Een veilige, fijne omgeving",
+    text: "Onze trainers en begeleiders doen hun best te leven naar de normen en waarden die zij doorgeven. Vaste gezichten, heldere huisregels.",
   },
   {
-    quote:
-      "Ik vind het tof dat we met allemaal broeders zijn. We doen elke week iets anders — basketbal, boksen, archery. En de coaches geven echt om ons, niet alleen om de sport.",
-    name: "Amir (14)",
-    role: "Community-lid Amsterdam",
-    accent: "ink",
+    icon: Sparkles,
+    title: "Duurzame aanpak",
+    text: "Geen losse activiteiten, maar een lijn die jaren meegaat — herkenbaar in elke training, op elke locatie.",
   },
   {
-    quote:
-      "ADAB MOVES verzorgt onze gymlessen en de jaarlijkse sportdag. Strakke organisatie, gescreende trainers en zichtbare impact op gedrag in de klas. Een aanrader.",
-    name: "Karim el-Hamdi",
-    role: "Directeur basisschool, Zaandam",
-    accent: "coral",
+    icon: HeartHandshake,
+    title: "In lijn met jullie waarden",
+    text: "Wij sluiten aan bij de cultuur, taal en waarden van de kinderen. Toegankelijk voor iedereen — moslim én niet-moslim welkom.",
   },
 ] as const;
 
 export function Testimonials({
-  eyebrow = "Wat anderen zeggen",
-  title = "Stemmen uit onze gemeenschap.",
-  intro = "Ouders, jongeren en scholen over hun ervaring met ADAB MOVES.",
+  eyebrow = "Onze belofte",
+  title = "Waar wij voor staan, voelt iedereen.",
+  intro = "Drie beloftes die wij elke training waarmaken — aan ouders, scholen en jongeren.",
 }: {
   eyebrow?: string;
   title?: string;
@@ -53,32 +51,22 @@ export function Testimonials({
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 relative">
-        {testimonials.map((t, i) => (
-          <figure
-            key={t.name}
-            className="group relative flex flex-col rounded-3xl border border-border bg-card p-7 hover-lift animate-rise"
+        {pillars.map((p, i) => (
+          <article
+            key={p.title}
+            className="group relative flex flex-col rounded-3xl border border-border bg-card p-7 hover-lift animate-rise overflow-hidden"
             style={{ animationDelay: `${i * 120}ms` }}
           >
-            <Quote
-              className={`absolute -top-4 left-6 h-9 w-9 rounded-xl p-2 ${
-                t.accent === "coral"
-                  ? "bg-[var(--coral)] text-white"
-                  : "bg-[var(--ink)] text-[var(--coral)]"
-              } shadow-[var(--shadow-soft)] transition-transform group-hover:-translate-y-1`}
+            <div
+              aria-hidden
+              className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[var(--coral)]/10 blur-2xl transition-all group-hover:bg-[var(--coral)]/20"
             />
-            <div className="flex gap-1 text-[var(--coral)] mb-4 pt-3">
-              {Array.from({ length: 5 }).map((_, idx) => (
-                <Star key={idx} size={14} fill="currentColor" strokeWidth={0} />
-              ))}
+            <div className="relative h-12 w-12 rounded-2xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)] group-hover:bg-[var(--coral)] group-hover:text-white transition-colors">
+              <p.icon size={22} />
             </div>
-            <blockquote className="text-foreground leading-relaxed flex-1">
-              "{t.quote}"
-            </blockquote>
-            <figcaption className="mt-6 pt-5 border-t border-border">
-              <div className="font-semibold text-foreground">{t.name}</div>
-              <div className="text-sm text-muted-foreground">{t.role}</div>
-            </figcaption>
-          </figure>
+            <h3 className="relative mt-5 text-xl font-semibold text-foreground">{p.title}</h3>
+            <p className="relative mt-3 text-muted-foreground leading-relaxed">{p.text}</p>
+          </article>
         ))}
       </div>
     </section>

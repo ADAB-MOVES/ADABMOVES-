@@ -8,10 +8,10 @@ export function SiteFooter() {
     <footer className="mt-24 bg-[var(--ink)] text-[var(--cream)]">
       <div className="container-x py-20 md:py-24 grid gap-14 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img src={logoDark} alt="Adab Moves" className="h-14 w-auto -ml-2" />
+          <img src={logoDark} alt="ADAB MOVES" className="h-14 w-auto -ml-2" />
           <p className="mt-6 max-w-sm text-[15px] text-white/65 leading-relaxed">
-            Bewegen met betekenis. Dé islamitische multisport- en beweegorganisatie van Nederland —
-            voor kinderen én tieners.
+            Bewegen met betekenis. Een multisport- en beweegorganisatie voor scholen, ouders en
+            gemeenschap — voor kinderen én tieners.
           </p>
           <div className="mt-7 space-y-3 text-sm text-white/80">
             <a
@@ -56,10 +56,9 @@ export function SiteFooter() {
           <h4 className="eyebrow !text-[var(--coral)]">Aanbod</h4>
           <ul className="mt-5 space-y-3 text-sm">
             <li><Link to="/aanbod/scholen" className="hover:text-[var(--coral)] transition-colors">Scholen</Link></li>
-            <li><Link to="/aanbod/community/kinderen" className="hover:text-[var(--coral)] transition-colors">Community — kinderen</Link></li>
-            <li><Link to="/aanbod/community/tieners" className="hover:text-[var(--coral)] transition-colors">Community — tieners</Link></li>
-            <li><Link to="/aanbod/community/broeders" className="hover:text-[var(--coral)] transition-colors">Community — broeders</Link></li>
-            <li><Link to="/aanbod/events" className="hover:text-[var(--coral)] transition-colors">ADAB Day & events</Link></li>
+            <li><Link to="/aanbod/community/kinderen" className="hover:text-[var(--coral)] transition-colors">Multisport — kinderen</Link></li>
+            <li><Link to="/aanbod/community/tieners" className="hover:text-[var(--coral)] transition-colors">Multisport — tieners</Link></li>
+            <li><Link to="/aanbod/events" className="hover:text-[var(--coral)] transition-colors">Sportdagen & events</Link></li>
             <li><Link to="/aanbod/verhuur" className="hover:text-[var(--coral)] transition-colors">Verhuur</Link></li>
           </ul>
         </div>
