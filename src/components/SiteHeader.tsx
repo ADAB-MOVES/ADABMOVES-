@@ -61,7 +61,7 @@ export function SiteHeader() {
       className={`sticky top-0 z-40 relative transition-all duration-300 ${
         scrolled
           ? "bg-background border-b border-border-soft shadow-[0_1px_0_0_var(--border-soft)]"
-          : "bg-background border-b border-transparent"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="container-x relative flex flex-col items-center">
