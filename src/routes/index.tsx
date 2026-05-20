@@ -139,7 +139,7 @@ function HomePage() {
             <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
               {[
                 { k: "10+", l: "Jaar ervaring" },
-                { k: "NL", l: "Door heel" },
+                { k: "\n", l: "Door heel" },
                 { k: "8–17", l: "Jaar doelgroep" },
               ].map((s, i) => (
                 <div key={s.l} className="rounded-2xl border border-border bg-card/60 backdrop-blur p-4 hover-lift animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
@@ -258,7 +258,7 @@ function HomePage() {
           {tracks.map((t, i) => (
             <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover" />
               </div>
               <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3">
