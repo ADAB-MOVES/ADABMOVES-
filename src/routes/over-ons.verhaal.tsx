@@ -141,24 +141,90 @@ function VerhaalPage() {
         </div>
       </section>
 
+      {/* PIJNPUNTEN — wat we zien en hoe wij dit oplossen */}
+      <section className="bg-[var(--cream-deep)] border-y border-border">
+        <div className="container-x py-20 md:py-24 relative overflow-hidden">
+          <div className="max-w-2xl mb-12">
+            <span className="eyebrow">De pijnpunten</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
+              Dit zien wij dagelijks — en zo brengen wij verandering.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              Na jaren in de sportbranche en op tientallen scholen zien we steeds dezelfde
+              knelpunten terugkomen. Wij benoemen ze eerlijk — en pakken ze structureel aan.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {painPoints.map((p, i) => (
+              <article
+                key={p.title}
+                className="rounded-3xl border border-border bg-card p-7 md:p-8 hover-lift animate-rise"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)] shrink-0">
+                    <p.icon size={20} />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground leading-snug">
+                    {p.title}
+                  </h3>
+                </div>
+                <div className="mt-5 space-y-4 text-[15px] leading-relaxed">
+                  <p className="text-muted-foreground">
+                    <span className="font-semibold text-foreground/85">Het probleem — </span>
+                    {p.problem}
+                  </p>
+                  <div className="pl-4 border-l-2 border-[var(--coral)]">
+                    <p className="text-foreground">
+                      <span className="font-semibold text-[var(--coral-deep)]">Wat ADAB MOVES doet — </span>
+                      {p.solution}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ONZE DOELEN */}
       <section className="bg-[var(--ink)] text-[var(--cream)]">
-        <div className="container-x py-20 relative overflow-hidden">
+        <div className="container-x py-20 md:py-24 relative overflow-hidden">
           <div aria-hidden className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[var(--coral)]/20 blur-3xl animate-blob" />
           <div className="max-w-2xl mb-12 relative">
-            <span className="eyebrow text-[var(--coral)]">Tijdlijn</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">Van eerste training tot landelijke ambitie.</h2>
+            <span className="eyebrow text-[var(--coral)]">Onze doelen</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">
+              Waar we de komende jaren naartoe werken.
+            </h2>
+            <p className="mt-5 text-lg text-white/70 leading-relaxed">
+              Geen losse ambities — concrete stappen om het verschil te maken voor scholen, ouders
+              en de gemeenschap.
+            </p>
           </div>
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 relative">
-            {milestones.map((m, i) => (
-              <li key={m.y} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
-                <div className="text-3xl font-semibold text-[var(--coral)]" style={{ fontFamily: "var(--font-display)" }}>{m.y}</div>
-                <div className="mt-3 font-semibold">{m.t}</div>
-                <div className="mt-1.5 text-sm text-white/70 leading-relaxed">{m.d}</div>
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+            {doelen.map((d, i) => (
+              <li
+                key={d.title}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise hover:bg-white/[0.07] transition-colors"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/20 flex items-center justify-center text-[var(--coral)]">
+                  <d.icon size={18} />
+                </div>
+                <div
+                  className="mt-5 text-2xl font-semibold text-[var(--coral)]"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {d.year}
+                </div>
+                <div className="mt-2 font-semibold text-base leading-snug">{d.title}</div>
+                <div className="mt-2 text-sm text-white/65 leading-relaxed">{d.text}</div>
               </li>
             ))}
           </ol>
         </div>
       </section>
+
 
       <section className="container-x py-20">
         <div className="rounded-3xl bg-[var(--coral)]/10 border border-[var(--coral)]/20 p-10 md:p-16 grid lg:grid-cols-12 gap-10 items-center">
