@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Quote, AlertTriangle, MapPinOff, UsersRound, ShieldOff, CheckCircle2, Target, Sparkles, Compass } from "lucide-react";
 import verhaal from "@/assets/verhaal.jpg";
 import community from "@/assets/community.jpg";
 import { FloatingDecor } from "@/components/FloatingDecor";
@@ -7,22 +7,74 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/over-ons/verhaal")({
   head: () => ({
     meta: [
-      { title: "Ons verhaal — ADAB MOVES" },
-      { name: "description", content: "Hoe ADAB MOVES is ontstaan: jarenlange ervaring in de sportbranche op vele scholen, en de overtuiging dat sport en karakter samen horen." },
-      { property: "og:title", content: "Ons verhaal — ADAB MOVES" },
+      { title: "Ons verhaal & onze doelen — ADAB MOVES" },
+      { name: "description", content: "Hoe ADAB MOVES is ontstaan, welke pijnpunten wij dagelijks zien op het gebied van gedrag en zaalkrapte, en wat onze concrete doelen zijn voor de volgende jaren." },
+      { property: "og:title", content: "Ons verhaal & onze doelen — ADAB MOVES" },
+      { property: "og:description", content: "Pijnpunten in gedrag en krapte — en hoe wij daar verandering in brengen." },
       { property: "og:image", content: verhaal },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/over-ons/verhaal" },
     ],
   }),
   component: VerhaalPage,
 });
 
-const milestones = [
-  { y: "2014", t: "Eerste trainingen", d: "Op zaterdagochtend in een gehuurde gymzaal — sport mét manieren als rode draad." },
-  { y: "2017", t: "Eerste scholen", d: "Sportlessen op basisscholen in Amsterdam. Een vast gezicht in de gymzaal." },
-  { y: "2020", t: "Community gelanceerd", d: "Wekelijkse multisport voor kinderen en tieners op vaste locaties." },
-  { y: "2023", t: "Events & ADAB Day", d: "Sportdagen voor scholen, gemeenten en buurthuizen door heel de regio." },
-  { y: "2025", t: "Volgende fase", d: "Verhuur, meidentak en nieuwe steden — gecontroleerd groeien zonder verlies van kwaliteit." },
+const painPoints = [
+  {
+    icon: AlertTriangle,
+    title: "Gedrag op school loopt vast",
+    problem: "Leerkrachten zien steeds vaker korte lontjes, weinig respect en moeite met luisteren — ook tijdens gym.",
+    solution: "Wij brengen één duidelijke lijn: heldere huisregels, vaste rituelen en trainers die karakter voorleven, niet alleen aanleren.",
+  },
+  {
+    icon: MapPinOff,
+    title: "Krapte in gymzalen en buurthuizen",
+    problem: "Er zijn te weinig veilige, vertrouwde plekken waar kinderen en tieners structureel kunnen sporten — zeker buiten schooltijd.",
+    solution: "Wij bouwen vaste multisport-locaties op, werken samen met scholen, gemeenten en buurthuizen en huren extra zaalruimte waar nodig.",
+  },
+  {
+    icon: ShieldOff,
+    title: "Geen verbinding tussen sport en waarden",
+    problem: "Kinderen bewegen wél, maar leren nergens hoe je je gedraagt op én naast het veld. Sport en karakter staan los van elkaar.",
+    solution: "De ADAB Methode verbindt techniek en plezier met normen, waarden en manieren (adab) — in élke training, niet als losse module.",
+  },
+  {
+    icon: UsersRound,
+    title: "Ouders zoeken een vertrouwde plek",
+    problem: "Veel ouders willen sport in een omgeving die past bij hun opvoeding en waarden — die plek is er nauwelijks.",
+    solution: "Wij zijn die plek: een warme, toegankelijke sportomgeving voor iedereen, met een duidelijke fundering en vaste, vertrouwde trainers.",
+  },
 ];
+
+const doelen = [
+  {
+    icon: Target,
+    year: "2026",
+    title: "Vaste sportlocaties in 6 steden",
+    text: "Wekelijkse multisport voor kinderen én tieners in Amsterdam, Zaandam, Amstelveen, Hoofddorp, Haarlem en Almere — met een vaste, vertrouwde groep.",
+  },
+  {
+    icon: Sparkles,
+    year: "2026",
+    title: "Lancering meidentak",
+    text: "Een eigen tak voor meiden met vrouwelijke coaches en een passende sportomgeving — zodat ook zij volwaardig kunnen meebewegen.",
+  },
+  {
+    icon: Compass,
+    year: "2027",
+    title: "ADAB Methode op 50+ scholen",
+    text: "Onze methode structureel ingebed in het sport- en pedagogisch programma van basis- en middelbare scholen door heel Nederland.",
+  },
+  {
+    icon: CheckCircle2,
+    year: "2028",
+    title: "Eigen sport- & ontwikkelcentrum",
+    text: "Een centrale plek waar trainingen, events, opleidingen en ouderbijeenkomsten samenkomen — een thuisbasis voor de gemeenschap.",
+  },
+];
+
+
 
 function VerhaalPage() {
   return (
