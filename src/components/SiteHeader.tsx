@@ -61,7 +61,7 @@ export function SiteHeader() {
       className={`sticky top-0 z-40 relative transition-all duration-300 ${
         scrolled
           ? "bg-background border-b border-border-soft shadow-[0_1px_0_0_var(--border-soft)]"
-          : "bg-background border-b border-transparent"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="container-x relative flex flex-col items-center">
@@ -76,8 +76,8 @@ export function SiteHeader() {
             alt="ADAB MOVES"
             className={`w-auto select-none transition-all duration-300 ${
               scrolled
-                ? "h-10 sm:h-12 md:h-14 lg:h-16"
-                : "h-14 sm:h-20 md:h-28 lg:h-36"
+                ? "h-14 sm:h-18 md:h-20 lg:h-24"
+                : "h-20 sm:h-28 md:h-36 lg:h-44"
             }`}
             draggable={false}
           />
