@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Send, Phone } from "lucide-react";
 import { useState } from "react";
 import { FloatingDecor } from "@/components/FloatingDecor";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WA } from "@/lib/whatsapp";
+import { RevealEmail } from "@/components/RevealEmail";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -32,15 +33,15 @@ function ContactPage() {
             ADAB MOVES voor jullie kan betekenen.
           </p>
           <div className="mt-10 space-y-5">
-            <a href={`mailto:${EMAIL}`} className="flex items-start gap-4 group">
-              <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/12 flex items-center justify-center text-[var(--coral-deep)] group-hover:bg-[var(--coral)] group-hover:text-white transition-colors">
+            <div className="flex items-start gap-4">
+              <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/12 flex items-center justify-center text-[var(--coral-deep)]">
                 <Mail size={18}/>
               </div>
               <div>
                 <div className="text-sm uppercase tracking-widest text-muted-foreground">E-mail</div>
-                <div className="text-lg font-medium text-foreground group-hover:text-[var(--coral-deep)]">{EMAIL}</div>
+                <div className="mt-2"><RevealEmail label="Toon e-mailadres" /></div>
               </div>
-            </a>
+            </div>
             <a href={WA.generic} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
               <div className="h-11 w-11 rounded-xl bg-[#25D366]/15 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
                 <MessageCircle size={18}/>
