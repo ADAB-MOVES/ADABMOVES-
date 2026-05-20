@@ -68,13 +68,17 @@ export function SiteHeader() {
         {/* Logo groot bovenaan */}
         <Link
           to="/"
-          className={`flex items-center justify-center transition-all duration-300 ${scrolled ? "pt-3 pb-2" : "pt-4 pb-2 md:pt-5 md:pb-3"}`}
+          className={`flex items-center justify-center transition-all duration-300 ${scrolled ? "pt-2 pb-1.5 md:pt-3 md:pb-2" : "pt-3 pb-2 md:pt-5 md:pb-3"}`}
           onClick={() => setOpen(false)}
         >
           <img
             src={logo}
             alt="ADAB MOVES"
-            className={`w-auto select-none transition-all duration-300 ${scrolled ? "h-12 md:h-16 lg:h-20" : "h-20 sm:h-24 md:h-32 lg:h-36"}`}
+            className={`w-auto select-none transition-all duration-300 ${
+              scrolled
+                ? "h-10 sm:h-12 md:h-14 lg:h-16"
+                : "h-14 sm:h-20 md:h-28 lg:h-36"
+            }`}
             draggable={false}
           />
           <span className="sr-only">ADAB MOVES</span>
@@ -83,11 +87,12 @@ export function SiteHeader() {
         {/* Mobiele toggle rechtsboven, verticaal gecentreerd met logo */}
         <button
           aria-label="Menu"
-          className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-md text-foreground"
+          className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-md text-foreground"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
+
 
         {/* Navigatie onder logo */}
         <nav className="hidden md:flex items-center justify-center gap-8 lg:gap-10 pb-3">
