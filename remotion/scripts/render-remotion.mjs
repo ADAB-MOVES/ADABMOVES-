@@ -7,26 +7,34 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const bundled = await bundle({
   entryPoint: path.resolve(__dirname, "../src/index.ts"),
-  webpackOverride: (c) => c,
+  webpackOverride: (config) => config,
 });
 
 const browser = await openBrowser("chrome", {
   browserExecutable: process.env.PUPPETEER_EXECUTABLE_PATH ?? "/bin/chromium",
-  chromiumOptions: { args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"] },
+  chromiumOptions: {
+    args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
+  },
   chromeMode: "chrome-for-testing",
 });
 
-const composition = await selectComposition({ serveUrl: bundled, id: "main", puppeteerInstance: browser });
+const outArg = process.argv[2] ?? "/mnt/documents/adab-intro.mp4";
+
+const composition = await selectComposition({
+  serveUrl: bundled,
+  id: "main",
+  puppeteerInstance: browser,
+});
 
 await renderMedia({
   composition,
   serveUrl: bundled,
   codec: "h264",
-  outputLocation: "/mnt/documents/adab-moves-intro.mp4",
+  outputLocation: outArg,
   puppeteerInstance: browser,
   muted: true,
-  concurrency: 2,
+  concurrency: 1,
 });
 
 await browser.close({ silent: false });
-console.log("done");
+console.log("Rendered to", outArg);
