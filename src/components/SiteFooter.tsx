@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
 import logoDark from "@/assets/logo-dark.png";
-import { PHONE_DISPLAY, PHONE_TEL, WA } from "@/lib/whatsapp";
-import { RevealEmail } from "@/components/RevealEmail";
+import { PHONE_DISPLAY, PHONE_TEL, WA, EMAIL } from "@/lib/whatsapp";
 
 export function SiteFooter() {
   return (
@@ -35,9 +34,15 @@ export function SiteFooter() {
               </span>
               WhatsApp ons direct
             </a>
-            <div className="pt-1">
-              <RevealEmail variant="dark" label="Toon e-mailadres" />
-            </div>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="flex items-center gap-3 hover:text-[var(--coral)] transition-colors"
+            >
+              <span className="h-9 w-9 rounded-full bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral)]">
+                <Mail size={14} />
+              </span>
+              <span className="font-medium">{EMAIL}</span>
+            </a>
             <div className="flex items-center gap-3 text-white/65">
               <span className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center">
                 <MapPin size={14} />
