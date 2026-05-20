@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
 import { FloatingDecor } from "@/components/FloatingDecor";
+import {
   ArrowRight,
   Heart,
   Scale,
