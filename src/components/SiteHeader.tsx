@@ -68,13 +68,13 @@ export function SiteHeader() {
         {/* Logo groot bovenaan */}
         <Link
           to="/"
-          className="flex items-center justify-center pt-4 pb-2 transition-all"
+          className="flex items-center justify-center pt-5 pb-3 transition-all"
           onClick={() => setOpen(false)}
         >
           <img
             src={logo}
             alt="ADAB MOVES"
-            className={`w-auto transition-all duration-300 ${scrolled ? "h-12 md:h-14" : "h-16 md:h-20"}`}
+            className={`w-auto transition-all duration-300 ${scrolled ? "h-16 md:h-20" : "h-24 md:h-32 lg:h-36"}`}
           />
           <span className="sr-only">ADAB MOVES</span>
         </Link>

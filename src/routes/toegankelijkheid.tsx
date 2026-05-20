@@ -20,7 +20,7 @@ function ToegankelijkheidPage() {
       <p className="mt-4 text-sm text-muted-foreground">Laatst bijgewerkt: {new Date().toLocaleDateString("nl-NL")}</p>
       <div className="mt-10 space-y-6 text-foreground/85 leading-relaxed">
         <p>ADAB MOVES streeft ernaar dat deze website voor iedereen toegankelijk is, conform de WCAG 2.1-richtlijnen (niveau AA).</p>
-        <p>Loop je tegen een probleem aan? Mail ons via <a href="mailto:info@adabmoves.nl" className="text-[var(--coral-deep)] underline">info@adabmoves.nl</a>, dan lossen we het zo snel mogelijk op.</p>
+        <p>Loop je tegen een probleem aan? Mail ons via <a href="mailto:adabmoves@gmail.com" className="text-[var(--coral-deep)] underline">adabmoves@gmail.com</a>, dan lossen we het zo snel mogelijk op.</p>
       </div>
     </article>
   );

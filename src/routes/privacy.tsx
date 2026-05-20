@@ -43,11 +43,11 @@ function PrivacyPage() {
         </section>
         <section>
           <h2 className="text-2xl font-semibold text-foreground">5. Jouw rechten</h2>
-          <p className="mt-3">Je hebt recht op inzage, correctie, verwijdering en bezwaar. Stuur een verzoek naar <a className="text-[var(--coral-deep)] underline" href="mailto:info@adabmoves.nl">info@adabmoves.nl</a>.</p>
+          <p className="mt-3">Je hebt recht op inzage, correctie, verwijdering en bezwaar. Stuur een verzoek naar <a className="text-[var(--coral-deep)] underline" href="mailto:adabmoves@gmail.com">adabmoves@gmail.com</a>.</p>
         </section>
         <section>
           <h2 className="text-2xl font-semibold text-foreground">6. Contact</h2>
-          <p className="mt-3">Vragen over deze verklaring? Mail ons via info@adabmoves.nl.</p>
+          <p className="mt-3">Vragen over deze verklaring? Mail ons via adabmoves@gmail.com.</p>
         </section>
       </div>
     </article>

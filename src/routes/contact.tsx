@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Send, Phone } from "lucide-react";
 import { useState } from "react";
 import { FloatingDecor } from "@/components/FloatingDecor";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WA } from "@/lib/whatsapp";
+import { RevealEmail } from "@/components/RevealEmail";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -18,6 +19,44 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setSending(true);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim().slice(0, 100),
+      org: String(fd.get("org") || "").trim().slice(0, 200),
+      email: String(fd.get("email") || "").trim().slice(0, 254),
+      phone: String(fd.get("phone") || "").trim().slice(0, 40),
+      message: String(fd.get("message") || "").trim().slice(0, 4000),
+      _subject: "Nieuw contactbericht via adabmoves.nl",
+      _template: "table",
+      _captcha: "false",
+    };
+    if (!payload.name || !payload.email || !payload.message) {
+      setError("Vul naam, e-mail en bericht in.");
+      setSending(false);
+      return;
+    }
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Versturen mislukt");
+      setSent(true);
+    } catch (err) {
+      setError("Er ging iets mis. Probeer het later opnieuw of mail ons direct.");
+    } finally {
+      setSending(false);
+    }
+  }
   return (
     <section className="relative overflow-hidden container-x pt-16 md:pt-24 pb-24">
       <FloatingDecor />
@@ -32,15 +71,15 @@ function ContactPage() {
             ADAB MOVES voor jullie kan betekenen.
           </p>
           <div className="mt-10 space-y-5">
-            <a href={`mailto:${EMAIL}`} className="flex items-start gap-4 group">
-              <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/12 flex items-center justify-center text-[var(--coral-deep)] group-hover:bg-[var(--coral)] group-hover:text-white transition-colors">
+            <div className="flex items-start gap-4">
+              <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/12 flex items-center justify-center text-[var(--coral-deep)]">
                 <Mail size={18}/>
               </div>
               <div>
                 <div className="text-sm uppercase tracking-widest text-muted-foreground">E-mail</div>
-                <div className="text-lg font-medium text-foreground group-hover:text-[var(--coral-deep)]">{EMAIL}</div>
+                <div className="mt-2"><RevealEmail label="Toon e-mailadres" /></div>
               </div>
-            </a>
+            </div>
             <a href={WA.generic} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
               <div className="h-11 w-11 rounded-xl bg-[#25D366]/15 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
                 <MessageCircle size={18}/>
@@ -73,7 +112,7 @@ function ContactPage() {
 
         <div className="lg:col-span-7">
           <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+            onSubmit={handleSubmit}
             className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-[var(--shadow-soft)]"
           >
             {sent ? (
@@ -93,16 +132,22 @@ function ContactPage() {
                   <Field label="Telefoon" name="phone" />
                 </div>
                 <div className="mt-5">
-                  <label className="block text-sm font-medium text-foreground mb-2">Bericht</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">Bericht <span className="text-[var(--coral)]">*</span></label>
                   <textarea
+                    id="message"
+                    name="message"
                     required
                     rows={5}
+                    maxLength={4000}
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-[var(--coral)] transition-colors"
                     placeholder="Vertel ons over jullie locatie, doelgroep of wens..."
                   />
                 </div>
-                <button type="submit" className="btn-primary mt-7">
-                  Verstuur bericht <Send size={16}/>
+                {error && (
+                  <p className="mt-4 text-sm text-[var(--coral-deep)]">{error}</p>
+                )}
+                <button type="submit" disabled={sending} className="btn-primary mt-7 disabled:opacity-60">
+                  {sending ? "Versturen..." : <>Verstuur bericht <Send size={16}/></>}
                 </button>
               </>
             )}
