@@ -21,8 +21,8 @@ const sections = [
   {
     icon: BookOpen,
     tag: "Ons verhaal",
-    title: "Begonnen door broeders met één missie.",
-    text: "Hoe ADAB MOVES is ontstaan vanuit een groep broeders, met de overtuiging dat sport en karakter samen horen.",
+    title: "Vanuit ervaring, voor de volgende generatie.",
+    text: "Hoe ADAB MOVES is ontstaan — na jaren ervaring op vele scholen, met de overtuiging dat sport en karakter samen horen.",
     image: verhaal,
     to: "/over-ons/verhaal",
   },
@@ -48,26 +48,28 @@ function OverOnsHub() {
   return (
     <>
       <section className="relative overflow-hidden bg-[var(--ink)] text-[var(--cream)]">
-        <FloatingDecor />
-        <div className="container-x py-20 md:py-28">
+        <FloatingDecor variant="ink" />
+        <div className="container-x py-20 md:py-28 relative">
           <span className="eyebrow text-[var(--coral)]">Over ons</span>
           <h1 className="mt-5 max-w-3xl text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
             Wie wij zijn en <span className="italic text-[var(--coral)]">waar wij voor staan</span>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75 leading-relaxed">
-            ADAB MOVES is een multisport- en beweegorganisatie voor kinderen én tieners. Lees ons
-            verhaal, ontdek de ADAB Methode en bekijk onze missie & visie.
+            ADAB MOVES is een multisport- en beweegorganisatie voor kinderen én tieners — voor
+            scholen, ouders en gemeenschap. Lees ons verhaal, ontdek de ADAB Methode en bekijk onze
+            missie & visie.
           </p>
         </div>
       </section>
 
       <section className="container-x py-16 md:py-20">
         <div className="grid md:grid-cols-3 gap-6">
-          {sections.map((s) => (
+          {sections.map((s, i) => (
             <Link
               key={s.to}
               to={s.to}
-              className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift"
+              className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise"
+              style={{ animationDelay: `${i * 80}ms` }}
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={s.image} alt={s.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />

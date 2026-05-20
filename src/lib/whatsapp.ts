@@ -2,7 +2,7 @@
 export const PHONE_RAW = "31611879789"; // landcode + nummer (zonder leading 0)
 export const PHONE_DISPLAY = "+31 6 11 87 97 89";
 export const PHONE_TEL = "+31611879789";
-export const EMAIL = "info@adabmoves.nl";
+export const EMAIL = "anass2012@live.nl";
 
 const base = `https://wa.me/${PHONE_RAW}`;
 
@@ -11,15 +11,15 @@ export function waLink(message: string) {
 }
 
 export const WA = {
-  generic: waLink("Salam aleikum, ik wil graag meer weten over jullie aanbod."),
+  generic: waLink("Hallo, ik wil graag meer weten over ADAB MOVES."),
   community: waLink(
-    "Salam aleikum, ik wil mijn kind inschrijven bij de ADAB MOVES community.",
+    "Hallo, ik wil mijn kind inschrijven bij de ADAB MOVES multisport-community.",
   ),
-  question: waLink("Salam aleikum, ik heb een vraag over ADAB MOVES."),
+  question: waLink("Hallo, ik heb een vraag over ADAB MOVES."),
   school: waLink(
-    "Salam aleikum, wij zijn een school en willen graag een gesprek over jullie aanbod.",
+    "Hallo, wij zijn een school en willen graag een gesprek over jullie aanbod.",
   ),
   event: waLink(
-    "Salam aleikum, wij willen graag een event/ADAB Day organiseren — kunnen we sparren?",
+    "Hallo, wij willen graag een sportdag of event organiseren — kunnen we sparren?",
   ),
 };

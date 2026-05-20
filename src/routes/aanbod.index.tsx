@@ -1,18 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, School, Users, CalendarDays, Package, Mail, Phone } from "lucide-react";
+import { ArrowRight, School, Users, CalendarDays, Package, Mail, MessageCircle } from "lucide-react";
 import event from "@/assets/event.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import scholen from "@/assets/scholen.jpg";
 import { FloatingDecor } from "@/components/FloatingDecor";
+import { WA, EMAIL } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/aanbod/")({
   head: () => ({
     meta: [
       { title: "Aanbod — ADAB MOVES" },
-      { name: "description", content: "Schoolprogramma's, multisportcommunity, evenementen en verhuur — ontdek het volledige aanbod van Adab Moves." },
+      { name: "description", content: "Schoolprogramma's, multisport voor kinderen en tieners, sportdagen en verhuur — ontdek het volledige aanbod van ADAB MOVES." },
       { property: "og:title", content: "Aanbod — ADAB MOVES" },
-      { property: "og:description", content: "Maatwerk in sport en beweging: scholen, community, events." },
+      { property: "og:description", content: "Maatwerk in sport en beweging: scholen, multisport, events." },
     ],
   }),
   component: AanbodHub,
@@ -29,8 +30,8 @@ const offerings = [
   },
   {
     icon: Users,
-    tag: "Spoor 02 — Community",
-    title: "Multisportcommunity",
+    tag: "Spoor 02 — Multisport",
+    title: "Multisport voor kinderen & tieners",
     text: "Wekelijkse activiteiten met inschrijving per maand of kwartaal. Een hechte groep, vaste coaches, wisselende sporten.",
     image: community,
     to: "/aanbod/community",
@@ -39,7 +40,7 @@ const offerings = [
     icon: CalendarDays,
     tag: "Spoor 03 — Events",
     title: "ADAB Day & evenementen",
-    text: "Sportdagen, themadagen en kinderactiviteiten — los te boeken voor scholen, moskeeën, buurthuizen en gemeenten.",
+    text: "Sportdagen, themadagen en kinderactiviteiten — los te boeken voor scholen, gemeenten en buurthuizen.",
     image: event,
     to: "/aanbod/events",
   },
@@ -63,18 +64,19 @@ function AanbodHub() {
           Eén visie. <span className="italic text-[var(--coral-deep)]">Meerdere</span> vormen van bewegen.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-          Adab Moves levert vanuit één duidelijke visie meerdere vormen van sportaanbod. Klik door
-          voor uitgebreide informatie per spoor.
+          ADAB MOVES levert vanuit één duidelijke visie meerdere vormen van sportaanbod voor
+          scholen, ouders en gemeenschap. Klik door voor uitgebreide informatie per spoor.
         </p>
       </section>
 
       <section className="container-x pb-20">
         <div className="grid md:grid-cols-2 gap-6">
-          {offerings.map((it) => (
+          {offerings.map((it, i) => (
             <Link
               key={it.title}
               to={it.to}
-              className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift"
+              className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise"
+              style={{ animationDelay: `${i * 80}ms` }}
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <img
@@ -106,7 +108,7 @@ function AanbodHub() {
 
       <section className="container-x pb-24">
         <div className="relative overflow-hidden rounded-3xl bg-[var(--ink)] text-[var(--cream)] p-10 md:p-16">
-          <div aria-hidden className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-[var(--coral)]/30 blur-3xl" />
+          <div aria-hidden className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-[var(--coral)]/30 blur-3xl animate-blob" />
           <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-10 items-end">
             <div>
               <span className="eyebrow !text-[var(--cream)]/70">Klaar om te starten?</span>
@@ -120,22 +122,22 @@ function AanbodHub() {
               </div>
             </div>
             <div className="space-y-4">
-              <a href="mailto:info@adabmoves.nl" className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
+              <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
                 <div className="h-11 w-11 rounded-xl bg-[var(--coral)] flex items-center justify-center text-[var(--ink)]">
                   <Mail size={20} />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-[var(--cream)]/60">E-mail</p>
-                  <p className="font-medium">info@adabmoves.nl</p>
+                  <p className="font-medium">{EMAIL}</p>
                 </div>
               </a>
-              <a href="tel:+31000000000" className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
-                <div className="h-11 w-11 rounded-xl bg-[var(--coral)] flex items-center justify-center text-[var(--ink)]">
-                  <Phone size={20} />
+              <a href={WA.generic} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl border border-[var(--cream)]/15 bg-[var(--cream)]/5 p-5 hover:bg-[var(--cream)]/10 transition-colors">
+                <div className="h-11 w-11 rounded-xl bg-[#25D366] flex items-center justify-center text-white">
+                  <MessageCircle size={20} />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-wider text-[var(--cream)]/60">Bellen</p>
-                  <p className="font-medium">Plan via contactformulier</p>
+                  <p className="text-xs uppercase tracking-wider text-[var(--cream)]/60">WhatsApp</p>
+                  <p className="font-medium">App ons direct</p>
                 </div>
               </a>
             </div>

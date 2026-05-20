@@ -8,7 +8,7 @@ export const Route = createFileRoute("/over-ons/verhaal")({
   head: () => ({
     meta: [
       { title: "Ons verhaal — ADAB MOVES" },
-      { name: "description", content: "Hoe ADAB MOVES is ontstaan: drie broeders, één missie en de kracht van sport." },
+      { name: "description", content: "Hoe ADAB MOVES is ontstaan: jarenlange ervaring in de sportbranche op vele scholen, en de overtuiging dat sport en karakter samen horen." },
       { property: "og:title", content: "Ons verhaal — ADAB MOVES" },
       { property: "og:image", content: verhaal },
     ],
@@ -17,10 +17,10 @@ export const Route = createFileRoute("/over-ons/verhaal")({
 });
 
 const milestones = [
-  { y: "2014", t: "Eerste trainingen", d: "Op zaterdagochtend in een gehuurde gymzaal — broeders die jongens leerden trainen mét manieren." },
+  { y: "2014", t: "Eerste trainingen", d: "Op zaterdagochtend in een gehuurde gymzaal — sport mét manieren als rode draad." },
   { y: "2017", t: "Eerste scholen", d: "Sportlessen op basisscholen in Amsterdam. Een vast gezicht in de gymzaal." },
   { y: "2020", t: "Community gelanceerd", d: "Wekelijkse multisport voor kinderen en tieners op vaste locaties." },
-  { y: "2023", t: "Events & ADAB Day", d: "Sportdagen voor scholen, moskeeën en buurthuizen door heel de regio." },
+  { y: "2023", t: "Events & ADAB Day", d: "Sportdagen voor scholen, gemeenten en buurthuizen door heel de regio." },
   { y: "2025", t: "Volgende fase", d: "Verhuur, meidentak en nieuwe steden — gecontroleerd groeien zonder verlies van kwaliteit." },
 ];
 
@@ -29,7 +29,7 @@ function VerhaalPage() {
     <>
       <section className="relative overflow-hidden bg-[var(--cream)] border-b border-border">
         <FloatingDecor />
-        <div className="container-x pt-14 md:pt-20 pb-12">
+        <div className="container-x pt-14 md:pt-20 pb-12 relative">
           <Link to="/over-ons" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
             ← Terug naar over ons
           </Link>
@@ -37,20 +37,19 @@ function VerhaalPage() {
             <div className="lg:col-span-7">
               <span className="eyebrow">Ons verhaal</span>
               <h1 className="mt-4 text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground">
-                Begonnen door <span className="italic text-[var(--coral-deep)]">broeders</span>, gedragen door een gemeenschap.
+                Vanuit ervaring, <span className="italic text-[var(--coral-deep)]">voor de volgende generatie</span>.
               </h1>
             </div>
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
-              ADAB MOVES is ontstaan uit een groep broeders die één ding zagen: de juiste manieren
-              (adab) en het ontwikkelen van karakter moeten meegegeven worden — en sport speelt
-              daarin een hele grote rol.
+              ADAB MOVES is opgericht door mensen met jarenlange ervaring in de sportbranche —
+              gedreven door wat zij dagelijks zagen op scholen, in gymzalen en in de wijk.
             </p>
           </div>
         </div>
       </section>
 
       <section className="container-x py-16 md:py-20">
-        <div className="rounded-3xl overflow-hidden">
+        <div className="rounded-3xl overflow-hidden hover-lift">
           <img src={verhaal} alt="Oprichters van ADAB MOVES in de gymzaal" loading="lazy" className="w-full h-[420px] md:h-[560px] object-cover" />
         </div>
       </section>
@@ -60,37 +59,46 @@ function VerhaalPage() {
           <div className="lg:col-span-5">
             <span className="eyebrow">Waarom wij begonnen</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
-              Een duidelijk alternatief voor scholen én gezinnen.
+              Wat wij zagen, kunnen we niet meer ontkennen.
             </h2>
           </div>
           <div className="lg:col-span-7 space-y-6 text-lg text-muted-foreground leading-relaxed">
             <p>
-              We zagen ouders zoeken naar een plek waar hun kinderen en tieners kunnen sporten in
-              een veilige, halal omgeving. We zagen scholen worstelen met betekenisvolle
-              bewegingslessen. Daarom bieden wij een{" "}
-              <strong className="text-foreground">duidelijk alternatief</strong> — voor beide.
+              Na jaren ervaring in de sportbranche, op vele scholen door heel het land te hebben
+              gestaan, zagen wij iets dat ons niet meer losliet:{" "}
+              <strong className="text-foreground">kinderen die wel bewegen, maar nergens leren wat erbij hoort</strong>.
+              Geen lijn, geen duidelijkheid, geen verbinding tussen sport en wie je daarbuiten bent.
             </p>
             <p>
-              Geen losse activiteiten, maar een doordachte methode: bewegen met betekenis,
-              geleid door gescreende broeders die zelf leven naar de waarden die zij doorgeven.
+              We zagen scholen worstelen met betekenisvolle bewegingslessen. We zagen ouders zoeken
+              naar een plek waar hun kinderen en tieners kunnen sporten in een veilige, vertrouwde
+              omgeving. We zagen jongeren die talent hadden, maar geen plek waar dat talent ook
+              karakter mocht worden.
             </p>
             <p>
-              Vandaag de dag zijn we actief op tientallen locaties in de Metropoolregio
-              Amsterdam — met dezelfde overtuiging als op dag één.
+              Daarom bieden wij een{" "}
+              <strong className="text-foreground">duidelijk alternatief</strong> — voor scholen,
+              ouders én gemeenschap. Geen losse activiteiten, maar een doordachte methode:
+              bewegen met betekenis, geleid door trainers en begeleiders die hun best doen te
+              leven naar de normen en waarden die zij meegeven.
+            </p>
+            <p>
+              Vandaag zijn we actief op tientallen locaties — met dezelfde overtuiging als op dag één.
             </p>
           </div>
         </div>
       </section>
 
       <section className="bg-[var(--ink)] text-[var(--cream)]">
-        <div className="container-x py-20">
-          <div className="max-w-2xl mb-12">
+        <div className="container-x py-20 relative overflow-hidden">
+          <div aria-hidden className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[var(--coral)]/20 blur-3xl animate-blob" />
+          <div className="max-w-2xl mb-12 relative">
             <span className="eyebrow text-[var(--coral)]">Tijdlijn</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">Van eerste training tot landelijke ambitie.</h2>
           </div>
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {milestones.map((m) => (
-              <li key={m.y} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 relative">
+            {milestones.map((m, i) => (
+              <li key={m.y} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
                 <div className="text-3xl font-semibold text-[var(--coral)]" style={{ fontFamily: "var(--font-display)" }}>{m.y}</div>
                 <div className="mt-3 font-semibold">{m.t}</div>
                 <div className="mt-1.5 text-sm text-white/70 leading-relaxed">{m.d}</div>
@@ -103,7 +111,7 @@ function VerhaalPage() {
       <section className="container-x py-20">
         <div className="rounded-3xl bg-[var(--coral)]/10 border border-[var(--coral)]/20 p-10 md:p-16 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-2 flex lg:justify-center">
-            <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-[var(--coral)] text-white">
+            <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-[var(--coral)] text-white animate-floaty">
               <Quote size={28} />
             </span>
           </div>

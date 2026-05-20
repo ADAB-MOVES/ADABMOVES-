@@ -7,8 +7,8 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/aanbod/events")({
   head: () => ({
     meta: [
-      { title: "ADAB Day — islamitische sportdagen & events" },
-      { name: "description", content: "Sportdagen, themadagen en kinderactiviteiten op locatie — volledig verzorgd door ADAB MOVES voor scholen, moskeeën, gemeenten en buurthuizen." },
+      { title: "ADAB Day — sportdagen & events voor scholen" },
+      { name: "description", content: "Sportdagen, themadagen en kinderactiviteiten op locatie — volledig verzorgd door ADAB MOVES voor scholen, gemeenten en buurthuizen." },
       { property: "og:title", content: "ADAB Day & evenementen" },
       { property: "og:description", content: "Een sportdag die kinderen nog weken navertellen." },
     ],
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/aanbod/events")({
 
 const types = [
   { icon: CalendarDays, title: "Sportdagen", text: "Compleet verzorgde dagen met circuits, teamspellen en afsluitende toernooien." },
-  { icon: Sparkles, title: "Themadagen", text: "Olympische dag, Ramadan-activiteit, Eid-feest of vakantieprogramma." },
+  { icon: Sparkles, title: "Themadagen", text: "Olympische dag, seizoensactiviteit of vakantieprogramma op maat." },
   { icon: Users, title: "Clinics & workshops", text: "Losse activiteiten van een dagdeel, ook combineerbaar met andere programma's." },
-  { icon: MapPin, title: "Op locatie", text: "Wij komen naar jullie school, moskee, buurthuis of sporthal — door heel de regio." },
+  { icon: MapPin, title: "Op locatie", text: "Wij komen naar jullie school, buurthuis of sporthal — door heel de regio." },
 ];
 
 const included = [
@@ -37,7 +37,7 @@ function EventsPage() {
     <>
       <section className="relative overflow-hidden bg-[var(--cream)] border-b border-border">
         <FloatingDecor />
-        <div className="container-x pt-14 md:pt-20 pb-12">
+        <div className="container-x pt-14 md:pt-20 pb-12 relative">
           <Link to="/aanbod" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
             ← Terug naar aanbod
           </Link>
@@ -57,8 +57,8 @@ function EventsPage() {
       </section>
 
       <section className="container-x py-16 md:py-20">
-        <div className="rounded-3xl overflow-hidden">
-          <img src={event} alt="ADAB Day sportevenement met families en kinderen" className="w-full h-auto" loading="lazy" />
+        <div className="rounded-3xl overflow-hidden hover-lift">
+          <img src={event} alt="ADAB Day sportevenement met families en kinderen" className="w-full h-auto object-contain" loading="lazy" />
         </div>
         <div className="mt-6 rounded-3xl bg-[var(--coral)]/12 p-10 text-center">
           <p className="text-2xl md:text-3xl font-semibold text-foreground leading-snug" style={{ fontFamily: "var(--font-display)" }}>
@@ -69,8 +69,8 @@ function EventsPage() {
 
       <section className="container-x pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {types.map((t) => (
-            <article key={t.title} className="rounded-2xl border border-border bg-card p-6 hover-lift">
+          {types.map((t, i) => (
+            <article key={t.title} className="rounded-2xl border border-border bg-card p-6 hover-lift animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
               <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]">
                 <t.icon size={20} />
               </div>
@@ -103,12 +103,13 @@ function EventsPage() {
       </section>
 
       <section className="container-x py-20">
-        <div className="rounded-3xl bg-[var(--ink)] text-[var(--cream)] p-10 md:p-14 grid lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8">
+        <div className="rounded-3xl bg-[var(--ink)] text-[var(--cream)] p-10 md:p-14 grid lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
+          <div aria-hidden className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-[var(--coral)]/30 blur-3xl animate-blob" />
+          <div className="lg:col-span-8 relative">
             <h2 className="text-3xl md:text-4xl font-semibold leading-tight">Een event op de planning?</h2>
             <p className="mt-4 text-white/70 max-w-xl">Vertel ons over de datum, locatie en doelgroep — wij maken een passend voorstel.</p>
           </div>
-          <div className="lg:col-span-4 lg:text-right">
+          <div className="lg:col-span-4 lg:text-right relative">
             <a href={WA.event} target="_blank" rel="noopener noreferrer" className="btn-primary">App ons direct <ArrowRight size={18} /></a>
           </div>
         </div>
