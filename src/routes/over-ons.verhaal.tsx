@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Quote } from "lucide-react";
 import verhaal from "@/assets/verhaal.jpg";
 import community from "@/assets/community.jpg";
+import { FloatingDecor } from "@/components/FloatingDecor";
 
 export const Route = createFileRoute("/over-ons/verhaal")({
   head: () => ({
@@ -26,7 +27,8 @@ const milestones = [
 function VerhaalPage() {
   return (
     <>
-      <section className="bg-[var(--cream)] border-b border-border">
+      <section className="relative overflow-hidden bg-[var(--cream)] border-b border-border">
+        <FloatingDecor />
         <div className="container-x pt-14 md:pt-20 pb-12">
           <Link to="/over-ons" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
             ← Terug naar over ons

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Send } from "lucide-react";
 import { useState } from "react";
+import { FloatingDecor } from "@/components/FloatingDecor";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -17,7 +18,8 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   const [sent, setSent] = useState(false);
   return (
-    <section className="container-x pt-16 md:pt-24 pb-24">
+    <section className="relative overflow-hidden container-x pt-16 md:pt-24 pb-24">
+        <FloatingDecor />
       <div className="grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
           <span className="eyebrow">Contact</span>

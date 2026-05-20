@@ -4,6 +4,7 @@ import event from "@/assets/event.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import scholen from "@/assets/scholen.jpg";
+import { FloatingDecor } from "@/components/FloatingDecor";
 
 export const Route = createFileRoute("/aanbod/")({
   head: () => ({
@@ -55,7 +56,8 @@ const offerings = [
 function AanbodHub() {
   return (
     <>
-      <section className="container-x pt-16 md:pt-24 pb-12">
+      <section className="relative overflow-hidden container-x pt-16 md:pt-24 pb-12">
+        <FloatingDecor />
         <span className="eyebrow">Ons aanbod</span>
         <h1 className="mt-4 max-w-3xl text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground">
           Eén visie. <span className="italic text-[var(--coral-deep)]">Meerdere</span> vormen van bewegen.

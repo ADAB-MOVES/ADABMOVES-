@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Package, Snowflake, Sun, Users } from "lucide-react";
+import { FloatingDecor } from "@/components/FloatingDecor";
 
 export const Route = createFileRoute("/aanbod/verhuur")({
   head: () => ({
@@ -22,7 +23,8 @@ const items = [
 function VerhuurPage() {
   return (
     <>
-      <section className="bg-[var(--cream)] border-b border-border">
+      <section className="relative overflow-hidden bg-[var(--cream)] border-b border-border">
+        <FloatingDecor />
         <div className="container-x pt-14 md:pt-20 pb-16">
           <Link to="/aanbod" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
             ← Terug naar aanbod

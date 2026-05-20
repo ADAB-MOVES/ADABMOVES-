@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Sparkles, Target } from "lucide-react";
 import community from "@/assets/community.jpg";
 import verhaal from "@/assets/verhaal.jpg";
 import methode from "@/assets/methode.jpg";
+import { FloatingDecor } from "@/components/FloatingDecor";
 
 export const Route = createFileRoute("/over-ons/")({
   head: () => ({
@@ -46,7 +47,8 @@ const sections = [
 function OverOnsHub() {
   return (
     <>
-      <section className="bg-[var(--ink)] text-[var(--cream)]">
+      <section className="relative overflow-hidden bg-[var(--ink)] text-[var(--cream)]">
+        <FloatingDecor />
         <div className="container-x py-20 md:py-28">
           <span className="eyebrow text-[var(--coral)]">Over ons</span>
           <h1 className="mt-5 max-w-3xl text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">

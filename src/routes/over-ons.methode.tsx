@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck, Compass, Users, Scale, Flame, HeartHandshake, Star } from "lucide-react";
 import methode from "@/assets/methode.jpg";
 import coach from "@/assets/coach.jpg";
+import { FloatingDecor } from "@/components/FloatingDecor";
 
 export const Route = createFileRoute("/over-ons/methode")({
   head: () => ({
@@ -28,7 +29,8 @@ const pillars = [
 function MethodePage() {
   return (
     <>
-      <section className="bg-[var(--cream)] border-b border-border">
+      <section className="relative overflow-hidden bg-[var(--cream)] border-b border-border">
+        <FloatingDecor />
         <div className="container-x pt-14 md:pt-20 pb-12">
           <Link to="/over-ons" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
             ← Terug naar over ons

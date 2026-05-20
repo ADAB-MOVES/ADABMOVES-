@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+import { FloatingDecor } from "@/components/FloatingDecor";
   ArrowRight,
   Heart,
   Scale,
@@ -51,7 +52,8 @@ const pillars = [
 function MissieVisiePage() {
   return (
     <>
-      <section className="container-x pt-14 md:pt-20 pb-12">
+      <section className="relative overflow-hidden container-x pt-14 md:pt-20 pb-12">
+        <FloatingDecor />
         <Link to="/over-ons" className="eyebrow inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
           ← Terug naar over ons
         </Link>
