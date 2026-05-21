@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, School, GraduationCap, Users, Calendar, Sparkles, HeartHandshake, Languages, Repeat } from "lucide-react";
+import { ArrowRight, Check, Sparkles, HeartHandshake, Languages, Repeat } from "lucide-react";
 import scholen from "@/assets/scholen.jpg";
 import { WA } from "@/lib/whatsapp";
 import { FloatingDecor } from "@/components/FloatingDecor";
