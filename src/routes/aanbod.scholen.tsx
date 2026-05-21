@@ -230,7 +230,44 @@ function ScholenPage() {
         </div>
       </section>
 
+      {/* WAT JE TERUGKRIJGT — SCHOLEN */}
+      <section className="container-x py-20 md:py-24">
+        <div className="max-w-2xl mb-12">
+          <span className="eyebrow">Wat je terugkrijgt</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
+            Voor scholen: <span className="italic text-[var(--coral-deep)]">jullie geven, wij geven terug</span>.
+          </h2>
+        </div>
+        <div className="rounded-3xl border border-border bg-card p-8 md:p-10 grid md:grid-cols-2 gap-10">
+          <div>
+            <div className="eyebrow !text-foreground/50">Jullie geven</div>
+            <p className="mt-3 text-foreground text-lg">Lokaal, planning & vertrouwen</p>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Een vaste gymzaal, een plek op het jaarrooster en het vertrouwen om met jullie
+              leerlingen te werken.
+            </p>
+          </div>
+          <div className="md:border-l md:border-border md:pl-10">
+            <div className="eyebrow">Jullie ontvangen</div>
+            <ul className="mt-3 space-y-2.5 text-foreground/85">
+              {[
+                "Professionele bewegingslessen",
+                "Sportdagen & workshops",
+                "Pedagogische versterking in álle lessen",
+                "Verbinding met de wijk en gemeenschap",
+              ].map((g) => (
+                <li key={g} className="flex items-start gap-2.5">
+                  <CheckCircle2 size={16} className="mt-1 text-[var(--coral-deep)] shrink-0" />
+                  {g}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="container-x py-20">
+
         <div className="rounded-3xl bg-[var(--ink)] text-[var(--cream)] p-10 md:p-14 grid lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
           <div aria-hidden className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-[var(--coral)]/30 blur-3xl animate-blob" />
           <div className="lg:col-span-8 relative">

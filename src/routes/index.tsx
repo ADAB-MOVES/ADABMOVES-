@@ -8,7 +8,6 @@ import {
   HeartHandshake,
   Sparkles,
   MapPin,
-  CheckCircle2,
   Trophy,
   Star,
   Play,
@@ -18,6 +17,9 @@ import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
 import { Testimonials } from "@/components/Testimonials";
+import { Counter } from "@/components/Counter";
+import { KidMascot } from "@/components/KidMascot";
+import { SportIcon, type SportName } from "@/components/illustrations/SportIcon";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,7 +28,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "ADAB MOVES is een islamitische multisport-organisatie voor kinderen. Voor scholen, ouders en gemeenschap — door heel Nederland.",
+          "ADAB MOVES is een islamitische multisport-organisatie voor kinderen. Voor scholen, ouders en gemeenschap — in Amsterdam en omgeving.",
       },
       { property: "og:title", content: "ADAB MOVES — Bewegen met betekenis" },
       {
@@ -70,8 +72,6 @@ const tracks = [
   },
 ];
 
-const cities = ["Amsterdam", "Zaandam", "Amstelveen", "Hoofddorp", "Haarlem", "Almere"];
-
 const reasons = [
   { icon: Sparkles, title: "Eén duidelijke methode", text: "De ADAB Methode loopt als rode draad door al ons aanbod — zichtbaar in elke training." },
   { icon: ShieldCheck, title: "Veilige, fijne omgeving", text: "Vaste trainers en heldere huisregels — een plek waar elk kind zich thuis voelt." },
@@ -79,16 +79,39 @@ const reasons = [
   { icon: Trophy, title: "10+ jaar ervaring", text: "Bewezen aanpak voor scholen, ouders en partners — door heel Nederland." },
 ];
 
-const valueExchange = [
-  { who: "Scholen", give: "Lokaal, planning & vertrouwen", get: ["Professionele bewegingslessen", "Sportdagen & workshops", "Pedagogische versterking", "Verbinding met de wijk"] },
-  { who: "Ouders", give: "Inschrijving & betrokkenheid", get: ["Veilige sportomgeving", "Brede motoriek", "Karaktervorming", "Bescherming van normen & waarden"] },
-  { who: "Partners", give: "Locatie, netwerk of financiering", get: ["Bewezen programma", "Bereik in de gemeenschap", "Maatschappelijke impact", "Heldere rapportage"] },
+const marqueeSports: { label: string; sport: SportName }[] = [
+  { label: "Voetbal", sport: "voetbal" },
+  { label: "Basketbal", sport: "basketbal" },
+  { label: "Kickboks", sport: "kickboks" },
+  { label: "Boogschieten", sport: "archery" },
+  { label: "Fitness", sport: "fitness" },
+  { label: "Atletiek", sport: "voetbal" },
+  { label: "Multisport", sport: "basketbal" },
 ];
+
+function MarqueeRow() {
+  const items = [...marqueeSports, ...marqueeSports];
+  return (
+    <div className="relative overflow-hidden bg-[var(--ink)] text-[var(--cream)] border-y border-white/10 py-5">
+      <div className="flex w-max gap-12 animate-marquee will-change-transform">
+        {items.map((s, i) => (
+          <div key={i} className="flex items-center gap-3 shrink-0">
+            <SportIcon sport={s.sport} size={36} tone="coral" />
+            <span className="text-lg md:text-xl font-semibold tracking-wide uppercase">
+              {s.label}
+            </span>
+            <span className="text-[var(--coral)] text-2xl">✦</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function HomePage() {
   return (
     <>
-      {/* HERO — rustiger, geen marquee, geen floating badges */}
+      {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="container-x pt-12 md:pt-20 pb-16 md:pb-24 grid lg:grid-cols-12 gap-10 items-center relative">
           <div className="lg:col-span-6 animate-rise">
@@ -119,7 +142,41 @@ function HomePage() {
             <div className="relative rounded-[1.75rem] overflow-hidden shadow-[var(--shadow-soft)] hover-lift">
               <img src={hero} alt="Kinderen spelen multisport in een ADAB MOVES sportzaal" width={1600} height={1100} className="w-full h-auto object-cover" />
             </div>
+            {/* Springende mascotte */}
+            <div className="hidden md:block absolute -bottom-8 -left-10 z-10">
+              <KidMascot pose="jump" size={150} />
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* BEWEGENDE BALK MET SPORTEN */}
+      <MarqueeRow />
+
+      {/* CIJFERS */}
+      <section className="container-x py-16 md:py-20">
+        <div className="grid sm:grid-cols-3 gap-6 text-center">
+          {[
+            { value: 100, suffix: "%", label: "Pedagogisch verantwoord" },
+            { value: 10, suffix: "+", label: "Jaar ervaring" },
+            { value: 6, suffix: "", label: "Actief in steden" },
+          ].map((c, i) => (
+            <div
+              key={c.label}
+              className="rounded-3xl border border-border bg-card p-8 hover-lift animate-rise"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
+              <div
+                className="text-6xl md:text-7xl font-semibold text-[var(--coral-deep)] leading-none"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                <Counter to={c.value} suffix={c.suffix} />
+              </div>
+              <div className="mt-4 text-sm uppercase tracking-wider text-muted-foreground font-semibold">
+                {c.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -177,8 +234,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* DRIE SPOREN */}
-      <section className="container-x py-20 md:py-28">
+      {/* DRIE SPOREN — kleinere afbeeldingen */}
+      <section className="container-x py-20 md:py-28 relative">
         <div className="max-w-2xl mb-12">
           <span className="eyebrow">Ons aanbod</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
@@ -188,35 +245,38 @@ function HomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {tracks.map((t, i) => (
             <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise" style={{ animationDelay: `${i * 100}ms` }}>
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-[16/10] overflow-hidden">
                 <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover" />
               </div>
-              <div className="p-7 flex flex-col flex-1">
+              <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={20} /></div>
+                  <div className="h-9 w-9 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={18} /></div>
                   <span className="eyebrow">{t.tag}</span>
                 </div>
-                <h3 className="mt-4 text-2xl font-semibold text-foreground leading-snug">{t.title}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{t.text}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--coral-deep)] group-hover:gap-3 transition-all">
+                <h3 className="mt-3 text-xl font-semibold text-foreground leading-snug">{t.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.text}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--coral-deep)] group-hover:gap-3 transition-all">
                   Bekijk pagina <ArrowRight size={14} />
                 </span>
               </div>
             </Link>
           ))}
         </div>
+        <div className="hidden lg:block absolute -right-4 top-10">
+          <KidMascot pose="ball" size={120} />
+        </div>
       </section>
 
-      {/* ONS VERHAAL */}
+      {/* ONS VERHAAL — kleinere afbeelding */}
       <section className="bg-[var(--cream)] border-y border-border">
         <div className="container-x py-20 md:py-28">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5">
-              <div className="relative rounded-3xl overflow-hidden hover-lift">
+            <div className="lg:col-span-4">
+              <div className="relative rounded-3xl overflow-hidden hover-lift max-w-sm mx-auto lg:mx-0">
                 <img src={community} alt="ADAB MOVES community in beweging" loading="lazy" className="w-full h-full aspect-[4/5] object-cover" />
               </div>
             </div>
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-8">
               <span className="eyebrow">Ons verhaal</span>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-[1.1] text-foreground">
                 Na jaren in de sportbranche zagen wij <span className="italic text-[var(--coral-deep)]">iets dat ons niet meer losliet</span>.
@@ -239,68 +299,24 @@ function HomePage() {
         </div>
       </section>
 
-      {/* WAT JE TERUGKRIJGT */}
-      <section className="container-x py-20 md:py-28">
-        <div className="max-w-2xl mb-12">
-          <span className="eyebrow">Wat je terugkrijgt</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
-            Jij geeft. Wij geven goedheid terug.
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-6">
-          {valueExchange.map((v, i) => (
-            <article key={v.who} className="relative rounded-3xl border border-border bg-card p-8 hover-lift overflow-hidden animate-rise" style={{ animationDelay: `${i * 100}ms` }}>
-              <div className="relative">
-                <div className="flex items-center gap-3">
-                  <div className="text-3xl font-semibold text-[var(--coral)]" style={{ fontFamily: "var(--font-display)" }}>0{i + 1}</div>
-                  <h3 className="text-2xl font-semibold text-foreground">{v.who}</h3>
-                </div>
-                <div className="mt-5">
-                  <div className="eyebrow !text-foreground/50">Jij geeft</div>
-                  <p className="mt-2 text-foreground">{v.give}</p>
-                </div>
-                <div className="mt-5 h-px bg-border" />
-                <div className="mt-5">
-                  <div className="eyebrow">Je ontvangt</div>
-                  <ul className="mt-3 space-y-2">
-                    {v.get.map((g) => (
-                      <li key={g} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                        <CheckCircle2 size={16} className="mt-0.5 text-[var(--coral-deep)] shrink-0" />
-                        {g}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* REGIO */}
+      {/* REGIO — Amsterdam en omgeving */}
       <section className="bg-[var(--cream)] border-y border-border">
         <div className="container-x py-20 md:py-24">
-          <div className="grid lg:grid-cols-12 gap-10 items-end mb-10">
+          <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
-              <span className="eyebrow inline-flex items-center gap-2"><MapPin size={14} /> Wij sluiten aan bij de normen en waarden van onze gemeenschap. Toegankelijk voor iedereen.</span>
+              <span className="eyebrow inline-flex items-center gap-2"><MapPin size={14} /> Onze regio</span>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
-                Je vindt ons in een stad bij jou in de buurt.
+                Amsterdam <span className="italic text-[var(--coral-deep)]">en omgeving</span>.
               </h2>
+              <p className="mt-5 text-muted-foreground leading-relaxed max-w-xl">
+                Onze trainers zijn actief in scholen, gymzalen en buurthuizen door de hele
+                Metropoolregio Amsterdam. Staat jouw locatie er niet bij? Neem contact op — we
+                groeien snel.
+              </p>
             </div>
-            <p className="lg:col-span-5 text-muted-foreground leading-relaxed">
-              Onze trainers zijn actief op tientallen locaties in scholen, gymzalen en buurthuizen.
-              Staat jouw stad er niet bij? Neem contact op — we groeien snel.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-2.5">
-            {cities.map((c, i) => (
-              <span key={c} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground/85 hover-lift animate-rise" style={{ animationDelay: `${i * 40}ms` }}>
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--coral)]" />
-                {c}
-              </span>
-            ))}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <KidMascot pose="run" size={170} />
+            </div>
           </div>
         </div>
       </section>
@@ -324,7 +340,7 @@ function HomePage() {
                 <Link to="/over-ons" className="btn-ghost">Lees over ons</Link>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden hidden md:block hover-lift">
+            <div className="rounded-2xl overflow-hidden hidden md:block hover-lift max-w-md ml-auto">
               <img src={event} alt="ADAB Day event met kinderen" loading="lazy" className="w-full h-auto aspect-[4/3] object-cover" />
             </div>
           </div>
