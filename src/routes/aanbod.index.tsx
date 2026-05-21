@@ -12,7 +12,7 @@ export const Route = createFileRoute("/aanbod/")({
   head: () => ({
     meta: [
       { title: "Aanbod — ADAB MOVES" },
-      { name: "description", content: "Schoolprogramma's, multisport voor kinderen en tieners, sportdagen en verhuur — ontdek het volledige aanbod van ADAB MOVES." },
+      { name: "description", content: "Schoolprogramma's, multisport voor kinderen, sportdagen en verhuur — ontdek het volledige aanbod van ADAB MOVES." },
       { property: "og:title", content: "Aanbod — ADAB MOVES" },
       { property: "og:description", content: "Maatwerk in sport en beweging: scholen, multisport, events." },
     ],
