@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Mail, Instagram } from "lucide-react";
 import logoDark from "@/assets/logo-dark.png";
 import { PHONE_DISPLAY, PHONE_TEL, WA, EMAIL } from "@/lib/whatsapp";
 
