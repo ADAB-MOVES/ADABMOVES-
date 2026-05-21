@@ -15,9 +15,8 @@ const nav: NavItem[] = [
     to: "/aanbod",
     label: "Aanbod",
     children: [
-      { to: "/aanbod/scholen", label: "Scholen", desc: "Basis & middelbaar" },
+      { to: "/aanbod/scholen", label: "Scholen", desc: "Basis onderwijs" },
       { to: "/aanbod/community/kinderen", label: "Multisport — Kinderen", desc: "8–12 jaar" },
-      { to: "/aanbod/community/tieners", label: "Multisport — Tieners", desc: "12–17 jaar" },
       { to: "/aanbod/events", label: "Sportdagen & events", desc: "Op locatie, op maat" },
       { to: "/aanbod/verhuur", label: "Verhuur", desc: "Materiaal & seizoenen" },
     ],

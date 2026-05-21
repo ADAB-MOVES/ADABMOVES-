@@ -12,7 +12,7 @@ export const Route = createFileRoute("/aanbod/")({
   head: () => ({
     meta: [
       { title: "Aanbod — ADAB MOVES" },
-      { name: "description", content: "Schoolprogramma's, multisport voor kinderen en tieners, sportdagen en verhuur — ontdek het volledige aanbod van ADAB MOVES." },
+      { name: "description", content: "Schoolprogramma's, multisport voor kinderen, sportdagen en verhuur — ontdek het volledige aanbod van ADAB MOVES." },
       { property: "og:title", content: "Aanbod — ADAB MOVES" },
       { property: "og:description", content: "Maatwerk in sport en beweging: scholen, multisport, events." },
     ],
@@ -32,10 +32,10 @@ const offerings = [
   {
     icon: Users,
     tag: "Spoor 02 — Multisport",
-    title: "Multisport voor kinderen & tieners",
-    text: "Wekelijkse activiteiten met inschrijving per maand of kwartaal. Een hechte groep, vaste coaches, wisselende sporten.",
+    title: "Multisport voor kinderen",
+    text: "Wekelijkse activiteiten met inschrijving per maand of kwartaal. Een hechte groep, vaste coaches, wisselende sporten — voor kinderen van 8 t/m 12 jaar.",
     image: community,
-    to: "/aanbod/community",
+    to: "/aanbod/community/kinderen",
   },
   {
     icon: CalendarDays,

@@ -55,8 +55,8 @@ function OverOnsHub() {
             Wie wij zijn en <span className="italic text-[var(--coral)]">waar wij voor staan</span>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75 leading-relaxed">
-            ADAB MOVES is een multisport- en beweegorganisatie voor kinderen én tieners — voor
-            scholen, ouders en gemeenschap. Lees ons verhaal, ontdek de ADAB Methode en bekijk onze
+            ADAB MOVES is een multisport- en beweegorganisatie voor kinderen — voor scholen,
+            ouders en gemeenschap. Lees ons verhaal, ontdek de ADAB Methode en bekijk onze
             missie & visie.
           </p>
         </div>

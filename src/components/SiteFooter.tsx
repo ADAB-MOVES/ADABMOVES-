@@ -11,7 +11,7 @@ export function SiteFooter() {
           <img src={logoDark} alt="ADAB MOVES" className="h-14 w-auto -ml-2" />
           <p className="mt-6 max-w-sm text-[15px] text-white/65 leading-relaxed">
             Bewegen met betekenis. Een multisport- en beweegorganisatie voor scholen, ouders en
-            gemeenschap — voor kinderen én tieners.
+            gemeenschap — voor kinderen.
           </p>
           <div className="mt-7 space-y-3 text-sm text-white/80">
             <a
@@ -57,7 +57,6 @@ export function SiteFooter() {
           <ul className="mt-5 space-y-3 text-sm">
             <li><Link to="/aanbod/scholen" className="hover:text-[var(--coral)] transition-colors">Scholen</Link></li>
             <li><Link to="/aanbod/community/kinderen" className="hover:text-[var(--coral)] transition-colors">Multisport — kinderen</Link></li>
-            <li><Link to="/aanbod/community/tieners" className="hover:text-[var(--coral)] transition-colors">Multisport — tieners</Link></li>
             <li><Link to="/aanbod/events" className="hover:text-[var(--coral)] transition-colors">Sportdagen & events</Link></li>
             <li><Link to="/aanbod/verhuur" className="hover:text-[var(--coral)] transition-colors">Verhuur</Link></li>
           </ul>
