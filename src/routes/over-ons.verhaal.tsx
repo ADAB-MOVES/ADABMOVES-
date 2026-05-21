@@ -72,8 +72,8 @@ function VerhaalPage() {
       </section>
 
       <section className="container-x py-16 md:py-20">
-        <div className="rounded-3xl overflow-hidden hover-lift">
-          <img src={verhaal} alt="Oprichters van ADAB MOVES in de gymzaal" loading="lazy" className="w-full h-[420px] md:h-[560px] object-cover" />
+        <div className="rounded-3xl overflow-hidden hover-lift max-w-3xl mx-auto">
+          <img src={verhaal} alt="Oprichters van ADAB MOVES in de gymzaal" loading="lazy" className="w-full h-auto aspect-[16/10] object-cover" />
         </div>
       </section>
 
