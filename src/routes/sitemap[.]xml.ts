@@ -19,7 +19,6 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/aanbod/scholen", changefreq: "monthly", priority: "0.9" },
           { path: "/aanbod/community", changefreq: "monthly", priority: "0.9" },
           { path: "/aanbod/community/kinderen", changefreq: "monthly", priority: "0.8" },
-          { path: "/aanbod/community/tieners", changefreq: "monthly", priority: "0.8" },
           { path: "/aanbod/events", changefreq: "monthly", priority: "0.8" },
           { path: "/aanbod/verhuur", changefreq: "monthly", priority: "0.7" },
           { path: "/over-ons", changefreq: "monthly", priority: "0.8" },

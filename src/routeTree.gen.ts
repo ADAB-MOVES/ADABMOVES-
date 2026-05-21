@@ -30,7 +30,6 @@ import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
 import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
 import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
 import { Route as AanbodCommunityIndexRouteImport } from './routes/aanbod.community.index'
-import { Route as AanbodCommunityTienersRouteImport } from './routes/aanbod.community.tieners'
 import { Route as AanbodCommunityKinderenRouteImport } from './routes/aanbod.community.kinderen'
 
 const VoorwaardenRoute = VoorwaardenRouteImport.update({
@@ -138,11 +137,6 @@ const AanbodCommunityIndexRoute = AanbodCommunityIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AanbodCommunityRoute,
 } as any)
-const AanbodCommunityTienersRoute = AanbodCommunityTienersRouteImport.update({
-  id: '/tieners',
-  path: '/tieners',
-  getParentRoute: () => AanbodCommunityRoute,
-} as any)
 const AanbodCommunityKinderenRoute = AanbodCommunityKinderenRouteImport.update({
   id: '/kinderen',
   path: '/kinderen',
@@ -171,7 +165,6 @@ export interface FileRoutesByFullPath {
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
-  '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
 }
 export interface FileRoutesByTo {
@@ -193,7 +186,6 @@ export interface FileRoutesByTo {
   '/aanbod': typeof AanbodIndexRoute
   '/over-ons': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
-  '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
   '/aanbod/community': typeof AanbodCommunityIndexRoute
 }
 export interface FileRoutesById {
@@ -219,7 +211,6 @@ export interface FileRoutesById {
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
-  '/aanbod/community/tieners': typeof AanbodCommunityTienersRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
 }
 export interface FileRouteTypes {
@@ -246,7 +237,6 @@ export interface FileRouteTypes {
     | '/aanbod/'
     | '/over-ons/'
     | '/aanbod/community/kinderen'
-    | '/aanbod/community/tieners'
     | '/aanbod/community/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -268,7 +258,6 @@ export interface FileRouteTypes {
     | '/aanbod'
     | '/over-ons'
     | '/aanbod/community/kinderen'
-    | '/aanbod/community/tieners'
     | '/aanbod/community'
   id:
     | '__root__'
@@ -293,7 +282,6 @@ export interface FileRouteTypes {
     | '/aanbod/'
     | '/over-ons/'
     | '/aanbod/community/kinderen'
-    | '/aanbod/community/tieners'
     | '/aanbod/community/'
   fileRoutesById: FileRoutesById
 }
@@ -460,13 +448,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AanbodCommunityIndexRouteImport
       parentRoute: typeof AanbodCommunityRoute
     }
-    '/aanbod/community/tieners': {
-      id: '/aanbod/community/tieners'
-      path: '/tieners'
-      fullPath: '/aanbod/community/tieners'
-      preLoaderRoute: typeof AanbodCommunityTienersRouteImport
-      parentRoute: typeof AanbodCommunityRoute
-    }
     '/aanbod/community/kinderen': {
       id: '/aanbod/community/kinderen'
       path: '/kinderen'
@@ -479,13 +460,11 @@ declare module '@tanstack/react-router' {
 
 interface AanbodCommunityRouteChildren {
   AanbodCommunityKinderenRoute: typeof AanbodCommunityKinderenRoute
-  AanbodCommunityTienersRoute: typeof AanbodCommunityTienersRoute
   AanbodCommunityIndexRoute: typeof AanbodCommunityIndexRoute
 }
 
 const AanbodCommunityRouteChildren: AanbodCommunityRouteChildren = {
   AanbodCommunityKinderenRoute: AanbodCommunityKinderenRoute,
-  AanbodCommunityTienersRoute: AanbodCommunityTienersRoute,
   AanbodCommunityIndexRoute: AanbodCommunityIndexRoute,
 }
 
@@ -545,3 +524,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

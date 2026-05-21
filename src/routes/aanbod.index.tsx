@@ -32,10 +32,10 @@ const offerings = [
   {
     icon: Users,
     tag: "Spoor 02 — Multisport",
-    title: "Multisport voor kinderen & tieners",
-    text: "Wekelijkse activiteiten met inschrijving per maand of kwartaal. Een hechte groep, vaste coaches, wisselende sporten.",
+    title: "Multisport voor kinderen",
+    text: "Wekelijkse activiteiten met inschrijving per maand of kwartaal. Een hechte groep, vaste coaches, wisselende sporten — voor kinderen van 8 t/m 12 jaar.",
     image: community,
-    to: "/aanbod/community",
+    to: "/aanbod/community/kinderen",
   },
   {
     icon: CalendarDays,

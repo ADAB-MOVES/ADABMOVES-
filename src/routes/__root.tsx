@@ -29,8 +29,8 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Adab Moves — Bewegen met betekenis" },
-      { name: "description", content: "De islamitische multisport- en beweegorganisatie van Nederland. Sport, karaktervorming en gemeenschap voor kinderen en tieners op scholen, evenementen en in onze multisport-community." },
-      { name: "keywords", content: "islamitische sport, multisport, kindersport, tienersport, sportlessen scholen, gymles, sportdagen, Adab Moves, karaktervorming, jongeren, Amsterdam, Zaandam, Almere" },
+      { name: "description", content: "De islamitische multisport- en beweegorganisatie van Nederland. Sport, karaktervorming en gemeenschap voor kinderen op scholen, evenementen en in onze multisport-community." },
+      { name: "keywords", content: "islamitische sport, multisport, kindersport, sportlessen scholen, gymles, sportdagen, Adab Moves, karaktervorming, Amsterdam, Zaandam, Almere" },
       { name: "author", content: "Adab Moves" },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Adab Moves — Bewegen met betekenis" },
@@ -57,7 +57,7 @@ export const Route = createRootRoute({
           email: "adabmoves@gmail.com",
           telephone: "+31611879789",
           description:
-            "Islamitische multisport- en beweegorganisatie voor scholen, ouders en gemeenschap. Bewegen met betekenis — voor kinderen en tieners.",
+            "Islamitische multisport- en beweegorganisatie voor scholen, ouders en gemeenschap. Bewegen met betekenis — voor kinderen.",
           areaServed: { "@type": "Country", name: "Nederland" },
           address: {
             "@type": "PostalAddress",
