@@ -114,34 +114,6 @@ function ScholenPage() {
         </div>
       </section>
 
-      <section className="container-x pb-20">
-        <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <span className="eyebrow">Wat we leveren</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
-              Eén pedagogische lijn, in nauwe afstemming met jullie team.
-            </h2>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
-              Wij werken in nauwe afstemming met de leerkracht of gymdocent. Vaste trainers, vaste tijden,
-              vaste evaluatiemomenten — een betrouwbare partner, geen anonieme externe.
-            </p>
-            <Link to="/contact" className="btn-primary mt-8">
-              Plan een schoolbezoek <ArrowRight size={18} />
-            </Link>
-          </div>
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-            {bullets.map((b) => (
-              <div key={b.title} className="rounded-2xl border border-border bg-card p-6 hover-lift">
-                <div className="h-11 w-11 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]">
-                  <b.icon size={20} />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold text-foreground">{b.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="bg-[var(--cream)] border-y border-border">
         <div className="container-x py-20">
