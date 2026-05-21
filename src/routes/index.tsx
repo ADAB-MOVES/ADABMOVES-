@@ -94,7 +94,7 @@ function HomePage() {
           <div className="lg:col-span-6 animate-rise">
             <span className="eyebrow inline-flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[var(--coral)]" />
-              Actief door heel Nederland
+              Wij sluiten aan bij de normen en waarden van onze gemeenschap. Toegankelijk voor iedereen.
             </span>
             <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] text-foreground">
               Sport, karakter en{" "}
@@ -283,7 +283,7 @@ function HomePage() {
         <div className="container-x py-20 md:py-24">
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-10">
             <div className="lg:col-span-7">
-              <span className="eyebrow inline-flex items-center gap-2"><MapPin size={14} /> Door heel Nederland</span>
+              <span className="eyebrow inline-flex items-center gap-2"><MapPin size={14} /> Wij sluiten aan bij de normen en waarden van onze gemeenschap. Toegankelijk voor iedereen.</span>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
                 Je vindt ons in een stad bij jou in de buurt.
               </h2>
