@@ -89,11 +89,11 @@ function ScholenPage() {
       </section>
 
       {/* Unieke voordelen voor school */}
-      <section className="container-x pb-20">
+      <section className="mt-5 text-lg font-semibold text-foreground text-slate-50">
         <div className="max-w-2xl mb-10">
           <span className="eyebrow">Waarom ADAB MOVES op school</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
-            Voordelen die andere aanbieders niet hebben.
+            Sportlessen, tussenschools en naschools — speels, opbouwend en pedagogisch verantwoord.
           </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
