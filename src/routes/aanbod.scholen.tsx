@@ -16,13 +16,6 @@ export const Route = createFileRoute("/aanbod/scholen")({
   component: ScholenPage,
 });
 
-const bullets = [
-  { icon: GraduationCap, title: "Basisscholen (4–12 jr)", text: "Gymlessen, tussenschools en naschools — speels, opbouwend en pedagogisch verantwoord." },
-  { icon: Users, title: "Middelbare scholen (12–17 jr)", text: "Multisport, leiderschap en karaktervorming voor onder-, midden- en bovenbouw." },
-  { icon: School, title: "Vaste trainers", text: "Een hoofdtrainer met assistent — zo borgen we kwaliteit en continuïteit door het jaar heen." },
-  { icon: Calendar, title: "Evaluatie & rapportage", text: "Periodieke terugkoppeling aan school en ouders over voortgang en groepsdynamiek." },
-];
-
 // Voordelen die ADAB MOVES uniek maakt voor scholen
 const voordelen = [
   {
