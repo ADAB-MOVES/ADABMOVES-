@@ -90,6 +90,42 @@ function Page() {
         </div>
       </section>
 
+      {/* WAT JE TERUGKRIJGT — OUDERS */}
+      <section className="container-x pb-20">
+        <div className="max-w-2xl mb-10">
+          <span className="eyebrow">Wat je terugkrijgt</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
+            Voor ouders: <span className="italic text-[var(--coral-deep)]">jij geeft, wij geven terug</span>.
+          </h2>
+        </div>
+        <div className="rounded-3xl border border-border bg-card p-8 md:p-10 grid md:grid-cols-2 gap-10">
+          <div>
+            <div className="eyebrow !text-foreground/50">Jij geeft</div>
+            <p className="mt-3 text-foreground text-lg">Inschrijving & betrokkenheid</p>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Een vast wekelijks moment in de agenda van je kind — en jouw vertrouwen in onze
+              coaches en aanpak.
+            </p>
+          </div>
+          <div className="md:border-l md:border-border md:pl-10">
+            <div className="eyebrow">Jij ontvangt</div>
+            <ul className="mt-3 space-y-2.5 text-foreground/85">
+              {[
+                "Een veilige sportomgeving voor je kind",
+                "Brede motorische ontwikkeling",
+                "Karaktervorming op én naast het veld",
+                "Bescherming van normen & waarden",
+              ].map((g) => (
+                <li key={g} className="flex items-start gap-2.5">
+                  <Check size={16} className="mt-1 text-[var(--coral-deep)] shrink-0" />
+                  {g}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="container-x pb-20">
         <div className="rounded-3xl border border-border bg-card p-10 md:p-14">
           <span className="eyebrow">Tarief</span>
@@ -109,6 +145,7 @@ function Page() {
           </ul>
         </div>
       </section>
+
     </>
   );
 }
