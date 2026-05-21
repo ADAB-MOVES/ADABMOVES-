@@ -43,11 +43,22 @@ export function SiteFooter() {
               </span>
               <span className="font-medium">{EMAIL}</span>
             </a>
+            <a
+              href="https://instagram.com/adabmoves"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 hover:text-[var(--coral)] transition-colors"
+            >
+              <span className="h-9 w-9 rounded-full bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral)]">
+                <Instagram size={14} />
+              </span>
+              <span className="font-medium">@Adabmoves</span>
+            </a>
             <div className="flex items-center gap-3 text-white/65">
               <span className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center">
                 <MapPin size={14} />
               </span>
-              Metropoolregio Amsterdam
+              Amsterdam en omgeving
             </div>
           </div>
         </div>
