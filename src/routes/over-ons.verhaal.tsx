@@ -100,7 +100,7 @@ function VerhaalPage() {
             </p>
             <p>
               We zagen ook wat sport <em>wél</em> kan doen — als je het serieus neemt. Een kind
-              dat na drie weken voor het eerst durft te beginnen. Een tiener die leert verliezen
+              dat na drie weken voor het eerst durft te beginnen. Een kind dat leert verliezen
               zonder te ontploffen. Een groep die uit niets een gemeenschap wordt, simpelweg
               omdat iemand de moeite nam om ze écht te zien.
             </p>
