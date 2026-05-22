@@ -18,7 +18,7 @@ export const Route = createFileRoute("/over-ons/methode")({
 
 const pillars = [
   { icon: ShieldCheck, name: "Adab", text: "Goed gedrag, respect en omgangsvormen als basis voor alles wat we doen." },
-  { icon: Compass, name: "Niyyah", text: "Bewust bewegen met een duidelijke intentie — voor jezelf en voor de Schepper." },
+  { icon: Compass, name: "Niyyah", text: "Bewust bewegen met een duidelijke intentie — weten waaróm je iets doet." },
   { icon: Users, name: "Ummah", text: "Samen sterk — iedereen hoort erbij. Geen kind blijft aan de zijlijn staan." },
   { icon: Scale, name: "Amana", text: "Verantwoordelijkheid voor elk kind dat aan ons wordt toevertrouwd." },
   { icon: Flame, name: "Ihsan", text: "Wat je doet, doe het goed. Streven naar uitmuntendheid in elke training." },
