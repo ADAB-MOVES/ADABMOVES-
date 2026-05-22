@@ -18,7 +18,6 @@ import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
 import { Testimonials } from "@/components/Testimonials";
 import { Counter } from "@/components/Counter";
-import { KidMascot } from "@/components/KidMascot";
 import { SportIcon, type SportName } from "@/components/illustrations/SportIcon";
 
 export const Route = createFileRoute("/")({
@@ -117,18 +116,16 @@ function HomePage() {
           <div className="lg:col-span-6 animate-rise">
             <span className="eyebrow inline-flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[var(--coral)]" />
-              Wij sluiten aan bij de normen en waarden van onze gemeenschap. Toegankelijk voor iedereen.
+              ADAB MOVES — Bewegen met betekenis
             </span>
-            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] text-foreground">
-              Sport, karakter en{" "}
-              <span className="italic text-[var(--coral-deep)]">gemeenschap</span>{" "}
-              voor kinderen.
+            <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] text-foreground uppercase tracking-tight">
+              Wij sluiten aan bij de{" "}
+              <span className="italic text-[var(--coral-deep)] normal-case tracking-normal">normen en waarden</span>{" "}
+              van onze gemeenschap. Toegankelijk voor iedereen.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              ADAB MOVES is dé islamitische multisport- en beweegorganisatie van Nederland —
-              tegelijk een warme, toegankelijke plek voor iedereen. Voor scholen, ouders en
-              gemeenschap. Eén duidelijke methode, geworteld in heldere normen en waarden —
-              bewegen met betekenis.
+              Wij zetten sport in als middel om kinderen de goede manieren aan te leren
+              en sterk karakter te bouwen — voor scholen, ouders en gemeenschap.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-primary group">
@@ -141,10 +138,6 @@ function HomePage() {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-[1.75rem] overflow-hidden shadow-[var(--shadow-soft)] hover-lift">
               <img src={hero} alt="Kinderen spelen multisport in een ADAB MOVES sportzaal" width={1600} height={1100} className="w-full h-auto object-cover" />
-            </div>
-            {/* Springende mascotte */}
-            <div className="hidden md:block absolute -bottom-8 -left-10 z-10">
-              <KidMascot pose="jump" size={150} />
             </div>
           </div>
         </div>
