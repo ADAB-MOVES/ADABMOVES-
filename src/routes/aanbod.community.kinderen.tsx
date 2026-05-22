@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Users, Calendar, Heart, ShieldCheck, Sparkles, Trophy, Smile, Clock } from "lucide-react";
+import { ArrowRight, Check, Users, Calendar, Heart, ShieldCheck, Sparkles, Trophy, Smile, Clock, MessageCircle, ClipboardCheck, Repeat, Activity } from "lucide-react";
 import kinderen from "@/assets/community-kinderen.jpg";
 import { WA } from "@/lib/whatsapp";
 import { FloatingDecor } from "@/components/FloatingDecor";
-import { KidMascot } from "@/components/KidMascot";
+
 
 export const Route = createFileRoute("/aanbod/community/kinderen")({
   head: () => ({
@@ -68,9 +68,8 @@ function Page() {
                 </a>
               </div>
             </div>
-            <div className="lg:col-span-5 hidden lg:flex justify-end">
-              <KidMascot size={240} />
-            </div>
+            <div className="lg:col-span-5 hidden lg:block" />
+
           </div>
         </div>
       </section>
@@ -80,6 +79,45 @@ function Page() {
           <img src={kinderen} alt="Kinderen sporten samen in een gymzaal" className="w-full h-auto object-cover" loading="lazy" />
         </div>
       </section>
+
+      {/* ZO WERKT HET — duidelijke stappen */}
+      <section className="container-x pb-16">
+        <div className="max-w-3xl mb-12">
+          <span className="eyebrow">Zo werkt het</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight text-foreground">
+            In 4 stappen <span className="italic text-[var(--coral-deep)]">aan het bewegen</span>.
+          </h2>
+          <p className="mt-5 text-muted-foreground leading-relaxed text-lg">
+            Eén keer aanmelden — daarna kies je telkens zelf welke activiteiten je kind leuk vindt.
+          </p>
+        </div>
+        <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { icon: ClipboardCheck, n: "01", title: "Inschrijven", text: "Meld je kind eenmalig aan via het inschrijfformulier of WhatsApp." },
+            { icon: MessageCircle, n: "02", title: "Plaatsing in WhatsApp-groep", text: "Je komt in onze gesloten WhatsApp-groep waar alle activiteiten gedeeld worden." },
+            { icon: Activity, n: "03", title: "Aanmelden voor activiteiten", text: "Pas na aanmelding kies je per activiteit waar je kind aan meedoet — alleen wat hij of zij leuk vindt." },
+            { icon: Repeat, n: "04", title: "Bewegen met ADAB", text: "Elke 3 maanden een nieuwe sport: 3 maanden basketbal, 3 maanden voetbal, 3 maanden kickboks. Brede motorische ontwikkeling én afwisseling." },
+          ].map((s, i) => (
+            <li
+              key={s.n}
+              className="rounded-3xl border border-border bg-card p-7 hover-lift animate-rise relative"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <span className="absolute top-4 right-5 text-xs font-bold tracking-wider text-[var(--coral-deep)]/70">{s.n}</span>
+              <div className="h-12 w-12 rounded-2xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]">
+                <s.icon size={22} />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-foreground">{s.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-8 text-sm text-muted-foreground max-w-3xl">
+          Naast voetbal, basketbal en kickboks bieden we ook boogschieten, atletiek, fitness en
+          allerlei andere sport- en spelactiviteiten — zo blijft het uitdagend én leerzaam.
+        </p>
+      </section>
+
 
       {/* WAT JE ALS OUDER TERUGKRIJGT — uitgebreid */}
       <section className="container-x pb-20">
@@ -199,9 +237,8 @@ function Page() {
                 </a>
               </div>
             </div>
-            <div className="md:col-span-4 hidden md:flex justify-end">
-              <KidMascot size={200} />
-            </div>
+            <div className="md:col-span-4 hidden md:block" />
+
           </div>
         </div>
       </section>

@@ -18,7 +18,6 @@ import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
 import { Testimonials } from "@/components/Testimonials";
 import { Counter } from "@/components/Counter";
-import { KidMascot } from "@/components/KidMascot";
 import { SportIcon, type SportName } from "@/components/illustrations/SportIcon";
 
 export const Route = createFileRoute("/")({
@@ -117,18 +116,16 @@ function HomePage() {
           <div className="lg:col-span-6 animate-rise">
             <span className="eyebrow inline-flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[var(--coral)]" />
-              Wij sluiten aan bij de normen en waarden van onze gemeenschap. Toegankelijk voor iedereen.
+              ADAB MOVES — Bewegen met betekenis
             </span>
-            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] text-foreground">
-              Sport, karakter en{" "}
-              <span className="italic text-[var(--coral-deep)]">gemeenschap</span>{" "}
-              voor kinderen.
+            <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] text-foreground uppercase tracking-tight">
+              Wij sluiten aan bij de{" "}
+              <span className="italic text-[var(--coral-deep)] normal-case tracking-normal">normen en waarden</span>{" "}
+              van onze gemeenschap. Toegankelijk voor iedereen.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              ADAB MOVES is dé islamitische multisport- en beweegorganisatie van Nederland —
-              tegelijk een warme, toegankelijke plek voor iedereen. Voor scholen, ouders en
-              gemeenschap. Eén duidelijke methode, geworteld in heldere normen en waarden —
-              bewegen met betekenis.
+              Wij zetten sport in als middel om kinderen de goede manieren aan te leren
+              en sterk karakter te bouwen — voor scholen, ouders en gemeenschap.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-primary group">
@@ -141,10 +138,6 @@ function HomePage() {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-[1.75rem] overflow-hidden shadow-[var(--shadow-soft)] hover-lift">
               <img src={hero} alt="Kinderen spelen multisport in een ADAB MOVES sportzaal" width={1600} height={1100} className="w-full h-auto object-cover" />
-            </div>
-            {/* Springende mascotte */}
-            <div className="hidden md:block absolute -bottom-8 -left-10 z-10">
-              <KidMascot pose="jump" size={150} />
             </div>
           </div>
         </div>
@@ -202,6 +195,41 @@ function HomePage() {
         </div>
       </section>
 
+      {/* DRIE SPOREN — Ons aanbod (boven Waarom) */}
+      <section className="container-x py-20 md:py-28 relative">
+        <div className="max-w-2xl mb-12">
+          <span className="eyebrow">Ons aanbod</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
+            Drie sporen, één methode.
+          </h2>
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            Voetbal, basketbal, kickboks, boogschieten, atletiek, fitness en nog veel meer
+            sport- en spelactiviteiten — afwisselend en opbouwend, zodat elk kind breed
+            motorisch ontwikkelt.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {tracks.map((t, i) => (
+            <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise" style={{ animationDelay: `${i * 100}ms` }}>
+              <div className="aspect-[16/10] overflow-hidden">
+                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover" />
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={18} /></div>
+                  <span className="eyebrow">{t.tag}</span>
+                </div>
+                <h3 className="mt-3 text-xl font-semibold text-foreground leading-snug">{t.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.text}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--coral-deep)] group-hover:gap-3 transition-all">
+                  Bekijk pagina <ArrowRight size={14} />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* WAAROM */}
       <section className="bg-[var(--ink)] text-[var(--cream)]">
         <div className="container-x py-20 md:py-28 relative">
@@ -231,39 +259,6 @@ function HomePage() {
               Lees over de ADAB Methode <ArrowRight size={16} />
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* DRIE SPOREN — kleinere afbeeldingen */}
-      <section className="container-x py-20 md:py-28 relative">
-        <div className="max-w-2xl mb-12">
-          <span className="eyebrow">Ons aanbod</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
-            Drie sporen, één methode.
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {tracks.map((t, i) => (
-            <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise" style={{ animationDelay: `${i * 100}ms` }}>
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover" />
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={18} /></div>
-                  <span className="eyebrow">{t.tag}</span>
-                </div>
-                <h3 className="mt-3 text-xl font-semibold text-foreground leading-snug">{t.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.text}</p>
-                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--coral-deep)] group-hover:gap-3 transition-all">
-                  Bekijk pagina <ArrowRight size={14} />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="hidden lg:block absolute -right-4 top-10">
-          <KidMascot pose="ball" size={120} />
         </div>
       </section>
 
@@ -321,13 +316,16 @@ function HomePage() {
               </ul>
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <KidMascot size={220} />
+              <div className="rounded-3xl overflow-hidden hover-lift max-w-xs w-full">
+                <img src={coach} alt="ADAB MOVES trainer in actie" loading="lazy" className="w-full h-auto aspect-square object-cover" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <Testimonials />
+
 
       {/* CTA */}
       <section className="container-x py-20 md:py-28">
