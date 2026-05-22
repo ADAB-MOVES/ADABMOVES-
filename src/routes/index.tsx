@@ -195,6 +195,41 @@ function HomePage() {
         </div>
       </section>
 
+      {/* DRIE SPOREN — Ons aanbod (boven Waarom) */}
+      <section className="container-x py-20 md:py-28 relative">
+        <div className="max-w-2xl mb-12">
+          <span className="eyebrow">Ons aanbod</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
+            Drie sporen, één methode.
+          </h2>
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            Voetbal, basketbal, kickboks, boogschieten, atletiek, fitness en nog veel meer
+            sport- en spelactiviteiten — afwisselend en opbouwend, zodat elk kind breed
+            motorisch ontwikkelt.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {tracks.map((t, i) => (
+            <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise" style={{ animationDelay: `${i * 100}ms` }}>
+              <div className="aspect-[16/10] overflow-hidden">
+                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover" />
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={18} /></div>
+                  <span className="eyebrow">{t.tag}</span>
+                </div>
+                <h3 className="mt-3 text-xl font-semibold text-foreground leading-snug">{t.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.text}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--coral-deep)] group-hover:gap-3 transition-all">
+                  Bekijk pagina <ArrowRight size={14} />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* WAAROM */}
       <section className="bg-[var(--ink)] text-[var(--cream)]">
         <div className="container-x py-20 md:py-28 relative">
@@ -224,39 +259,6 @@ function HomePage() {
               Lees over de ADAB Methode <ArrowRight size={16} />
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* DRIE SPOREN — kleinere afbeeldingen */}
-      <section className="container-x py-20 md:py-28 relative">
-        <div className="max-w-2xl mb-12">
-          <span className="eyebrow">Ons aanbod</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-foreground leading-tight">
-            Drie sporen, één methode.
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {tracks.map((t, i) => (
-            <Link key={t.title} to={t.to} className="group flex flex-col rounded-3xl border border-border bg-card overflow-hidden hover-lift animate-rise" style={{ animationDelay: `${i * 100}ms` }}>
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover" />
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-xl bg-[var(--coral)]/15 flex items-center justify-center text-[var(--coral-deep)]"><t.icon size={18} /></div>
-                  <span className="eyebrow">{t.tag}</span>
-                </div>
-                <h3 className="mt-3 text-xl font-semibold text-foreground leading-snug">{t.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.text}</p>
-                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--coral-deep)] group-hover:gap-3 transition-all">
-                  Bekijk pagina <ArrowRight size={14} />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="hidden lg:block absolute -right-4 top-10">
-          <KidMascot pose="ball" size={120} />
         </div>
       </section>
 
