@@ -316,11 +316,10 @@ function HomePage() {
               </ul>
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <KidMascot size={220} />
+              <div className="rounded-3xl overflow-hidden hover-lift max-w-xs w-full">
+                <img src={coach} alt="ADAB MOVES trainer in actie" loading="lazy" className="w-full h-auto aspect-square object-cover" />
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
       <Testimonials />
 
