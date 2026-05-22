@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Users, Calendar, Heart, ShieldCheck, Sparkles, Trophy, Smile, Clock } from "lucide-react";
+import { ArrowRight, Check, Users, Calendar, Heart, ShieldCheck, Sparkles, Trophy, Smile, Clock, MessageCircle, ClipboardCheck, Repeat, Activity } from "lucide-react";
 import kinderen from "@/assets/community-kinderen.jpg";
 import { WA } from "@/lib/whatsapp";
 import { FloatingDecor } from "@/components/FloatingDecor";
-import { KidMascot } from "@/components/KidMascot";
+
 
 export const Route = createFileRoute("/aanbod/community/kinderen")({
   head: () => ({
