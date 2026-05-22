@@ -110,9 +110,9 @@ function VerhaalPage() {
               willen vinden toen wij begonnen.
             </p>
             <p>
-              Vandaag zijn we actief op tientallen locaties. We werken met scholen, gemeenten en
-              buurthuizen. Maar de overtuiging is dezelfde als op dag één: sport is geen doel
-              op zich — het is een middel om karakter te bouwen, vertrouwen te kweken en een
+              Vandaag werken we met scholen, gemeenten en buurthuizen in de Metropoolregio
+              Amsterdam. Maar de overtuiging is dezelfde als op dag één: sport is geen doel op
+              zich — het is een middel om karakter te bouwen, vertrouwen te kweken en een
               gemeenschap te vormen waar elk kind zich thuis voelt.
             </p>
           </div>

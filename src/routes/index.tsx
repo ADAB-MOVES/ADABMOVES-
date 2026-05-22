@@ -309,13 +309,19 @@ function HomePage() {
                 Amsterdam <span className="italic text-[var(--coral-deep)]">en omgeving</span>.
               </h2>
               <p className="mt-5 text-muted-foreground leading-relaxed max-w-xl">
-                Onze trainers zijn actief in scholen, gymzalen en buurthuizen door de hele
-                Metropoolregio Amsterdam. Staat jouw locatie er niet bij? Neem contact op — we
-                groeien snel.
+                Onze trainers zijn actief in scholen, gymzalen en buurthuizen in de
+                Metropoolregio Amsterdam.
               </p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {["Amsterdam", "Amstelveen", "Haarlem", "Hoofddorp", "Almere", "Zaanstad"].map((c) => (
+                  <li key={c} className="px-4 py-2 rounded-full bg-card border border-border text-sm font-medium text-foreground">
+                    {c}
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <KidMascot pose="run" size={170} />
+              <KidMascot size={220} />
             </div>
           </div>
         </div>
