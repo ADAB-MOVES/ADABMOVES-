@@ -320,8 +320,12 @@ function HomePage() {
                 <img src={coach} alt="ADAB MOVES trainer in actie" loading="lazy" className="w-full h-auto aspect-square object-cover" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
       <Testimonials />
+
 
       {/* CTA */}
       <section className="container-x py-20 md:py-28">
