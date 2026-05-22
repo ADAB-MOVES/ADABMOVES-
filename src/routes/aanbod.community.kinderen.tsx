@@ -68,9 +68,8 @@ function Page() {
                 </a>
               </div>
             </div>
-            <div className="lg:col-span-5 hidden lg:flex justify-end">
-              <KidMascot size={240} />
-            </div>
+            <div className="lg:col-span-5 hidden lg:block" />
+
           </div>
         </div>
       </section>
@@ -199,9 +198,8 @@ function Page() {
                 </a>
               </div>
             </div>
-            <div className="md:col-span-4 hidden md:flex justify-end">
-              <KidMascot size={200} />
-            </div>
+            <div className="md:col-span-4 hidden md:block" />
+
           </div>
         </div>
       </section>
