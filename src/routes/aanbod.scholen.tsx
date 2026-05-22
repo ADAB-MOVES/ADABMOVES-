@@ -142,8 +142,8 @@ function ScholenPage() {
               Dit zien wij dagelijks op scholen — en zo lossen wij het op.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Na jaren in de sportbranche en op tientallen scholen zien we steeds dezelfde
-              knelpunten terugkomen. Wij benoemen ze eerlijk — en pakken ze structureel aan.
+              Na jaren in de sportbranche en op scholen zien we steeds dezelfde knelpunten
+              terugkomen. Wij benoemen ze eerlijk — en pakken ze structureel aan.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
