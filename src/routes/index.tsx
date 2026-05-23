@@ -118,14 +118,14 @@ function HomePage() {
               <span className="h-2 w-2 rounded-full bg-[var(--coral)]" />
               ADAB MOVES — Bewegen met betekenis
             </span>
-            <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] text-foreground uppercase tracking-tight">
-              Wij sluiten aan bij de{" "}
-              <span className="italic text-[var(--coral-deep)] normal-case tracking-normal">normen en waarden</span>{" "}
-              van onze gemeenschap. Toegankelijk voor iedereen.
+            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground uppercase tracking-tight">
+              Sterk karakter,{" "}
+              <span className="italic text-[var(--coral-deep)] normal-case tracking-normal">begint met bewegen</span>.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Wij zetten sport in als middel om kinderen de goede manieren aan te leren
-              en sterk karakter te bouwen — voor scholen, ouders en gemeenschap.
+              Wij sluiten aan bij de normen en waarden van onze gemeenschap — toegankelijk
+              voor iedereen. Sport als middel om goede manieren aan te leren en karakter
+              te bouwen.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-primary group">
