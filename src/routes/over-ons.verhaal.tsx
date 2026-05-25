@@ -37,7 +37,7 @@ const doelen = [
     icon: Compass,
     year: "2027",
     title: "ADAB Methode op 50+ scholen",
-    text: "Onze methode structureel ingebed in het sport- en pedagogisch programma van basisscholen door heel Nederland.",
+    text: "Onze methode structureel ingebed in het sport- en pedagogisch programma van basis- en middelbare scholen door heel Nederland.",
   },
   {
     icon: CheckCircle2,

@@ -20,7 +20,7 @@ export const Route = createFileRoute("/aanbod/scholen")({
   head: () => ({
     meta: [
       { title: "Sport- en spelactiviteiten op school — ADAB MOVES" },
-      { name: "description", content: "Sport- en spelactiviteiten tussen en na schooltijd, workshops en events voor basisscholen. Karakter en gedrag versterken via sport — naast jullie gymdocent." },
+      { name: "description", content: "Sport- en spelactiviteiten tussen en na schooltijd, workshops en events voor basis- en middelbare scholen. Karakter en gedrag versterken via sport — naast jullie gymdocent." },
       { property: "og:title", content: "Scholen — ADAB MOVES" },
       { property: "og:description", content: "Sport en spel tussen en na schooltijd, workshops en events. Karakter en gedrag versterken via sport." },
     ],
@@ -102,8 +102,8 @@ function ScholenPage() {
             </div>
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
               Sport- en spelactiviteiten <strong className="text-foreground">tussen en na schooltijd</strong>,
-              workshops en events voor basisscholen. Wij vervangen jullie gymdocent niet — wij
-              versterken het pedagogisch klimaat <em>náást</em> de gymles.
+              workshops en events voor <strong className="text-foreground">basis- en middelbare scholen</strong>.
+              Wij vervangen jullie gymdocent niet — wij versterken het pedagogisch klimaat <em>náást</em> de gymles.
             </p>
           </div>
         </div>

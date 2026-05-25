@@ -80,12 +80,20 @@ function AanbodHub() {
               style={{ animationDelay: `${i * 80}ms` }}
             >
               <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={it.image}
-                  alt={it.title}
-                  loading="lazy"
-                  className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover"
-                />
+                {it.to === "/aanbod/verhuur" ? (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[var(--coral)] to-[var(--coral-deep)] text-white text-center px-6">
+                    <span className="text-xs uppercase tracking-[0.2em] opacity-80">In ontwikkeling</span>
+                    <span className="mt-2 font-display text-4xl md:text-5xl font-semibold leading-none">Binnenkort</span>
+                    <span className="mt-3 text-sm opacity-90 max-w-xs">We werken eraan — materiaal & seizoensverhuur volgt.</span>
+                  </div>
+                ) : (
+                  <img
+                    src={it.image}
+                    alt={it.title}
+                    loading="lazy"
+                    className="w-full h-full transition-transform duration-700 group-hover:scale-110 object-cover"
+                  />
+                )}
               </div>
               <div className="p-8">
                 <div className="flex items-center gap-3">

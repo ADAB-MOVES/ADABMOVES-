@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouterState } f
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { IntroPopup } from "@/components/IntroPopup";
 import { useReveal } from "@/hooks/use-reveal";
 
 import appCss from "../styles.css?url";
@@ -100,6 +101,7 @@ function RootComponent() {
       </main>
       <SiteFooter />
       <WhatsAppButton />
+      <IntroPopup />
     </div>
   );
 }
