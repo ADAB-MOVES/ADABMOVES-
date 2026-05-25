@@ -136,6 +136,15 @@ export function SiteHeader() {
                   </div>
                 )}
               </div>
+            ) : n.to === "/contact" ? (
+              <Link
+                key={n.to}
+                to={n.to}
+                className="inline-flex items-center rounded-full bg-[var(--coral)] px-5 py-2 text-sm font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-[var(--coral-deep)] hover:-translate-y-0.5 transition-all"
+                activeProps={{ className: "bg-[var(--coral-deep)]" }}
+              >
+                {n.label}
+              </Link>
             ) : (
               <Link
                 key={n.to}
@@ -191,6 +200,15 @@ export function SiteHeader() {
                     </div>
                   )}
                 </div>
+              ) : n.to === "/contact" ? (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="mt-2 inline-flex items-center justify-center rounded-full bg-[var(--coral)] px-5 py-3 text-base font-semibold uppercase tracking-wider text-white hover:bg-[var(--coral-deep)] transition-colors"
+                >
+                  {n.label}
+                </Link>
               ) : (
                 <Link
                   key={n.to}

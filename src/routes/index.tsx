@@ -23,17 +23,17 @@ import { SportIcon, type SportName } from "@/components/illustrations/SportIcon"
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ADAB MOVES — Islamitische multisport voor kinderen" },
+      { title: "ADAB MOVES — Bewegen met betekenis | Multisport voor kinderen" },
       {
         name: "description",
         content:
-          "ADAB MOVES is de islamitische multisport- en beweegorganisatie van Nederland. Sport, karakter en gemeenschap — voor basis- en middelbare scholen, ouders en kinderen.",
+          "ADAB MOVES bouwt aan karakter via sport. Multisport en beweegprogramma's voor basis- en middelbare scholen, ouders en kinderen door heel Nederland.",
       },
       { property: "og:title", content: "ADAB MOVES — Bewegen met betekenis" },
       {
         property: "og:description",
         content:
-          "De islamitische multisport-organisatie voor kinderen — sport als middel voor karaktervorming.",
+          "Multisport met betekenis — sport als middel voor karaktervorming, voor scholen, ouders en kinderen.",
       },
       { property: "og:image", content: hero },
     ],
@@ -116,16 +116,16 @@ function HomePage() {
           <div className="lg:col-span-6 animate-rise">
             <span className="eyebrow inline-flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[var(--coral)]" />
-              De islamitische multisport-organisatie van Nederland
+              Multisport met betekenis — voor scholen, ouders & kinderen
             </span>
             <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground uppercase tracking-tight">
-              Sterk karakter,{" "}
-              <span className="italic text-[var(--coral-deep)] normal-case tracking-normal">begint met bewegen</span>.
+              Bewegen met betekenis,{" "}
+              <span className="italic text-[var(--coral-deep)] normal-case tracking-normal">sterk karakter begint hier</span>.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Wij werken vanuit een islamitische fundering en sluiten aan bij de normen en
-              waarden van onze gemeenschap — toegankelijk voor iedereen. Sport als middel
-              om goede manieren aan te leren en karakter te bouwen.
+              ADAB MOVES bouwt aan karakter via sport. We werken vanuit een islamitische
+              fundering en zijn toegankelijk voor iedereen — basis- en middelbare scholen,
+              ouders en kinderen door heel Nederland.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-primary group">
