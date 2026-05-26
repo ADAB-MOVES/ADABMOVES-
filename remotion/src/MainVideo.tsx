@@ -6,20 +6,20 @@ import { wipe } from "@remotion/transitions/wipe";
 import { loadFont as loadAnton } from "@remotion/google-fonts/Anton";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { Intro, Outro } from "./scenes/IntroOutro";
-import { Football, Kickboxing, Basketball, Bootcamp, Fitness } from "./scenes/Sports";
+import { PhotoScene } from "./scenes/PhotoScene";
 import { COLORS } from "./theme";
 
 loadAnton();
 loadInter("normal", { weights: ["500", "600", "700", "800"], subsets: ["latin"] });
 
-const INTRO = 75;
-const SCENE = 80;
-const OUTRO = 95;
-const T = 16;
+const INTRO = 90;
+const SCENE = 70;
+const OUTRO = 100;
+const T = 14;
 
 export const MainVideo: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: COLORS.cream }}>
+    <AbsoluteFill style={{ backgroundColor: COLORS.ink }}>
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={INTRO}>
           <Intro duration={INTRO} />
@@ -30,7 +30,7 @@ export const MainVideo: React.FC = () => {
           timing={springTiming({ config: { damping: 200 }, durationInFrames: T })}
         />
         <TransitionSeries.Sequence durationInFrames={SCENE}>
-          <Football duration={SCENE} />
+          <PhotoScene src="scholen.jpg" eyebrow="Spoor 01" label="Scholen" duration={SCENE} zoom="in" pan="right" align="left" />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -38,7 +38,7 @@ export const MainVideo: React.FC = () => {
           timing={springTiming({ config: { damping: 200 }, durationInFrames: T })}
         />
         <TransitionSeries.Sequence durationInFrames={SCENE}>
-          <Kickboxing duration={SCENE} />
+          <PhotoScene src="community-kinderen.jpg" eyebrow="Spoor 02" label="Kinderen" duration={SCENE} zoom="out" pan="left" align="right" />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -46,7 +46,7 @@ export const MainVideo: React.FC = () => {
           timing={springTiming({ config: { damping: 200 }, durationInFrames: T })}
         />
         <TransitionSeries.Sequence durationInFrames={SCENE}>
-          <Basketball duration={SCENE} />
+          <PhotoScene src="community.jpg" eyebrow="Onze methode" label="Karakter" duration={SCENE} zoom="in" pan="up" align="left" />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -54,7 +54,7 @@ export const MainVideo: React.FC = () => {
           timing={springTiming({ config: { damping: 200 }, durationInFrames: T })}
         />
         <TransitionSeries.Sequence durationInFrames={SCENE}>
-          <Bootcamp duration={SCENE} />
+          <PhotoScene src="event.jpg" eyebrow="Spoor 03" label="ADAB Day" duration={SCENE} zoom="in" pan="right" align="right" />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
@@ -62,12 +62,12 @@ export const MainVideo: React.FC = () => {
           timing={springTiming({ config: { damping: 200 }, durationInFrames: T })}
         />
         <TransitionSeries.Sequence durationInFrames={SCENE}>
-          <Fitness duration={SCENE} />
+          <PhotoScene src="coach.jpg" eyebrow="Vaste trainers" label="Vertrouwen" duration={SCENE} zoom="out" pan="down" align="left" />
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
           presentation={fade()}
-          timing={linearTiming({ durationInFrames: T })}
+          timing={linearTiming({ durationInFrames: T + 4 })}
         />
         <TransitionSeries.Sequence durationInFrames={OUTRO}>
           <Outro duration={OUTRO} />
