@@ -25,7 +25,7 @@ const offerings = [
     icon: School,
     tag: "Spoor 01 — Scholen",
     title: "Basis- & middelbare scholen",
-    text: "Tussen- en naschoolse sport, gymlessen, sportdagen en workshops — een vast gezicht in jullie gymzaal.",
+    text: "Tussen- en naschoolse sport, sportdagen en workshops — een vast gezicht in jullie gymzaal of op het plein.",
     image: scholen,
     to: "/aanbod/scholen",
   },

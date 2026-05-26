@@ -31,7 +31,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Adab Moves — Bewegen met betekenis" },
       { name: "description", content: "De islamitische multisport- en beweegorganisatie van Nederland. Sport, karaktervorming en gemeenschap voor kinderen op scholen, evenementen en in onze multisport-community." },
-      { name: "keywords", content: "islamitische sport, multisport, kindersport, sportlessen scholen, gymles, sportdagen, Adab Moves, karaktervorming, Amsterdam, Zaandam, Almere" },
+      { name: "keywords", content: "islamitische sport, multisport, kindersport, sportlessen scholen, sportdagen, Adab Moves, karaktervorming, Amsterdam, Zaandam, Almere" },
       { name: "author", content: "Adab Moves" },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Adab Moves — Bewegen met betekenis" },

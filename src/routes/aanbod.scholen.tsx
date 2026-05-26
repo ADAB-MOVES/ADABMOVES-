@@ -20,9 +20,9 @@ export const Route = createFileRoute("/aanbod/scholen")({
   head: () => ({
     meta: [
       { title: "Sport- en spelactiviteiten op school — ADAB MOVES" },
-      { name: "description", content: "Sport- en spelactiviteiten tussen en na schooltijd, workshops en events voor basis- en middelbare scholen. Karakter en gedrag versterken via sport — naast jullie gymdocent." },
+      { name: "description", content: "Sport- en spelactiviteiten tussen en na schooltijd, workshops en events voor basis- en middelbare scholen. Karakter en gedrag via sport — als zelfstandige aanbieder op jullie locatie." },
       { property: "og:title", content: "Scholen — ADAB MOVES" },
-      { property: "og:description", content: "Sport en spel tussen en na schooltijd, workshops en events. Karakter en gedrag versterken via sport." },
+      { property: "og:description", content: "Sport en spel tussen en na schooltijd, workshops en events. Karakter en gedrag via sport, als zelfstandige aanbieder." },
     ],
   }),
   component: ScholenPage,
@@ -74,14 +74,16 @@ const painPoints = [
   },
 ];
 
-// Wat de school terugkrijgt — concrete winsten (vervangt duplicaat-blok)
+// Wat de school terugkrijgt — concrete winsten
 const winsten = [
-  "Rustigere klassen ná de activiteit",
-  "Zichtbaar respect en betere omgangsvormen op het plein",
-  "Meer plezier en betrokkenheid bij bewegen",
+  "Merkbaar rustigere klassen ná elke activiteit",
+  "Meer respect, betere omgangsvormen op het plein",
+  "Sterker zelfvertrouwen en doorzettingsvermogen bij leerlingen",
+  "Hogere betrokkenheid — kinderen kijken uit naar bewegen",
   "Vaste trainer, vaste lijn — geen wisselende gezichten",
-  "Eén aanspreekpunt voor planning en facturatie",
-  "Pedagogische versterking, naast jullie gymdocent",
+  "Eén aanspreekpunt voor planning, materiaal en facturatie",
+  "Volledig verzorgd programma — wij regelen alles",
+  "Pedagogische opbrengst die doorwerkt in de klas",
 ];
 
 function ScholenPage() {
@@ -103,7 +105,7 @@ function ScholenPage() {
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
               Sport- en spelactiviteiten <strong className="text-foreground">tussen en na schooltijd</strong>,
               workshops en events voor <strong className="text-foreground">basis- en middelbare scholen</strong>.
-              Wij vervangen jullie gymdocent niet — wij versterken het pedagogisch klimaat <em>náást</em> de gymles.
+              Als zelfstandige aanbieder werken wij structureel aan gedrag, respect en karakter via sport.
             </p>
           </div>
         </div>
@@ -153,8 +155,8 @@ function ScholenPage() {
               Gedrag en karakter — daar maken wij het verschil.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Wij komen niet om de gymdocent te vervangen. Wij komen om — naast de gymles —
-              structureel te werken aan gedrag, respect en karakter via sport en spel.
+              ADAB MOVES is een zelfstandige aanbieder van sport- en spelactiviteiten op school.
+              Wij werken structureel aan gedrag, respect en karakter via sport en spel.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
