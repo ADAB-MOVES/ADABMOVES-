@@ -118,9 +118,9 @@ function HomePage() {
               <span className="h-2 w-2 rounded-full bg-[var(--coral)]" />
               Multisport met betekenis — voor scholen, ouders & kinderen
             </span>
-            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground uppercase tracking-tight">
-              Bewegen met betekenis,{" "}
-              <span className="italic text-[var(--coral-deep)] normal-case tracking-normal">sterk karakter begint hier</span>.
+            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground tracking-tight">
+              Bewegen met betekenis.{" "}
+              <span className="italic text-[var(--coral-deep)]">Karakter begint hier.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
               ADAB MOVES bouwt aan karakter via sport. We werken vanuit een islamitische
