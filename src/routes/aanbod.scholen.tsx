@@ -74,14 +74,16 @@ const painPoints = [
   },
 ];
 
-// Wat de school terugkrijgt — concrete winsten (vervangt duplicaat-blok)
+// Wat de school terugkrijgt — concrete winsten
 const winsten = [
-  "Rustigere klassen ná de activiteit",
-  "Zichtbaar respect en betere omgangsvormen op het plein",
-  "Meer plezier en betrokkenheid bij bewegen",
+  "Merkbaar rustigere klassen ná elke activiteit",
+  "Meer respect, betere omgangsvormen op het plein",
+  "Sterker zelfvertrouwen en doorzettingsvermogen bij leerlingen",
+  "Hogere betrokkenheid — kinderen kijken uit naar bewegen",
   "Vaste trainer, vaste lijn — geen wisselende gezichten",
-  "Eén aanspreekpunt voor planning en facturatie",
-  "Pedagogische versterking, naast jullie gymdocent",
+  "Eén aanspreekpunt voor planning, materiaal en facturatie",
+  "Volledig verzorgd programma — wij regelen alles",
+  "Pedagogische opbrengst die doorwerkt in de klas",
 ];
 
 function ScholenPage() {
