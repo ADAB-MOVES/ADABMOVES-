@@ -1,30 +1,74 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, spring } from "remotion";
+import {
+  AbsoluteFill,
+  Img,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+  spring,
+} from "remotion";
 import { COLORS } from "../theme";
-import { GymBg } from "../components/GymBg";
-import { CoachBack } from "../components/Kid";
 
-export const Intro: React.FC<{ duration: number }> = () => {
+export const Intro: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const coachIn = spring({ frame: f, fps, config: { damping: 18 } });
-  const titleIn = spring({ frame: f - 18, fps, config: { damping: 18 } });
+
+  // Ken Burns push-in on hero
+  const t = interpolate(f, [0, duration], [0, 1], { extrapolateRight: "clamp" });
+  const scale = interpolate(t, [0, 1], [1.08, 1.22]);
+
+  const logoIn = spring({ frame: f, fps, config: { damping: 18 } });
+  const eyebrowIn = spring({ frame: f - 14, fps, config: { damping: 18 } });
+  const titleIn = spring({ frame: f - 22, fps, config: { damping: 16 } });
+  const underline = interpolate(f, [38, 60], [0, 1], { extrapolateRight: "clamp" });
+
   return (
-    <AbsoluteFill>
-      <GymBg />
-      <svg width="100%" height="100%" viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
-        <g transform={`translate(${interpolate(coachIn, [0, 1], [400, 460])}, 760)`}>
-          <CoachBack />
-        </g>
-      </svg>
+    <AbsoluteFill style={{ backgroundColor: COLORS.ink, overflow: "hidden" }}>
       <div
         style={{
           position: "absolute",
-          right: 80,
-          top: "30%",
-          maxWidth: 900,
-          textAlign: "right",
-          opacity: titleIn,
-          transform: `translateX(${interpolate(titleIn, [0, 1], [60, 0])}px)`,
+          inset: 0,
+          transform: `scale(${scale})`,
+        }}
+      >
+        <Img
+          src={staticFile("hero.jpg")}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </div>
+      {/* Dark wash */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(180deg, rgba(15,16,36,0.55) 0%, rgba(15,16,36,0.2) 35%, rgba(15,16,36,0.78) 100%)",
+        }}
+      />
+
+      {/* Logo top-left */}
+      <div
+        style={{
+          position: "absolute",
+          top: 60,
+          left: 80,
+          opacity: logoIn,
+          transform: `translateY(${interpolate(logoIn, [0, 1], [-20, 0])}px)`,
+        }}
+      >
+        <Img
+          src={staticFile("logo.png")}
+          style={{ height: 160, width: "auto", display: "block" }}
+        />
+      </div>
+
+      {/* Title block bottom-left */}
+      <div
+        style={{
+          position: "absolute",
+          left: 110,
+          bottom: 130,
+          maxWidth: 1500,
         }}
       >
         <div
@@ -32,26 +76,42 @@ export const Intro: React.FC<{ duration: number }> = () => {
             fontFamily: "Inter, sans-serif",
             fontWeight: 700,
             color: COLORS.coral,
-            fontSize: 24,
+            fontSize: 26,
             letterSpacing: 8,
-            marginBottom: 16,
+            textTransform: "uppercase",
+            opacity: eyebrowIn,
+            transform: `translateY(${interpolate(eyebrowIn, [0, 1], [16, 0])}px)`,
+            marginBottom: 22,
           }}
         >
-          ADAB MOVES
+          Multisport met betekenis
         </div>
         <div
           style={{
             fontFamily: "Anton, sans-serif",
-            fontSize: 150,
-            color: COLORS.navy,
-            lineHeight: 0.95,
+            fontSize: 180,
+            color: "#FBF7EE",
+            lineHeight: 0.92,
             textTransform: "uppercase",
+            opacity: titleIn,
+            transform: `translateY(${interpolate(titleIn, [0, 1], [30, 0])}px)`,
           }}
         >
           Bewegen
           <br />
           met betekenis
         </div>
+        <div
+          style={{
+            marginTop: 26,
+            height: 6,
+            width: 360,
+            background: COLORS.coral,
+            borderRadius: 6,
+            transformOrigin: "left center",
+            transform: `scaleX(${underline})`,
+          }}
+        />
       </div>
     </AbsoluteFill>
   );
@@ -60,11 +120,16 @@ export const Intro: React.FC<{ duration: number }> = () => {
 export const Outro: React.FC<{ duration: number }> = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const logoIn = spring({ frame: f, fps, config: { damping: 14 } });
-  const lineIn = spring({ frame: f - 12, fps, config: { damping: 18 } });
-  const urlIn = spring({ frame: f - 24, fps, config: { damping: 20 } });
+  const logoIn = spring({ frame: f, fps, config: { damping: 16 } });
+  const lineIn = spring({ frame: f - 18, fps, config: { damping: 18 } });
+  const urlIn = spring({ frame: f - 32, fps, config: { damping: 20 } });
+
   return (
-    <AbsoluteFill style={{ backgroundColor: COLORS.cream }}>
+    <AbsoluteFill
+      style={{
+        background: `radial-gradient(ellipse at center, ${COLORS.cream} 0%, ${COLORS.warmBeige} 100%)`,
+      }}
+    >
       <div
         style={{
           position: "absolute",
@@ -75,66 +140,38 @@ export const Outro: React.FC<{ duration: number }> = () => {
           justifyContent: "center",
         }}
       >
-        <div
+        <Img
+          src={staticFile("logo.png")}
           style={{
-            transform: `scale(${logoIn})`,
-            width: 220,
-            height: 220,
-            borderRadius: "50%",
-            background: COLORS.coral,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 40,
+            height: 380,
+            width: "auto",
+            opacity: logoIn,
+            transform: `scale(${interpolate(logoIn, [0, 1], [0.85, 1])})`,
           }}
-        >
-          <span
-            style={{
-              fontFamily: "Anton, sans-serif",
-              fontSize: 220,
-              color: "#FFFFFF",
-              lineHeight: 1,
-              transform: "translateY(10px)",
-            }}
-          >
-            A
-          </span>
-        </div>
+        />
         <div
           style={{
-            fontFamily: "Anton, sans-serif",
-            fontSize: 120,
-            color: COLORS.navy,
-            textTransform: "uppercase",
-            opacity: lineIn,
-            transform: `translateY(${interpolate(lineIn, [0, 1], [20, 0])}px)`,
-            lineHeight: 1,
-          }}
-        >
-          ADAB MOVES
-        </div>
-        <div
-          style={{
-            marginTop: 16,
+            marginTop: 28,
             fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            fontSize: 28,
-            letterSpacing: 6,
+            fontWeight: 700,
+            fontSize: 34,
+            letterSpacing: 10,
             color: COLORS.coral,
             opacity: lineIn,
             textTransform: "uppercase",
+            transform: `translateY(${interpolate(lineIn, [0, 1], [14, 0])}px)`,
           }}
         >
           Bewegen met betekenis
         </div>
         <div
           style={{
-            marginTop: 48,
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: 32,
+            marginTop: 36,
+            fontFamily: "Anton, sans-serif",
+            fontSize: 56,
             color: COLORS.navy,
             opacity: urlIn,
+            letterSpacing: 2,
           }}
         >
           adabmoves.nl
