@@ -155,8 +155,8 @@ function ScholenPage() {
               Gedrag en karakter — daar maken wij het verschil.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Wij komen niet om de gymdocent te vervangen. Wij komen om — naast de gymles —
-              structureel te werken aan gedrag, respect en karakter via sport en spel.
+              ADAB MOVES is een zelfstandige aanbieder van sport- en spelactiviteiten op school.
+              Wij werken structureel aan gedrag, respect en karakter via sport en spel.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
