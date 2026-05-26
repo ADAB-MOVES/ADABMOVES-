@@ -47,7 +47,7 @@ const tracks = [
     tag: "1 — Scholen",
     title: "Basis- & middelbare scholen",
     text:
-      "Sport- en spelactiviteiten tussen en na schooltijd, workshops en sportdagen — volledig verzorgd, náást de gymles.",
+      "Sport- en spelactiviteiten tussen en na schooltijd, workshops en sportdagen — als zelfstandige aanbieder, volledig verzorgd.",
     image: coach,
     to: "/aanbod/scholen" as const,
   },
