@@ -105,7 +105,7 @@ function ScholenPage() {
             <p className="lg:col-span-5 text-lg text-muted-foreground leading-relaxed">
               Sport- en spelactiviteiten <strong className="text-foreground">tussen en na schooltijd</strong>,
               workshops en events voor <strong className="text-foreground">basis- en middelbare scholen</strong>.
-              Wij vervangen jullie gymdocent niet — wij versterken het pedagogisch klimaat <em>náást</em> de gymles.
+              Als zelfstandige aanbieder werken wij structureel aan gedrag, respect en karakter via sport.
             </p>
           </div>
         </div>
