@@ -4,7 +4,7 @@ export const Route = createFileRoute("/toegankelijkheid")({
   head: () => ({
     meta: [
       { title: "Toegankelijkheid — ADAB MOVES" },
-      { name: "description", content: "Onze toegankelijkheidsverklaring." },
+      { name: "description", content: "Toegankelijkheidsverklaring van ADAB MOVES — wij streven naar een website die voor iedereen toegankelijk is, conform de WCAG 2.1-richtlijnen (niveau AA)." },
       { property: "og:title", content: "Toegankelijkheid — ADAB MOVES" },
       { property: "og:description", content: "Toegankelijkheidsverklaring." },
     ],

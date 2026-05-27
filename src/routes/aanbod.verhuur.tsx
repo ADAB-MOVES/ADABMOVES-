@@ -6,8 +6,13 @@ export const Route = createFileRoute("/aanbod/verhuur")({
   head: () => ({
     meta: [
       { title: "Materiaal- & seizoensverhuur — ADAB MOVES" },
-      { name: "description", content: "In ontwikkeling: materiaalverhuur en seizoensgebonden verhuur zoals springkussens." },
+      { name: "description", content: "In ontwikkeling: materiaalverhuur en seizoensgebonden verhuur zoals springkussens voor scholen, buurthuizen en events in Amsterdam en omstreken." },
       { property: "og:title", content: "Verhuur — ADAB MOVES" },
+      { property: "og:description", content: "Sport- en spelmateriaal en springkussens — binnenkort beschikbaar via ADAB MOVES." },
+      { property: "og:url", content: "https://www.adabmoves.nl/aanbod/verhuur" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/aanbod/verhuur" },
     ],
   }),
   component: VerhuurPage,

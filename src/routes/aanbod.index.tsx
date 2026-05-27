@@ -11,10 +11,14 @@ import { WA, EMAIL } from "@/lib/whatsapp";
 export const Route = createFileRoute("/aanbod/")({
   head: () => ({
     meta: [
-      { title: "Aanbod — ADAB MOVES" },
-      { name: "description", content: "Schoolprogramma's, multisport voor kinderen, sportdagen en verhuur — ontdek het volledige aanbod van ADAB MOVES." },
+      { title: "Aanbod — Multisport, kickboksen & sport voor scholen | ADAB MOVES" },
+      { name: "description", content: "Ontdek het volledige aanbod van ADAB MOVES: schoolprogramma's en workshops, multisport voor kinderen, kickboksen en weerbaarheidstraining voor jongeren, sportdagen en evenementen — in Amsterdam, Haarlem, Zaandam en Almere." },
       { property: "og:title", content: "Aanbod — ADAB MOVES" },
-      { property: "og:description", content: "Maatwerk in sport en beweging: scholen, multisport, events." },
+      { property: "og:description", content: "Maatwerk in sport en jongerenwerk: scholen, multisport, kickboksen, sportdagen en events." },
+      { property: "og:url", content: "https://www.adabmoves.nl/aanbod" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/aanbod" },
     ],
   }),
   component: AanbodHub,

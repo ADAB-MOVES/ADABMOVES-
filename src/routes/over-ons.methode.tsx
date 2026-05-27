@@ -7,10 +7,15 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/over-ons/methode")({
   head: () => ({
     meta: [
-      { title: "De ADAB Methode — ADAB MOVES" },
-      { name: "description", content: "Zeven pijlers die onze pedagogische aanpak vormen — van Adab tot Qudwah." },
+      { title: "De ADAB Methode — Sport, karaktervorming & islamitische waarden" },
+      { name: "description", content: "Zeven pijlers die onze pedagogische aanpak vormen — van Adab tot Qudwah. Onze methode voor karaktervorming via sport, geworteld in islamitische waarden voor kinderen en jongeren." },
       { property: "og:title", content: "De ADAB Methode" },
+      { property: "og:description", content: "Sport met betekenis: zeven pijlers voor karaktervorming, discipline en jongerenontwikkeling." },
+      { property: "og:url", content: "https://www.adabmoves.nl/over-ons/methode" },
       { property: "og:image", content: methode },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/over-ons/methode" },
     ],
   }),
   component: MethodePage,

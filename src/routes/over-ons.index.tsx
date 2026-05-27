@@ -8,10 +8,15 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/over-ons/")({
   head: () => ({
     meta: [
-      { title: "Over ons — ADAB MOVES" },
-      { name: "description", content: "Maak kennis met ADAB MOVES: ons verhaal, de ADAB Methode en onze missie & visie." },
-      { property: "og:title", content: "Over ons — ADAB MOVES" },
+      { title: "Over ons — Islamitische sport- en jongerenorganisatie | ADAB MOVES" },
+      { name: "description", content: "Maak kennis met ADAB MOVES: islamitische multisport- en jongerenorganisatie in Amsterdam e.o. Ons verhaal, de ADAB Methode en onze missie & visie voor sport, karakter en jongerenwerk." },
+      { property: "og:title", content: "Over ADAB MOVES" },
+      { property: "og:description", content: "Een islamitische jongerenorganisatie die sport, discipline en karaktervorming verbindt — in Amsterdam, Haarlem, Zaandam en Almere." },
+      { property: "og:url", content: "https://www.adabmoves.nl/over-ons" },
       { property: "og:image", content: community },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/over-ons" },
     ],
   }),
   component: OverOnsHub,

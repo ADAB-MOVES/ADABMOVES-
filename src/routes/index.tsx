@@ -23,19 +23,24 @@ import { SportIcon, type SportName } from "@/components/illustrations/SportIcon"
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ADAB MOVES — Bewegen met betekenis | Multisport voor kinderen" },
+      { title: "ADAB MOVES — Multisport voor kinderen & jongeren in Amsterdam, Haarlem, Zaandam & Almere" },
       {
         name: "description",
         content:
-          "ADAB MOVES bouwt aan karakter via sport. Multisport en beweegprogramma's voor basis- en middelbare scholen, ouders en kinderen door heel Nederland.",
+          "Islamitische multisport- en jongerenorganisatie in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp. Sportactiviteiten voor kinderen, kickboksen en weerbaarheidstraining voor jongeren, workshops en sportdagen voor scholen — sport met karakter, discipline en zelfvertrouwen.",
       },
-      { property: "og:title", content: "ADAB MOVES — Bewegen met betekenis" },
+      { property: "og:title", content: "ADAB MOVES — Sport met karakter voor kinderen & jongeren" },
       {
         property: "og:description",
         content:
-          "Multisport met betekenis — sport als middel voor karaktervorming, voor scholen, ouders en kinderen.",
+          "Multisport, kickboksen en weerbaarheidstraining voor kinderen en jongeren. Workshops en sportdagen voor scholen in Amsterdam en omstreken.",
       },
+      { property: "og:url", content: "https://www.adabmoves.nl/" },
       { property: "og:image", content: hero },
+      { name: "twitter:image", content: hero },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/" },
     ],
   }),
   component: HomePage,

@@ -8,9 +8,10 @@ export const Route = createFileRoute("/over-ons/verhaal")({
   head: () => ({
     meta: [
       { title: "Ons verhaal & onze doelen — ADAB MOVES" },
-      { name: "description", content: "Hoe ADAB MOVES is ontstaan vanuit jarenlange ervaring in de sportbranche, en de doelen die wij ons stellen voor de komende jaren." },
+      { name: "description", content: "Hoe ADAB MOVES is ontstaan vanuit jarenlange ervaring in de sport- en jongerenbranche, en onze doelen voor multisport, kickboksen en jongerenwerk in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp." },
       { property: "og:title", content: "Ons verhaal & onze doelen — ADAB MOVES" },
-      { property: "og:description", content: "Een organisatie geboren uit ervaring — gedreven door wat wij dagelijks zien." },
+      { property: "og:description", content: "Een islamitische jongerenorganisatie geboren uit ervaring — gedreven door wat wij dagelijks zien op scholen en in de gemeenschap." },
+      { property: "og:url", content: "https://www.adabmoves.nl/over-ons/verhaal" },
       { property: "og:image", content: verhaal },
     ],
     links: [

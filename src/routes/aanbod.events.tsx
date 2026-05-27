@@ -7,10 +7,15 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/aanbod/events")({
   head: () => ({
     meta: [
-      { title: "ADAB Day — sportdagen & events voor scholen" },
-      { name: "description", content: "Sportdagen, themadagen en kinderactiviteiten op locatie — volledig verzorgd door ADAB MOVES voor scholen, gemeenten en buurthuizen." },
-      { property: "og:title", content: "ADAB Day & evenementen" },
-      { property: "og:description", content: "Een sportdag die kinderen nog weken navertellen." },
+      { title: "Sportdagen, events & ADAB Day voor scholen | ADAB MOVES" },
+      { name: "description", content: "Sportdagen, themadagen en jongerenactiviteiten op locatie — volledig verzorgd door ADAB MOVES voor scholen, gemeenten en buurthuizen in Amsterdam, Haarlem, Zaandam en Almere." },
+      { property: "og:title", content: "ADAB Day — sportdagen & events" },
+      { property: "og:description", content: "Een school sportdag of jongerenevent die kinderen nog weken navertellen. Volledig verzorgd: materiaal, coaches en draaiboek." },
+      { property: "og:url", content: "https://www.adabmoves.nl/aanbod/events" },
+      { property: "og:image", content: event },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/aanbod/events" },
     ],
   }),
   component: EventsPage,

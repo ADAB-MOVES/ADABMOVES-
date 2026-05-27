@@ -19,10 +19,15 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/aanbod/scholen")({
   head: () => ({
     meta: [
-      { title: "Sport- en spelactiviteiten op school — ADAB MOVES" },
-      { name: "description", content: "Sport- en spelactiviteiten tussen en na schooltijd, workshops en events voor basis- en middelbare scholen. Karakter en gedrag via sport — als zelfstandige aanbieder op jullie locatie." },
-      { property: "og:title", content: "Scholen — ADAB MOVES" },
-      { property: "og:description", content: "Sport en spel tussen en na schooltijd, workshops en events. Karakter en gedrag via sport, als zelfstandige aanbieder." },
+      { title: "Workshops voor scholen & school sportdagen | ADAB MOVES" },
+      { name: "description", content: "Workshops voor scholen, sport- en spelactiviteiten tussen en na schooltijd, sportdagen en events voor basis- en middelbare scholen in Amsterdam, Haarlem, Zaandam, Almere en omstreken. Karaktervorming en gedrag via sport — als zelfstandige aanbieder op jullie locatie." },
+      { property: "og:title", content: "Sport & workshops voor scholen — ADAB MOVES" },
+      { property: "og:description", content: "Sport en spel tussen en na schooltijd, workshops karaktervorming en school sportdagen — volledig verzorgd door ADAB MOVES." },
+      { property: "og:url", content: "https://www.adabmoves.nl/aanbod/scholen" },
+      { property: "og:image", content: scholen },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/aanbod/scholen" },
     ],
   }),
   component: ScholenPage,
