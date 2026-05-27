@@ -30,7 +30,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "ADAB MOVES — Islamitische multisport voor kinderen & jongeren | Amsterdam e.o." },
-      { name: "description", content: "Islamitische sport- en jongerenorganisatie in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp. Multisport voor kinderen, kickboksen en weerbaarheidstraining voor jongeren, sportdagen en workshops voor scholen — sport met karakter, discipline en waarden." },
+      { name: "description", content: "Islamitische multisport voor kinderen en jongeren in Amsterdam, Haarlem, Zaandam, Almere & Amstelveen. Kickboksen, weerbaarheid, school sportdagen & workshops." },
       { name: "keywords", content: "islamitische sportorganisatie, multisport kinderen, sport voor jongeren, karaktervorming jongeren, sport en discipline, islamitische jongerenorganisatie, sportactiviteiten kinderen, workshops voor scholen, jongerenontwikkeling sport, islamitische multisport community, kickboksen jongeren, sport en zelfvertrouwen jongeren, weerbaarheidstraining jongeren, sport coaching kinderen, sportprogramma jongeren, sportcommunity jongeren, islamitische jongerenactiviteiten, sport met islamitische waarden, jongerenwerk sport, school sportdagen, maatschappelijke jongerenprojecten, multisport Nederland, sportactiviteiten Amsterdam, jongeren sport Amsterdam, multisport kinderen Amsterdam, kickboksen jongeren Amsterdam, sportactiviteiten Haarlem, jongeren sport Almere, sportactiviteiten Zaandam, multisport Hoofddorp, sport Amstelveen, ADAB MOVES" },
       { name: "author", content: "ADAB MOVES" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
