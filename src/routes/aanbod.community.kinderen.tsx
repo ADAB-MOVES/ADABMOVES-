@@ -8,10 +8,15 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/aanbod/community/kinderen")({
   head: () => ({
     meta: [
-      { title: "Multisport voor kinderen (8–12) — ADAB MOVES" },
-      { name: "description", content: "Wekelijkse multisport voor kinderen van 8 tot 12 jaar. Vaste coach, vaste groep, vaste locatie — een veilige plek waar jouw kind groeit." },
+      { title: "Multisport voor kinderen (8–12) in Amsterdam e.o. | ADAB MOVES" },
+      { name: "description", content: "Wekelijkse multisport voor kinderen van 8 tot 12 jaar in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp. Vaste coach, vaste groep, vaste locatie — een veilige sportcommunity waar jouw kind groeit in karakter en zelfvertrouwen." },
       { property: "og:title", content: "Multisport voor kinderen — ADAB MOVES" },
-      { property: "og:description", content: "Een tweede thuis in beweging. Voor ouders die meer willen dan een sportles." },
+      { property: "og:description", content: "Een tweede thuis in beweging. Voor ouders die meer willen dan een sportles — sport, karakter en gemeenschap voor kinderen van 8 t/m 12." },
+      { property: "og:url", content: "https://www.adabmoves.nl/aanbod/community/kinderen" },
+      { property: "og:image", content: kinderen },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/aanbod/community/kinderen" },
     ],
   }),
   component: Page,
