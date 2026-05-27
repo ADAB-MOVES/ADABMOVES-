@@ -9,10 +9,14 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — ADAB MOVES" },
-      { name: "description", content: "Neem contact op met ADAB MOVES voor scholen, sportdagen of inschrijving in de multisport-community." },
+      { title: "Contact — ADAB MOVES | Sport voor scholen, kinderen & jongeren" },
+      { name: "description", content: "Neem contact op met ADAB MOVES voor sportprogramma's, workshops, sportdagen of inschrijving in de multisport-community — in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp." },
       { property: "og:title", content: "Contact — ADAB MOVES" },
-      { property: "og:description", content: "Plan een vrijblijvend gesprek over sport en beweging met betekenis." },
+      { property: "og:description", content: "Plan een vrijblijvend gesprek over sport, karaktervorming en jongerenwerk met onze coaches." },
+      { property: "og:url", content: "https://www.adabmoves.nl/contact" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/contact" },
     ],
   }),
   component: ContactPage,
