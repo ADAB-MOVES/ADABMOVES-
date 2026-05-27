@@ -22,10 +22,14 @@ import event from "@/assets/event.jpg";
 export const Route = createFileRoute("/over-ons/missie-visie")({
   head: () => ({
     meta: [
-      { title: "Missie & visie — ADAB MOVES" },
-      { name: "description", content: "Onze missie, visie en kernwaarden: sport als middel voor brede ontwikkeling, vanuit een islamitische fundering." },
+      { title: "Missie & visie — Sport, karakter & islamitische waarden | ADAB MOVES" },
+      { name: "description", content: "Onze missie en visie: sport als middel voor brede jongerenontwikkeling, geworteld in islamitische waarden. Karaktervorming, discipline en zelfvertrouwen voor kinderen en jongeren in Amsterdam en omstreken." },
       { property: "og:title", content: "Missie & visie — ADAB MOVES" },
-      { property: "og:description", content: "Respect, eerlijkheid, geduld, dankbaarheid en verantwoordelijkheid — verweven in elke training." },
+      { property: "og:description", content: "Respect, eerlijkheid, geduld, dankbaarheid en verantwoordelijkheid — verweven in elke training en elk jongerenproject." },
+      { property: "og:url", content: "https://www.adabmoves.nl/over-ons/missie-visie" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.adabmoves.nl/over-ons/missie-visie" },
     ],
   }),
   component: MissieVisiePage,
