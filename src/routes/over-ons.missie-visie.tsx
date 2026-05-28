@@ -166,7 +166,7 @@ function MissieVisiePage() {
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             <div className="rounded-3xl overflow-hidden">
-              <img src={community} alt="Kinderen bewegen samen" loading="lazy" className="w-full h-full aspect-[4/5] object-cover" />
+              <img src={community} alt="Kinderen sporten samen tijdens een multisport training van ADAB MOVES" loading="lazy" className="w-full h-full aspect-[4/5] object-cover" />
             </div>
             <div className="mt-6">
               <span className="eyebrow">Kernwaarden</span>
