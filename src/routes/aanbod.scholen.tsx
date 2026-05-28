@@ -29,6 +29,34 @@ export const Route = createFileRoute("/aanbod/scholen")({
     links: [
       { rel: "canonical", href: "https://www.adabmoves.nl/aanbod/scholen" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Sport workshops en school sportdagen",
+          provider: { "@type": "Organization", name: "ADAB MOVES", url: "https://www.adabmoves.nl" },
+          areaServed: ["Amsterdam", "Haarlem", "Zaandam", "Zaanstad", "Almere", "Hoofddorp", "Amstelveen", "Nederland"],
+          audience: { "@type": "EducationalAudience", educationalRole: "basisschool en middelbare school" },
+          name: "Sport & workshops voor scholen",
+          description: "Sport- en spelactiviteiten tussen en na schooltijd, workshops karaktervorming en volledig verzorgde school sportdagen voor basis- en middelbare scholen.",
+          url: "https://www.adabmoves.nl/aanbod/scholen",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.adabmoves.nl/" },
+            { "@type": "ListItem", position: 2, name: "Aanbod", item: "https://www.adabmoves.nl/aanbod" },
+            { "@type": "ListItem", position: 3, name: "Scholen", item: "https://www.adabmoves.nl/aanbod/scholen" },
+          ],
+        }),
+      },
+    ],
   }),
   component: ScholenPage,
 });
