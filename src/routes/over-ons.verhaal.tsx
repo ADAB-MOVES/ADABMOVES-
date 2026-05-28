@@ -173,7 +173,7 @@ function VerhaalPage() {
       <section className="container-x py-24">
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">
           <div className="rounded-3xl overflow-hidden">
-            <img src={community} alt="Gemeenschap" loading="lazy" className="w-full h-full object-cover" />
+            <img src={community} alt="ADAB MOVES jongerengemeenschap in beweging — sport en karakter" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="rounded-3xl bg-[var(--ink)] text-[var(--cream)] p-10 md:p-14 flex flex-col justify-center">
             <h2 className="text-3xl md:text-4xl font-semibold leading-tight">Word onderdeel van ons verhaal.</h2>
