@@ -18,6 +18,47 @@ export const Route = createFileRoute("/aanbod/community/kinderen")({
     links: [
       { rel: "canonical", href: "https://www.adabmoves.nl/aanbod/community/kinderen" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Multisport voor kinderen",
+          provider: { "@type": "Organization", name: "ADAB MOVES", url: "https://www.adabmoves.nl" },
+          areaServed: ["Amsterdam", "Haarlem", "Zaandam", "Almere", "Amstelveen", "Hoofddorp"],
+          audience: { "@type": "PeopleAudience", suggestedMinAge: 8, suggestedMaxAge: 12 },
+          name: "Multisport-community voor kinderen 8–12",
+          description: "Wekelijkse multisport voor kinderen van 8 tot 12 jaar. Vaste coach, vaste groep, vaste locatie — sport, karakter en gemeenschap.",
+          url: "https://www.adabmoves.nl/aanbod/community/kinderen",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "Vanaf welke leeftijd kan mijn kind meedoen?", acceptedAnswer: { "@type": "Answer", text: "Onze vaste groepen zijn voor kinderen van 8 t/m 12 jaar. Onder en boven die leeftijd kijken we per geval — neem contact op." } },
+            { "@type": "Question", name: "Moet mijn kind al kunnen sporten?", acceptedAnswer: { "@type": "Answer", text: "Nee. We bouwen elke periode rustig op, met aandacht voor elk niveau. Beginners en gevorderden trainen prima samen." } },
+            { "@type": "Question", name: "Wat als mijn kind een keer niet kan?", acceptedAnswer: { "@type": "Answer", text: "Geen probleem — laat het ons weten. Bij langere afwezigheid kijken we naar een passende oplossing." } },
+            { "@type": "Question", name: "Hoe weet ik of het klikt?", acceptedAnswer: { "@type": "Answer", text: "Je kunt een keer vrijblijvend meedoen. Klikt het niet? Dan stopt het daar — zonder verplichtingen." } },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.adabmoves.nl/" },
+            { "@type": "ListItem", position: 2, name: "Aanbod", item: "https://www.adabmoves.nl/aanbod" },
+            { "@type": "ListItem", position: 3, name: "Multisport kinderen", item: "https://www.adabmoves.nl/aanbod/community/kinderen" },
+          ],
+        }),
+      },
+    ],
   }),
   component: Page,
 });
