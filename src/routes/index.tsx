@@ -42,6 +42,59 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "canonical", href: "https://www.adabmoves.nl/" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Wat is ADAB MOVES?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "ADAB MOVES is een islamitische multisport- en jongerenorganisatie in Amsterdam en omstreken. Wij bieden sportactiviteiten voor kinderen, kickboksen en weerbaarheidstraining voor jongeren, en workshops en sportdagen voor scholen — met focus op karaktervorming, discipline en zelfvertrouwen.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "In welke steden is ADAB MOVES actief?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Wij zijn actief in Amsterdam, Haarlem, Zaandam, Zaanstad, Almere, Hoofddorp en Amstelveen, en daarbuiten op aanvraag voor scholen, gemeenten en buurthuizen in heel Nederland.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Voor welke leeftijd is de multisport-community?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "De wekelijkse multisport voor kinderen is voor de leeftijd 8 t/m 12 jaar. Voor tieners en jongeren bieden we kickboksen, weerbaarheidstraining en mentoring trajecten.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Verzorgen jullie school sportdagen?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Ja — wij verzorgen sport- en spelactiviteiten tussen en na schooltijd, workshops karaktervorming en volledig verzorgde sportdagen voor basis- en middelbare scholen.",
+              },
+            },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.adabmoves.nl/" },
+          ],
+        }),
+      },
+    ],
   }),
   component: HomePage,
 });

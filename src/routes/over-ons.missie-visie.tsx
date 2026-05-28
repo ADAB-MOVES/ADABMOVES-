@@ -166,7 +166,7 @@ function MissieVisiePage() {
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             <div className="rounded-3xl overflow-hidden">
-              <img src={community} alt="Kinderen bewegen samen" loading="lazy" className="w-full h-full aspect-[4/5] object-cover" />
+              <img src={community} alt="Kinderen sporten samen tijdens een multisport training van ADAB MOVES" loading="lazy" className="w-full h-full aspect-[4/5] object-cover" />
             </div>
             <div className="mt-6">
               <span className="eyebrow">Kernwaarden</span>
@@ -191,10 +191,11 @@ function MissieVisiePage() {
       <section className="container-x pb-20">
         <div className="grid grid-cols-2 gap-4 md:gap-6">
           <div className="rounded-3xl overflow-hidden">
-            <img src={coach} alt="Trainer met groep kinderen" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
+            <img src={coach} alt="ADAB MOVES coach geeft sportles aan jongeren — karaktervorming door sport" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
           </div>
           <div className="rounded-3xl overflow-hidden">
-            <img src={event} alt="Adab Moves event" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
+            <img src={event} alt="ADAB Day sportevenement voor jongeren en families in Amsterdam" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
+
           </div>
         </div>
       </section>
