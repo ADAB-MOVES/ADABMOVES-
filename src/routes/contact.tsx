@@ -3,7 +3,6 @@ import { Mail, MapPin, MessageCircle, Send, Phone } from "lucide-react";
 import { useState } from "react";
 import { FloatingDecor } from "@/components/FloatingDecor";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WA } from "@/lib/whatsapp";
-import { supabase } from "@/integrations/supabase/client";
 
 
 export const Route = createFileRoute("/contact")({
@@ -46,10 +45,12 @@ function ContactPage() {
       return;
     }
     try {
-      const { error: insertError } = await supabase
-        .from("contact_messages")
-        .insert(payload);
-      if (insertError) throw insertError;
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error("Contact submission failed");
       setSent(true);
       form.reset();
     } catch (err) {
