@@ -25,12 +25,16 @@ import { Route as AanbodIndexRouteImport } from './routes/aanbod.index'
 import { Route as OverOnsVerhaalRouteImport } from './routes/over-ons.verhaal'
 import { Route as OverOnsMissieVisieRouteImport } from './routes/over-ons.missie-visie'
 import { Route as OverOnsMethodeRouteImport } from './routes/over-ons.methode'
+import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as AanbodVerhuurRouteImport } from './routes/aanbod.verhuur'
 import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
 import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
 import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
 import { Route as AanbodCommunityIndexRouteImport } from './routes/aanbod.community.index'
+import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as AanbodCommunityKinderenRouteImport } from './routes/aanbod.community.kinderen'
+import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
 const VoorwaardenRoute = VoorwaardenRouteImport.update({
@@ -113,6 +117,11 @@ const OverOnsMethodeRoute = OverOnsMethodeRouteImport.update({
   path: '/methode',
   getParentRoute: () => OverOnsRoute,
 } as any)
+const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
+  id: '/email/unsubscribe',
+  path: '/email/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AanbodVerhuurRoute = AanbodVerhuurRouteImport.update({
   id: '/verhuur',
   path: '/verhuur',
@@ -138,11 +147,28 @@ const AanbodCommunityIndexRoute = AanbodCommunityIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AanbodCommunityRoute,
 } as any)
+const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
+  id: '/lovable/email/suppression',
+  path: '/lovable/email/suppression',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AanbodCommunityKinderenRoute = AanbodCommunityKinderenRouteImport.update({
   id: '/kinderen',
   path: '/kinderen',
   getParentRoute: () => AanbodCommunityRoute,
 } as any)
+const LovableEmailTransactionalSendRoute =
+  LovableEmailTransactionalSendRouteImport.update({
+    id: '/lovable/email/transactional/send',
+    path: '/lovable/email/transactional/send',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LovableEmailQueueProcessRoute =
   LovableEmailQueueProcessRouteImport.update({
     id: '/lovable/email/queue/process',
@@ -166,14 +192,18 @@ export interface FileRoutesByFullPath {
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
+  '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/lovable/email/transactional/send': typeof LovableEmailTransactionalSendRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -188,14 +218,18 @@ export interface FileRoutesByTo {
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod': typeof AanbodIndexRoute
   '/over-ons': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
+  '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/aanbod/community': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/lovable/email/transactional/send': typeof LovableEmailTransactionalSendRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -214,14 +248,18 @@ export interface FileRoutesById {
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
+  '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/lovable/email/transactional/send': typeof LovableEmailTransactionalSendRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -241,14 +279,18 @@ export interface FileRouteTypes {
     | '/aanbod/events'
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
+    | '/email/unsubscribe'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
     | '/aanbod/community/kinderen'
+    | '/lovable/email/suppression'
     | '/aanbod/community/'
     | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
+    | '/lovable/email/transactional/send'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -263,14 +305,18 @@ export interface FileRouteTypes {
     | '/aanbod/events'
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
+    | '/email/unsubscribe'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
     | '/aanbod'
     | '/over-ons'
     | '/aanbod/community/kinderen'
+    | '/lovable/email/suppression'
     | '/aanbod/community'
     | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
+    | '/lovable/email/transactional/send'
   id:
     | '__root__'
     | '/'
@@ -288,14 +334,18 @@ export interface FileRouteTypes {
     | '/aanbod/events'
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
+    | '/email/unsubscribe'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
     | '/aanbod/'
     | '/over-ons/'
     | '/aanbod/community/kinderen'
+    | '/lovable/email/suppression'
     | '/aanbod/community/'
     | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
+    | '/lovable/email/transactional/send'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -310,7 +360,11 @@ export interface RootRouteChildren {
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   VisieRoute: typeof VisieRoute
   VoorwaardenRoute: typeof VoorwaardenRoute
+  EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
+  LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
+  LovableEmailTransactionalSendRoute: typeof LovableEmailTransactionalSendRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -427,6 +481,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OverOnsMethodeRouteImport
       parentRoute: typeof OverOnsRoute
     }
+    '/email/unsubscribe': {
+      id: '/email/unsubscribe'
+      path: '/email/unsubscribe'
+      fullPath: '/email/unsubscribe'
+      preLoaderRoute: typeof EmailUnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/aanbod/verhuur': {
       id: '/aanbod/verhuur'
       path: '/verhuur'
@@ -462,12 +523,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AanbodCommunityIndexRouteImport
       parentRoute: typeof AanbodCommunityRoute
     }
+    '/lovable/email/suppression': {
+      id: '/lovable/email/suppression'
+      path: '/lovable/email/suppression'
+      fullPath: '/lovable/email/suppression'
+      preLoaderRoute: typeof LovableEmailSuppressionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/aanbod/community/kinderen': {
       id: '/aanbod/community/kinderen'
       path: '/kinderen'
       fullPath: '/aanbod/community/kinderen'
       preLoaderRoute: typeof AanbodCommunityKinderenRouteImport
       parentRoute: typeof AanbodCommunityRoute
+    }
+    '/lovable/email/transactional/send': {
+      id: '/lovable/email/transactional/send'
+      path: '/lovable/email/transactional/send'
+      fullPath: '/lovable/email/transactional/send'
+      preLoaderRoute: typeof LovableEmailTransactionalSendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/lovable/email/queue/process': {
       id: '/lovable/email/queue/process'
@@ -541,7 +623,11 @@ const rootRouteChildren: RootRouteChildren = {
   ToegankelijkheidRoute: ToegankelijkheidRoute,
   VisieRoute: VisieRoute,
   VoorwaardenRoute: VoorwaardenRoute,
+  EmailUnsubscribeRoute: EmailUnsubscribeRoute,
+  LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
+  LovableEmailTransactionalSendRoute: LovableEmailTransactionalSendRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
