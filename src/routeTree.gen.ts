@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VoorwaardenRouteImport } from './routes/voorwaarden'
 import { Route as VisieRouteImport } from './routes/visie'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as ToegankelijkheidRouteImport } from './routes/toegankelijkheid'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -46,6 +47,11 @@ const VoorwaardenRoute = VoorwaardenRouteImport.update({
 const VisieRoute = VisieRouteImport.update({
   id: '/visie',
   path: '/visie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToegankelijkheidRoute = ToegankelijkheidRouteImport.update({
@@ -192,6 +198,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
   '/aanbod/community': typeof AanbodCommunityRouteWithChildren
@@ -220,6 +227,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
   '/aanbod/events': typeof AanbodEventsRoute
@@ -250,6 +258,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
   '/voorwaarden': typeof VoorwaardenRoute
   '/aanbod/community': typeof AanbodCommunityRouteWithChildren
@@ -282,6 +291,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sitemap.xml'
     | '/toegankelijkheid'
+    | '/unsubscribe'
     | '/visie'
     | '/voorwaarden'
     | '/aanbod/community'
@@ -310,6 +320,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sitemap.xml'
     | '/toegankelijkheid'
+    | '/unsubscribe'
     | '/visie'
     | '/voorwaarden'
     | '/aanbod/events'
@@ -339,6 +350,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sitemap.xml'
     | '/toegankelijkheid'
+    | '/unsubscribe'
     | '/visie'
     | '/voorwaarden'
     | '/aanbod/community'
@@ -370,6 +382,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   VisieRoute: typeof VisieRoute
   VoorwaardenRoute: typeof VoorwaardenRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
@@ -394,6 +407,13 @@ declare module '@tanstack/react-router' {
       path: '/visie'
       fullPath: '/visie'
       preLoaderRoute: typeof VisieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/toegankelijkheid': {
@@ -641,6 +661,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ToegankelijkheidRoute: ToegankelijkheidRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   VisieRoute: VisieRoute,
   VoorwaardenRoute: VoorwaardenRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
@@ -653,12 +674,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
