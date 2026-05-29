@@ -31,6 +31,7 @@ import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
 import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
 import { Route as AanbodCommunityIndexRouteImport } from './routes/aanbod.community.index'
 import { Route as AanbodCommunityKinderenRouteImport } from './routes/aanbod.community.kinderen'
+import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
 const VoorwaardenRoute = VoorwaardenRouteImport.update({
   id: '/voorwaarden',
@@ -142,6 +143,12 @@ const AanbodCommunityKinderenRoute = AanbodCommunityKinderenRouteImport.update({
   path: '/kinderen',
   getParentRoute: () => AanbodCommunityRoute,
 } as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/over-ons/': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -187,6 +195,7 @@ export interface FileRoutesByTo {
   '/over-ons': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/aanbod/community': typeof AanbodCommunityIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -212,6 +221,7 @@ export interface FileRoutesById {
   '/over-ons/': typeof OverOnsIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/over-ons/'
     | '/aanbod/community/kinderen'
     | '/aanbod/community/'
+    | '/lovable/email/queue/process'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/over-ons'
     | '/aanbod/community/kinderen'
     | '/aanbod/community'
+    | '/lovable/email/queue/process'
   id:
     | '__root__'
     | '/'
@@ -283,6 +295,7 @@ export interface FileRouteTypes {
     | '/over-ons/'
     | '/aanbod/community/kinderen'
     | '/aanbod/community/'
+    | '/lovable/email/queue/process'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -297,6 +310,7 @@ export interface RootRouteChildren {
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   VisieRoute: typeof VisieRoute
   VoorwaardenRoute: typeof VoorwaardenRoute
+  LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -455,6 +469,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AanbodCommunityKinderenRouteImport
       parentRoute: typeof AanbodCommunityRoute
     }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -520,16 +541,8 @@ const rootRouteChildren: RootRouteChildren = {
   ToegankelijkheidRoute: ToegankelijkheidRoute,
   VisieRoute: VisieRoute,
   VoorwaardenRoute: VoorwaardenRoute,
+  LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
