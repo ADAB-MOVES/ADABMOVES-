@@ -17,6 +17,14 @@ const SENDER_DOMAIN = 'notify.www.adabmoves.nl'
 const FROM_DOMAIN = 'notify.www.adabmoves.nl'
 const SITE_NAME = 'ADAB MOVES'
 
+function generateToken(): string {
+  const bytes = new Uint8Array(32)
+  crypto.getRandomValues(bytes)
+  return Array.from(bytes)
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+}
+
 function json(data: unknown, status = 200) {
   return Response.json(data, { status })
 }
@@ -73,6 +81,29 @@ export const Route = createFileRoute('/api/public/contact')({
           if (suppressionError) throw suppressionError
 
           if (!suppressed) {
+            const normalizedRecipient = recipientEmail.toLowerCase()
+            const { data: existingToken, error: tokenLookupError } = await supabase
+              .from('email_unsubscribe_tokens')
+              .select('token, used_at')
+              .eq('email', normalizedRecipient)
+              .maybeSingle()
+
+            if (tokenLookupError) throw tokenLookupError
+
+            const unsubscribeToken = existingToken?.used_at
+              ? generateToken()
+              : existingToken?.token || generateToken()
+
+            if (!existingToken || existingToken.used_at) {
+              const { error: tokenError } = await supabase
+                .from('email_unsubscribe_tokens')
+                .upsert(
+                  { token: unsubscribeToken, email: normalizedRecipient, used_at: null },
+                  { onConflict: 'email' },
+                )
+              if (tokenError) throw tokenError
+            }
+
             const element = React.createElement(template.component, payload)
             const html = await render(element)
             const text = await render(element, { plainText: true })
@@ -101,6 +132,7 @@ export const Route = createFileRoute('/api/public/contact')({
                 purpose: 'transactional',
                 label: templateName,
                 idempotency_key: `contact-notification-${inserted.id}`,
+                unsubscribe_token: unsubscribeToken,
                 queued_at: new Date().toISOString(),
               },
             })
