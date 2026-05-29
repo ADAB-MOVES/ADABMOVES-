@@ -26,6 +26,7 @@ import { Route as OverOnsVerhaalRouteImport } from './routes/over-ons.verhaal'
 import { Route as OverOnsMissieVisieRouteImport } from './routes/over-ons.missie-visie'
 import { Route as OverOnsMethodeRouteImport } from './routes/over-ons.methode'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
+import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as AanbodVerhuurRouteImport } from './routes/aanbod.verhuur'
 import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
 import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
@@ -122,6 +123,11 @@ const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
   path: '/email/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AanbodVerhuurRoute = AanbodVerhuurRouteImport.update({
   id: '/verhuur',
   path: '/verhuur',
@@ -192,6 +198,7 @@ export interface FileRoutesByFullPath {
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/api/contact': typeof ApiContactRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
@@ -218,6 +225,7 @@ export interface FileRoutesByTo {
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/api/contact': typeof ApiContactRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
@@ -248,6 +256,7 @@ export interface FileRoutesById {
   '/aanbod/events': typeof AanbodEventsRoute
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
+  '/api/contact': typeof ApiContactRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
@@ -279,6 +288,7 @@ export interface FileRouteTypes {
     | '/aanbod/events'
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
+    | '/api/contact'
     | '/email/unsubscribe'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
@@ -305,6 +315,7 @@ export interface FileRouteTypes {
     | '/aanbod/events'
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
+    | '/api/contact'
     | '/email/unsubscribe'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
@@ -334,6 +345,7 @@ export interface FileRouteTypes {
     | '/aanbod/events'
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
+    | '/api/contact'
     | '/email/unsubscribe'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
@@ -360,6 +372,7 @@ export interface RootRouteChildren {
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   VisieRoute: typeof VisieRoute
   VoorwaardenRoute: typeof VoorwaardenRoute
+  ApiContactRoute: typeof ApiContactRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
@@ -486,6 +499,13 @@ declare module '@tanstack/react-router' {
       path: '/email/unsubscribe'
       fullPath: '/email/unsubscribe'
       preLoaderRoute: typeof EmailUnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aanbod/verhuur': {
@@ -623,6 +643,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToegankelijkheidRoute: ToegankelijkheidRoute,
   VisieRoute: VisieRoute,
   VoorwaardenRoute: VoorwaardenRoute,
+  ApiContactRoute: ApiContactRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,

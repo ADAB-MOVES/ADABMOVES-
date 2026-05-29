@@ -21,7 +21,7 @@ function json(data: unknown, status = 200) {
   return Response.json(data, { status })
 }
 
-export const Route = createFileRoute('/api/contact')({
+export const Route = createFileRoute('/api/public/contact')({
   server: {
     handlers: {
       POST: async ({ request }) => {
