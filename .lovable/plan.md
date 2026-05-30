@@ -1,61 +1,49 @@
-# Drie aanpassingen
+# Plan: Scholen poster (A4 PDF) + social media pakket
 
-## 1. Contact-knop in navigatie krijgt eigen kleur
+## Deliverables (in `/mnt/documents/`)
 
-In `src/components/SiteHeader.tsx`:
-- De "Contact" link in zowel desktop- als mobiele nav krijgt een coral pill-styling i.p.v. de standaard tekstlink — zo valt hij op als primaire actie naast de overige nav-items.
-- Desktop: rounded-full, coral achtergrond, cream tekst, lichte hover-lift.
-- Mobiel: zelfde coral pill, full-width binnen het drawer-menu.
-- De underline-animatie wordt voor Contact uitgeschakeld (past niet bij een knop).
+1. **`adabmoves-scholen-poster-A4.pdf`** — printklare A4 poster (300dpi, CMYK-safe kleuren, 5mm marge), bedoeld om naar basis- en middelbare scholen te mailen of op te hangen.
+2. **Instagram pakket scholen** — 4 vierkante posts (1080×1080 PNG):
+   - Post 1: Hero / introductie "Sport & karaktervorming voor scholen"
+   - Post 2: Wat bieden we (workshops, sportdagen, gymlessen, weerbaarheid)
+   - Post 3: De ADAB Methode — 7 pijlers in het kort
+   - Post 4: Call-to-action "Plan een gesprek" + contact + regio
+3. **`captions-scholen.md`** — Nederlandse captions per post mét hashtags (lokale SEO: #amsterdam #haarlem #zaandam #almere #amstelveen #hoofddorp + onderwijs hashtags).
 
-Geen wijziging in de menu-structuur of routing.
+## Stijl & branding
 
-## 2. Homepage-titel & eyebrow herschreven (minder "islam")
+- Brand kleuren: navy `#1F2240`, coral `#E8784E`, cream `#FBF7EE`.
+- Typografie volgens huidige site (headings vet, body schoon sans-serif).
+- Brand illustraties: bestaande `Scene` / `Character` / `SportIcon` componenten uit `src/components/illustrations/` — cartoon kids, mond zonder ogen, ~1 op 3-4 met petje, coach van achteren met logo.
+- Geen AI-fotorealisme. Geen stockfoto's.
 
-In `src/routes/index.tsx` (alleen de hero + meta tags, rest blijft):
+## Aanpak
 
-- **Eyebrow** (was: "De islamitische multisport-organisatie van Nederland") → wordt korter en zelfverzekerd, bv:
-  `"Multisport met betekenis — voor scholen, ouders en kinderen"`
-- **H1** wordt pakkender, ritmischer:
-  `"Bewegen met betekenis,"` *(italic coral)* `"sterk karakter begint hier."`
-- **Sub-paragraaf** wordt herschreven zodat "islam" maar één keer voorkomt:
-  `"ADAB MOVES bouwt aan karakter via sport. We werken vanuit een islamitische fundering en zijn toegankelijk voor iedereen — basis- en middelbare scholen, ouders en kinderen door heel Nederland."`
-- **Meta title / og:title / og:description** worden bijgewerkt zodat "islamitisch" hooguit één keer voorkomt en de nadruk verschuift naar *multisport + karakter*.
+**Stap 1 — Illustraties renderen**
+- Kleine Node/Vite script die de bestaande `Scene` / `Character` SVG-componenten naar losse PNG's rendert (via `satori` of door de SVG strings direct te serialiseren en met `sharp` naar PNG om te zetten op 2160×2160 voor crispness).
+- Hergebruik bestaande illustratie-tokens — geen nieuwe stijl uitvinden.
 
-Geen andere secties op de homepage worden aangeraakt.
+**Stap 2 — Poster A4**
+- ReportLab (Python) bouwt de A4 layout: header met logo + tagline, hero-illustratie, 3 kolommen met aanbod-iconen (workshops / sportdagen / weerbaarheid), ADAB-methode strip, footer met `adabmoves.nl` + QR code naar `/aanbod/scholen` + contact.
+- SEO/locatie strip: "Amsterdam · Haarlem · Zaandam · Almere · Amstelveen · Hoofddorp".
 
-## 3. Nieuwe geanimeerde intro-video
+**Stap 3 — Instagram posts (1080×1080)**
+- Per post: PIL/Pillow composeert cream/navy achtergrond, illustratie, korte koptekst (max 6 woorden), 1 ondersteunende regel, ADAB MOVES logo + URL.
+- Consistent grid look (zelfde header treatment, zelfde footer band).
 
-De huidige `/intro.mp4` is een Ken Burns over stilstaande foto's. We vervangen hem door een echte animatie waarin gebrande ADAB MOVES-kinderen sporten.
+**Stap 4 — Captions**
+- Per post 80–150 woorden NL, natuurlijke tone-of-voice (modern, betrouwbaar, sportief), CTA naar `/aanbod/scholen` of `/contact`, 10–15 relevante hashtags.
 
-### Wat de video toont (ca. 18–22 seconden, 1920×1080, 30fps)
+**Stap 5 — Verplichte visuele QA**
+- Elke PNG én elke PDF-pagina inspecteren: geen overlap, tekst binnen marges, voldoende contrast, logo correct, illustraties scherp.
+- Fix → re-render → re-check tot alles clean is.
 
-Eén doorlopende cream-kleurige gym-scène (`#FBF7EE`, navy `#1F2240`, coral `#E8784E`) met snelle cuts tussen 5 sport-acties — telkens een ander kind (huidskleur en haar wisselen, ~1 op 3 met taqiyah, geen ogen, alleen lachende mond, ADAB MOVES-shirt of -hoodie):
+## Niet in scope
 
-1. **Voetbal** — kind schopt bal, been zwaait, bal vliegt weg
-2. **Kickboksen** — kind stoot/trapt naar een coral focus-pad
-3. **Basketbal** — kind dribbelt en gooit; bal stuitert ritmisch
-4. **Bootcamp** — kind springt (jumping-jacks / box-jump op vaulting box)
-5. **Fitness** — kind doet push-ups of squat met halter
+- Geen wijzigingen aan de website / routes / SEO-code (alleen artifacts).
+- Geen video / reels (kan apart vervolg zijn).
+- Geen Facebook / LinkedIn varianten (kan apart vervolg, vraag het als je het wil).
 
-Plus twee terugkerende beelden:
-- **Coach van achter** in navy jacket met duidelijk zichtbaar ADAB MOVES-logo (stylized A + coral swoosh + "ADAB MOVES / BEWEGEN MET BETEKENIS") in intro en outro.
-- **Outro-kaart** met logo + payoff *"Bewegen met betekenis"* + `adabmoves.nl`.
+## Output naar de gebruiker
 
-### Hoe het gebouwd wordt (technisch)
-
-In `remotion/`:
-- Vervang `src/scenes/KenBurns.tsx`-gebruik door 5 nieuwe scene-componenten in `remotion/src/scenes/`: `Football.tsx`, `Kickboxing.tsx`, `Basketball.tsx`, `Bootcamp.tsx`, `Fitness.tsx`. Elke scene is een SVG-animatie (geen foto) opgebouwd uit primitives (ellipsen, paden, paths) in de brand-stijl.
-- Animatie via `useCurrentFrame()` + `interpolate()` / `spring()` — bv. been-rotatie voor voetbalschop, vuist-translate voor stoot, bal-y met sinus voor dribbel.
-- Alle karakters volgen de illustration-rules memory: lachende mond, géén ogen, ~1 op 3 skullcap, ADAB MOVES-shirt (coral A op de borst), diverse haarstijlen/skin tones.
-- Coach-component (`Coach.tsx`) toont rugzijde met scherp ADAB MOVES-logo op jasje.
-- `MainVideo.tsx` wordt herschreven met `TransitionSeries` (fade + slide) tussen scenes; intro met coach-shot + headline "Bewegen met betekenis", outro met logo-lockup.
-- Fonts: `Anton` voor display, `Inter` voor body (al geladen in project).
-- Renderen via `node scripts/render-remotion.mjs` → output naar `public/intro.mp4` (overschrijft huidige), en als backup `remotion/public/intro-render.mp4`.
-
-### Quality check
-- Per scene één still renderen (`bunx remotion still`) om te verifiëren dat: kleding het logo toont, géén ogen zichtbaar zijn, monden glimlachen, kleuren kloppen.
-- Volledige MP4 onder 30s, onder 10MB doelgrootte.
-
-## Buiten scope
-- Geen wijzigingen aan andere pagina's, routes, backend of styling buiten bovenstaande punten.
+5 bestanden via `<presentation-artifact>` tags: 1 PDF + 4 PNG's + 1 markdown captions-bestand.
