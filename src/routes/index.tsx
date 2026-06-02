@@ -16,6 +16,7 @@ import hero from "@/assets/hero.jpg";
 import community from "@/assets/community.jpg";
 import coach from "@/assets/coach.jpg";
 import event from "@/assets/event.jpg";
+import revealVideo from "../../public/adabmoves-reveal.mp4.asset.json";
 import { Testimonials } from "@/components/Testimonials";
 import { Counter } from "@/components/Counter";
 import { SportIcon, type SportName } from "@/components/illustrations/SportIcon";
@@ -243,8 +244,11 @@ function HomePage() {
         </div>
         <div className="relative rounded-3xl overflow-hidden shadow-[var(--shadow-soft)] bg-[var(--ink)] hover-lift">
           <video
-            src="/intro.mp4"
+            src={revealVideo.url}
             controls
+            autoPlay
+            muted
+            loop
             playsInline
             preload="metadata"
             poster={hero}
