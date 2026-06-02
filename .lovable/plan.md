@@ -1,49 +1,64 @@
-# Plan: Scholen poster (A4 PDF) + social media pakket
+## Doel
 
-## Deliverables (in `/mnt/documents/`)
-
-1. **`adabmoves-scholen-poster-A4.pdf`** — printklare A4 poster (300dpi, CMYK-safe kleuren, 5mm marge), bedoeld om naar basis- en middelbare scholen te mailen of op te hangen.
-2. **Instagram pakket scholen** — 4 vierkante posts (1080×1080 PNG):
-   - Post 1: Hero / introductie "Sport & karaktervorming voor scholen"
-   - Post 2: Wat bieden we (workshops, sportdagen, gymlessen, weerbaarheid)
-   - Post 3: De ADAB Methode — 7 pijlers in het kort
-   - Post 4: Call-to-action "Plan een gesprek" + contact + regio
-3. **`captions-scholen.md`** — Nederlandse captions per post mét hashtags (lokale SEO: #amsterdam #haarlem #zaandam #almere #amstelveen #hoofddorp + onderwijs hashtags).
-
-## Stijl & branding
-
-- Brand kleuren: navy `#1F2240`, coral `#E8784E`, cream `#FBF7EE`.
-- Typografie volgens huidige site (headings vet, body schoon sans-serif).
-- Brand illustraties: bestaande `Scene` / `Character` / `SportIcon` componenten uit `src/components/illustrations/` — cartoon kids, mond zonder ogen, ~1 op 3-4 met petje, coach van achteren met logo.
-- Geen AI-fotorealisme. Geen stockfoto's.
+Bestaande Remotion video (`remotion/`) upgraden van rustige Ken-Burns slideshow naar een echte **Kinetic Energy merk reveal** met wow-effect. 1920×1080, ~20s, geen audio. Output: `/mnt/documents/adabmoves-reveal.mp4`.
 
 ## Aanpak
 
-**Stap 1 — Illustraties renderen**
-- Kleine Node/Vite script die de bestaande `Scene` / `Character` SVG-componenten naar losse PNG's rendert (via `satori` of door de SVG strings direct te serialiseren en met `sharp` naar PNG om te zetten op 2160×2160 voor crispness).
-- Hergebruik bestaande illustratie-tokens — geen nieuwe stijl uitvinden.
+Volledige herwerking van `MainVideo.tsx` + scenes in `remotion/src/scenes/`. Bestaande foto's en logo in `remotion/public/` worden hergebruikt. Geen wijzigingen aan de website.
 
-**Stap 2 — Poster A4**
-- ReportLab (Python) bouwt de A4 layout: header met logo + tagline, hero-illustratie, 3 kolommen met aanbod-iconen (workshops / sportdagen / weerbaarheid), ADAB-methode strip, footer met `adabmoves.nl` + QR code naar `/aanbod/scholen` + contact.
-- SEO/locatie strip: "Amsterdam · Haarlem · Zaandam · Almere · Amstelveen · Hoofddorp".
+## Motion systeem (consistente taal)
 
-**Stap 3 — Instagram posts (1080×1080)**
-- Per post: PIL/Pillow composeert cream/navy achtergrond, illustratie, korte koptekst (max 6 woorden), 1 ondersteunende regel, ADAB MOVES logo + URL.
-- Consistent grid look (zelfde header treatment, zelfde footer band).
+- **Entrance**: clip-path reveal (van links/onder) + spring scale 0.92→1
+- **Accent**: massive Anton kinetic type met per-woord stagger (8-frame gap)
+- **Tussenscènes**: shape-wipe in coral, geen fades naar zwart
+- **Persistent layer**: subtiele coral diagonale streep + ink korrel-noise over alles
+- **Pacing**: korte beats (45-60f) afgewisseld met één lange hero beat (90f)
 
-**Stap 4 — Captions**
-- Per post 80–150 woorden NL, natuurlijke tone-of-voice (modern, betrouwbaar, sportief), CTA naar `/aanbod/scholen` of `/contact`, 10–15 relevante hashtags.
+## 7 scènes (~600 frames @ 30fps = 20s)
 
-**Stap 5 — Verplichte visuele QA**
-- Elke PNG én elke PDF-pagina inspecteren: geen overlap, tekst binnen marges, voldoende contrast, logo correct, illustraties scherp.
-- Fix → re-render → re-check tot alles clean is.
+```
+[0  - 60 ]  HOOK         Zwarte flits → coral shape blast → "ADAB" smasht in beeld
+[60 - 130]  IDENT        Logo vergroot vanuit centrum + tagline "Bewegen met betekenis" tikt per woord in
+[130-200]  SPOOR 01     Scholen.jpg met diagonal clip-reveal + grote "SCHOLEN" parallax type
+[200-270]  SPOOR 02     Community-kinderen.jpg, andere clip-richting, "KINDEREN" type
+[270-340]  SPOOR 03     Event.jpg, "ADAB DAY" type met coral shape achter
+[340-430]  METHODE      7 pillars als snel roterende word-stack (Respect/Focus/Discipline/Doorzettingsvermogen/Vertrouwen/Samenwerking/Karakter) — één per ~12 frames
+[430-540]  CTA OUTRO    Logo lock-up + "adabmoves.nl" + 5 steden ticker (Amsterdam · Haarlem · Zaandam · Almere · Amstelveen · Hoofddorp)
+```
+
+Totale composition duration: ~540 frames (18s). Speelt strakker dan de huidige 452f versie ondanks dat het meer bevat.
+
+## Wow-tactieken
+
+1. **Kinetic typografie**: woorden komen niet als blok binnen — letter-per-letter of woord-per-woord met spring stagger, sommige in coral, andere in cream, één woord per scène extra groot (180-240px Anton).
+2. **Shape wipes** tussen scènes via `TransitionSeries` met `wipe` + custom coral colour-pane die mee-flasht.
+3. **Photo parallax**: foto schuift trager dan de overlay-type → diepte (3-laags transform: bg foto / coral shape / fg type).
+4. **Counter-animatie**: in METHODE scène telt "7" op naar 7 pillars terwijl woorden flippen.
+5. **Persistent grain + diagonal accent line** door hele video → cinematic gevoel.
+6. **Ending lock**: logo komt tot rust met subtle floating motion (sine 4px) zodat eind-frame niet dood voelt.
+
+## Tech / bestanden
+
+Geraakt:
+- `remotion/src/Root.tsx` — duration bump naar ~540
+- `remotion/src/MainVideo.tsx` — herwerken met `TransitionSeries` + persistent grain/accent layer
+- `remotion/src/scenes/Hook.tsx` *(nieuw)*
+- `remotion/src/scenes/Ident.tsx` *(nieuw, vervangt huidige Intro)*
+- `remotion/src/scenes/SpoorScene.tsx` *(nieuw, vervangt PhotoScene voor de 3 sporen)*
+- `remotion/src/scenes/Methode.tsx` *(nieuw)*
+- `remotion/src/scenes/Cta.tsx` *(nieuw, vervangt Outro)*
+- `remotion/src/components/Grain.tsx` *(nieuw, SVG noise overlay)*
+- `remotion/src/components/AccentLine.tsx` *(nieuw)*
+
+Render:
+```
+cd remotion && node scripts/render-remotion.mjs
+```
+Output: `/mnt/documents/adabmoves-reveal.mp4`. Daarna QA via `bunx remotion still` op key frames (60, 200, 340, 470) en visuele inspectie.
 
 ## Niet in scope
 
-- Geen wijzigingen aan de website / routes / SEO-code (alleen artifacts).
-- Geen video / reels (kan apart vervolg zijn).
-- Geen Facebook / LinkedIn varianten (kan apart vervolg, vraag het als je het wil).
-
-## Output naar de gebruiker
-
-5 bestanden via `<presentation-artifact>` tags: 1 PDF + 4 PNG's + 1 markdown captions-bestand.
+- Geen audio / muziek (zoals afgesproken)
+- Geen 9:16 of 1:1 varianten (alleen 16:9)
+- Geen website wijzigingen
+- Geen nieuwe foto's / AI generatie — alleen bestaande assets in `remotion/public/`
