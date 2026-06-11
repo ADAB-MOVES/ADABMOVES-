@@ -26,7 +26,6 @@ import { Route as AanbodIndexRouteImport } from './routes/aanbod.index'
 import { Route as OverOnsVerhaalRouteImport } from './routes/over-ons.verhaal'
 import { Route as OverOnsMissieVisieRouteImport } from './routes/over-ons.missie-visie'
 import { Route as OverOnsMethodeRouteImport } from './routes/over-ons.methode'
-import { Route as LovableOutreachScholenRouteImport } from './routes/lovable.outreach-scholen'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as AanbodVerhuurRouteImport } from './routes/aanbod.verhuur'
 import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
@@ -125,11 +124,6 @@ const OverOnsMethodeRoute = OverOnsMethodeRouteImport.update({
   path: '/methode',
   getParentRoute: () => OverOnsRoute,
 } as any)
-const LovableOutreachScholenRoute = LovableOutreachScholenRouteImport.update({
-  id: '/lovable/outreach-scholen',
-  path: '/lovable/outreach-scholen',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
   id: '/email/unsubscribe',
   path: '/email/unsubscribe',
@@ -212,7 +206,6 @@ export interface FileRoutesByFullPath {
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
-  '/lovable/outreach-scholen': typeof LovableOutreachScholenRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
@@ -241,7 +234,6 @@ export interface FileRoutesByTo {
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
-  '/lovable/outreach-scholen': typeof LovableOutreachScholenRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
@@ -274,7 +266,6 @@ export interface FileRoutesById {
   '/aanbod/scholen': typeof AanbodScholenRoute
   '/aanbod/verhuur': typeof AanbodVerhuurRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
-  '/lovable/outreach-scholen': typeof LovableOutreachScholenRoute
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
@@ -308,7 +299,6 @@ export interface FileRouteTypes {
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
     | '/email/unsubscribe'
-    | '/lovable/outreach-scholen'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
@@ -337,7 +327,6 @@ export interface FileRouteTypes {
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
     | '/email/unsubscribe'
-    | '/lovable/outreach-scholen'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
@@ -369,7 +358,6 @@ export interface FileRouteTypes {
     | '/aanbod/scholen'
     | '/aanbod/verhuur'
     | '/email/unsubscribe'
-    | '/lovable/outreach-scholen'
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
@@ -398,7 +386,6 @@ export interface RootRouteChildren {
   VisieRoute: typeof VisieRoute
   VoorwaardenRoute: typeof VoorwaardenRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
-  LovableOutreachScholenRoute: typeof LovableOutreachScholenRoute
   ApiPublicContactRoute: typeof ApiPublicContactRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
@@ -526,13 +513,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/over-ons/methode'
       preLoaderRoute: typeof OverOnsMethodeRouteImport
       parentRoute: typeof OverOnsRoute
-    }
-    '/lovable/outreach-scholen': {
-      id: '/lovable/outreach-scholen'
-      path: '/lovable/outreach-scholen'
-      fullPath: '/lovable/outreach-scholen'
-      preLoaderRoute: typeof LovableOutreachScholenRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/email/unsubscribe': {
       id: '/email/unsubscribe'
@@ -685,7 +665,6 @@ const rootRouteChildren: RootRouteChildren = {
   VisieRoute: VisieRoute,
   VoorwaardenRoute: VoorwaardenRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
-  LovableOutreachScholenRoute: LovableOutreachScholenRoute,
   ApiPublicContactRoute: ApiPublicContactRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
