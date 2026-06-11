@@ -1,64 +1,88 @@
 ## Doel
 
-Bestaande Remotion video (`remotion/`) upgraden van rustige Ken-Burns slideshow naar een echte **Kinetic Energy merk reveal** met wow-effect. 1920×1080, ~20s, geen audio. Output: `/mnt/documents/adabmoves-reveal.mp4`.
+Een sterke, kopieerklare cold outreach e-mail die Anass kan versturen naar basis- en middelbare scholen om een eerste gesprek over samenwerking te openen — afgestemd op de pijn (onrust, gedrag, karakter) en de winsten zoals op /aanbod/scholen.
 
-## Aanpak
+## Wat ik bouw
 
-Volledige herwerking van `MainVideo.tsx` + scenes in `remotion/src/scenes/`. Bestaande foto's en logo in `remotion/public/` worden hergebruikt. Geen wijzigingen aan de website.
+Twee dingen, beide bruikbaar zonder technische kennis:
 
-## Motion systeem (consistente taal)
+### 1. Een nieuwe pagina `/lovable/outreach-scholen` (intern, niet in nav)
+Een eenvoudige pagina waar Anass:
+- de volledige e-mail ziet (onderwerp + body) in nette opmaak
+- per blok op "Kopiëren" kan klikken (onderwerp, body, of alles samen)
+- 3 variaties van het onderwerp ziet om mee te testen
+- een korte follow-up e-mail vindt (na 5–7 dagen geen reactie)
 
-- **Entrance**: clip-path reveal (van links/onder) + spring scale 0.92→1
-- **Accent**: massive Anton kinetic type met per-woord stagger (8-frame gap)
-- **Tussenscènes**: shape-wipe in coral, geen fades naar zwart
-- **Persistent layer**: subtiele coral diagonale streep + ink korrel-noise over alles
-- **Pacing**: korte beats (45-60f) afgewisseld met één lange hero beat (90f)
+Niet gelinkt in het hoofdmenu — alleen rechtstreeks bereikbaar via de URL.
 
-## 7 scènes (~600 frames @ 30fps = 20s)
+### 2. Een React Email template `school-outreach.tsx` (optioneel verzenden via systeem)
+Geregistreerd in `src/lib/email-templates/registry.ts`, zodat de e-mail later eventueel ook via het systeem verstuurd kan worden (één-op-één, geen bulk — Lovable e-mail is alleen voor transactionele sends). Voor nu primair als referentie/preview.
 
+## De e-mail zelf
+
+**Onderwerp (primair):**
+> Sport mét karakter voor [Schoolnaam] — vrijblijvend kennismaken?
+
+**Onderwerp varianten:**
+- Rust in de klas via sport en spel — kort gesprek?
+- Voorstel: gratis proefactiviteit voor [Schoolnaam]
+
+**Body (kern, ~180 woorden):**
+
+```text
+Beste [naam / schoolteam van Schoolnaam],
+
+Mijn naam is Anass Bakkali, oprichter van ADAB MOVES. Wij verzorgen sport- 
+en spelactiviteiten op basis- en middelbare scholen in Amsterdam, Haarlem, 
+Zaandam, Almere, Amstelveen en Hoofddorp — met één duidelijke focus: 
+karaktervorming via sport.
+
+Wat scholen waarmee we werken terugzien:
+• Merkbaar rustigere klassen na elke sessie
+• Meer respect en betere omgangsvormen op het plein
+• Sterker zelfvertrouwen en doorzettingsvermogen bij leerlingen
+• Vaste trainer, vaste lijn — geen wisselende gezichten
+
+Wij draaien volledig zelfstandig: tussen de middag, na schooltijd, 
+workshops karakter & gedrag, of een volledig verzorgde sportdag. 
+Materiaal, trainers en draaiboek regelen wij.
+
+Heeft u 15 minuten voor een vrijblijvend gesprek? Dan laat ik zien hoe 
+een traject er bij [Schoolnaam] uit zou kunnen zien — en bieden we 
+een gratis proefactiviteit op locatie aan, zonder verplichtingen.
+
+Bereikbaar via 06-XXXXXXXX of een reactie op deze mail.
+
+Hartelijke groet,
+
+Anass Bakkali
+Oprichter ADAB MOVES
+www.adabmoves.nl
 ```
-[0  - 60 ]  HOOK         Zwarte flits → coral shape blast → "ADAB" smasht in beeld
-[60 - 130]  IDENT        Logo vergroot vanuit centrum + tagline "Bewegen met betekenis" tikt per woord in
-[130-200]  SPOOR 01     Scholen.jpg met diagonal clip-reveal + grote "SCHOLEN" parallax type
-[200-270]  SPOOR 02     Community-kinderen.jpg, andere clip-richting, "KINDEREN" type
-[270-340]  SPOOR 03     Event.jpg, "ADAB DAY" type met coral shape achter
-[340-430]  METHODE      7 pillars als snel roterende word-stack (Respect/Focus/Discipline/Doorzettingsvermogen/Vertrouwen/Samenwerking/Karakter) — één per ~12 frames
-[430-540]  CTA OUTRO    Logo lock-up + "adabmoves.nl" + 5 steden ticker (Amsterdam · Haarlem · Zaandam · Almere · Amstelveen · Hoofddorp)
-```
 
-Totale composition duration: ~540 frames (18s). Speelt strakker dan de huidige 452f versie ondanks dat het meer bevat.
+**Follow-up (na 5–7 dagen):**
 
-## Wow-tactieken
+Korte herinnering van ~80 woorden die teruggrijpt op de eerste mail en opnieuw de gratis proefactiviteit aanbiedt.
 
-1. **Kinetic typografie**: woorden komen niet als blok binnen — letter-per-letter of woord-per-woord met spring stagger, sommige in coral, andere in cream, één woord per scène extra groot (180-240px Anton).
-2. **Shape wipes** tussen scènes via `TransitionSeries` met `wipe` + custom coral colour-pane die mee-flasht.
-3. **Photo parallax**: foto schuift trager dan de overlay-type → diepte (3-laags transform: bg foto / coral shape / fg type).
-4. **Counter-animatie**: in METHODE scène telt "7" op naar 7 pillars terwijl woorden flippen.
-5. **Persistent grain + diagonal accent line** door hele video → cinematic gevoel.
-6. **Ending lock**: logo komt tot rust met subtle floating motion (sine 4px) zodat eind-frame niet dood voelt.
+## Designkeuzes
 
-## Tech / bestanden
+- Toon: warm, professioneel, kort. Geen verkooppraat.
+- Personalisatie-placeholders `[Schoolnaam]` en `[naam]` duidelijk gemarkeerd.
+- E-mail template volgt brand: `#1F2240` ink, `#E8784E` coral, cream achtergrond `#FAF8F2` voor highlight box, Plus Jakarta Sans.
+- Geen afbeeldingen in de mail body (betere deliverability bij cold outreach, minder kans op spam-filter).
+- Plain-text variant beschikbaar (sommige scholen lezen liever puur tekst).
 
-Geraakt:
-- `remotion/src/Root.tsx` — duration bump naar ~540
-- `remotion/src/MainVideo.tsx` — herwerken met `TransitionSeries` + persistent grain/accent layer
-- `remotion/src/scenes/Hook.tsx` *(nieuw)*
-- `remotion/src/scenes/Ident.tsx` *(nieuw, vervangt huidige Intro)*
-- `remotion/src/scenes/SpoorScene.tsx` *(nieuw, vervangt PhotoScene voor de 3 sporen)*
-- `remotion/src/scenes/Methode.tsx` *(nieuw)*
-- `remotion/src/scenes/Cta.tsx` *(nieuw, vervangt Outro)*
-- `remotion/src/components/Grain.tsx` *(nieuw, SVG noise overlay)*
-- `remotion/src/components/AccentLine.tsx` *(nieuw)*
+## Bestanden
 
-Render:
-```
-cd remotion && node scripts/render-remotion.mjs
-```
-Output: `/mnt/documents/adabmoves-reveal.mp4`. Daarna QA via `bunx remotion still` op key frames (60, 200, 340, 470) en visuele inspectie.
+**Nieuw:**
+- `src/routes/lovable.outreach-scholen.tsx` — interne kopieer-pagina met copy-knoppen
+- `src/lib/email-templates/school-outreach.tsx` — React Email template (onderwerp + body + follow-up als losse template optioneel)
 
-## Niet in scope
+**Aangepast:**
+- `src/lib/email-templates/registry.ts` — template registreren
 
-- Geen audio / muziek (zoals afgesproken)
-- Geen 9:16 of 1:1 varianten (alleen 16:9)
-- Geen website wijzigingen
-- Geen nieuwe foto's / AI generatie — alleen bestaande assets in `remotion/public/`
+## Wat ik NIET doe
+
+- Geen bulk-versturen (Lovable e-mail is geen marketing tool, en cold-mailen naar lijsten is niet toegestaan).
+- Geen wijzigingen aan de homepage of navigatie.
+- Geen automatische verzendknop — Anass kopieert en stuurt vanuit zijn eigen mailbox (Gmail/Outlook) voor maximale deliverability en persoonlijke afzender.
