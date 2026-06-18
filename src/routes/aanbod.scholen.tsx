@@ -245,7 +245,7 @@ function ScholenPage() {
             </p>
             <ul className="mt-6 space-y-2 text-sm text-white/80">
               <li className="flex items-center gap-2"><Check size={16} className="text-[var(--coral)]" /> Reactie binnen 24 uur</li>
-              <li className="flex items-center gap-2"><Check size={16} className="text-[var(--coral)]" /> Gratis proefactiviteit op locatie</li>
+              <li className="flex items-center gap-2"><Check size={16} className="text-[var(--coral)]" /> Vrijblijvende kennismaking</li>
               <li className="flex items-center gap-2"><Check size={16} className="text-[var(--coral)]" /> Geen verplichtingen</li>
             </ul>
           </div>
