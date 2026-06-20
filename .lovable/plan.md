@@ -1,56 +1,52 @@
 
-# ADAB MOVES — Welkomstcarrousel v15
+# ADAB MOVES — Welkomstcarrousel v16
 
-Doel: nieuwe versie van de 4-slide Instagram-carrousel met sterk verbeterde illustraties (anatomie, kleding, trainer-positie, logo). Tekst, typografie en lay-out uit v13/v14 blijven 1-op-1 behouden. Geen wijzigingen aan website-code — puur content-artefact in `/mnt/documents/ig-welkom-v15/`.
+Volledige restyle van de carrousel naar de **flat 2D-illustratiestijl** van de geüploade referentie. Tekst, typografie en lay-out blijven gelijk aan v15.
 
-## 1. Illustratie-correcties (nieuwe scènes via premium imagegen)
+## 1. Nieuwe illustratiestijl (referentie)
 
-Universele regels voor elke scène:
+De reference toont:
+- **Vlakke 2D-illustratie** (geen semi-3D), platte kleurvlakken, subtiele schaduw, lichte korrel.
+- **Cream achtergrond** met navy + coral accenten, gym-elementen (vloerlijnen, doelen, schietschijven).
+- **Trainer**: tenger, driekwart van achter, korte millimeter-haarcut, grote volle baard van opzij, navy trainingsjack met groot ADAB MOVES-logo op de rug.
+- **Kinderen**: subtiele glimlach + kleine ogen toegestaan (zoals reference), alle in ADAB MOVES-trainingspak of -sportshirt met logo op de borst, lange joggers (broek over de knie).
 
-- **Trainer altijd op voorgrond**, driekwart van achteren, kinderen op de achtergrond gericht naar trainer. Niet meer kinderen vooraan en coach erachter.
-- **Trainer**: tenger postuur, kort kapsel (géén fade), volle duidelijke baard van opzij zichtbaar, navy ADAB MOVES trainingsjack, géén gezichtsdetails (geen ogen, geen neus, geen mond — alleen baard zichtbaar van opzij).
-- **Kinderen**: subtiele glimlach (kleine kromme lijn), géén ogen/neus, alleen jongens. Eén jongen per slide draagt navy kufi, de rest hair-only. Kapsels consistent per kind en tussen slides (zelfde kind = zelfde haar).
-- **Outfits divers** per kind: hoodie + jogger, t-shirt + sportshort boven de knie (geen strakke broek over de knie), volledige sportset, trainingsjack. Kleuren navy, koraal, cream, off-white.
-- **Anatomie strikt**: juist aantal vingers, schouders op de juiste plek, benen natuurlijk, voeten op de grond bij contact met bal/mat, geen zwevende objecten.
-- **Sportmateriaal herkenbaar**: basketbal (oranje met lijnen), voetbal (zwart-wit pentagons), bokshandschoenen (rood), boog (houtkleurig). Logo's worden later via overlay toegevoegd, niet door AI getekend.
+## 2. Per slide
 
-Per slide:
+Per slide blijft de samenstelling van v15, maar opnieuw gegenereerd in de nieuwe vlakke stijl:
 
-- **Slide 1 — Welkom**: trainer driekwart van achter op voorgrond, 4 jongens in halve cirkel daarachter met verschillende outfits en sportattributen (voetbal, basketbal, boog, bokshandschoenen). Warme cream gym.
-- **Slide 2 — Wat we doen**: drie kleine scènes naast elkaar in één compositie — trainer + 2 jongens op school (links), multisport-cirkel (midden), sportdag met vlaggetjes (rechts). Trainer telkens op voorgrond.
-- **Slide 3 — Waarom wij**: trainer vooraan met arm rustend op schouder van één jongen, andere jongens daarachter luisterend. Symboliek van "fundament".
-- **Slide 4 — CTA**: close-up van sportmateriaal (basketbal, voetbal, bokshandschoenen, boog) op cream achtergrond. Geen personen — focus op de objecten met logo-overlays.
+- **Slide 1 — Welkom**: trainer op voorgrond (driekwart achter), 4 jongens van verschillende lengte/leeftijd in halve cirkel daarachter, allemaal ADAB MOVES-trainingspak (navy + coral details), één met navy kufi. Sportattributen: voetbal, basketbal, boog, bokshandschoenen.
+- **Slide 2 — Wat we doen**: triptiek — school (trainer + 2 jongens), multisport-cirkel (trainer + 3 jongens), sportdag met vlaggetjes (trainer + 2 springende jongens). Trainer telkens vooraan.
+- **Slide 3 — Waarom wij**: trainer vooraan met hand op schouder van één jongen, 3 andere jongens daarachter. Allemaal ADAB MOVES-tenue.
+- **Slide 4 — CTA**: vlakke 2D-illustraties van sportobjecten (basketbal, voetbal, bokshandschoenen, boog) — passend bij de nieuwe stijl, met ADAB-logo op elk object.
 
-## 2. Logo correctie (echt sitelogo, niet door AI getekend)
+## 3. Universele regels
 
-`src/assets/logo.png` wordt via Pillow als overlay op vaste posities geplakt na het inpassen van de scène:
+- Stijl: **vlakke 2D**, geen 3D-rendering, subtiele cell-shading, paper-grain afwerking.
+- Kinderen: divers in **lengte** (groot en klein door elkaar), haarstijl en huidstoon. Alleen jongens. Eén per slide met navy kufi.
+- Kleding: **ADAB MOVES trainingspak of sportshirt** met logo op de borst, lange joggers ruim **tot over de knie** — geen korte shorts meer.
+- Trainer: telkens dezelfde — korte buzz-cut, grote volle baard, navy ADAB MOVES jack.
+- Gezichtsdetails: subtiele glimlach + kleine ogen (referentie-stijl), geen overdreven detail.
 
-- Op de **rug van het trainersjack** (groot, gecentreerd).
-- Op de **borst van elk kind** met ADAB-shirt/hoodie (klein, links borst).
-- Klein op elk **sportobject in voorgrond** (basketbal, voetbal, bokshandschoenen, boog) op slide 4.
-- In de **header-balk** van elke slide (zoals nu).
+## 4. Logo
 
-Zo is het logo overal 1-op-1 identiek aan adabmoves.nl.
+- Officieel ADAB MOVES-logo (`/tmp/logo_official.png`) via Pillow als overlay op:
+  - rug trainersjack (groot),
+  - borst elk kind (klein),
+  - sportobjecten slide 4,
+  - header van elke slide.
 
-## 3. Tekst, typografie en lay-out — ongewijzigd uit v13/v14
+## 5. Lay-out & tekst — ongewijzigd uit v15
 
-- Tekst van de 4 slides exact zoals in v13/v14 (geen herschrijving).
-- Lay-out van `build_v14.py` hergebruikt: cream achtergrond + paper grain, navy hairline frame, header met logo + slide-pil, scenekaart 936×560 met coral underline, eyebrow + 2-regel titel (Sora Bold, navy/coral split), 3-regel subtekst (Plus Jakarta Sans), footer met `adabmoves.nl · @adabmoves`.
-- Fonts: Sora-Bold + Plus Jakarta Sans (al lokaal beschikbaar).
-- `caption.md` ongewijzigd kopiëren naar v15.
+- Cream achtergrond + paper-grain, navy hairline frame, header met logo + slide-pil, scenekaart 936×560, coral underline, eyebrow + 2-regel titel (Sora Bold navy/coral split), 3-regel subtekst (Plus Jakarta Sans), footer.
+- Tekst van slides 1–4 exact zoals v15.
+- `caption.md` ongewijzigd.
 
-## 4. Technische aanpak
+## 6. Technische aanpak
 
-- 4 nieuwe scènes via `imagegen` premium (1280×1280), opgeslagen als `/tmp/v15_scene_1..4.jpg`.
-- Build-script `/tmp/build_v15.py` als clone van v14, inclusief nieuwe logo-overlay-stap (`src/assets/logo.png`, geresized en gemaskerd op vaste posities).
-- QA-pass per slide-thumbnail op:
-  - (a) trainer voorop,
-  - (b) anatomie correct,
-  - (c) outfits divers,
-  - (d) logo overal correct geplakt,
-  - (e) tekst leesbaar binnen kaders,
-  - (f) kapsels gelijk, geen overloop.
-  Bij issue: scène opnieuw genereren of overlay-positie aanpassen.
-- Output: `/mnt/documents/ig-welkom-v15/slide-1.png` t/m `slide-4.png` + `caption.md`.
+- 4 nieuwe scènes via `imagegen` premium (1280×1280), prompts gericht op **flat 2D illustration, cell-shaded, paper-grain, no 3D rendering**.
+- `build_v15.py` clonen naar `build_v16.py`, scene-paths en logo-overlay-posities afstemmen op de nieuwe scènes (na visuele inspectie).
+- QA-pass per slide-thumbnail op (a) 2D-stijl consistent, (b) trainer voorop met juist kapsel + baard, (c) ADAB MOVES tenue + lange joggers, (d) logo's correct geplakt, (e) tekst leesbaar.
+- Output: `/mnt/documents/ig-welkom-v16/slide-1.png` t/m `slide-4.png` + `caption.md`.
 
 Geen wijzigingen aan website-code.
