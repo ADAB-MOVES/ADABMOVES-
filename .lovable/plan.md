@@ -1,70 +1,45 @@
-# ADAB MOVES — Welkomstcarrousel v9
+# ADAB MOVES — Welkomstcarrousel v10 (correcties)
 
-Doel: alle visuele fouten uit v8 oplossen, kledingvariatie aanbrengen, trainer correct positioneren en de hele set een duidelijke **cartoon/illustratie-look** geven in plaats van semi-fotorealistisch.
+Kleine, gerichte fix-ronde bovenop v9. Geen layout- of tekstwijzigingen.
 
-## 1. Logo-overlay opnieuw doen
+## 1. Logo's correct op de shirts
 
-Probleem in v8: het overlay-logo staat scheef op de borst, heeft de verkeerde kleur (grijs/donker i.p.v. wit-op-navy zoals de site), en zit op sommige slides half buiten het shirt.
-
-Aanpak:
-- Logo opnieuw plakken vanuit `src/assets/logo.png`, **recht** (geen rotatie, geen perspectief-warp).
-- Kleur forceren naar **wit** op donkere shirts, en naar **navy** op cream shirts — niet de originele grijstint laten staan.
-- Per scène handmatig de borst-coördinaten kalibreren (i.p.v. één vaste offset voor alle slides), zodat het logo altijd **midden op de borst** zit en mee-schaalt met de jongen.
-- Coach: logo groot en gecentreerd op de jasrug, ook recht.
-- QA-stap: na overlay elke slide op 100% inzoomen en controleren of het logo recht staat, wit is en binnen het shirt valt. Bij twijfel opnieuw.
-
-## 2. Kleding — meer variatie, donkerblauwe broek
-
-Probleem in v8: alle kinderen dragen exact hetzelfde (zelfde shirt, zelfde grijze jogger). Saai en onrealistisch.
-
-Nieuwe kledingregels:
-- **Broeken altijd donkerblauw** (navy `#1F2240`), niet grijs.
-- Variatie per kind binnen één slide:
-  - Eén kind: lange navy trainingsbroek.
-  - Eén kind: navy sportshort **tot over de knie** (niet boven de knie).
-  - Eén kind: lange navy jogger met coral streep langs de zijkant.
-- Shirts blijven cream of navy met wit ADAB-logo, maar wissel per kind zodat ze niet identiek lijken.
-- Per slide nog steeds één jongen met navy kufi, rest zonder, allemaal duidelijk verschillend qua haar en huidtint.
-
-## 3. Trainer-positie en anatomie
-
-Probleem in v8:
-- **Slide 2 (kickboks):** coach staat áchter de kinderen, terwijl hij ervoor (of zijaan) hoort te staan om te coachen.
-- **Slide 4 (huddle):** één hand van de coach steekt achter zijn rug op een onmogelijke manier uit.
-- Algemeen: ledematen soms los of in vreemde hoek.
+Probleem in v9: overlay-logo's staan op sommige slides naast/half buiten het shirt, of in verkeerde hoek.
 
 Aanpak:
-- Slide 2 opnieuw genereren met de coach **vooraan links of rechts in beeld**, met het gezicht naar de kinderen toe (we zien zijn profiel of zijn rug-driekwart, maar duidelijk vóór de groep).
-- Slide 4 opnieuw genereren met de coach **achter de huddle** met beide handen **zichtbaar op de schouders van twee kinderen** — geen losse hand achter zijn rug.
-- Strikte prompt: "geen losse ledematen, geen handen achter de rug, beide armen zichtbaar en logisch verbonden met de schouders".
-- Coach blijft: lange volle baard, korte uniforme fade, ADAB-jas met logo op rug.
 
-## 4. Cartoon-look versterken (minder fotorealistisch)
+- Bron blijft `src/assets/logo.png` (het echte sitelogo) — geen AI-gegenereerd logo.
+- Per kind in elke slide handmatig de borst-coördinaten opnieuw kalibreren door eerst het silhouet te detecteren (donker shirt vs cream achtergrond) en het logo midden op de borst te plaatsen, schaal ~12% van de shirtbreedte.
+- Strikt recht plaatsen (0° rotatie, geen perspectief).
+- Kleurforcering: wit logo op navy shirt, navy logo op cream shirt.
+- Coach: logo gecentreerd en recht op de jasrug.
+- QA: per slide op 100% inzoomen en controleren dat élk logo binnen het shirt valt, recht staat en de juiste kleur heeft. Bij twijfel coördinaten bijstellen en opnieuw renderen.
 
-Probleem: v8 voelt semi-realistisch waardoor de "geen ogen, alleen mond" keuze unheimlich oogt.
+## 2. Coach — uniform kapsel, geen wenkbrauwen
+
+Probleem: in v9 wisselt het kapsel van de trainer per slide (soms fade, soms iets langer), en hij heeft wenkbrauwen terwijl de kinderen geen gezichtskenmerken hebben (alleen mond) — dat oogt inconsistent.
 
 Aanpak in de scène-prompts:
-- Expliciet vragen om **flat 2D cartoon illustration** / **children's book illustration style** / **vector-achtige shading** — geen photoreal, geen 3D render, geen realistische huidtextuur.
-- Eenvoudige egale kleurvlakken met lichte cel-shading, dikke contourlijnen mogelijk.
-- Achtergrond eveneens cartoon (geschilderde gym, niet gefotografeerd).
 
-Aanpak in post-processing (Pillow):
-- Lichte **posterize** (8 levels) + kleine **saturation boost** op de scènefoto, zodat eventuele rest-realisme verder wegtrekt.
-- Contrast iets terug (~0.92) zodat het zachter en illustratiever oogt.
-- Cream achtergrond, layout, typografie en logo-overlay blijven zoals v8.
+- Coach krijgt op élke slide exact **hetzelfde korte uniforme no fade-kapsel** (zelfde lengte, zelfde lijn) — expliciet benoemen: "identical short uniform no fade haircut on every slide, same length, same shape".
+- **Geen wenkbrauwen** op de coach — consistent met de kinderen die ook geen ogen/wenkbrauwen hebben, alleen een glimlach. Expliciet: "no eyebrows, no eyes, only a smiling mouth, same face style as the kids".
+- Lange volle baard blijft (zoals eerder gevraagd).
 
-## 5. Tekst blijft v8
+## 3. Wat blijft gelijk
 
-De tekstherzieningen uit v8 (Slide 1 "Bewegen met betekenis", Slide 2 "Eén visie. Drie vormen.", Slide 3 "Sport met een fundament", Slide 4 "Volg ons. Je hoort erbij.") blijven ongewijzigd — die zat goed.
+- Tekst op alle 4 slides (Slide 1 t/m 4 uit v9) ongewijzigd.
+- Cartoon/illustratie-stijl, cream achtergrond, navy frame, coral accenten, slide-indicators.
+- Kledingregels uit v9 (donkerblauwe broeken, variatie short-over-knie / jogger met coral streep / lange trainingsbroek, één kufi per slide).
+- Trainer-posities uit v9 (vooraan bij kickboks, beide handen zichtbaar bij huddle).
 
-## 6. Technische aanpak
+## 4. Technische aanpak
 
-- 4 nieuwe scènes via `imagegen` (premium, 1280×1280) met cartoon-prompts → `/tmp/v9_scene_*.jpg`.
-- `/tmp/build_v9.py` op basis van `build_v8.py`:
-  - Per-slide logo-overlay coördinaten (dict), wit-op-donker / navy-op-cream kleurforcing.
-  - Posterize + saturation/contrast filter op scènefoto vóór inpassen.
-  - Rest van de layout (cream bg, hairline frame, header, eyebrow, titel, subtekst, footer) blijft gelijk.
-- QA: thumbnail-check + 100%-zoom-check op logo, kleding en handen vóór oplevering.
-- Output: `/mnt/documents/ig-welkom-v9/slide-1..4.png` + `caption.md` (overgenomen uit v8).
+- 4 nieuwe scènes via `imagegen` (premium, 1280×1280) met aangescherpte prompts voor het coach-kapsel en "no eyebrows".
+- `/tmp/build_v10.py` op basis van `build_v9.py`:
+  - Logo-overlay coördinaten per slide opnieuw bepaald met silhouet-detectie (donkere pixels op cream achtergrond) i.p.v. vaste offsets.
+  - Kleurforcering wit-op-navy / navy-op-cream blijft.
+  - Rest van de pipeline (posterize, cream bg, frame, typografie, footer) ongewijzigd.
+- QA: thumbnail + 100%-zoom op elk logo en op het coach-kapsel/gezicht vóór oplevering.
+- Output: `/mnt/documents/ig-welkom-v10/slide-1..4.png` + `caption.md` (overgenomen uit v9).
 
-Geen wijzigingen aan de website-code — puur content-artefact.
+Geen wijzigingen aan de website-code.
