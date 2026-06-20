@@ -1,45 +1,61 @@
-# ADAB MOVES — Welkomstcarrousel v10 (correcties)
 
-Kleine, gerichte fix-ronde bovenop v9. Geen layout- of tekstwijzigingen.
+# ADAB MOVES — Welkomstcarrousel v11
 
-## 1. Logo's correct op de shirts
+Nieuwe versie van de 4-slide Instagram-carrousel die de exacte 4 kinderen + banner-stijl uit de geüploade afbeelding (IMG_1150) gebruikt, de trainer uit de website overneemt, het echte sitelogo correct op alle shirts plaatst, en de tekst-layout van de website volgt.
 
-Probleem in v9: overlay-logo's staan op sommige slides naast/half buiten het shirt, of in verkeerde hoek.
+## 1. Bron-assets (hergebruiken, niet opnieuw genereren)
 
-Aanpak:
+- **Kinderen**: de 4 semi-3D cartoon karakters uit `user-uploads://IMG_1150.PNG` worden via crop+rembg geïsoleerd als losse PNG's met transparante achtergrond:
+  - Kid A — kufi + basketbal, cream shirt, navy short
+  - Kid B — voetbal trap, coral tanktop, navy short
+  - Kid C — kufi + boogschieten, navy hoodie + short
+  - Kid D — juichend, navy shirt + short
+- **Trainer**: overgenomen uit de website (zelfde cartoonstijl als de website-illustraties in `src/components/illustrations/`). Wordt in dezelfde semi-3D stijl als de kinderen geplaatst (coach van voren met baard, kort uniform kapsel, ADAB MOVES jas, geen wenkbrauwen/ogen).
+- **Logo**: `src/assets/logo.png` (de echte A-met-coral-swoosh + "ADAB MOVES / BEWEGEN MET BETEKENIS" zoals in IMG_1150 links).
 
-- Bron blijft `src/assets/logo.png` (het echte sitelogo) — geen AI-gegenereerd logo.
-- Per kind in elke slide handmatig de borst-coördinaten opnieuw kalibreren door eerst het silhouet te detecteren (donker shirt vs cream achtergrond) en het logo midden op de borst te plaatsen, schaal ~12% van de shirtbreedte.
-- Strikt recht plaatsen (0° rotatie, geen perspectief).
-- Kleurforcering: wit logo op navy shirt, navy logo op cream shirt.
-- Coach: logo gecentreerd en recht op de jasrug.
-- QA: per slide op 100% inzoomen en controleren dat élk logo binnen het shirt valt, recht staat en de juiste kleur heeft. Bij twijfel coördinaten bijstellen en opnieuw renderen.
+## 2. Logo-fix op kleding
 
-## 2. Coach — uniform kapsel, geen wenkbrauwen
+Probleem v10: logo's stonden scheef of in verkeerde kleur op de shirts. Nieuwe aanpak:
 
-Probleem: in v9 wisselt het kapsel van de trainer per slide (soms fade, soms iets langer), en hij heeft wenkbrauwen terwijl de kinderen geen gezichtskenmerken hebben (alleen mond) — dat oogt inconsistent.
+- Per geïsoleerd kind handmatig het borstmidden bepalen (silhouet-detectie op het cream/coral/navy shirt-vlak).
+- Logo schalen naar ~14% van shirtbreedte, 0° rotatie, exact gecentreerd.
+- Kleurforcering identiek aan IMG_1150: 
+  - cream shirt → volledig logo (witte A + coral swoosh + navy wordmark)
+  - coral tanktop → wit logo + wit wordmark
+  - navy shirt/hoodie → wit logo + wit wordmark
+- Coach: zelfde logo gecentreerd op de borst van de trainersjas.
+- QA: per slide op 100% inzoomen, logo moet volledig binnen het shirt vallen, recht staan, en de juiste kleurvariant zijn.
 
-Aanpak in de scène-prompts:
+## 3. Tekst-layout van de website overnemen
 
-- Coach krijgt op élke slide exact **hetzelfde korte uniforme no fade-kapsel** (zelfde lengte, zelfde lijn) — expliciet benoemen: "identical short uniform no fade haircut on every slide, same length, same shape".
-- **Geen wenkbrauwen** op de coach — consistent met de kinderen die ook geen ogen/wenkbrauwen hebben, alleen een glimlach. Expliciet: "no eyebrows, no eyes, only a smiling mouth, same face style as the kids".
-- Lange volle baard blijft (zoals eerder gevraagd).
+Typografie en hiërarchie matchen de website (`src/styles.css` + bestaande routes):
 
-## 3. Wat blijft gelijk
+- **Eyebrow** (klein, coral, uppercase, letter-spacing): zoals de section-eyebrows op de site.
+- **Headline** (groot, navy, display font — zelfde stack als de website-headings).
+- **Body** (navy/ink, regular, comfortabele leading).
+- **CTA-balk** onderaan met coral accent + `www.adabmoves.nl` zoals het kaartje linksonder in IMG_1150.
+- Cream achtergrond (#FBF7EE), navy frame, coral hairline accent — consistent met v10 en de site.
 
-- Tekst op alle 4 slides (Slide 1 t/m 4 uit v9) ongewijzigd.
-- Cartoon/illustratie-stijl, cream achtergrond, navy frame, coral accenten, slide-indicators.
-- Kledingregels uit v9 (donkerblauwe broeken, variatie short-over-knie / jogger met coral streep / lange trainingsbroek, één kufi per slide).
-- Trainer-posities uit v9 (vooraan bij kickboks, beide handen zichtbaar bij huddle).
+## 4. 4 slides (inhoud blijft uit v10)
 
-## 4. Technische aanpak
+1. **Welkom / Visie** — Kid A (basketbal) + Kid D (juichend), eyebrow "WELKOM", headline "Bewegen met betekenis".
+2. **Aanbod / Kickboks & Sport** — Coach vooraan + Kid B (voetbal) op achtergrond.
+3. **Multisport & Waarden** — Kid C (boogschieten) + Kid B, eyebrow "ONS AANBOD".
+4. **Community / CTA** — Coach met Kid A & Kid D, contactkaart-style footer met telefoon, mail, web (zoals IMG_1150 linksonder).
 
-- 4 nieuwe scènes via `imagegen` (premium, 1280×1280) met aangescherpte prompts voor het coach-kapsel en "no eyebrows".
-- `/tmp/build_v10.py` op basis van `build_v9.py`:
-  - Logo-overlay coördinaten per slide opnieuw bepaald met silhouet-detectie (donkere pixels op cream achtergrond) i.p.v. vaste offsets.
-  - Kleurforcering wit-op-navy / navy-op-cream blijft.
-  - Rest van de pipeline (posterize, cream bg, frame, typografie, footer) ongewijzigd.
-- QA: thumbnail + 100%-zoom op elk logo en op het coach-kapsel/gezicht vóór oplevering.
-- Output: `/mnt/documents/ig-welkom-v10/slide-1..4.png` + `caption.md` (overgenomen uit v9).
+## 5. Technische pipeline
 
-Geen wijzigingen aan de website-code.
+`/tmp/build_v11.py`:
+
+1. **Isoleer kinderen** uit `IMG_1150.PNG`:
+   - Crops per kind (vaste x-ranges uit de banner).
+   - `rembg` voor schone transparante PNG's → `/tmp/v11/kid-{a..d}.png`.
+2. **Trainer**: render uit de bestaande website-illustratiecomponent (`CoachBack` / coach-front) als PNG via headless SVG→PNG (resvg) op transparante achtergrond → `/tmp/v11/coach.png`.
+3. **Logo overlay**: laad `src/assets/logo.png`, maak 3 kleurvarianten (full-color / all-white / navy-on-cream) via channel-manipulatie, plaats per kind op gedetecteerd borstmidden.
+4. **Compositie per slide** (1080×1350): cream bg + navy frame + coral hairline + karakters + tekst-blok in website-typografie + footer.
+5. **Stijl-pass**: lichte posterize + contrast-tweak zodat het cartoon blijft en niet fotorealistisch oogt.
+6. **QA-loop**: per slide thumbnail + 100%-zoom op elk logo en op de coach, opnieuw renderen bij afwijking.
+
+Output: `/mnt/documents/ig-welkom-v11/slide-1..4.png` + `caption.md` (overgenomen uit v10).
+
+Geen wijzigingen aan website-code.
