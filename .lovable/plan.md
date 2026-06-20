@@ -1,55 +1,56 @@
-# ADAB MOVES — Welkomstcarrousel v8
 
-Doel: alle vier de slides corrigeren zodat kleding en anatomie kloppen, het echte sitelogo overal even helder en consistent verschijnt, en de tekst warmer en motiverender is voor kinderen & jongeren.
+# ADAB MOVES — Welkomstcarrousel v15
 
-## 1. Anatomie & kleding-check per slide
+Doel: nieuwe versie van de 4-slide Instagram-carrousel met sterk verbeterde illustraties (anatomie, kleding, trainer-positie, logo). Tekst, typografie en lay-out uit v13/v14 blijven 1-op-1 behouden. Geen wijzigingen aan website-code — puur content-artefact in `/mnt/documents/ig-welkom-v15/`.
 
-Wat ik op v7 wil corrigeren:
+## 1. Illustratie-correcties (nieuwe scènes via premium imagegen)
 
-- **Slide 1 (hero)** — voetbalkind: voetbal hangt los in de lucht, voet maakt geen contact. Boogschutter: pijl al afgeschoten terwijl boog nog gespannen.
-- **Slide 2 (kickboksen)** — losse witte "A" op de mat (storend), pantalon van schoppend been zit te strak om de knie.
-- **Slide 3 (boog + voetbal)** — middelste jongen heeft handen onnatuurlijk laag; bal ligt los zonder dat iemand er bij is.
-- **Slide 4 (huddle)** — middelste jongen heeft de mond verkeerd geplaatst (op de wang i.p.v. midden gezicht); één jongen lijkt geen broek aan te hebben omdat de hand-stapel het verbergt.
+Universele regels voor elke scène:
 
-Aanpak: scènes opnieuw genereren in premium kwaliteit met striktere prompts:
+- **Trainer altijd op voorgrond**, driekwart van achteren, kinderen op de achtergrond gericht naar trainer. Niet meer kinderen vooraan en coach erachter.
+- **Trainer**: tenger postuur, kort kapsel (géén fade), volle duidelijke baard van opzij zichtbaar, navy ADAB MOVES trainingsjack, géén gezichtsdetails (geen ogen, geen neus, geen mond — alleen baard zichtbaar van opzij).
+- **Kinderen**: subtiele glimlach (kleine kromme lijn), géén ogen/neus, alleen jongens. Eén jongen per slide draagt navy kufi, de rest hair-only. Kapsels consistent per kind en tussen slides (zelfde kind = zelfde haar).
+- **Outfits divers** per kind: hoodie + jogger, t-shirt + sportshort boven de knie (geen strakke broek over de knie), volledige sportset, trainingsjack. Kleuren navy, koraal, cream, off-white.
+- **Anatomie strikt**: juist aantal vingers, schouders op de juiste plek, benen natuurlijk, voeten op de grond bij contact met bal/mat, geen zwevende objecten.
+- **Sportmateriaal herkenbaar**: basketbal (oranje met lijnen), voetbal (zwart-wit pentagons), bokshandschoenen (rood), boog (houtkleurig). Logo's worden later via overlay toegevoegd, niet door AI getekend.
 
-- Broeken altijd ruim en duidelijk **tot onder de knie** (lange joggers, niet strak).
-- Per slide één jongen met **navy kufi**, de rest zonder hoofdbedekking, allemaal duidelijk verschillend qua haar/skin tone.
-- Coach altijd **lange volle baard**, korte uniforme fade.
-- Alleen monden, geen ogen, glimlach.
-- Geen losse letters of teksten in de scène (logo's komen we zelf overheen plakken — zie stap 2).
+Per slide:
 
-## 2. Logo overal consistent met echt sitelogo
+- **Slide 1 — Welkom**: trainer driekwart van achter op voorgrond, 4 jongens in halve cirkel daarachter met verschillende outfits en sportattributen (voetbal, basketbal, boog, bokshandschoenen). Warme cream gym.
+- **Slide 2 — Wat we doen**: drie kleine scènes naast elkaar in één compositie — trainer + 2 jongens op school (links), multisport-cirkel (midden), sportdag met vlaggetjes (rechts). Trainer telkens op voorgrond.
+- **Slide 3 — Waarom wij**: trainer vooraan met arm rustend op schouder van één jongen, andere jongens daarachter luisterend. Symboliek van "fundament".
+- **Slide 4 — CTA**: close-up van sportmateriaal (basketbal, voetbal, bokshandschoenen, boog) op cream achtergrond. Geen personen — focus op de objecten met logo-overlays.
 
-In v7 worden de logo's door het AI-model getekend, waardoor ze op elke slide net iets anders zijn ("A" zonder boog, met boog, met of zonder cirkel, soms met "ADAB MOVES" eronder). 
+## 2. Logo correctie (echt sitelogo, niet door AI getekend)
 
-Oplossing: na het genereren plakken we het **echte `src/assets/logo.png**` als overlay op:
+`src/assets/logo.png` wordt via Pillow als overlay op vaste posities geplakt na het inpassen van de scène:
 
-- Borst van elke jongen (zelfde grootte/positie per kind).
-- Rug van de jas van de coach (groter, gecentreerd).
+- Op de **rug van het trainersjack** (groot, gecentreerd).
+- Op de **borst van elk kind** met ADAB-shirt/hoodie (klein, links borst).
+- Klein op elk **sportobject in voorgrond** (basketbal, voetbal, bokshandschoenen, boog) op slide 4.
+- In de **header-balk** van elke slide (zoals nu).
 
-Zo is het logo op elke slide 1-op-1 hetzelfde als op de website.
+Zo is het logo overal 1-op-1 identiek aan adabmoves.nl.
 
-## 3. Tekst herzien — warmer, motiverender, leesbaar voor alle
+## 3. Tekst, typografie en lay-out — ongewijzigd uit v13/v14
 
-Huidige v7 tekst is volwassen-zakelijk ("Sport met een ziel", . v8 wordt duidelijker, warmer en motiverender, met duidelijke lijn en woorden die de doelgroep aanspreken.
-
-
-| Hier zijn alle 4 slides op een rij:Slide 1 — WELKOMEyebrow: Amsterdam · Haarlem · Almere · ZaandamTitel: Bewegen met betekenisSubtekst: ADAB MOVES is een multisport- en beweegorganisatie voor kinderen — voor scholen, ouders en gemeenschap. Islamitisch gefundeerd, toegankelijk voor iedereen.Slide 2 — WAT WE DOENEyebrow: Ons aanbodTitel: Eén visie. Drie vormen.Subtekst: Sport en begeleiding voor scholen tussen en na schooltijd. Wekelijkse multisport voor kinderen van 8 t/m 12 jaar. En sportdagen op maat voor scholen, gemeenten en buurthuizen.Tags: Scholen · Multisport · ADAB DaySlide 3 — WAAROM WIJEyebrow: Waarom ADAB MOVESTitel: Sport met een fundamentSubtekst: Wij geloven dat bewegen meer is dan presteren. Bij ons groeit een kind fysiek, sociaal, mentaal én moreel — vanuit duidelijke waarden, met behoud van eigen identiteit.Slide 4 — CTAEyebrow: Welkom in de communityTitel: Volg ons. Je hoort erbij.Subtekst: Blijf op de hoogte via @adabmoves. Binnenkort meer over ons aanbod voor kinderen, scholen en events. | &nbsp; | &nbsp; | &nbsp; |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------ | ------ |
-| &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | &nbsp; | &nbsp; | &nbsp; |
-
-
-Cursief = coral accentwoord, vet/navy = hoofdwoord.
+- Tekst van de 4 slides exact zoals in v13/v14 (geen herschrijving).
+- Lay-out van `build_v14.py` hergebruikt: cream achtergrond + paper grain, navy hairline frame, header met logo + slide-pil, scenekaart 936×560 met coral underline, eyebrow + 2-regel titel (Sora Bold, navy/coral split), 3-regel subtekst (Plus Jakarta Sans), footer met `adabmoves.nl · @adabmoves`.
+- Fonts: Sora-Bold + Plus Jakarta Sans (al lokaal beschikbaar).
+- `caption.md` ongewijzigd kopiëren naar v15.
 
 ## 4. Technische aanpak
 
-- 4 nieuwe scènes via `imagegen` (premium, 1280×1280) — `/tmp/v8_scene_*.jpg`.
-- Pillow-script `/tmp/build_v8.py`, gebaseerd op v7-layout (cream achtergrond, witte ruimte, hairline frame, header met logo + slide-pil, scenekaart, eyebrow + 2-regel titel met coral accent, subtekst, footer).
-- Nieuwe stap: na het inpassen van de scène plakken we `src/assets/logo.png` (geresized) met masker op vaste posities over de borst van elke jongen en de jasrug van de coach, met lichte schaduw zodat het op stof "ligt".
-- QA: alle 4 slides als thumbnails inspecteren vóór oplevering; bij anatomie- of logo-issues opnieuw genereren.
-- Output: `/mnt/documents/ig-welkom-v8/slide-1..4.png` + `caption.md`.
+- 4 nieuwe scènes via `imagegen` premium (1280×1280), opgeslagen als `/tmp/v15_scene_1..4.jpg`.
+- Build-script `/tmp/build_v15.py` als clone van v14, inclusief nieuwe logo-overlay-stap (`src/assets/logo.png`, geresized en gemaskerd op vaste posities).
+- QA-pass per slide-thumbnail op:
+  - (a) trainer voorop,
+  - (b) anatomie correct,
+  - (c) outfits divers,
+  - (d) logo overal correct geplakt,
+  - (e) tekst leesbaar binnen kaders,
+  - (f) kapsels gelijk, geen overloop.
+  Bij issue: scène opnieuw genereren of overlay-positie aanpassen.
+- Output: `/mnt/documents/ig-welkom-v15/slide-1.png` t/m `slide-4.png` + `caption.md`.
 
-Geen wijzigingen aan de website-code — puur content-artefact.
+Geen wijzigingen aan website-code.
