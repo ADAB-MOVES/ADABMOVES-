@@ -1,55 +1,70 @@
-# ADAB MOVES — Welkomstcarrousel v8
+# ADAB MOVES — Welkomstcarrousel v9
 
-Doel: alle vier de slides corrigeren zodat kleding en anatomie kloppen, het echte sitelogo overal even helder en consistent verschijnt, en de tekst warmer en motiverender is voor kinderen & jongeren.
+Doel: alle visuele fouten uit v8 oplossen, kledingvariatie aanbrengen, trainer correct positioneren en de hele set een duidelijke **cartoon/illustratie-look** geven in plaats van semi-fotorealistisch.
 
-## 1. Anatomie & kleding-check per slide
+## 1. Logo-overlay opnieuw doen
 
-Wat ik op v7 wil corrigeren:
+Probleem in v8: het overlay-logo staat scheef op de borst, heeft de verkeerde kleur (grijs/donker i.p.v. wit-op-navy zoals de site), en zit op sommige slides half buiten het shirt.
 
-- **Slide 1 (hero)** — voetbalkind: voetbal hangt los in de lucht, voet maakt geen contact. Boogschutter: pijl al afgeschoten terwijl boog nog gespannen.
-- **Slide 2 (kickboksen)** — losse witte "A" op de mat (storend), pantalon van schoppend been zit te strak om de knie.
-- **Slide 3 (boog + voetbal)** — middelste jongen heeft handen onnatuurlijk laag; bal ligt los zonder dat iemand er bij is.
-- **Slide 4 (huddle)** — middelste jongen heeft de mond verkeerd geplaatst (op de wang i.p.v. midden gezicht); één jongen lijkt geen broek aan te hebben omdat de hand-stapel het verbergt.
+Aanpak:
+- Logo opnieuw plakken vanuit `src/assets/logo.png`, **recht** (geen rotatie, geen perspectief-warp).
+- Kleur forceren naar **wit** op donkere shirts, en naar **navy** op cream shirts — niet de originele grijstint laten staan.
+- Per scène handmatig de borst-coördinaten kalibreren (i.p.v. één vaste offset voor alle slides), zodat het logo altijd **midden op de borst** zit en mee-schaalt met de jongen.
+- Coach: logo groot en gecentreerd op de jasrug, ook recht.
+- QA-stap: na overlay elke slide op 100% inzoomen en controleren of het logo recht staat, wit is en binnen het shirt valt. Bij twijfel opnieuw.
 
-Aanpak: scènes opnieuw genereren in premium kwaliteit met striktere prompts:
+## 2. Kleding — meer variatie, donkerblauwe broek
 
-- Broeken altijd ruim en duidelijk **tot onder de knie** (lange joggers, niet strak).
-- Per slide één jongen met **navy kufi**, de rest zonder hoofdbedekking, allemaal duidelijk verschillend qua haar/skin tone.
-- Coach altijd **lange volle baard**, korte uniforme fade.
-- Alleen monden, geen ogen, glimlach.
-- Geen losse letters of teksten in de scène (logo's komen we zelf overheen plakken — zie stap 2).
+Probleem in v8: alle kinderen dragen exact hetzelfde (zelfde shirt, zelfde grijze jogger). Saai en onrealistisch.
 
-## 2. Logo overal consistent met echt sitelogo
+Nieuwe kledingregels:
+- **Broeken altijd donkerblauw** (navy `#1F2240`), niet grijs.
+- Variatie per kind binnen één slide:
+  - Eén kind: lange navy trainingsbroek.
+  - Eén kind: navy sportshort **tot over de knie** (niet boven de knie).
+  - Eén kind: lange navy jogger met coral streep langs de zijkant.
+- Shirts blijven cream of navy met wit ADAB-logo, maar wissel per kind zodat ze niet identiek lijken.
+- Per slide nog steeds één jongen met navy kufi, rest zonder, allemaal duidelijk verschillend qua haar en huidtint.
 
-In v7 worden de logo's door het AI-model getekend, waardoor ze op elke slide net iets anders zijn ("A" zonder boog, met boog, met of zonder cirkel, soms met "ADAB MOVES" eronder). 
+## 3. Trainer-positie en anatomie
 
-Oplossing: na het genereren plakken we het **echte `src/assets/logo.png**` als overlay op:
+Probleem in v8:
+- **Slide 2 (kickboks):** coach staat áchter de kinderen, terwijl hij ervoor (of zijaan) hoort te staan om te coachen.
+- **Slide 4 (huddle):** één hand van de coach steekt achter zijn rug op een onmogelijke manier uit.
+- Algemeen: ledematen soms los of in vreemde hoek.
 
-- Borst van elke jongen (zelfde grootte/positie per kind).
-- Rug van de jas van de coach (groter, gecentreerd).
+Aanpak:
+- Slide 2 opnieuw genereren met de coach **vooraan links of rechts in beeld**, met het gezicht naar de kinderen toe (we zien zijn profiel of zijn rug-driekwart, maar duidelijk vóór de groep).
+- Slide 4 opnieuw genereren met de coach **achter de huddle** met beide handen **zichtbaar op de schouders van twee kinderen** — geen losse hand achter zijn rug.
+- Strikte prompt: "geen losse ledematen, geen handen achter de rug, beide armen zichtbaar en logisch verbonden met de schouders".
+- Coach blijft: lange volle baard, korte uniforme fade, ADAB-jas met logo op rug.
 
-Zo is het logo op elke slide 1-op-1 hetzelfde als op de website.
+## 4. Cartoon-look versterken (minder fotorealistisch)
 
-## 3. Tekst herzien — warmer, motiverender, leesbaar voor alle
+Probleem: v8 voelt semi-realistisch waardoor de "geen ogen, alleen mond" keuze unheimlich oogt.
 
-Huidige v7 tekst is volwassen-zakelijk ("Sport met een ziel", . v8 wordt duidelijker, warmer en motiverender, met duidelijke lijn en woorden die de doelgroep aanspreken.
+Aanpak in de scène-prompts:
+- Expliciet vragen om **flat 2D cartoon illustration** / **children's book illustration style** / **vector-achtige shading** — geen photoreal, geen 3D render, geen realistische huidtextuur.
+- Eenvoudige egale kleurvlakken met lichte cel-shading, dikke contourlijnen mogelijk.
+- Achtergrond eveneens cartoon (geschilderde gym, niet gefotografeerd).
 
+Aanpak in post-processing (Pillow):
+- Lichte **posterize** (8 levels) + kleine **saturation boost** op de scènefoto, zodat eventuele rest-realisme verder wegtrekt.
+- Contrast iets terug (~0.92) zodat het zachter en illustratiever oogt.
+- Cream achtergrond, layout, typografie en logo-overlay blijven zoals v8.
 
-| Hier zijn alle 4 slides op een rij:Slide 1 — WELKOMEyebrow: Amsterdam · Haarlem · Almere · ZaandamTitel: Bewegen met betekenisSubtekst: ADAB MOVES is een multisport- en beweegorganisatie voor kinderen — voor scholen, ouders en gemeenschap. Islamitisch gefundeerd, toegankelijk voor iedereen.Slide 2 — WAT WE DOENEyebrow: Ons aanbodTitel: Eén visie. Drie vormen.Subtekst: Sport en begeleiding voor scholen tussen en na schooltijd. Wekelijkse multisport voor kinderen van 8 t/m 12 jaar. En sportdagen op maat voor scholen, gemeenten en buurthuizen.Tags: Scholen · Multisport · ADAB DaySlide 3 — WAAROM WIJEyebrow: Waarom ADAB MOVESTitel: Sport met een fundamentSubtekst: Wij geloven dat bewegen meer is dan presteren. Bij ons groeit een kind fysiek, sociaal, mentaal én moreel — vanuit duidelijke waarden, met behoud van eigen identiteit.Slide 4 — CTAEyebrow: Welkom in de communityTitel: Volg ons. Je hoort erbij.Subtekst: Blijf op de hoogte via @adabmoves. Binnenkort meer over ons aanbod voor kinderen, scholen en events. | &nbsp; | &nbsp; | &nbsp; |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------ | ------ |
-| &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | &nbsp; | &nbsp; | &nbsp; |
+## 5. Tekst blijft v8
 
+De tekstherzieningen uit v8 (Slide 1 "Bewegen met betekenis", Slide 2 "Eén visie. Drie vormen.", Slide 3 "Sport met een fundament", Slide 4 "Volg ons. Je hoort erbij.") blijven ongewijzigd — die zat goed.
 
-Cursief = coral accentwoord, vet/navy = hoofdwoord.
+## 6. Technische aanpak
 
-## 4. Technische aanpak
-
-- 4 nieuwe scènes via `imagegen` (premium, 1280×1280) — `/tmp/v8_scene_*.jpg`.
-- Pillow-script `/tmp/build_v8.py`, gebaseerd op v7-layout (cream achtergrond, witte ruimte, hairline frame, header met logo + slide-pil, scenekaart, eyebrow + 2-regel titel met coral accent, subtekst, footer).
-- Nieuwe stap: na het inpassen van de scène plakken we `src/assets/logo.png` (geresized) met masker op vaste posities over de borst van elke jongen en de jasrug van de coach, met lichte schaduw zodat het op stof "ligt".
-- QA: alle 4 slides als thumbnails inspecteren vóór oplevering; bij anatomie- of logo-issues opnieuw genereren.
-- Output: `/mnt/documents/ig-welkom-v8/slide-1..4.png` + `caption.md`.
+- 4 nieuwe scènes via `imagegen` (premium, 1280×1280) met cartoon-prompts → `/tmp/v9_scene_*.jpg`.
+- `/tmp/build_v9.py` op basis van `build_v8.py`:
+  - Per-slide logo-overlay coördinaten (dict), wit-op-donker / navy-op-cream kleurforcing.
+  - Posterize + saturation/contrast filter op scènefoto vóór inpassen.
+  - Rest van de layout (cream bg, hairline frame, header, eyebrow, titel, subtekst, footer) blijft gelijk.
+- QA: thumbnail-check + 100%-zoom-check op logo, kleding en handen vóór oplevering.
+- Output: `/mnt/documents/ig-welkom-v9/slide-1..4.png` + `caption.md` (overgenomen uit v8).
 
 Geen wijzigingen aan de website-code — puur content-artefact.
