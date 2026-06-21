@@ -18,11 +18,12 @@ const browser = await openBrowser("chrome", {
   chromeMode: "chrome-for-testing",
 });
 
-const outArg = process.argv[2] ?? "/mnt/documents/adab-intro.mp4";
+const compId = process.argv[2] ?? "main";
+const outArg = process.argv[3] ?? "/mnt/documents/adab-intro.mp4";
 
 const composition = await selectComposition({
   serveUrl: bundled,
-  id: "main",
+  id: compId,
   puppeteerInstance: browser,
 });
 
