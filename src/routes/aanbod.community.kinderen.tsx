@@ -8,10 +8,10 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/aanbod/community/kinderen")({
   head: () => ({
     meta: [
-      { title: "Multisport voor kinderen (8–12) in Amsterdam e.o. | ADAB MOVES" },
-      { name: "description", content: "Wekelijkse multisport voor kinderen van 8 tot 12 jaar in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp. Vaste coach, vaste groep, vaste locatie — een veilige sportcommunity waar jouw kind groeit in karakter en zelfvertrouwen." },
+      { title: "Multisport voor kinderen (7–12) in Amsterdam e.o. | ADAB MOVES" },
+      { name: "description", content: "Wekelijkse multisport voor kinderen van 7 tot 12 jaar in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp. Vaste coach, vaste groep, vaste locatie — een veilige sportcommunity waar jouw kind groeit in karakter en zelfvertrouwen." },
       { property: "og:title", content: "Multisport voor kinderen — ADAB MOVES" },
-      { property: "og:description", content: "Een tweede thuis in beweging. Voor ouders die meer willen dan een sportles — sport, karakter en gemeenschap voor kinderen van 8 t/m 12." },
+      { property: "og:description", content: "Een tweede thuis in beweging. Voor ouders die meer willen dan een sportles — sport, karakter en gemeenschap voor kinderen van 7 t/m 12." },
       { property: "og:url", content: "https://www.adabmoves.nl/aanbod/community/kinderen" },
       { property: "og:image", content: kinderen },
     ],
@@ -28,8 +28,8 @@ export const Route = createFileRoute("/aanbod/community/kinderen")({
           provider: { "@type": "Organization", name: "ADAB MOVES", url: "https://www.adabmoves.nl" },
           areaServed: ["Amsterdam", "Haarlem", "Zaandam", "Almere", "Amstelveen", "Hoofddorp"],
           audience: { "@type": "PeopleAudience", suggestedMinAge: 8, suggestedMaxAge: 12 },
-          name: "Multisport-community voor kinderen 8–12",
-          description: "Wekelijkse multisport voor kinderen van 8 tot 12 jaar. Vaste coach, vaste groep, vaste locatie — sport, karakter en gemeenschap.",
+          name: "Multisport-community voor kinderen 7–12",
+          description: "Wekelijkse multisport voor kinderen van 7 tot 12 jaar. Vaste coach, vaste groep, vaste locatie — sport, karakter en gemeenschap.",
           url: "https://www.adabmoves.nl/aanbod/community/kinderen",
         }),
       },
@@ -39,7 +39,7 @@ export const Route = createFileRoute("/aanbod/community/kinderen")({
           "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: [
-            { "@type": "Question", name: "Vanaf welke leeftijd kan mijn kind meedoen?", acceptedAnswer: { "@type": "Answer", text: "Onze vaste groepen zijn voor kinderen van 8 t/m 12 jaar. Onder en boven die leeftijd kijken we per geval — neem contact op." } },
+            { "@type": "Question", name: "Vanaf welke leeftijd kan mijn kind meedoen?", acceptedAnswer: { "@type": "Answer", text: "Onze vaste groepen zijn voor kinderen van 7 t/m 12 jaar. Onder en boven die leeftijd kijken we per geval — neem contact op." } },
             { "@type": "Question", name: "Moet mijn kind al kunnen sporten?", acceptedAnswer: { "@type": "Answer", text: "Nee. We bouwen elke periode rustig op, met aandacht voor elk niveau. Beginners en gevorderden trainen prima samen." } },
             { "@type": "Question", name: "Wat als mijn kind een keer niet kan?", acceptedAnswer: { "@type": "Answer", text: "Geen probleem — laat het ons weten. Bij langere afwezigheid kijken we naar een passende oplossing." } },
             { "@type": "Question", name: "Hoe weet ik of het klikt?", acceptedAnswer: { "@type": "Answer", text: "Je kunt een keer vrijblijvend meedoen. Klikt het niet? Dan stopt het daar — zonder verplichtingen." } },
@@ -80,7 +80,7 @@ const ouderWinsten = [
 ];
 
 const faqs = [
-  { q: "Vanaf welke leeftijd kan mijn kind meedoen?", a: "Onze vaste groepen zijn voor kinderen van 8 t/m 12 jaar. Onder en boven die leeftijd kijken we per geval — neem contact op." },
+  { q: "Vanaf welke leeftijd kan mijn kind meedoen?", a: "Onze vaste groepen zijn voor kinderen van 7 t/m 12 jaar. Onder en boven die leeftijd kijken we per geval — neem contact op." },
   { q: "Moet mijn kind al kunnen sporten?", a: "Nee. We bouwen elke periode rustig op, met aandacht voor elk niveau. Beginners en gevorderden trainen prima samen." },
   { q: "Wat als mijn kind een keer niet kan?", a: "Geen probleem — laat het ons weten. Bij langere afwezigheid kijken we naar een passende oplossing." },
   { q: "Hoe weet ik of het klikt?", a: "Je kunt een keer vrijblijvend meedoen. Klikt het niet? Dan stopt het daar — zonder verplichtingen." },
@@ -97,7 +97,7 @@ function Page() {
           </Link>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">
-              <span className="eyebrow">Voor ouders — kinderen 8 t/m 12 jaar</span>
+              <span className="eyebrow">Voor ouders — kinderen 7 t/m 12 jaar</span>
               <h1 className="mt-4 text-5xl md:text-6xl font-semibold leading-[1.05] text-foreground">
                 Meer dan sport. <span className="italic text-[var(--coral-deep)]">Een tweede thuis</span>.
               </h1>

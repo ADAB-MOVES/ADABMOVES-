@@ -71,7 +71,7 @@ export const Route = createFileRoute("/")({
               name: "Voor welke leeftijd is de multisport-community?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "De wekelijkse multisport voor kinderen is voor de leeftijd 8 t/m 12 jaar. Voor tieners en jongeren bieden we kickboksen, weerbaarheidstraining en mentoring trajecten.",
+                text: "De wekelijkse multisport voor kinderen is voor de leeftijd 7 t/m 12 jaar. Voor tieners en jongeren bieden we kickboksen, weerbaarheidstraining en mentoring trajecten.",
               },
             },
             {
