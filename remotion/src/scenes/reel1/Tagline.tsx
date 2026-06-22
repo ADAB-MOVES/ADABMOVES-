@@ -1,5 +1,7 @@
 import { AbsoluteFill, Img, staticFile, useCurrentFrame, useVideoConfig, interpolate, spring } from "remotion";
 import { COLORS } from "../../theme";
+import { Character } from "../../illustrations/Character";
+import { illu } from "../../illustrations/tokens";
 
 export const Tagline: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
@@ -10,8 +12,9 @@ export const Tagline: React.FC<{ duration: number }> = ({ duration }) => {
   const underline1 = interpolate(f, [20, 50], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const underline2 = interpolate(f, [42, 72], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
-  const logoIn = spring({ frame: f - 70, fps, config: { damping: 14, stiffness: 140 } });
-  const pulse = 1 + Math.sin((f - 70) / 8) * 0.04 * Math.min(1, Math.max(0, (f - 70) / 20));
+  const coachIn = spring({ frame: f - 60, fps, config: { damping: 14, stiffness: 140 } });
+  const wave = Math.sin((f - 60) / 6) * 6;
+  const logoIn = spring({ frame: f - 10, fps, config: { damping: 18 } });
 
   const fadeOut = interpolate(f, [duration - 8, duration], [1, 0], { extrapolateLeft: "clamp" });
 
@@ -25,7 +28,7 @@ export const Tagline: React.FC<{ duration: number }> = ({ duration }) => {
         textAlign: "center",
         fontFamily: "Sora, sans-serif",
         fontWeight: 800,
-        fontSize: 110,
+        fontSize: 104,
         color: COLORS.navy,
         letterSpacing: -2,
         lineHeight: 1.05,
@@ -38,7 +41,7 @@ export const Tagline: React.FC<{ duration: number }> = ({ duration }) => {
         style={{
           margin: "16px auto 0",
           height: 6,
-          width: `${uw * 70}%`,
+          width: `${uw * 65}%`,
           background: COLORS.coral,
           borderRadius: 4,
         }}
@@ -58,25 +61,41 @@ export const Tagline: React.FC<{ duration: number }> = ({ duration }) => {
         }}
       />
 
-      <Line text="Bewegen met" y={520} v={line1} uw={underline1} />
-      <Line text="betekenis." y={700} v={line1} uw={underline1} />
-      <Line text="Karakter begint" y={980} v={line2} uw={underline2} />
-      <Line text="hier." y={1160} v={line2} uw={underline2} />
-
-      {/* Logo */}
+      {/* small logo top */}
       <div
         style={{
           position: "absolute",
-          bottom: 200,
+          top: 180,
           left: 0,
           right: 0,
           display: "flex",
           justifyContent: "center",
-          opacity: Math.max(0, logoIn),
-          transform: `scale(${pulse})`,
+          opacity: logoIn,
         }}
       >
-        <Img src={staticFile("logo.png")} style={{ width: 420, height: "auto" }} />
+        <Img src={staticFile("logo.png")} style={{ width: 200, height: "auto" }} />
+      </div>
+
+      <Line text="Bewegen met" y={420} v={line1} uw={underline1} />
+      <Line text="betekenis." y={580} v={line1} uw={underline1} />
+      <Line text="Karakter begint" y={820} v={line2} uw={underline2} />
+      <Line text="hier." y={980} v={line2} uw={underline2} />
+
+      {/* waving coach mascot */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 120,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+          opacity: Math.max(0, coachIn),
+          transform: `translateY(${interpolate(coachIn, [0, 1], [60, 0])}px) rotate(${wave * 0.3}deg)`,
+          transformOrigin: "bottom center",
+        }}
+      >
+        <Character variant="coach-mascot" size={520} outfit={illu.ink} />
       </div>
     </AbsoluteFill>
   );
