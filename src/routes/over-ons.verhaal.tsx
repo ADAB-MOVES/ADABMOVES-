@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote, Target, Sparkles, Compass, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 import verhaal from "@/assets/verhaal.jpg";
 import community from "@/assets/community.jpg";
 import { FloatingDecor } from "@/components/FloatingDecor";
