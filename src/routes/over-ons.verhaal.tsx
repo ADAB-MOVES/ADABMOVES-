@@ -21,32 +21,6 @@ export const Route = createFileRoute("/over-ons/verhaal")({
   component: VerhaalPage,
 });
 
-const doelen = [
-  {
-    icon: Target,
-    year: "2026",
-    title: "Vaste sportlocaties in 6 steden",
-    text: "Wekelijkse multisport voor kinderen in Amsterdam, Zaandam, Amstelveen, Hoofddorp, Haarlem en Almere — met een vaste, vertrouwde groep.",
-  },
-  {
-    icon: Sparkles,
-    year: "2026",
-    title: "Lancering meidentak",
-    text: "Een eigen tak voor meiden met vrouwelijke coaches en een passende sportomgeving — zodat ook zij volwaardig kunnen meebewegen.",
-  },
-  {
-    icon: Compass,
-    year: "2027",
-    title: "ADAB Methode op 50+ scholen",
-    text: "Onze methode structureel ingebed in het sport- en pedagogisch programma van basis- en middelbare scholen door heel Nederland.",
-  },
-  {
-    icon: CheckCircle2,
-    year: "2028",
-    title: "Eigen sport- & ontwikkelcentrum",
-    text: "Een centrale plek waar trainingen, events, opleidingen en ouderbijeenkomsten samenkomen — een thuisbasis voor de gemeenschap.",
-  },
-];
 
 function VerhaalPage() {
   return (
