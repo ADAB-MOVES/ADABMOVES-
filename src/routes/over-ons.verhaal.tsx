@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote, Target, Sparkles, Compass, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 import verhaal from "@/assets/verhaal.jpg";
 import community from "@/assets/community.jpg";
 import { FloatingDecor } from "@/components/FloatingDecor";
@@ -7,9 +7,9 @@ import { FloatingDecor } from "@/components/FloatingDecor";
 export const Route = createFileRoute("/over-ons/verhaal")({
   head: () => ({
     meta: [
-      { title: "Ons verhaal & onze doelen — ADAB MOVES" },
-      { name: "description", content: "Hoe ADAB MOVES is ontstaan vanuit jarenlange ervaring in de sport- en jongerenbranche, en onze doelen voor multisport, kickboksen en jongerenwerk in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp." },
-      { property: "og:title", content: "Ons verhaal & onze doelen — ADAB MOVES" },
+      { title: "Ons verhaal — ADAB MOVES" },
+      { name: "description", content: "Hoe ADAB MOVES is ontstaan vanuit jarenlange ervaring in de sport- en jongerenbranche — multisport, kickboksen en jongerenwerk in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp." },
+      { property: "og:title", content: "Ons verhaal — ADAB MOVES" },
       { property: "og:description", content: "Een islamitische jongerenorganisatie geboren uit ervaring — gedreven door wat wij dagelijks zien op scholen en in de gemeenschap." },
       { property: "og:url", content: "https://www.adabmoves.nl/over-ons/verhaal" },
       { property: "og:image", content: verhaal },
@@ -21,32 +21,6 @@ export const Route = createFileRoute("/over-ons/verhaal")({
   component: VerhaalPage,
 });
 
-const doelen = [
-  {
-    icon: Target,
-    year: "2026",
-    title: "Vaste sportlocaties in 6 steden",
-    text: "Wekelijkse multisport voor kinderen in Amsterdam, Zaandam, Amstelveen, Hoofddorp, Haarlem en Almere — met een vaste, vertrouwde groep.",
-  },
-  {
-    icon: Sparkles,
-    year: "2026",
-    title: "Lancering meidentak",
-    text: "Een eigen tak voor meiden met vrouwelijke coaches en een passende sportomgeving — zodat ook zij volwaardig kunnen meebewegen.",
-  },
-  {
-    icon: Compass,
-    year: "2027",
-    title: "ADAB Methode op 50+ scholen",
-    text: "Onze methode structureel ingebed in het sport- en pedagogisch programma van basis- en middelbare scholen door heel Nederland.",
-  },
-  {
-    icon: CheckCircle2,
-    year: "2028",
-    title: "Eigen sport- & ontwikkelcentrum",
-    text: "Een centrale plek waar trainingen, events, opleidingen en ouderbijeenkomsten samenkomen — een thuisbasis voor de gemeenschap.",
-  },
-];
 
 function VerhaalPage() {
   return (
@@ -137,38 +111,6 @@ function VerhaalPage() {
         </div>
       </section>
 
-      {/* ONZE DOELEN */}
-      <section className="bg-[var(--ink)] text-[var(--cream)]">
-        <div className="container-x py-20 md:py-24 relative overflow-hidden">
-          <div aria-hidden className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[var(--coral)]/20 blur-3xl animate-blob" />
-          <div className="max-w-2xl mb-12 relative">
-            <span className="eyebrow text-[var(--coral)]">Onze doelen</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">
-              Waar wij voor staan en naartoe werken.
-            </h2>
-            <p className="mt-5 text-lg text-white/70 leading-relaxed">
-              Concrete ambities om vanuit onze{" "}
-              <strong className="text-white">islamitische fundering</strong> het verschil te
-              maken voor scholen, ouders en gemeenschap — open en toegankelijk voor iedereen.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
-            {doelen.map((d, i) => (
-              <article
-                key={d.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise hover:bg-white/[0.07] transition-colors"
-                style={{ animationDelay: `${i * 80}ms` }}
-              >
-                <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/20 flex items-center justify-center text-[var(--coral)]">
-                  <d.icon size={18} />
-                </div>
-                <div className="mt-5 font-semibold text-lg leading-snug">{d.title}</div>
-                <div className="mt-2 text-sm text-white/65 leading-relaxed">{d.text}</div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="container-x py-24">
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">

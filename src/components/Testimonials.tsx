@@ -18,7 +18,7 @@ const pillars = [
   {
     icon: HeartHandshake,
     title: "In lijn met jullie waarden",
-    text: "Wij sluiten aan bij de cultuur, taal en waarden van de kinderen. Toegankelijk voor iedereen — moslim én niet-moslim welkom.",
+    text: "Wij sluiten aan bij de cultuur, taal en waarden van de kinderen. Toegankelijk voor iedereen.",
   },
 ] as const;
 
