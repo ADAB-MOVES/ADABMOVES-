@@ -111,38 +111,6 @@ function VerhaalPage() {
         </div>
       </section>
 
-      {/* ONZE DOELEN */}
-      <section className="bg-[var(--ink)] text-[var(--cream)]">
-        <div className="container-x py-20 md:py-24 relative overflow-hidden">
-          <div aria-hidden className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[var(--coral)]/20 blur-3xl animate-blob" />
-          <div className="max-w-2xl mb-12 relative">
-            <span className="eyebrow text-[var(--coral)]">Onze doelen</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold leading-tight">
-              Waar wij voor staan en naartoe werken.
-            </h2>
-            <p className="mt-5 text-lg text-white/70 leading-relaxed">
-              Concrete ambities om vanuit onze{" "}
-              <strong className="text-white">islamitische fundering</strong> het verschil te
-              maken voor scholen, ouders en gemeenschap — open en toegankelijk voor iedereen.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
-            {doelen.map((d, i) => (
-              <article
-                key={d.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 animate-rise hover:bg-white/[0.07] transition-colors"
-                style={{ animationDelay: `${i * 80}ms` }}
-              >
-                <div className="h-10 w-10 rounded-xl bg-[var(--coral)]/20 flex items-center justify-center text-[var(--coral)]">
-                  <d.icon size={18} />
-                </div>
-                <div className="mt-5 font-semibold text-lg leading-snug">{d.title}</div>
-                <div className="mt-2 text-sm text-white/65 leading-relaxed">{d.text}</div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="container-x py-24">
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">
