@@ -114,7 +114,7 @@ const winsten = [
   "Sterker zelfvertrouwen en doorzettingsvermogen bij leerlingen",
   "Hogere betrokkenheid — kinderen kijken uit naar bewegen",
   "Vaste trainer, vaste lijn — geen wisselende gezichten",
-  "Eén aanspreekpunt voor planning, materiaal en facturatie",
+  
   "Volledig verzorgd programma — wij regelen alles",
   "Pedagogische opbrengst die doorwerkt in de klas",
 ];
