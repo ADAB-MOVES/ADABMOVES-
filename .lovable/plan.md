@@ -1,34 +1,98 @@
-Drie nieuwe carrousel-posts (1:1, ~1248×1248) in dezelfde stijl als de bijgevoegde "Mindset die je sterker maakt" post. Zelfde 3D-cartoon poppen (geen ogen, donkerblauwe ADAB MOVES trainingspak, warme gym met navy/koraal panelen), zelfde lay-out (kop, ondertitel, BEFORE/AFTER split, tekstballonnen, ster-callout onderaan, footer met @adabmoves).
+## Doel
 
-## 3 nieuwe mindset-thema's (op basis van adabmoves.nl waarden: adab, geduld, dankbaarheid, broederschap, doorzettingsvermogen)
+Eén print-klare A4 PDF van 2 pagina's: **ADAB-MOVES-Concept-Offerte-IBS-Elif.pdf** voor Hüseyin Gürlek (Directeur IBS Elif Zaandam), datum **25 juni 2026**, ref **AM-2026-001**. Gegenereerd met Python + reportlab, opgeslagen in `/mnt/documents/`.
 
-**Post 2/4 — "Omgaan met tegenslag"**
-- Kop: **Doorzetten als het zwaar wordt.**
-- Sub: *Vermoeidheid* zonder opgeven. *Pijn* zonder klagen.
-- BEFORE — VERMOEID: pop hangend, hand op knie, hoofd omlaag. KLAGEN: pop met geïrriteerd gebaar, armen omhoog van frustratie.
-- AFTER — VERMOEID: pop rechtop, hand op hart, ballon "Bismillah, nog één keer — ik geef niet **op**." | RUSTIG: pop kalm staand, ballon "Alhamdoelilah, ik blijf **standvastig** en vertrouw op Allah."
-- Ster-callout: *Echte kracht is: doorgaan als je lichaam wil stoppen.*
+## Huisstijl (exact van adabmoves.nl)
 
-**Post 3/4 — "Respect voor de ander"**
-- Kop: **Sportiviteit begint bij **adab**.**
-- Sub: *Tegenstanders* zonder neerkijken. *Teamgenoten* zonder jaloezie.
-- BEFORE — TEGENSTANDER: pop wijzend/lachend naar gevallen tegenspeler. TEAMGENOOT: pop met rug naar teamgenoot, armen gekruist.
-- AFTER — TEGENSTANDER: pop steekt hand uit om ander op te helpen, ballon "Goed gespeeld, **broeder**." | TEAMGENOOT: twee poppen high-five, ballon "MashaAllah, **gun** je broeder het goede."
-- Ster-callout: *Adab op het veld = adab in het leven.*
+- Navy `#1F2240` (ink) — donkere secties + alle headings
+- Accent navy `#2E3A6E` — identiteit-sectie pagina 2
+- Coral `#E8784E` — bullet-accents, "CONCEPT" badge, kortingsregel highlight
+- Cream `#FBF7EE` — pagina-achtergrond (warme off-white uit `--cream`)
+- Cream-deep `#F4ECDC` — afwisselende tabelrijen + kaarten
+- Border-soft `#EAE0CC` — hairlines
+- Fonts: **Sora** (headings) + **Plus Jakarta Sans** (body), via TTF download in /tmp; reportlab `pdfmetrics.registerFont`
+- Kaarten: 14pt radius, zachte schaduw, cream-deep fill
+- Geen pure wit, geen koud grijs
 
-**Post 4/4 — "Focus en discipline"**
-- Kop: **Discipline boven **motivatie**.**
-- Sub: *Afleiding* zonder toegeven. *Luiheid* zonder excuses.
-- BEFORE — AFLEIDING: pop met telefoon in hand, gym op achtergrond leeg. LUIHEID: pop onderuitgezakt op bank.
-- AFTER — FOCUS: pop in trainingshouding, ballon "Bismillah, ik **begin** — ook als ik geen zin heb." | DISCIPLINE: pop strekkend voor training, ballon "Alhamdoelilah, **consistentie** is mijn kracht."
-- Ster-callout: *Wie zichzelf overwint, wint het meest.*
+## Illustraties (nieuw, brand-stijl)
 
-## Aanpak (technisch)
+Twee 2D illustraties gegenereerd via imagegen (`fast`), opgeslagen in `/mnt/documents/offerte/`:
 
-1. Genereer elke post via `imagegen--edit_image` met de bijgeleverde post als style-reference + nieuwe prompt. Model: `premium` (typografie moet leesbaar zijn — Dutch tekst, koraal-accent woorden, ballonnen).
-2. Aspect ratio 1:1. Aparte page-indicator rechtsboven (2/4, 3/4, 4/4).
-3. Output naar `/mnt/documents/adabmoves-mindset-2.png`, `-3.png`, `-4.png`.
-4. Visueel controleren per post; bij tekstfouten of stijl-drift opnieuw genereren met scherpere prompt.
-5. Drie `<presentation-artifact>` tags retourneren zodat user direct kan downloaden.
+1. **Hero pagina 2** — kinderen sportend op schoolplein (voetbal, trefbal, estafette), 2D flat vector style à la `scholen.jpg`, modest kleding (lange joggers), geen ogen, alleen subtiele glimlach, ADAB MOVES tinten, schoolgebouw vaag op achtergrond.
+2. **Identiteit-sectie pagina 2** — trainer (van achter, baard, korte buzz, logo op jasje) met groepje kinderen in cirkel op schoolplein, warme middag-licht.
 
-Geen wijzigingen aan de website-code.
+Beide afbeeldingen 1024×768, ingebed via reportlab `Image` met afgeronde clip.
+
+## Pagina 1 — CONCEPT OFFERTE
+
+```text
+┌──────────────────────────────────────────────────┐
+│ NAVY HEADER  ADAB MOVES | Sport met karakter     │
+│              www · tel · email   [CONCEPT badge] │
+│              Ref AM-2026-001 · 25 juni 2026      │
+├──────────────────────────────────────────────────┤
+│ CREAM HERO                                       │
+│ H1 Tussenschoolse Opvang (TSO)                   │
+│ H2 Schooljaar 2026–2027 — IBS Elif, Zaandam      │
+│ italic notice (concept-voorbehoud)               │
+│ ┌─Aanbieder───────┐ ┌─Opgesteld voor────────┐    │
+│ │ ADAB MOVES …    │ │ IBS Elif · Dhr. Gürlek│    │
+│ └─────────────────┘ └───────────────────────┘    │
+├──────────────────────────────────────────────────┤
+│ NAVY STATS  4 kolommen icon-kaarten              │
+│  3 Trainers · 3 Dagen · 1,5u · Start 17-08-2026  │
+├──────────────────────────────────────────────────┤
+│ CREAM TSO SCHEMA tabel (cream-deep zebra)        │
+│  Tijdblok | Groep | Leerlingen | Begeleiding     │
+│  totaalrij in navy bold                          │
+├──────────────────────────────────────────────────┤
+│ NAVY TARIEVEN tabel (wit op navy)                │
+│  Kortingsregel highlighted coral                 │
+│  Totaal € 30.600 · € 2.550/maand                 │
+│  italic note BTW-vrijstelling                    │
+├──────────────────────────────────────────────────┤
+│ NAVY CTA FOOTER  contactblok + geldigheid        │
+└──────────────────────────────────────────────────┘
+```
+
+## Pagina 2 — TSO INFORMATIE & AANPAK
+
+```text
+┌──────────────────────────────────────────────────┐
+│ NAVY HEADER  (zelfde + subtitle Aanpak & Visie)  │
+├──────────────────────────────────────────────────┤
+│ CREAM INTRO 2-koloms                             │
+│ Links: "Wat is TSO bij ADAB MOVES?" + tekst      │
+│ Rechts: illustratie kinderen op schoolplein      │
+├──────────────────────────────────────────────────┤
+│ CREAM-DEEP kaart "Onze aanpak" — leestekst       │
+├──────────────────────────────────────────────────┤
+│ NAVY 3-koloms "Onze focus"                       │
+│ Veilig plein · Actief & gevarieerd · Karakter    │
+├──────────────────────────────────────────────────┤
+│ CREAM 2×3 grid "Wat wij aanbieden"               │
+│ Bewegingsspellen · Teamsporten · Doelspellen ·   │
+│ Coöperatief · Minitoernooien · Vrij bewegen      │
+├──────────────────────────────────────────────────┤
+│ ACCENT #2E3A6E 2-koloms identiteit               │
+│ Links: trainer+kinderen illustratie              │
+│ Rechts: "Bewegen vanuit waarden" + tekst         │
+├──────────────────────────────────────────────────┤
+│ NAVY FOOTER tagline + contact + © 2026           │
+└──────────────────────────────────────────────────┘
+```
+
+## Technische uitvoering
+
+1. `bun add` n.v.t. — pure Python. `python -m pip install reportlab pillow requests`.
+2. Download Sora + Plus Jakarta Sans TTF van Google Fonts → registreren in reportlab.
+3. Twee illustraties genereren via `imagegen--generate_image` (model `fast`, 1024×768, jpg).
+4. Custom A4 layout zonder Platypus flow — exacte coördinaten per sectie zodat pagina 1 en 2 strak op één A4 passen (geen page overflow).
+5. Helpers: `draw_section(bg, x, y, w, h)`, `draw_card(...)`, `draw_table(...)`, `draw_badge(...)`.
+6. Euro-bedragen rechts uitgelijnd; kortingsregel in coral pill.
+7. QA-loop verplicht: `pdftoppm -r 150` → visueel inspecteren beide pagina's → fix overlap/cropping → herrender tot 0 issues.
+
+## Deliverable
+
+- `/mnt/documents/ADAB-MOVES-Concept-Offerte-IBS-Elif.pdf` (2 pagina's A4, ~400 KB)
+- Korte chatreactie met downloadlink en samenvatting QA-bevindingen.
