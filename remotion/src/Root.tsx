@@ -1,6 +1,7 @@
 import { Composition } from "remotion";
 import { MainVideo } from "./MainVideo";
 import { Reel1Hook } from "./compositions/Reel1Hook";
+import { Reel30Betekenis } from "./compositions/Reel30Betekenis";
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -16,6 +17,14 @@ export const RemotionRoot: React.FC = () => (
       id="reel-1-hook"
       component={Reel1Hook}
       durationInFrames={450}
+      fps={30}
+      width={1080}
+      height={1920}
+    />
+    <Composition
+      id="reel-30s-betekenis"
+      component={Reel30Betekenis}
+      durationInFrames={900}
       fps={30}
       width={1080}
       height={1920}
