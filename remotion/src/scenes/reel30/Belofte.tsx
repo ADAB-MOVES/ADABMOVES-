@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, spring } from "remotion";
+import { AbsoluteFill, Img, staticFile, useCurrentFrame, useVideoConfig, interpolate, spring } from "remotion";
 import { COLORS } from "../../theme";
 
 export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
@@ -9,25 +9,27 @@ export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
   const start = 4;
   const gap = 8;
 
+  const kb = interpolate(f, [0, duration], [1.05, 1.14]);
   const eyebrow = spring({ frame: f, fps, config: { damping: 20 } });
   const fadeOut = interpolate(f, [duration - 10, duration], [1, 0], { extrapolateLeft: "clamp" });
 
   return (
-    <AbsoluteFill style={{ background: COLORS.navy, opacity: fadeOut }}>
-      {/* subtle grain-esque gradient */}
+    <AbsoluteFill style={{ background: COLORS.navy, opacity: fadeOut, overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, transform: `scale(${kb})`, transformOrigin: "50% 50%" }}>
+        <Img src={staticFile("reel30/belofte-gym.jpg")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </div>
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(circle at 30% 20%, #2A2E5C 0%, ${COLORS.navy} 60%)`,
+          background: `linear-gradient(180deg, rgba(31,34,64,0.72) 0%, rgba(31,34,64,0.55) 55%, rgba(31,34,64,0.85) 100%)`,
         }}
       />
 
-      {/* eyebrow */}
       <div
         style={{
           position: "absolute",
-          top: 520,
+          top: 480,
           left: 0,
           right: 0,
           textAlign: "center",
@@ -42,11 +44,10 @@ export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
         ADAB MOVES
       </div>
 
-      {/* Words */}
       <div
         style={{
           position: "absolute",
-          top: 640,
+          top: 600,
           left: 0,
           right: 0,
           padding: "0 70px",
@@ -57,6 +58,7 @@ export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
           lineHeight: 1.02,
           letterSpacing: -4,
           color: COLORS.cream,
+          textShadow: "0 6px 30px rgba(0,0,0,0.4)",
         }}
       >
         {words.map((w, i) => {
@@ -78,11 +80,10 @@ export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
         })}
       </div>
 
-      {/* small subline */}
       <div
         style={{
           position: "absolute",
-          bottom: 340,
+          bottom: 300,
           left: 0,
           right: 0,
           textAlign: "center",
@@ -90,9 +91,10 @@ export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
           fontWeight: 500,
           fontSize: 42,
           color: COLORS.cream,
-          opacity: spring({ frame: f - 40, fps, config: { damping: 22 } }) * 0.85,
+          opacity: spring({ frame: f - 40, fps, config: { damping: 22 } }) * 0.9,
           padding: "0 100px",
           lineHeight: 1.3,
+          textShadow: "0 2px 20px rgba(0,0,0,0.5)",
         }}
       >
         Sport, discipline en zelfvertrouwen —
