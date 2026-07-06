@@ -1,55 +1,58 @@
-# ADAB MOVES — 30s Instagram Reel
+## Doel
+De huidige 30-seconden Reel gebruikt platte SVG-poppetjes (`Character.tsx` / `Scene.tsx`). Die passen niet bij het ADAB MOVES merk. We vervangen ze door 3D Pixar-stijl illustraties in de stijl van de bijgeleverde referentiebeelden (coach met volle baard van achteren, kinderen met bescheiden kleding + skullcaps, warme gymzaal, navy + coral).
 
-Ik bouw een verticale 1080×1920 Reel van 30 seconden (900 frames @ 30fps) als nieuwe Remotion-compositie `reel-30s-betekenis`, in dezelfde huisstijl als de bestaande `reel-1-hook`. Alles wordt geanimeerd met SVG-personages (`Character`/`Scene` in `remotion/src/illustrations/`) — geen AI-foto's, geen gezichtsdetails, coach van achteren met baard, sommige jongens met skullcap.
+## Aanpak (marketing-first)
 
-## Structuur (900 frames, 30fps)
+De reel wordt een promotie-tool: eerste 3 seconden moeten stoppen-scrollen, daarna emotie, dan bewijs, dan CTA. We renderen elke scène als een echte 3D-stijl afbeelding via `imagegen` (premium) — geen SVG-poppetjes meer. Remotion animeert camera-moves (ken burns, parallax, crops) en typografie er overheen.
 
-```
-HOOK          0.0 – 3.0s   (90f)   Kind verveeld op bank met telefoon → tekst valt in
-BELOFTE       3.0 – 6.0s   (90f)   "Dit is niet zomaar een sportles." → transitie naar sporthal
-VERHAAL A     6.0 – 12.0s  (180f)  Kind komt binnen, coach (rug, baard) verwelkomt
-VERHAAL B    12.0 – 18.0s  (180f)  Multisport cuts: basketbal → voetbal → boogschieten
-WAARDEN      18.0 – 22.0s  (120f)  3 pills: Discipline · Respect · Zelfvertrouwen
-AANBOD       22.0 – 26.0s  (120f)  3 kaarten: Naschools · Wekelijkse multisport · Sportevents
-CTA          26.0 – 30.0s  (120f)  Logo + "Volg @adabmoves" + "adabmoves.nl" + Amsterdam pin
-```
+## Scene-plan (900 frames / 30s / 1080×1920)
 
-## Scènes (elk in `remotion/src/scenes/reel30/`)
+1. **Hook (0-3s)** — 3D beeld: kind alleen op bank met telefoon, warm licht.
+   Tekst-overlay: "Dit is niet zomaar een sportles."
+2. **Belofte (3-6s)** — 3D beeld: lege gymzaal, zonlicht door ramen, ADAB lijnen op de vloer. Kinetische typografie "Bewegen met betekenis".
+3. **Coach welkomt (6-12s)** — hero beeld (bijgeleverd stijl-referentie): coach van achteren met volle baard, ADAB MOVES jasje, kind komt binnenrennen. Slow push-in.
+4. **Multisport (12-18s)** — 3 snelle cuts, elk een eigen 3D beeld:
+   - basketbal-kind (skullcap, ADAB shirt)
+   - voetbal-kind (ADAB trainingspak)
+   - boogschutter-kind (bescheiden kleding)
+5. **Waarden (18-22s)** — 3D groepsbeeld van kinderen in kring met coach, met overlay-pills "Discipline · Respect · Zelfvertrouwen".
+6. **Aanbod (22-26s)** — 3D beeld gymzaal met 3 kaarten er overheen: 01 Scholen · 02 Multisport · 03 Events.
+7. **CTA (26-30s)** — 3D beeld van coach + kinderen frontaal (gezichten featureless), logo, "@adabmoves — adabmoves.nl", "Actief in Amsterdam en omgeving".
 
-1. **HookBank.tsx** — kind-silhouet op bank met gloeiende telefoon (cream bg, koud blauw tv-licht), springt in met scale.
-2. **Belofte.tsx** — grote kinetic type "Dit is niet zomaar / een sportles." (Sora ExtraBold), coral onderstreping die intekent.
-3. **CoachWelkom.tsx** — sporthal-achtergrond (`GymBg`), `coach-back` variant met baard midden-links, `kid-run` komt van rechts binnen. Ondertitel: "Een veilige plek waar je kind zichzelf mag zijn."
-4. **SportCuts.tsx** — hergebruikt patroon van bestaande `reel1/SportCuts`: 3 snelle cuts (basketbal → voetbal → boogschieten) met `Character` varianten `kid-basket`, `kid-kick`, `kid-archery`. Ondertitels: "Sport. / Discipline. / Karakter."
-5. **Waarden.tsx** — 3 gestaggerde pills die inklappen: "Discipline • Respect • Zelfvertrouwen".
-6. **Aanbod.tsx** — 3 kaarten stapelend van boven: `01 NASCHOOLS`, `02 MULTISPORT`, `03 SPORTEVENTS` (kort, één regel per kaart).
-7. **CTA.tsx** — ADAB MOVES logo (statisch SVG in scene), regel: "Volg @adabmoves", "adabmoves.nl", location pin "Amsterdam & omgeving", coral CTA-bar onderaan.
+## Regels voor alle gegenereerde beelden
+- 3D Pixar-stijl render, warme cinematische verlichting
+- Kleuren: navy `#1F2240`, coral `#E8784E`, warm cream gymzaal
+- **Coach**: volle donkere baard (geen snor apart, gelijk kort kapsel), navy ADAB MOVES trainingsjasje met wit A-logo + coral swoosh, tekst op rug "ADAB MOVES / BEWEGEN MET BETEKENIS", altijd van achteren of zijkant
+- **Kinderen**: bescheiden sportkleding volledig bedekkend, ongeveer 1 op 3 met witte skullcap, géén meisjes met los lang haar (alleen hijab + lange kleding indien meisje), gezichten featureless of subtiel
+- Gymzaal setting: houten vloer met ADAB coral/navy lijnen, hoge ramen, warme zon
+- Geen tekst-in-beeld (behalve op jasje) — alle copy komt er in Remotion overheen
 
-Tussen scènes: `TransitionSeries` met `fade` (springTiming, damping 200, 8f) — behalve tussen SportCuts subcuts die intern hard snijden op de beat.
+## Technische wijzigingen
 
-## Bestanden
+**Verwijderen uit de reel:**
+- Alle imports van `Character`, `Scene`, `SportIcon` in `remotion/src/scenes/reel30/*`
+- SVG-poppetjes in `HookBank`, `CoachWelkom`, `MultiSport`, `Waarden`, `Aanbod`, `CtaEnd`
 
-- `remotion/src/compositions/Reel30Betekenis.tsx` — nieuwe compositie (analoog aan `Reel1Hook.tsx`), zet scènes in een `TransitionSeries`.
-- `remotion/src/scenes/reel30/` — 7 nieuwe scene-files (zie boven).
-- `remotion/src/Root.tsx` — registreert `<Composition id="reel-30s-betekenis" />` naast bestaande.
-- Hergebruikt: `theme.ts`, `Grain`, `GymBg`, `AccentLine`, `illustrations/Character`, `illustrations/SportIcon`.
-
-## Fonts, kleur, motion
-
-- **Fonts**: Sora 700/800 voor koppen, Plus Jakarta Sans 500/700 voor body (al geladen in project).
-- **Kleuren**: navy `#1F2240`, coral `#E8784E`, cream `#FBF7EE` (uit `theme.ts` — matcht huisstijl; wijkt licht af van de exacte hex in de prompt maar is de vastgelegde brand token).
-- **Motion systeem**: standaard entrance = spring `{damping: 18, stiffness: 180}` + subtle Y-offset; scenetransities = fade 8f; typografie = per-woord stagger 3f voor koppen.
-- **Geluid**: composities zijn `muted` gerenderd (Nix ffmpeg beperking); user kan in Instagram muziek toevoegen.
+**Toevoegen:**
+- `remotion/public/reel30/` map met 7 gegenereerde PNG's:
+  - `hook-couch.jpg`
+  - `belofte-gym.jpg`
+  - `coach-welkom.jpg` (op basis van de aangeleverde hero-referentie)
+  - `sport-basket.jpg`, `sport-voetbal.jpg`, `sport-boog.jpg`
+  - `waarden-kring.jpg`
+  - `aanbod-gym.jpg`
+  - `cta-groep.jpg`
+- Elke scène herschreven met `<Img src={staticFile(...)} />` als achtergrond + `interpolate()`-gedreven zoom/pan (ken burns) + bestaande typografie/kaarten er overheen
+- Alle Remotion-scènes en typografie-timing blijven; alleen de visuele laag verandert
 
 ## Rendering
+`node scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4` — overschrijft huidige MP4.
 
-Render via bestaande `remotion/scripts/render-remotion.mjs`:
-```
-cd remotion && node scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4
-```
-Levert 1 downloadbare MP4 op in `/mnt/documents/`.
+## Deliverables
+- 7 nieuwe 3D-stijl afbeeldingen onder `remotion/public/reel30/`
+- 6 herschreven scene-componenten (SVG-poppetjes vervangen)
+- Nieuwe MP4 in `/mnt/documents/adabmoves-reel-30s.mp4`
 
-## Buiten scope
-
-- Geen voice-over / TTS.
-- Geen echte foto's of AI-photorealistic mensen.
-- Geen wijzigingen aan de website of andere composities.
+## Bevestig / kies
+1. Akkoord met bovenstaande 7-scène opzet?
+2. Mag ik de aangeleverde hero-afbeelding (coach van achteren) gebruiken als directe achtergrond voor de "Coach welkomt"-scène, of moet ik ook die opnieuw genereren?
