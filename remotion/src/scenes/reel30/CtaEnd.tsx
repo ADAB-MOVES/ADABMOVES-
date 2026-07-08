@@ -63,7 +63,7 @@ export const CtaEnd: React.FC<{ duration: number }> = ({ duration }) => {
       <div
         style={{
           position: "absolute",
-          bottom: 130,
+          bottom: 190,
           left: 60,
           right: 60,
           background: COLORS.coral,
@@ -81,6 +81,24 @@ export const CtaEnd: React.FC<{ duration: number }> = ({ duration }) => {
         }}
       >
         adabmoves.nl
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 110,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          fontFamily: "Plus Jakarta Sans, sans-serif",
+          fontWeight: 700,
+          fontSize: 28,
+          letterSpacing: 3,
+          color: "rgba(251,247,238,0.75)",
+          textTransform: "uppercase",
+          opacity: btn,
+        }}
+      >
+        Join the community · Amsterdam e.o.
       </div>
     </AbsoluteFill>
   );

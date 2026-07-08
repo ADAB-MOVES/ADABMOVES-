@@ -27,14 +27,14 @@ export const HookBank: React.FC<{ duration: number }> = ({ duration }) => {
       <div
         style={{
           position: "absolute",
-          bottom: 260,
+          bottom: 200,
           left: 0,
           right: 0,
           padding: "0 60px",
           textAlign: "left",
           fontFamily: "Sora, sans-serif",
           fontWeight: 800,
-          fontSize: 74,
+          fontSize: 78,
           lineHeight: 1.08,
           letterSpacing: -1.5,
           color: COLORS.cream,
@@ -43,29 +43,9 @@ export const HookBank: React.FC<{ duration: number }> = ({ duration }) => {
           transform: `translateY(${interpolate(line, [0, 1], [30, 0])}px)`,
         }}
       >
-        Op de meeste plekken moet je kind
-        <span style={{ color: COLORS.coral }}> kiezen</span>:
-      </div>
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: 120,
-          left: 0,
-          right: 0,
-          padding: "0 60px",
-          textAlign: "left",
-          fontFamily: "Plus Jakarta Sans, sans-serif",
-          fontWeight: 700,
-          fontSize: 46,
-          lineHeight: 1.2,
-          color: COLORS.cream,
-          textShadow: "0 2px 20px rgba(0,0,0,0.7)",
-          opacity: line2,
-          transform: `translateY(${interpolate(line2, [0, 1], [20, 0])}px)`,
-        }}
-      >
-        erbij horen, of zichzelf blijven.
+        Waar hoort mijn kind
+        <br />
+        <span style={{ color: COLORS.coral, opacity: line2 }}>écht</span> thuis?
       </div>
     </AbsoluteFill>
   );

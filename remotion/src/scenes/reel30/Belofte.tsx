@@ -63,7 +63,7 @@ export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
           opacity: spring({ frame: f - 46, fps, config: { damping: 22 } }),
         }}
       >
-        BEWEGEN MET BETEKENIS
+        10+ JAAR ERVARING · AMSTERDAM E.O.
       </div>
     </AbsoluteFill>
   );
