@@ -55,45 +55,43 @@ export const KernFlashes: React.FC<{ duration: number }> = ({ duration }) => {
           <div
             style={{
               position: "absolute",
-              top: 480,
+              top: 380,
               left: 0,
               right: 0,
               padding: "0 60px",
               textAlign: "left",
               fontFamily: "Sora, sans-serif",
               fontWeight: 800,
-              fontSize: 92,
-              lineHeight: 1.05,
-              letterSpacing: -2,
+              fontSize: 66,
+              lineHeight: 1.1,
+              letterSpacing: -1.5,
               color: COLORS.cream,
               opacity: statementIn,
               transform: `translateY(${interpolate(statementIn, [0, 1], [30, 0])}px)`,
             }}
           >
-            Een veilige plek
-            <br />
-            om te <span style={{ color: COLORS.coral, opacity: accent }}>sporten</span>
-            <br />
-            én <span style={{ color: COLORS.coral, opacity: accent }}>zichzelf</span> te zijn.
+            De unieke <span style={{ color: COLORS.coral, opacity: accent }}>multisport-</span> en beweegorganisatie voor kinderen en jongeren.
           </div>
           <div
             style={{
               position: "absolute",
-              bottom: 220,
+              bottom: 260,
               left: 60,
               right: 60,
-              padding: "20px 28px",
+              padding: "18px 28px",
               borderLeft: `6px solid ${COLORS.coral}`,
               fontFamily: "Plus Jakarta Sans, sans-serif",
               fontWeight: 700,
-              fontSize: 42,
+              fontSize: 40,
               color: COLORS.cream,
-              lineHeight: 1.25,
+              lineHeight: 1.3,
               opacity: anchor,
               transform: `translateX(${interpolate(anchor, [0, 1], [-20, 0])}px)`,
             }}
           >
             Islamitisch gefundeerd.
+            <br />
+            Toegankelijk voor iedereen.
           </div>
         </AbsoluteFill>
       </Sequence>

@@ -4,8 +4,8 @@ import { COLORS } from "../../theme";
 const sporen = [
   {
     n: "01",
-    title: "Scholen",
-    sub: "TSO, naschools & clinics.",
+    title: "Naschools",
+    sub: "Op school, na de bel.",
     img: "reel30/intro-gym.jpg",
     origin: "50% 55%",
   },
