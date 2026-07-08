@@ -34,7 +34,7 @@ export const HookBank: React.FC<{ duration: number }> = ({ duration }) => {
           textAlign: "left",
           fontFamily: "Sora, sans-serif",
           fontWeight: 800,
-          fontSize: 78,
+          fontSize: 72,
           lineHeight: 1.08,
           letterSpacing: -1.5,
           color: COLORS.cream,
@@ -43,9 +43,9 @@ export const HookBank: React.FC<{ duration: number }> = ({ duration }) => {
           transform: `translateY(${interpolate(line, [0, 1], [30, 0])}px)`,
         }}
       >
-        Wat maakt ons
+        Wat leert jouw kind
         <br />
-        <span style={{ color: COLORS.coral, opacity: line2 }}>uniek?</span>
+        <span style={{ color: COLORS.coral, opacity: line2 }}>écht tijdens sport?</span>
       </div>
     </AbsoluteFill>
   );
