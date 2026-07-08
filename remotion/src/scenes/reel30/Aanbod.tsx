@@ -4,34 +4,35 @@ import { COLORS } from "../../theme";
 const sporen = [
   {
     n: "01",
-    title: "Naschools",
-    sub: "Op school, na de bel.",
+    title: "Scholen",
+    sub: "Sport & begeleiding op scholen.",
     img: "reel30/intro-gym.jpg",
     origin: "50% 55%",
   },
   {
     n: "02",
     title: "Multisport",
-    sub: "Wekelijks, 7 t/m 15 jaar.",
+    sub: "Wekelijks voor kinderen.",
     img: "reel30/flash-hug.jpg",
     origin: "50% 35%",
   },
   {
     n: "03",
-    title: "Events",
-    sub: "ADAB Day, clinics & themadagen.",
+    title: "ADAB Day",
+    sub: "Sportdagen & events op maat.",
     img: "reel30/flash-coach.jpg",
     origin: "40% 30%",
   },
 ];
 
-const Spoor: React.FC<{ n: string; title: string; sub: string; img: string; origin: string; dur: number }> = ({
+const Spoor: React.FC<{ n: string; title: string; sub: string; img: string; origin: string; dur: number; showHeader: boolean }> = ({
   n,
   title,
   sub,
   img,
   origin,
   dur,
+  showHeader,
 }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -41,6 +42,7 @@ const Spoor: React.FC<{ n: string; title: string; sub: string; img: string; orig
   const chip = spring({ frame: f - 2, fps, config: { damping: 18 } });
   const t = spring({ frame: f - 10, fps, config: { damping: 16, stiffness: 180 } });
   const s = spring({ frame: f - 18, fps, config: { damping: 20 } });
+  const header = spring({ frame: f - 4, fps, config: { damping: 20 } });
 
   return (
     <AbsoluteFill style={{ background: COLORS.navy, opacity: fadeIn * fadeOut, overflow: "hidden" }}>
@@ -52,18 +54,39 @@ const Spoor: React.FC<{ n: string; title: string; sub: string; img: string; orig
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(180deg, rgba(31,34,64,0.35) 0%, rgba(31,34,64,0.15) 30%, rgba(31,34,64,0.95) 100%)",
+            "linear-gradient(180deg, rgba(31,34,64,0.55) 0%, rgba(31,34,64,0.15) 30%, rgba(31,34,64,0.95) 100%)",
         }}
       />
+
+      {showHeader && (
+        <div
+          style={{
+            position: "absolute",
+            top: 90,
+            left: 60,
+            right: 60,
+            fontFamily: "Plus Jakarta Sans, sans-serif",
+            fontWeight: 800,
+            fontSize: 30,
+            letterSpacing: 3,
+            color: COLORS.coral,
+            textTransform: "uppercase",
+            opacity: header,
+            transform: `translateY(${interpolate(header, [0, 1], [-10, 0])}px)`,
+          }}
+        >
+          Voor scholen, ouders en de gemeenschap
+        </div>
+      )}
 
       <div
         style={{
           position: "absolute",
-          top: 160,
+          top: 180,
           left: 60,
           fontFamily: "Sora, sans-serif",
           fontWeight: 800,
-          fontSize: 220,
+          fontSize: 200,
           color: COLORS.coral,
           lineHeight: 1,
           letterSpacing: -6,
@@ -120,7 +143,7 @@ export const Aanbod: React.FC<{ duration: number }> = ({ duration }) => {
     <AbsoluteFill>
       {sporen.map((sp, i) => (
         <Sequence key={sp.n} from={i * each} durationInFrames={i === 2 ? duration - each * 2 : each}>
-          <Spoor {...sp} dur={i === 2 ? duration - each * 2 : each} />
+          <Spoor {...sp} dur={i === 2 ? duration - each * 2 : each} showHeader={i === 0} />
         </Sequence>
       ))}
     </AbsoluteFill>
