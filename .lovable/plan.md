@@ -1,58 +1,50 @@
 ## Doel
-De huidige 30-seconden Reel gebruikt platte SVG-poppetjes (`Character.tsx` / `Scene.tsx`). Die passen niet bij het ADAB MOVES merk. We vervangen ze door 3D Pixar-stijl illustraties in de stijl van de bijgeleverde referentiebeelden (coach met volle baard van achteren, kinderen met bescheiden kleding + skullcaps, warme gymzaal, navy + coral).
 
-## Aanpak (marketing-first)
+De huidige reel is te fotorealistisch geworden. We regenereren alle 9 scene-beelden strikt in **3D Pixar-stijl illustratie** (géén echte mensen, géén gezichten, alleen jongens, bedekkende kleding, alleen A-swoosh op kleding — geen tekst). Structuur & timing van de reel blijven staan; alleen de visuele laag + één tekstblok worden vervangen.
 
-De reel wordt een promotie-tool: eerste 3 seconden moeten stoppen-scrollen, daarna emotie, dan bewijs, dan CTA. We renderen elke scène als een echte 3D-stijl afbeelding via `imagegen` (premium) — geen SVG-poppetjes meer. Remotion animeert camera-moves (ken burns, parallax, crops) en typografie er overheen.
+## Stijl-lock voor alle 9 beelden
 
-## Scene-plan (900 frames / 30s / 1080×1920)
+Vaste prompt-basis die voor elk beeld hergebruikt wordt:
 
-1. **Hook (0-3s)** — 3D beeld: kind alleen op bank met telefoon, warm licht.
-   Tekst-overlay: "Dit is niet zomaar een sportles."
-2. **Belofte (3-6s)** — 3D beeld: lege gymzaal, zonlicht door ramen, ADAB lijnen op de vloer. Kinetische typografie "Bewegen met betekenis".
-3. **Coach welkomt (6-12s)** — hero beeld (bijgeleverd stijl-referentie): coach van achteren met volle baard, ADAB MOVES jasje, kind komt binnenrennen. Slow push-in.
-4. **Multisport (12-18s)** — 3 snelle cuts, elk een eigen 3D beeld:
-   - basketbal-kind (skullcap, ADAB shirt)
-   - voetbal-kind (ADAB trainingspak)
-   - boogschutter-kind (bescheiden kleding)
-5. **Waarden (18-22s)** — 3D groepsbeeld van kinderen in kring met coach, met overlay-pills "Discipline · Respect · Zelfvertrouwen".
-6. **Aanbod (22-26s)** — 3D beeld gymzaal met 3 kaarten er overheen: 01 Scholen · 02 Multisport · 03 Events.
-7. **CTA (26-30s)** — 3D beeld van coach + kinderen frontaal (gezichten featureless), logo, "@adabmoves — adabmoves.nl", "Actief in Amsterdam en omgeving".
+> Stylized 3D Pixar-style illustration, NOT photorealistic, NOT a real photo, cartoon render, soft global illumination, matte shading. Warm minimalist indoor gym, wooden floor with subtle navy + coral lines, tall windows with warm sunlight. Navy `#1F2240` + coral `#E8784E` palette, cream `#FBF7EE` walls. Only boys, diverse skin tones, all wearing **fully covering sportswear** (long sleeves, long pants, shorts with covered knees). **No facial feautures**  — figures shown without mouth, nose, eyebrows or eyes, front, side, cropped above shoulders, or heads turned away. Coach is a man with **full dark beard, short dark brown hair, no fade, one style**, navy tracksuit with coral accent, always from behind or side. Clothing shows **the adab moves brand logo without slogan**. Cinematic, editorial, calm, dignified. Vertical 9:16 framing. `no photorealism, no real human skin texture, no visible facial features, no text on clothing`
 
-## Regels voor alle gegenereerde beelden
-- 3D Pixar-stijl render, warme cinematische verlichting
-- Kleuren: navy `#1F2240`, coral `#E8784E`, warm cream gymzaal
-- **Coach**: volle donkere baard (geen snor apart, gelijk kort kapsel), navy ADAB MOVES trainingsjasje met wit A-logo + coral swoosh, tekst op rug "ADAB MOVES / BEWEGEN MET BETEKENIS", altijd van achteren of zijkant
-- **Kinderen**: bescheiden sportkleding volledig bedekkend, ongeveer 1 op 3 met witte skullcap, géén meisjes met los lang haar (alleen hijab + lange kleding indien meisje), gezichten featureless of subtiel
-- Gymzaal setting: houten vloer met ADAB coral/navy lijnen, hoge ramen, warme zon
-- Geen tekst-in-beeld (behalve op jasje) — alle copy komt er in Remotion overheen
+Per-scene toevoegingen:
 
-## Technische wijzigingen
+1. `hook-sideline.jpg` — one boy standing alone at sideline, hands in pockets, hesitant posture; blurred group of boys playing in background.
+2. `intro-gym.jpg` — wide empty gym, warm sunbeams, coach silhouette from behind walking in.
+3. `flash-handshake.jpg` — two boys shaking hands post-match, seen from waist down + hands close-up, no faces.
+4. `flash-hug.jpg` — two boys hugging after scoring, arms around shoulders, seen from behind.
+5. `flash-help.jpg` — boy helping teammate up from the floor, hand reaching down, cropped above heads.
+6. `flash-coach.jpg` — coach (beard, from side/back) hand on boy's shoulder, both from behind.
+7. Aanbod hergebruikt 3 bestaande beelden (intro-gym, flash-hug, flash-coach) — geen nieuwe assets nodig.
+8. `cta-groep.jpg` (bestaand vervangen door intro-gym reuse voor CTA).
 
-**Verwijderen uit de reel:**
-- Alle imports van `Character`, `Scene`, `SportIcon` in `remotion/src/scenes/reel30/*`
-- SVG-poppetjes in `HookBank`, `CoachWelkom`, `MultiSport`, `Waarden`, `Aanbod`, `CtaEnd`
+Alle beelden gegenereerd met `imagegen--generate_image` model `premium` (betere stijl-controle), 1024×1792 (9:16), en overschrijven de bestaande files onder `remotion/public/reel30/`.
 
-**Toevoegen:**
-- `remotion/public/reel30/` map met 7 gegenereerde PNG's:
-  - `hook-couch.jpg`
-  - `belofte-gym.jpg`
-  - `coach-welkom.jpg` (op basis van de aangeleverde hero-referentie)
-  - `sport-basket.jpg`, `sport-voetbal.jpg`, `sport-boog.jpg`
-  - `waarden-kring.jpg`
-  - `aanbod-gym.jpg`
-  - `cta-groep.jpg`
-- Elke scène herschreven met `<Img src={staticFile(...)} />` als achtergrond + `interpolate()`-gedreven zoom/pan (ken burns) + bestaande typografie/kaarten er overheen
-- Alle Remotion-scènes en typografie-timing blijven; alleen de visuele laag verandert
+## Copy-update (Kernboodschap, 8-19s)
 
-## Rendering
-`node scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4` — overschrijft huidige MP4.
+`KernFlashes.tsx` statement wordt aangepast naar de exacte tekst:
 
-## Deliverables
-- 7 nieuwe 3D-stijl afbeeldingen onder `remotion/public/reel30/`
-- 6 herschreven scene-componenten (SVG-poppetjes vervangen)
-- Nieuwe MP4 in `/mnt/documents/adabmoves-reel-30s.mp4`
+> "De unieke multisport- en beweegorganisatie voor kinderen en jongeren.
+> Islamitisch gefundeerd.
+> Toegankelijk voor iedereen."
 
-## Bevestig / kies
-1. Akkoord met bovenstaande 7-scène opzet?
-2. Mag ik de aangeleverde hero-afbeelding (coach van achteren) gebruiken als directe achtergrond voor de "Coach welkomt"-scène, of moet ik ook die opnieuw genereren?
+Onder-anker "Islamitisch gefundeerd." wordt verwijderd (nu in hoofdtekst).
+
+## Overige scene-tekst (blijft)
+
+- Hook: "Op de meeste plekken moet je kind kiezen: erbij horen, of zichzelf blijven." ✓
+- Intro (Belofte): "Dit is Adab Moves." ✓
+- 3 sporen: Naschools / Multisport / Events — labels in `Aanbod.tsx` bijwerken (nu "Scholen" → "Naschools", subs licht aanpassen).
+- CTA: logo + "Volg @adabmoves" + "adabmoves.nl" ✓ (al correct).
+
+## Technische stappen
+
+1. Regenereer 6 nieuwe scene-beelden met strikte 3D-illustratie prompt, overschrijf in `remotion/public/reel30/`.
+2. Update `KernFlashes.tsx` copy.
+3. Update `Aanbod.tsx` label "Scholen" → "Naschools".
+4. Render opnieuw: `node scripts/render-remotion.mjs` → `/mnt/documents/adabmoves-reel-30s.mp4`.
+
+## Deliverable
+
+Nieuwe MP4 op `/mnt/documents/adabmoves-reel-30s.mp4`, strikt in 3D-geïllustreerde stijl, geen fotorealisme, geen gezichten, geen tekst op kleding.
