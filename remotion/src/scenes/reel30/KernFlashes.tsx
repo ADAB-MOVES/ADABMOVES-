@@ -56,9 +56,9 @@ export const KernFlashes: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 60f statement + 4 × 60f = 300f total
+  // 60f statement + 4 × 36f = 204f total
   const STATE = 60;
-  const FLASH = 60;
+  const FLASH = 36;
 
   const statementIn = spring({ frame: f, fps, config: { damping: 18, stiffness: 160 } });
   const accent = spring({ frame: f - 18, fps, config: { damping: 14 } });

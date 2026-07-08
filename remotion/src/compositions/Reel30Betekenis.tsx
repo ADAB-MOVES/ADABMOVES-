@@ -16,9 +16,9 @@ loadJakarta("normal", { weights: ["500", "700", "800"], subsets: ["latin"] });
 // 900 frames total @ 30fps = 30s
 const S_HOOK = 120;      // 0-4s
 const S_INTRO = 90;      // 4-7s
-const S_OUDERS = 150;    // 7-12s
-const S_KERN = 300;      // 12-22s (statement 60 + 4×60)
-const S_AANBOD = 150;    // 22-27s
+const S_OUDERS = 186;    // 7-13.2s
+const S_KERN = 204;      // 13.2-20s (statement 60 + 4×36)
+const S_AANBOD = 210;    // 20-27s
 const S_CTA = 90;        // 27-30s
 
 export const Reel30Betekenis: React.FC = () => {
