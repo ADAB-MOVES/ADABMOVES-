@@ -5,22 +5,19 @@ import { COLORS } from "../theme";
 import { Grain } from "../components/Grain";
 import { HookBank } from "../scenes/reel30/HookBank";
 import { Belofte } from "../scenes/reel30/Belofte";
-import { CoachWelkom } from "../scenes/reel30/CoachWelkom";
-import { MultiSport } from "../scenes/reel30/MultiSport";
-import { Waarden } from "../scenes/reel30/Waarden";
+import { KernFlashes } from "../scenes/reel30/KernFlashes";
 import { Aanbod } from "../scenes/reel30/Aanbod";
 import { CtaEnd } from "../scenes/reel30/CtaEnd";
 
 loadSora("normal", { weights: ["600", "700", "800"], subsets: ["latin"] });
 loadJakarta("normal", { weights: ["500", "700", "800"], subsets: ["latin"] });
 
-const S_HOOK = 90;
-const S_BELOFTE = 90;
-const S_COACH = 180;
-const S_SPORT = 180;
-const S_WAARDEN = 120;
-const S_AANBOD = 120;
-const S_CTA = 120;
+// 900 frames total @ 30fps = 30s
+const S_HOOK = 120;      // 0-4s
+const S_INTRO = 120;     // 4-8s
+const S_KERN = 330;      // 8-19s  (statement + 4 flashes)
+const S_AANBOD = 180;    // 19-25s (3 sporen)
+const S_CTA = 150;       // 25-30s
 
 export const Reel30Betekenis: React.FC = () => {
   return (
@@ -29,17 +26,11 @@ export const Reel30Betekenis: React.FC = () => {
         <Series.Sequence durationInFrames={S_HOOK}>
           <HookBank duration={S_HOOK} />
         </Series.Sequence>
-        <Series.Sequence durationInFrames={S_BELOFTE}>
-          <Belofte duration={S_BELOFTE} />
+        <Series.Sequence durationInFrames={S_INTRO}>
+          <Belofte duration={S_INTRO} />
         </Series.Sequence>
-        <Series.Sequence durationInFrames={S_COACH}>
-          <CoachWelkom duration={S_COACH} />
-        </Series.Sequence>
-        <Series.Sequence durationInFrames={S_SPORT}>
-          <MultiSport duration={S_SPORT} />
-        </Series.Sequence>
-        <Series.Sequence durationInFrames={S_WAARDEN}>
-          <Waarden duration={S_WAARDEN} />
+        <Series.Sequence durationInFrames={S_KERN}>
+          <KernFlashes duration={S_KERN} />
         </Series.Sequence>
         <Series.Sequence durationInFrames={S_AANBOD}>
           <Aanbod duration={S_AANBOD} />
