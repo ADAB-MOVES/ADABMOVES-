@@ -1,52 +1,49 @@
-## Aanpak — reel-revisie (fase 3)
+## Aanpak — character-consistency pass
 
-Reel wordt op drie punten aangepast, minimale asset-generatie.
+Doel: alle scene-assets voldoen aan drie harde regels. Minimale scope, alleen assets die de regels schenden worden opnieuw gegenereerd.
 
-### ⚠️ Logo-regel (hard, geldt voor ALLE assets)
+### ⚠️ Harde regels (op elke asset controleren)
 
-Het ADAB MOVES-logo moet op elk beeld **scherp, correct gespeld en niet vervormd** zijn — check per asset na generatie:
+1. **Logo ADAB MOVES correct op alle kleding**
+   - Kinderkleding: compact merkteken (witte "A" + coral swoosh, evt. klein "ADAB MOVES" wordmark eronder) — scherp, upright, correct gespeld, symmetrisch, niet gespiegeld of vervormd. Geen tagline op kinderkleding.
+   - Trainer-jack (rug): volledig logo met tagline "BEWEGEN MET BETEKENIS", scherp en leesbaar.
+   - Trainer-jack (borst, indien zichtbaar): compact merkteken zoals op kinderkleding.
+   - Bij twijfel → asset opnieuw genereren. Referentie `user-uploads://logo_wit.PNG` wordt bij elke `edit_image`-call meegegeven.
 
-- **Trainer (rug):** volledig logo — witte "A" + coral swoosh + wordmark "ADAB MOVES" + tagline "BEWEGEN MET BETEKENIS". Recht, leesbaar, geen warping.
-- **Kinderkleding:** alleen het compacte merkteken — witte "A" met coral swoosh op de borst. Klein wordmark "ADAB MOVES" eronder mag, maar géén tagline. Symmetrisch, niet gespiegeld, niet verminkt.
-- **Gym-banner (achtergrond):** groot A-logo + wordmark, exact zoals in de referentie (`user-uploads://logo_adab.png`).
-- Bij twijfel/vervorming: asset opnieuw genereren vóór render. De referentie-logo wordt bij elke `edit_image`-call meegegeven.
+2. **Geen wenkbrauwen op kinderen** — glad voorhoofd, geen ogen (bestaande regel), zachte glimlach mag. Geldt voor alle kinderen in alle scenes.
 
-### 1. Beginshot terugbrengen (hook)
+3. **Trainer-look = referentie `Schermafbeelding_2026-06-30_om_13.40.27-2.png`**
+   - Kort donker kapsel (niet lang, niet krullend boven de oren)
+   - Volle donkere baard (niet stoppelig, niet clean-shaven)
+   - Navy tracksuit jack met volledig ADAB MOVES-logo op de rug
+   - Semi-3D Pixar stijl, warme belichting
+   - Zichtbaar in scenes: `intro-gym.jpg`, `flash-coach.jpg` — en het "trainer-test" referentiebeeld wordt overschreven met de correcte look zodat toekomstige generaties consistent zijn.
 
-- `remotion/public/reel30/hook-sideline.jpg` → **vervangen door backup** (`_backup/hook-sideline.jpg` — jongen met ADAB MOVES-hoodie leunt tegen mat, kinderen basketballen op achtergrond). Logo opnieuw controleren. Logo op de hoodie is niet correct in de backup.
+### Inspectie eerst, dán genereren
 
-### 2. Flash-scenes uit backup + sneller
+Per asset check tegen de drie regels:
 
-- `flash-handshake.jpg`, `flash-hug.jpg`, `flash-help.jpg`, `flash-coach.jpg` → **teruggezet vanuit `_backup/**`.
-- In `KernFlashes.tsx`: elke flash **60f → 36f** (1.2s per flash). Statement blijft 60f. Nieuwe scèneduur: 60 + 4×36 = **204f** (was 300f).
-- In `Reel30Betekenis.tsx`: `S_KERN` 300 → 204. Om totaal op 900f (30s) te houden:
-  - `S_AANBOD` 150 → 210 (drie sporen à 70f)
-  - `S_OUDERS` 150 → 186
-  - Totaal: 120+90+186+204+210+90 = 900f ✅
-- Backup-flashes worden per stuk geïnspecteerd; als een logo verminkt is → opnieuw met logo-referentie.
+| Asset | Regel 1 (logo) | Regel 2 (wenkbrauwen) | Regel 3 (trainer) | Actie |
+| --- | --- | --- | --- | --- |
+| `hook-sideline.jpg` (backup) | check | check kids op achtergrond | n.v.t. | regenereren als nodig |
+| `intro-gym.jpg` (huidig) | trainer-rug ok, kids-logo's klein en soms wazig | te controleren | trainer heeft langer kapsel en geen baard — schendt regel 3 | **regenereren** |
+| `flash-handshake.jpg` | logo's ok in backup | wenkbrauwen check | n.v.t. | regenereren als wenkbrauwen aanwezig |
+| `flash-hug.jpg` | logo's ok | wenkbrauwen check | n.v.t. | regenereren als wenkbrauwen aanwezig |
+| `flash-help.jpg` | logo's ok | wenkbrauwen check | n.v.t. | regenereren als wenkbrauwen aanwezig |
+| `flash-coach.jpg` | logo's ok | wenkbrauwen check | trainer heeft baard maar langer haar/anders — check tegen referentie | regenereren als trainer of wenkbrauwen niet kloppen |
 
-### 3. Nieuwe assets — modest kleding, geen dubbele personages
+Volgorde:
+1. Alle 6 assets bekijken met `code--view` en per stuk beslissen: houden of regenereren.
+2. Voor elke te regeneren asset: `edit_image` met input = huidige asset + `logo_wit.PNG` + (voor trainer-scenes) `Schermafbeelding_2026-06-30_om_13.40.27-2.png`. Prompt herhaalt de drie harde regels expliciet.
+3. Trainer-referentie updaten: `remotion/public/reel30/_test/trainer-test.jpg` overschrijven met een nieuwe generatie die matcht op kort haar + volle baard, zodat volgende passes deze look als basis nemen.
+4. Kids overige regels blijven gelden: modest kleding (short over de knie of lange broek), ~1 op 3 skullcap, één personage per flash-frame, diverse huidskleur, geen ogen.
 
-Alleen scenes waar strikt nodig, met `edit_image` en beide referenties: IMG_1150 (character-stijl) + `logo_adab.png` (logo-integriteit).
+### Render + QA
 
-Regels per asset:
-
-- Skullcap dekt haar volledig — maar **slechts ~1 op 3 kinderen** draagt er één.
-- Shorts **tot over de knie**, of lange broek. Nooit korte shorts.
-- Diverse tops (T-shirt, tanktop, hoodie), altijd met **correct compact ADAB MOVES-logo** op de borst (zie logo-regel).
-- Divers qua huidskleur (lichtbruin → donker, zoals IMG_1150).
-- Geen ogen, glimlach ok.
-
-Assets die opnieuw gegenereerd worden:
-
-- `intro-gym.jpg` — coach op voorgrond van achteren (volledig logo op rug), 4 kinderen achterin met verschillende sporten (voetbal, basket, boog, atletiek), modest kleding, ~1 met skullcap, compact logo op elke top.
-- Backup flashes die de kledingregel of logo-regel schenden → opnieuw. Eerst inspectie, dan pas beslissen.
-
-### 4. Render + QA
-
-- Render: `cd remotion && node scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4`
-- QA-frames via `bunx remotion still` op frames 60, 240, 360, 480, 720, 840. **Per frame checken: logo scherp en correct op alle zichtbare kleding/banners.** Bij fout → asset regenereren en opnieuw renderen.
+- `cd remotion && bun scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4`
+- Backup huidige mp4 eerst naar `adabmoves-reel-30s.previous.mp4`.
+- Na render: `bunx remotion still` op frames 60 / 240 / 360 / 480 / 720 — check per frame op de drie regels. Bij fout → asset regenereren, opnieuw renderen.
 
 ### Deliverable
 
-Nieuwe `/mnt/documents/adabmoves-reel-30s.mp4` — 30s, hook uit backup, snellere flashes, modest kinderkleding, één personage per flash, **ADAB MOVES-logo overal scherp en correct**.
+Nieuwe `/mnt/documents/adabmoves-reel-30s.mp4` — alle logos correct op alle kleding, geen wenkbrauwen op kinderen, trainer met kort kapsel + volle baard.
