@@ -1,47 +1,52 @@
-## Aanpak
+## Aanpak — reel-revisie (fase 3)
 
-Reel wordt herzien in **twee fases** vanwege beperkte credits: eerst één test-beeld van de trainer laten goedkeuren, dan pas de rest.
+Reel wordt op drie punten aangepast, minimale asset-generatie.
 
-### Fase 1 — Backup + trainer-testbeeld (nu uitvoeren)
+### ⚠️ Logo-regel (hard, geldt voor ALLE assets)
 
-1. Backup huidige assets:
-  - `remotion/public/reel30/*.jpg` → `remotion/public/reel30/_backup/`
-  - `/mnt/documents/adabmoves-reel-30s.mp4` → `/mnt/documents/adabmoves-reel-30s.backup.mp4`
-2. Genereer **één testbeeld** van de trainer met `imagegen--edit_image` (input = geüploade referentie, om character-consistency vast te leggen):
-  - Prompt: coach van achteren, navy tracksuit, groot wit "A" swoosh logo + coral accent + "ADAB MOVES" wordmark + "BEWEGEN MET BETEKENIS" tagline scherp op de rug, Pixar-stijl, geen gezicht. 1024×1792, premium.
-  - Output: `remotion/public/reel30/_test/trainer-test.jpg`
-3. **STOP** en laat het testbeeld zien ter goedkeuring. Geen verdere credits verbrand.
+Het ADAB MOVES-logo moet op elk beeld **scherp, correct gespeld en niet vervormd** zijn — check per asset na generatie:
 
-### Fase 2 — Pas na akkoord
+- **Trainer (rug):** volledig logo — witte "A" + coral swoosh + wordmark "ADAB MOVES" + tagline "BEWEGEN MET BETEKENIS". Recht, leesbaar, geen warping.
+- **Kinderkleding:** alleen het compacte merkteken — witte "A" met coral swoosh op de borst. Klein wordmark "ADAB MOVES" eronder mag, maar géén tagline. Symmetrisch, niet gespiegeld, niet verminkt.
+- **Gym-banner (achtergrond):** groot A-logo + wordmark, exact zoals in de referentie (`user-uploads://logo_adab.png`).
+- Bij twijfel/vervorming: asset opnieuw genereren vóór render. De referentie-logo wordt bij elke `edit_image`-call meegegeven.
 
-4. Regenereer alle scene-assets met de goedgekeurde trainer als reference-image (via `edit_image` voor consistentie):
-  - `hook-sideline.jpg` — coach ver op afstand, kinderen vaag actief (nieuwsgierigheid)
-  - `intro-gym.jpg` — wide shot, coach voorgrond van achteren, 4 duidelijk verschillende sporten op achtergrond (voetbal, basketbal, boogschieten, atletiek/kegels)
-  - `hero-parents.jpg` — verwijderen; niet meer nodig in nieuwe structuur
-  - `flash-handshake.jpg`, `flash-hug.jpg`, `flash-help.jpg`, `flash-coach.jpg` — emotie-flashes, geen gezichten, kleine A-swoosh op kleding (geen wordmark)
-5. Copy + timing updates in bestaande scenes (structuur wordt 6 scenes, 900f):
+### 1. Beginshot terugbrengen (hook)
 
-  | #   | Tijd          | Scene                                       | Copy                                                                                                                                                                                  |
-  | --- | ------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | 1   | 0-4s (120f)   | HookBank                                    | "Wat maakt ons uniek?"                                                                                                                                                                |
-  | 2   | 4-7s (90f)    | Belofte-A (nieuw kort)                      | "Welkom bij Adab Moves."                                                                                                                                                              |
-  | 3   | 7-12s (150f)  | Belofte-B (VoorOuders hergebruikt/hernoemd) | "Een multisport- en beweegorganisatie voor kinderen en jongeren — islamitisch gefundeerd, toegankelijk voor iedereen." + sub "Groei op elk vlak: fysiek, sociaal, mentaal en moreel." |
-  | 4   | 12-22s (300f) | KernFlashes                                 | Statement "Bewegen met betekenis, Karakter begint hier." (60f) + 4 flashes à 60f met vaste badges "Normen&Waarden / "Identiteit" / "Karakter" / "Groei"                               |
-  | 5   | 22-27s (150f) | Aanbod                                      | 01 Scholen - Sport en begeleiding · 02 Multisport- wekelijks voor kinderen (7-15 jaar) · 03 Adab day- Sportdagen en evenementen                                                       |
-  | 6   | 27-30s (90f)  | CtaEnd                                      | Logo · "Volg @adabmoves voor meer info" · knop "adabmoves.nl" (geen extra tag-regel)                                                                                                  |
+- `remotion/public/reel30/hook-sideline.jpg` → **vervangen door backup** (`_backup/hook-sideline.jpg` — jongen met ADAB MOVES-hoodie leunt tegen mat, kinderen basketballen op achtergrond). Logo opnieuw controleren. Logo op de hoodie is niet correct in de backup.
 
-6. Bestandswijzigingen:
-  - `Reel30Betekenis.tsx` — nieuwe Series-volgorde/duraties, splits Belofte in twee sequences of introduceer `Welkom.tsx` + hergebruik `VoorOuders.tsx` met nieuwe copy.
-  - `HookBank.tsx` — copy update.
-  - `Belofte.tsx` — copy naar "Welkom bij Adab Moves." (10+ jaar-label eruit).
-  - `VoorOuders.tsx` — copy/kop naar organisatie-omschrijving + sub-line met 4 pijlers.
-  - `KernFlashes.tsx` — statement + nieuwe badge-labels op vaste positie.
-  - `Aanbod.tsx` — labels: Scholen / Multisport voor kinderen (7-15 jaar) / Adab Day.
-  - `CtaEnd.tsx` — verwijder "Join the community" tag, tekst wordt "Volg @adabmoves voor meer info".
-7. Render: `cd remotion && node scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4`.
-8. QA-frames op 60 / 240 / 480 / 720 / 840 via `bunx remotion still` — check: geen gezichten, logo scherp op trainer-rug, alleen A-swoosh op kinderen, tekst binnen safe area.
+### 2. Flash-scenes uit backup + sneller
+
+- `flash-handshake.jpg`, `flash-hug.jpg`, `flash-help.jpg`, `flash-coach.jpg` → **teruggezet vanuit `_backup/**`.
+- In `KernFlashes.tsx`: elke flash **60f → 36f** (1.2s per flash). Statement blijft 60f. Nieuwe scèneduur: 60 + 4×36 = **204f** (was 300f).
+- In `Reel30Betekenis.tsx`: `S_KERN` 300 → 204. Om totaal op 900f (30s) te houden:
+  - `S_AANBOD` 150 → 210 (drie sporen à 70f)
+  - `S_OUDERS` 150 → 186
+  - Totaal: 120+90+186+204+210+90 = 900f ✅
+- Backup-flashes worden per stuk geïnspecteerd; als een logo verminkt is → opnieuw met logo-referentie.
+
+### 3. Nieuwe assets — modest kleding, geen dubbele personages
+
+Alleen scenes waar strikt nodig, met `edit_image` en beide referenties: IMG_1150 (character-stijl) + `logo_adab.png` (logo-integriteit).
+
+Regels per asset:
+
+- Skullcap dekt haar volledig — maar **slechts ~1 op 3 kinderen** draagt er één.
+- Shorts **tot over de knie**, of lange broek. Nooit korte shorts.
+- Diverse tops (T-shirt, tanktop, hoodie), altijd met **correct compact ADAB MOVES-logo** op de borst (zie logo-regel).
+- Divers qua huidskleur (lichtbruin → donker, zoals IMG_1150).
+- Geen ogen, glimlach ok.
+
+Assets die opnieuw gegenereerd worden:
+
+- `intro-gym.jpg` — coach op voorgrond van achteren (volledig logo op rug), 4 kinderen achterin met verschillende sporten (voetbal, basket, boog, atletiek), modest kleding, ~1 met skullcap, compact logo op elke top.
+- Backup flashes die de kledingregel of logo-regel schenden → opnieuw. Eerst inspectie, dan pas beslissen.
+
+### 4. Render + QA
+
+- Render: `cd remotion && node scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4`
+- QA-frames via `bunx remotion still` op frames 60, 240, 360, 480, 720, 840. **Per frame checken: logo scherp en correct op alle zichtbare kleding/banners.** Bij fout → asset regenereren en opnieuw renderen.
 
 ### Deliverable
 
-- Fase 1: één testbeeld ter review.
-- Fase 2 (na akkoord): nieuwe `/mnt/documents/adabmoves-reel-30s.mp4` met alle bovenstaande aanpassingen.
+Nieuwe `/mnt/documents/adabmoves-reel-30s.mp4` — 30s, hook uit backup, snellere flashes, modest kinderkleding, één personage per flash, **ADAB MOVES-logo overal scherp en correct**.
