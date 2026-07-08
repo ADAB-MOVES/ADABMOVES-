@@ -2,10 +2,10 @@ import { AbsoluteFill, Img, Sequence, staticFile, useCurrentFrame, useVideoConfi
 import { COLORS } from "../../theme";
 
 const flashes = [
-  { img: "reel30/flash-handshake.jpg", origin: "50% 40%", label: "Respect" },
-  { img: "reel30/flash-hug.jpg", origin: "50% 30%", label: "Teamgeest" },
-  { img: "reel30/flash-help.jpg", origin: "50% 50%", label: "Vertrouwen" },
-  { img: "reel30/flash-coach.jpg", origin: "40% 30%", label: "Begeleiding" },
+  { img: "reel30/flash-handshake.jpg", origin: "50% 40%", label: "Normen & Waarden" },
+  { img: "reel30/flash-hug.jpg", origin: "50% 30%", label: "Identiteit" },
+  { img: "reel30/flash-help.jpg", origin: "50% 50%", label: "Karakter" },
+  { img: "reel30/flash-coach.jpg", origin: "40% 30%", label: "Groei" },
 ];
 
 const Flash: React.FC<{ img: string; origin: string; label: string; dur: number }> = ({ img, origin, label, dur }) => {
@@ -56,9 +56,9 @@ export const KernFlashes: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 60f statement + 4 × 30f = 180f total
+  // 60f statement + 4 × 60f = 300f total
   const STATE = 60;
-  const FLASH = 30;
+  const FLASH = 60;
 
   const statementIn = spring({ frame: f, fps, config: { damping: 18, stiffness: 160 } });
   const accent = spring({ frame: f - 18, fps, config: { damping: 14 } });
@@ -97,9 +97,9 @@ export const KernFlashes: React.FC<{ duration: number }> = ({ duration }) => {
               transform: `translateY(${interpolate(statementIn, [0, 1], [30, 0])}px)`,
             }}
           >
-            Sport met <span style={{ color: COLORS.coral, opacity: accent }}>betekenis</span>.
+            Bewegen met <span style={{ color: COLORS.coral, opacity: accent }}>betekenis</span>.
             <br />
-            Sport met <span style={{ color: COLORS.coral, opacity: accent }}>karakter</span>.
+            <span style={{ color: COLORS.coral, opacity: accent }}>Karakter</span> begint hier.
           </div>
         </AbsoluteFill>
       </Sequence>

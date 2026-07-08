@@ -59,11 +59,27 @@ export const CtaEnd: React.FC<{ duration: number }> = ({ duration }) => {
       >
         Volg <span style={{ color: COLORS.coral }}>@adabmoves</span>
       </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 900,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          fontFamily: "Plus Jakarta Sans, sans-serif",
+          fontWeight: 600,
+          fontSize: 36,
+          color: "rgba(251,247,238,0.85)",
+          opacity: handle,
+        }}
+      >
+        voor meer info
+      </div>
 
       <div
         style={{
           position: "absolute",
-          bottom: 190,
+          bottom: 150,
           left: 60,
           right: 60,
           background: COLORS.coral,
@@ -81,24 +97,6 @@ export const CtaEnd: React.FC<{ duration: number }> = ({ duration }) => {
         }}
       >
         adabmoves.nl
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          bottom: 110,
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          fontFamily: "Plus Jakarta Sans, sans-serif",
-          fontWeight: 700,
-          fontSize: 28,
-          letterSpacing: 3,
-          color: "rgba(251,247,238,0.75)",
-          textTransform: "uppercase",
-          opacity: btn,
-        }}
-      >
-        Join the community · Amsterdam e.o.
       </div>
     </AbsoluteFill>
   );

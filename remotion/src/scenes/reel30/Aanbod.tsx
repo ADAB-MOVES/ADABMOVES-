@@ -12,7 +12,7 @@ const sporen = [
   {
     n: "02",
     title: "Multisport",
-    sub: "Wekelijks voor kinderen.",
+    sub: "Wekelijks voor kinderen (7–15 jaar).",
     img: "reel30/flash-hug.jpg",
     origin: "50% 35%",
   },
