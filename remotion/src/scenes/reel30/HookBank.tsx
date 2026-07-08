@@ -5,58 +5,67 @@ export const HookBank: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const kb = interpolate(f, [0, duration], [1.08, 1.18]);
-  const line = spring({ frame: f - 15, fps, config: { damping: 20, stiffness: 160 } });
-  const underline = interpolate(f, [50, 80], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const fadeOut = interpolate(f, [duration - 8, duration], [1, 0.6], { extrapolateLeft: "clamp" });
+  const kb = interpolate(f, [0, duration], [1.05, 1.15]);
+  const line = spring({ frame: f - 10, fps, config: { damping: 22, stiffness: 150 } });
+  const line2 = spring({ frame: f - 40, fps, config: { damping: 22, stiffness: 150 } });
+  const fadeOut = interpolate(f, [duration - 10, duration], [1, 0], { extrapolateLeft: "clamp" });
 
   return (
     <AbsoluteFill style={{ background: "#0A0C1F", opacity: fadeOut, overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, transform: `scale(${kb})`, transformOrigin: "50% 55%" }}>
-        <Img src={staticFile("reel30/hook-couch.jpg")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      <div style={{ position: "absolute", inset: 0, transform: `scale(${kb})`, transformOrigin: "40% 55%" }}>
+        <Img src={staticFile("reel30/hook-sideline.jpg")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
-      {/* darken top for readability */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(180deg, rgba(10,12,31,0.75) 0%, rgba(10,12,31,0.15) 45%, rgba(10,12,31,0.55) 100%)",
+          background:
+            "linear-gradient(180deg, rgba(10,12,31,0.15) 0%, rgba(10,12,31,0.05) 40%, rgba(10,12,31,0.55) 70%, rgba(10,12,31,0.9) 100%)",
         }}
       />
 
       <div
         style={{
           position: "absolute",
-          top: 180,
+          bottom: 260,
           left: 0,
           right: 0,
-          padding: "0 70px",
-          textAlign: "center",
+          padding: "0 60px",
+          textAlign: "left",
           fontFamily: "Sora, sans-serif",
           fontWeight: 800,
-          fontSize: 108,
-          lineHeight: 1.02,
-          letterSpacing: -2,
+          fontSize: 74,
+          lineHeight: 1.08,
+          letterSpacing: -1.5,
           color: COLORS.cream,
-          textShadow: "0 4px 30px rgba(0,0,0,0.55)",
+          textShadow: "0 4px 30px rgba(0,0,0,0.7)",
           opacity: line,
           transform: `translateY(${interpolate(line, [0, 1], [30, 0])}px)`,
         }}
       >
-        Dit is niet
-        <br />
-        zomaar een
-        <br />
-        <span style={{ color: COLORS.coral }}>sportles.</span>
-        <div
-          style={{
-            margin: "28px auto 0",
-            height: 8,
-            width: `${underline * 40}%`,
-            background: COLORS.coral,
-            borderRadius: 4,
-          }}
-        />
+        Op de meeste plekken moet je kind
+        <span style={{ color: COLORS.coral }}> kiezen</span>:
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: 120,
+          left: 0,
+          right: 0,
+          padding: "0 60px",
+          textAlign: "left",
+          fontFamily: "Plus Jakarta Sans, sans-serif",
+          fontWeight: 700,
+          fontSize: 46,
+          lineHeight: 1.2,
+          color: COLORS.cream,
+          textShadow: "0 2px 20px rgba(0,0,0,0.7)",
+          opacity: line2,
+          transform: `translateY(${interpolate(line2, [0, 1], [20, 0])}px)`,
+        }}
+      >
+        erbij horen, of zichzelf blijven.
       </div>
     </AbsoluteFill>
   );
