@@ -59,11 +59,27 @@ export const CtaEnd: React.FC<{ duration: number }> = ({ duration }) => {
       >
         Volg <span style={{ color: COLORS.coral }}>@adabmoves</span>
       </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 900,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          fontFamily: "Plus Jakarta Sans, sans-serif",
+          fontWeight: 600,
+          fontSize: 36,
+          color: "rgba(251,247,238,0.85)",
+          opacity: handle,
+        }}
+      >
+        voor meer info
+      </div>
 
       <div
         style={{
           position: "absolute",
-          bottom: 190,
+          bottom: 150,
           left: 60,
           right: 60,
           background: COLORS.coral,

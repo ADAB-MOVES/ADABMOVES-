@@ -43,9 +43,9 @@ export const HookBank: React.FC<{ duration: number }> = ({ duration }) => {
           transform: `translateY(${interpolate(line, [0, 1], [30, 0])}px)`,
         }}
       >
-        Waar hoort mijn kind
+        Wat maakt ons
         <br />
-        <span style={{ color: COLORS.coral, opacity: line2 }}>écht</span> thuis?
+        <span style={{ color: COLORS.coral, opacity: line2 }}>uniek?</span>
       </div>
     </AbsoluteFill>
   );

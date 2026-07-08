@@ -2,6 +2,7 @@ import { AbsoluteFill, Img, staticFile, useCurrentFrame, useVideoConfig, interpo
 import { COLORS } from "../../theme";
 
 const PILLARS = ["Fysiek", "Sociaal", "Mentaal", "Moreel"];
+// Copy: organisatie-omschrijving voor Reel v3
 
 export const VoorOuders: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
@@ -30,52 +31,70 @@ export const VoorOuders: React.FC<{ duration: number }> = ({ duration }) => {
       <div
         style={{
           position: "absolute",
-          top: 700,
+          top: 640,
           left: 0,
           right: 0,
           padding: "0 60px",
           fontFamily: "Sora, sans-serif",
           fontWeight: 800,
-          fontSize: 66,
-          lineHeight: 1.08,
-          letterSpacing: -1.5,
+          fontSize: 58,
+          lineHeight: 1.1,
+          letterSpacing: -1.2,
           color: COLORS.cream,
-          textShadow: "0 4px 30px rgba(0,0,0,0.6)",
+          textShadow: "0 4px 30px rgba(0,0,0,0.7)",
           opacity: line1,
           transform: `translateY(${interpolate(line1, [0, 1], [30, 0])}px)`,
         }}
       >
-        Een plek waar je kind sport —
+        Een <span style={{ color: COLORS.coral }}>multisport- en beweegorganisatie</span> voor kinderen en jongeren —
       </div>
       <div
         style={{
           position: "absolute",
-          top: 858,
+          top: 900,
           left: 0,
           right: 0,
           padding: "0 60px",
           fontFamily: "Sora, sans-serif",
-          fontWeight: 800,
-          fontSize: 66,
-          lineHeight: 1.08,
-          letterSpacing: -1.5,
+          fontWeight: 700,
+          fontSize: 46,
+          lineHeight: 1.15,
+          letterSpacing: -0.5,
           color: COLORS.cream,
-          textShadow: "0 4px 30px rgba(0,0,0,0.6)",
+          textShadow: "0 4px 30px rgba(0,0,0,0.7)",
           opacity: line2,
           transform: `translateY(${interpolate(line2, [0, 1], [30, 0])}px)`,
         }}
       >
-        zonder zijn <span style={{ color: COLORS.coral }}>waarden</span> thuis te verliezen.
+        islamitisch gefundeerd, toegankelijk voor iedereen.
       </div>
 
       <div
         style={{
           position: "absolute",
-          bottom: 160,
+          bottom: 120,
+          left: 60,
+          right: 60,
+          fontFamily: "Plus Jakarta Sans, sans-serif",
+          fontWeight: 700,
+          fontSize: 30,
+          letterSpacing: 3,
+          color: COLORS.coral,
+          textTransform: "uppercase",
+          opacity: accent,
+          marginBottom: 12,
+        }}
+      >
+        Groei op elk vlak
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 50,
           left: 60,
           right: 60,
           display: "flex",
-          gap: 20,
+          gap: 14,
           flexWrap: "wrap",
           opacity: accent,
         }}
@@ -86,13 +105,13 @@ export const VoorOuders: React.FC<{ duration: number }> = ({ duration }) => {
             <div
               key={p}
               style={{
-                padding: "14px 26px",
+                padding: "12px 22px",
                 border: `2px solid ${COLORS.coral}`,
                 borderRadius: 999,
-                background: "rgba(31,34,64,0.55)",
+                background: "rgba(31,34,64,0.65)",
                 fontFamily: "Plus Jakarta Sans, sans-serif",
                 fontWeight: 800,
-                fontSize: 34,
+                fontSize: 30,
                 color: COLORS.cream,
                 letterSpacing: 1,
                 opacity: pop,

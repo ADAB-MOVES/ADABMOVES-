@@ -43,27 +43,9 @@ export const Belofte: React.FC<{ duration: number }> = ({ duration }) => {
           transform: `translateY(${interpolate(line, [0, 1], [40, 0])}px)`,
         }}
       >
-        Dit is
+        Welkom bij
         <br />
         <span style={{ color: COLORS.coral, opacity: accent }}>Adab Moves.</span>
-      </div>
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: 140,
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          fontFamily: "Plus Jakarta Sans, sans-serif",
-          fontWeight: 700,
-          fontSize: 34,
-          letterSpacing: 6,
-          color: COLORS.coral,
-          opacity: spring({ frame: f - 46, fps, config: { damping: 22 } }),
-        }}
-      >
-        10+ JAAR ERVARING · AMSTERDAM E.O.
       </div>
     </AbsoluteFill>
   );
