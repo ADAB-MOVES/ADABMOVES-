@@ -1,52 +1,65 @@
 
-# Finale Reel — strikte QA pass + definitieve render
+# Finale QA-fix reel — kapsels zonder skullcap, logo's, hug-pose
 
-Trainer-reference: `user-uploads://Schermafbeelding_2026-06-30_om_13.40.27-2.png` (bevestigd).
+Skullcaps blijven staan zoals ze zijn. Alleen de kinderen ZONDER skullcap krijgen een neutraal kapsel (geen fade/buzz/undercut). Geen full regenerates — alleen gerichte `imagegen--edit_image` calls op bestaande bestanden.
 
-## 1. Backup
-- `/mnt/documents/adabmoves-reel-30s.mp4` → `adabmoves-reel-30s.previous.mp4` (overschrijft).
+## Edits per asset
 
-## 2. Hook-tekst
-- `remotion/src/scenes/reel30/HookBank.tsx`: vervang tekst door **"Wat leert jouw kind écht tijdens sport?"** — timing/animatie ongewijzigd.
+**1. `intro-gym.jpg`**
+- Kinderen mét skullcap: ongewijzigd laten.
+- Kinderen zonder skullcap: identiek neutraal kapsel (kort, netjes, licht side-part, donker), geen fade/buzz/undercut/shaved sides.
+- Wandlogo op de muur netjes (één keer "ADAB MOVES", geen dubbeling/artefacten).
 
-## 3. Harde regels (per asset controleren)
+**2. `scholen.jpg`**
+- Kinderen zonder skullcap: zelfde neutrale kapsel, geen fade.
+- Coach back-logo verscherpen: "ADAB MOVES" + tagline "BEWEGEN MET BETEKENIS" leesbaar.
 
-**Trainer — vast, nul variatie:**
-- Kort, gelijkmatig geknipt donker haar met simpele side part. NIET kaal, NIET geschoren, NIET buzz, NIET fade/undercut, geen bun/lang haar.
-- Volle donkere baard, identiek in elke scene.
-- Navy tracksuitjack (#1F2240). Rug: witte A-swoosh (coral #E8784E accent) + wordmark "ADAB MOVES" + tagline "BEWEGEN MET BETEKENIS" — scherp, leesbaar, niet vervormd.
-- Alleen van achter of driekwart-achter, geen gezicht.
+**3. `flash-handshake.jpg`**
+- Beide jongens hebben al skullcap → alleen shirt-wordmark corrigeren naar "ADAB MOVES", rest ongemoeid.
 
-**Kinderen — volledig gezichtsloos:**
-- Geen ogen, geen wenkbrauwen, geen neus, geen mond. Ook niet vaag/subtiel.
-- Kleding: ALLEEN klein A-swoosh icoon, GEEN wordmark/tekst.
-- Shorts tot onder de knie, ca. 1 op 3 met skullcap, diverse huidskleur, geen dubbele karakters.
+**4. `flash-help.jpg`**
+- Beide jongens hebben al skullcap → alleen shirt-wordmark corrigeren naar "ADAB MOVES".
 
-**Banners/posters achtergrond:**
-- Volledig logo + "ADAB MOVES" tekst leesbaar en scherp.
+**5. `flash-hug.jpg`**
+- Pose wijzigen: van frontale knuffel naar side-by-side, beiden naar camera gericht, elk één arm losjes over de schouder van de ander.
+- Skullcaps behouden, rest identiek.
 
-## 4. Inspectie → regeneratie
+**6. `flash-coach.jpg`**
+- Kind zonder skullcap: neutraal kapsel, geen fade. Als kind al skullcap heeft: ongewijzigd.
+- Coach back-logo scherp/leesbaar.
 
-Per asset eerst `image_tools--zoom_image` op (a) trainer-hoofd, (b) trainer-rug logo, (c) elk kindergezicht, (d) achtergrondbanners. Bij afwijking → `imagegen--edit_image` met als reference:
-- `user-uploads://Schermafbeelding_2026-06-30_om_13.40.27-2.png` (trainer)
-- `user-uploads://logo_wit.PNG` / `logo_adab.png` (logo)
+**7. `hook-sideline.jpg`**
+- Kinderen met skullcap ongewijzigd; overige kinderen neutraal kapsel, geen fade.
+- Coach back-logo scherp/leesbaar.
 
-Assets:
-- `intro-gym.jpg`
-- `hook-sideline.jpg`
-- `flash-coach.jpg`
-- `flash-handshake.jpg`, `flash-hug.jpg`, `flash-help.jpg`
+## Gemeenschappelijke edit-instructie
 
-Negative prompt trainer: "no bald head, no shaved head, no buzz cut, no fade, no undercut, no bun, no long hair, no varying hairstyle, no photorealism, no visible face, no garbled logo text".
+Elke call bevat:
+- "Do NOT remove or change any skullcap/kufi already present — keep them exactly as they are."
+- "Only for children WITHOUT a skullcap: give them an identical neutral haircut (short, tidy, soft side-part, dark hair). No fade, no undercut, no buzz cut, no shaved sides."
+- "Preserve composition, poses, background, lighting, clothing and featureless faces (no eyes, no eyebrows, no nose, no mouth) exactly."
+- "High quality, sharp, no blur or artifacts."
+- Waar van toepassing: "ADAB MOVES wordmark spelled exactly A-D-A-B  M-O-V-E-S."
 
-Negative prompt kinderen: "no eyes, no eyebrows, no nose, no mouth, no facial features, no logo wordmark on kids clothing, no duplicate characters, no photorealism".
+## QA vóór render
 
-Max 2 regeneratie-pogingen per asset; blijft het falen → melden welk asset.
+Per asset visueel controleren (view + zonodig `image_tools--zoom_image`):
+- Skullcaps nog aanwezig waar ze waren
+- Kinderen zonder cap: uniform neutraal kapsel, geen fade
+- Logo's leesbaar en correct gespeld
+- Hug-flash toont side-hug
+- Featureless faces intact
 
-## 5. QA na regeneratie
-Opnieuw `zoom_image` op zelfde 4 punten per asset vóór de render.
+Max 1 herstel-poging per asset bij fout; anders melden i.p.v. doorrenderen.
 
-## 6. Definitieve render
-- `bun scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4`
-- `ffprobe`: 30s / 900 frames.
-- `bunx remotion still` op frames 60 / 240 / 360 / 480 / 720 → laatste visuele QA. Faalt een frame → betreffende asset opnieuw + hertenderen.
+## Render
+
+- Backup: `mv /mnt/documents/adabmoves-reel-30s.mp4 /mnt/documents/adabmoves-reel-30s.previous.mp4`
+- `bun remotion/scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4`
+- `ffprobe` check: 30s / 900 frames.
+
+## Technisch
+
+- Alleen `imagegen--edit_image` op bestaande jpg's, geen `generate_image`.
+- Geen wijzigingen in `remotion/src/**` — scenes verwijzen al naar deze bestandsnamen.
+- Tot 7 edit-calls, parallel uitgevoerd.
