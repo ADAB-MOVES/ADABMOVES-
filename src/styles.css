@@ -309,3 +309,15 @@
   .animate-pulse-ring { animation: none !important; }
 }
 
+@media print {
+  /* Verberg site chrome zodat print-pagina's volledig A4 kunnen renderen */
+  body > div > header,
+  body > div > footer,
+  body > div > a[href*="whatsapp.com"],
+  body > div > div[role="dialog"] {
+    display: none !important;
+  }
+}
+
+
+

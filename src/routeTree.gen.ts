@@ -15,6 +15,7 @@ import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as ToegankelijkheidRouteImport } from './routes/toegankelijkheid'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PauzesportWerkwijzeRouteImport } from './routes/pauzesport-werkwijze'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -67,6 +68,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PauzesportWerkwijzeRoute = PauzesportWerkwijzeRouteImport.update({
+  id: '/pauzesport-werkwijze',
+  path: '/pauzesport-werkwijze',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OverOnsRoute = OverOnsRouteImport.update({
@@ -195,6 +201,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/over-ons': typeof OverOnsRouteWithChildren
+  '/pauzesport-werkwijze': typeof PauzesportWerkwijzeRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
@@ -224,6 +231,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/pauzesport-werkwijze': typeof PauzesportWerkwijzeRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
@@ -255,6 +263,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/over-ons': typeof OverOnsRouteWithChildren
+  '/pauzesport-werkwijze': typeof PauzesportWerkwijzeRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
@@ -288,6 +297,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/disclaimer'
     | '/over-ons'
+    | '/pauzesport-werkwijze'
     | '/privacy'
     | '/sitemap.xml'
     | '/toegankelijkheid'
@@ -317,6 +327,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookies'
     | '/disclaimer'
+    | '/pauzesport-werkwijze'
     | '/privacy'
     | '/sitemap.xml'
     | '/toegankelijkheid'
@@ -347,6 +358,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/disclaimer'
     | '/over-ons'
+    | '/pauzesport-werkwijze'
     | '/privacy'
     | '/sitemap.xml'
     | '/toegankelijkheid'
@@ -379,6 +391,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   DisclaimerRoute: typeof DisclaimerRoute
   OverOnsRoute: typeof OverOnsRouteWithChildren
+  PauzesportWerkwijzeRoute: typeof PauzesportWerkwijzeRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
@@ -435,6 +448,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pauzesport-werkwijze': {
+      id: '/pauzesport-werkwijze'
+      path: '/pauzesport-werkwijze'
+      fullPath: '/pauzesport-werkwijze'
+      preLoaderRoute: typeof PauzesportWerkwijzeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/over-ons': {
@@ -658,6 +678,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   DisclaimerRoute: DisclaimerRoute,
   OverOnsRoute: OverOnsRouteWithChildren,
+  PauzesportWerkwijzeRoute: PauzesportWerkwijzeRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ToegankelijkheidRoute: ToegankelijkheidRoute,
