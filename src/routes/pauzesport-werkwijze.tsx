@@ -49,11 +49,20 @@ function PauzesportWerkwijze() {
         }
 
         @media print {
+          /* Verberg site chrome */
+          body > div > header,
+          body > div > footer,
+          body > div > a[href*="whatsapp.com"],
+          body > div > div[role="dialog"] {
+            display: none !important;
+          }
+
           .pauzesport-print {
             background: var(--pauze-white) !important;
             padding: 0 !important;
             min-height: auto !important;
           }
+
 
 
           .pauzesport-print__screen-only {
