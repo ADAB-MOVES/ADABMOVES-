@@ -37,8 +37,8 @@ Voor trainers en contactpersoon school: wat ging goed, waar zitten knelpunten, w
 ### 9. Praktische afspraken met school (1-pager)
 Geen juridisch contract, maar wel een samenvattend document: tijden, locatie, aanspreekpunt, op- en opruimtijd, gebruik gym/toiletten, korte meldlijn. Handig voor de conciërge en directie.
 
-### 10. Visitekaartje / introductieblad voor school (optioneel)
-Eén A4 met 'Dit is ADAB Pauzesport', de 3 sporen en de 7 pijlers. Helpt bij interne draagkracht binnen de school.
+### 10. Visitekaartje / introductieblad ADAB MOVES (optioneel)
+Eén A4 met 'Dit is ADAB MOVES' en het volledige aanbod: sport & workshops voor scholen (waaronder pauzesport), multisport voor kinderen 7–12, sportdagen & ADAB Day events en verhuur. Plus de 3 sporen en de 7 pijlers van de ADAB Methode. Helpt bij interne draagkracht binnen de school en opent de deur naar breder samenwerken.
 
 ## Voorgestelde eerste stap
 We beginnen met de **meest urgente set** voor de start van het seizoen:
