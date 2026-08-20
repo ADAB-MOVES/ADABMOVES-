@@ -1,65 +1,56 @@
+# Pauzesport documentatieplan — ADAB MOVES
 
-# Finale QA-fix reel — kapsels zonder skullcap, logo's, hug-pose
+## Context
+- **Doelgroep:** islamitische basisschool
+- **Frequentie:** wekelijkse pauzesport, maandag/dinsdag/donderdag
+- **Begeleiding:** 3 trainers per dag
+- **Kanttekeningen:** geen ouderbrief of aanmeldformulier nodig; verzekering/aansprakelijkheid hoeft niet door ons opgeleverd
 
-Skullcaps blijven staan zoals ze zijn. Alleen de kinderen ZONDER skullcap krijgen een neutraal kapsel (geen fade/buzz/undercut). Geen full regenerates — alleen gerichte `imagegen--edit_image` calls op bestaande bestanden.
+## Aanbevolen documenten
 
-## Edits per asset
+Omdat de **Werkwijze** al de pedagogische kant beschrijft, adviseren we een set **praktische, dagelijkse organisatiedocumenten** die trainers en de school helderheid geven.
 
-**1. `intro-gym.jpg`**
-- Kinderen mét skullcap: ongewijzigd laten.
-- Kinderen zonder skullcap: identiek neutraal kapsel (kort, netjes, licht side-part, donker), geen fade/buzz/undercut/shaved sides.
-- Wandlogo op de muur netjes (één keer "ADAB MOVES", geen dubbeling/artefacten).
+### 1. Sessiekaarten / Lesplannen (per seizoen)
+Per week een kant-en-klare opzet: warming-up, hoofdspel, afsluiting, ADAB-methode-moment, materialen, veiligheidsaandacht. Zorgt dat alle 3 trainers dezelfde kwaliteit leveren, ook bij wisselingen.
 
-**2. `scholen.jpg`**
-- Kinderen zonder skullcap: zelfde neutrale kapsel, geen fade.
-- Coach back-logo verscherpen: "ADAB MOVES" + tagline "BEWEGEN MET BETEKENIS" leesbaar.
+### 2. Jaarkalender / seizoensplanning
+Welke thema's, sportvormen en methode-pijlers komen wanneer aan bod. Bijvoorbeeld: per 6 weken een thema (balvaardigheid, teamspelen, weerbaarheid, etc.).
 
-**3. `flash-handshake.jpg`**
-- Beide jongens hebben al skullcap → alleen shirt-wordmark corrigeren naar "ADAB MOVES", rest ongemoeid.
+### 3. Trainerprotocol & taakverdeling
+Wie doet wat bij opbouw, uitleg, toezicht, eerste hulp, opruimen en communicatie met school. Inclusief vaste contactpersoon van de school.
 
-**4. `flash-help.jpg`**
-- Beide jongens hebben al skullcap → alleen shirt-wordmark corrigeren naar "ADAB MOVES".
+### 4. Aanwezigheidslijst & deelnemersoverzicht
+Geen aanmeldformulier voor ouders, maar wel een interne lijst met naam, groep, eventuele medische of gedragsbijzonderheden en ouders/verzorgers. De school levert deze doorgaans aan.
 
-**5. `flash-hug.jpg`**
-- Pose wijzigen: van frontale knuffel naar side-by-side, beiden naar camera gericht, elk één arm losjes over de schouder van de ander.
-- Skullcaps behouden, rest identiek.
+### 5. Veiligheids- en incidentenprotocol
+Eenvoudig stappenplan: bij een val, onwelwording, conflict of wegloper. Telefoonnummers van school, directeur en eerste-hulpverlener. Hieraan ontkom je niet, ook zonder verzekeringsfocus.
 
-**6. `flash-coach.jpg`**
-- Kind zonder skullcap: neutraal kapsel, geen fade. Als kind al skullcap heeft: ongewijzigd.
-- Coach back-logo scherp/leesbaar.
+### 6. Materiaal- en inventarislijst
+Welke ballen, hoepels, pionnen, matten en AED- / EHBO-benodigdheden zijn nodig per locatie? Met check-lijst voor opbouw en opruiming.
 
-**7. `hook-sideline.jpg`**
-- Kinderen met skullcap ongewijzigd; overige kinderen neutraal kapsel, geen fade.
-- Coach back-logo scherp/leesbaar.
+### 7. Trainerrooster & vervangingsschema
+Wie staat wanneer ingepland? Hoe regelen we vervanging bij ziekte? Een simpel rooster voorkomt verwarring.
 
-## Gemeenschappelijke edit-instructie
+### 8. Evaluatieformulier (kort, per maand/trimester)
+Voor trainers en contactpersoon school: wat ging goed, waar zitten knelpunten, welke kinderen hebben extra aandacht nodig? Zorgt voor doorlopende verbetering.
 
-Elke call bevat:
-- "Do NOT remove or change any skullcap/kufi already present — keep them exactly as they are."
-- "Only for children WITHOUT a skullcap: give them an identical neutral haircut (short, tidy, soft side-part, dark hair). No fade, no undercut, no buzz cut, no shaved sides."
-- "Preserve composition, poses, background, lighting, clothing and featureless faces (no eyes, no eyebrows, no nose, no mouth) exactly."
-- "High quality, sharp, no blur or artifacts."
-- Waar van toepassing: "ADAB MOVES wordmark spelled exactly A-D-A-B  M-O-V-E-S."
+### 9. Praktische afspraken met school (1-pager)
+Geen juridisch contract, maar wel een samenvattend document: tijden, locatie, aanspreekpunt, op- en opruimtijd, gebruik gym/toiletten, korte meldlijn. Handig voor de conciërge en directie.
 
-## QA vóór render
+### 10. Visitekaartje / introductieblad voor school (optioneel)
+Eén A4 met 'Dit is ADAB Pauzesport', de 3 sporen en de 7 pijlers. Helpt bij interne draagkracht binnen de school.
 
-Per asset visueel controleren (view + zonodig `image_tools--zoom_image`):
-- Skullcaps nog aanwezig waar ze waren
-- Kinderen zonder cap: uniform neutraal kapsel, geen fade
-- Logo's leesbaar en correct gespeld
-- Hug-flash toont side-hug
-- Featureless faces intact
+## Voorgestelde eerste stap
+We beginnen met de **meest urgente set** voor de start van het seizoen:
+1. Sessiekaart (template voor 1 week, herbruikbaar)
+2. Trainerprotocol + taakverdeling
+3. Aanwezigheidslijst
+4. Veiligheids- en incidentenprotocol
+5. Praktische afspraken met school
 
-Max 1 herstel-poging per asset bij fout; anders melden i.p.v. doorrenderen.
+Deze 5 documenten worden gemaakt als **printbare PDF's** in de ADAB MOVES huisstijl (navy, coral, cream), net als de Pauzesport-werkwijze. Ze komen niet op de website.
 
-## Render
-
-- Backup: `mv /mnt/documents/adabmoves-reel-30s.mp4 /mnt/documents/adabmoves-reel-30s.previous.mp4`
-- `bun remotion/scripts/render-remotion.mjs reel-30s-betekenis /mnt/documents/adabmoves-reel-30s.mp4`
-- `ffprobe` check: 30s / 900 frames.
-
-## Technisch
-
-- Alleen `imagegen--edit_image` op bestaande jpg's, geen `generate_image`.
-- Geen wijzigingen in `remotion/src/**` — scenes verwijzen al naar deze bestandsnamen.
-- Tot 7 edit-calls, parallel uitgevoerd.
+## Vragen ter afstemming
+- Wil je dat wij deze 5 documenten direct uitwerken en als PDF opleveren?
+- Moeten de sessiekaarten gericht zijn op een specifieke leeftijdsgroep binnen de basisschool (bijv. groep 3-4, 5-6, 7-8)?
+- Wil je de documenten in het Nederlands, Arabisch, of tweetalig?
