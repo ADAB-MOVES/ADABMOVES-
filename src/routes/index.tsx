@@ -24,20 +24,26 @@ import { SportIcon, type SportName } from "@/components/illustrations/SportIcon"
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ADAB MOVES — Multisport voor kinderen & jongeren in Amsterdam, Haarlem, Zaandam & Almere" },
+      { title: "ADAB MOVES — Multisport voor kinderen & jongeren" },
       {
         name: "description",
         content:
-          "Islamitische multisport- en jongerenorganisatie in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp. Sportactiviteiten voor kinderen, kickboksen en weerbaarheidstraining voor jongeren, workshops en sportdagen voor scholen — sport met karakter, discipline en zelfvertrouwen.",
+          "ADAB MOVES is een multisportaanbieder voor kinderen en jongeren in Amsterdam en omstreken. We geven wekelijkse sportlessen, workshops en sportdagen voor scholen.",
       },
-      { property: "og:title", content: "ADAB MOVES — Sport met karakter voor kinderen & jongeren" },
+      { property: "og:title", content: "ADAB MOVES — Multisport voor kinderen & jongeren" },
       {
         property: "og:description",
         content:
-          "Multisport, kickboksen en weerbaarheidstraining voor kinderen en jongeren. Workshops en sportdagen voor scholen in Amsterdam en omstreken.",
+          "ADAB MOVES is een multisportaanbieder voor kinderen en jongeren in Amsterdam en omstreken. We geven wekelijkse sportlessen, workshops en sportdagen voor scholen.",
       },
       { property: "og:url", content: "https://www.adabmoves.nl/" },
       { property: "og:image", content: hero },
+      { name: "twitter:title", content: "ADAB MOVES — Multisport voor kinderen & jongeren" },
+      {
+        name: "twitter:description",
+        content:
+          "ADAB MOVES is een multisportaanbieder voor kinderen en jongeren in Amsterdam en omstreken. We geven wekelijkse sportlessen, workshops en sportdagen voor scholen.",
+      },
       { name: "twitter:image", content: hero },
     ],
     links: [
