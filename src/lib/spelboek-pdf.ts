@@ -126,11 +126,11 @@ class Doc {
 function spelBlok(d: Doc, spel: Spel, label: string) {
   // Houd een spel zoveel mogelijk op één pagina.
   const schatting =
-    50 +
+    62 +
     spel.uitvoering.length * 7 +
     spel.varianten.length * 15 +
     Math.ceil(spel.coachTip.length / 85) * 6;
-  if (d.y + Math.min(schatting, 215) > H - 26) d.newPage();
+  if (d.y + Math.min(schatting, 215) > H - 32) d.newPage();
 
   d.pdf.setFillColor(...NAVY);
   d.pdf.rect(M, d.y, CW, 11, "F");
@@ -155,7 +155,7 @@ function spelBlok(d: Doc, spel: Spel, label: string) {
   d.sub("Uitvoering", GOUD, false);
   d.bullets(spel.uitvoering, true);
 
-  d.space(30);
+  d.space(42);
   d.sub("Per leeftijdsgroep", GOUD, false);
   spel.varianten.forEach((v) => {
     d.pdf.setFont("helvetica", "bold");
