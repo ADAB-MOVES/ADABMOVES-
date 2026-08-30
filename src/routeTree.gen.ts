@@ -26,6 +26,7 @@ import { Route as SpelboekIndexRouteImport } from './routes/spelboek.index'
 import { Route as OverOnsIndexRouteImport } from './routes/over-ons.index'
 import { Route as AanbodIndexRouteImport } from './routes/aanbod.index'
 import { Route as SpelboekMethodeRouteImport } from './routes/spelboek.methode'
+import { Route as SpelboekMateriaalRouteImport } from './routes/spelboek.materiaal'
 import { Route as OverOnsVerhaalRouteImport } from './routes/over-ons.verhaal'
 import { Route as OverOnsMissieVisieRouteImport } from './routes/over-ons.missie-visie'
 import { Route as OverOnsMethodeRouteImport } from './routes/over-ons.methode'
@@ -126,6 +127,11 @@ const AanbodIndexRoute = AanbodIndexRouteImport.update({
 const SpelboekMethodeRoute = SpelboekMethodeRouteImport.update({
   id: '/methode',
   path: '/methode',
+  getParentRoute: () => SpelboekRoute,
+} as any)
+const SpelboekMateriaalRoute = SpelboekMateriaalRouteImport.update({
+  id: '/materiaal',
+  path: '/materiaal',
   getParentRoute: () => SpelboekRoute,
 } as any)
 const OverOnsVerhaalRoute = OverOnsVerhaalRouteImport.update({
@@ -234,6 +240,7 @@ export interface FileRoutesByFullPath {
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/spelboek/materiaal': typeof SpelboekMateriaalRoute
   '/spelboek/methode': typeof SpelboekMethodeRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
@@ -265,6 +272,7 @@ export interface FileRoutesByTo {
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/spelboek/materiaal': typeof SpelboekMateriaalRoute
   '/spelboek/methode': typeof SpelboekMethodeRoute
   '/aanbod': typeof AanbodIndexRoute
   '/over-ons': typeof OverOnsIndexRoute
@@ -301,6 +309,7 @@ export interface FileRoutesById {
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/spelboek/materiaal': typeof SpelboekMateriaalRoute
   '/spelboek/methode': typeof SpelboekMethodeRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
@@ -338,6 +347,7 @@ export interface FileRouteTypes {
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
+    | '/spelboek/materiaal'
     | '/spelboek/methode'
     | '/aanbod/'
     | '/over-ons/'
@@ -369,6 +379,7 @@ export interface FileRouteTypes {
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
+    | '/spelboek/materiaal'
     | '/spelboek/methode'
     | '/aanbod'
     | '/over-ons'
@@ -404,6 +415,7 @@ export interface FileRouteTypes {
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
+    | '/spelboek/materiaal'
     | '/spelboek/methode'
     | '/aanbod/'
     | '/over-ons/'
@@ -559,6 +571,13 @@ declare module '@tanstack/react-router' {
       path: '/methode'
       fullPath: '/spelboek/methode'
       preLoaderRoute: typeof SpelboekMethodeRouteImport
+      parentRoute: typeof SpelboekRoute
+    }
+    '/spelboek/materiaal': {
+      id: '/spelboek/materiaal'
+      path: '/materiaal'
+      fullPath: '/spelboek/materiaal'
+      preLoaderRoute: typeof SpelboekMateriaalRouteImport
       parentRoute: typeof SpelboekRoute
     }
     '/over-ons/verhaal': {
@@ -727,12 +746,14 @@ const OverOnsRouteWithChildren =
   OverOnsRoute._addFileChildren(OverOnsRouteChildren)
 
 interface SpelboekRouteChildren {
+  SpelboekMateriaalRoute: typeof SpelboekMateriaalRoute
   SpelboekMethodeRoute: typeof SpelboekMethodeRoute
   SpelboekIndexRoute: typeof SpelboekIndexRoute
   SpelboekMaandNummerRoute: typeof SpelboekMaandNummerRoute
 }
 
 const SpelboekRouteChildren: SpelboekRouteChildren = {
+  SpelboekMateriaalRoute: SpelboekMateriaalRoute,
   SpelboekMethodeRoute: SpelboekMethodeRoute,
   SpelboekIndexRoute: SpelboekIndexRoute,
   SpelboekMaandNummerRoute: SpelboekMaandNummerRoute,
