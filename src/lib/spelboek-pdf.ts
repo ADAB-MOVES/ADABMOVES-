@@ -124,7 +124,14 @@ class Doc {
 }
 
 function spelBlok(d: Doc, spel: Spel, label: string) {
-  d.space(30);
+  // Houd een spel zoveel mogelijk op één pagina.
+  const schatting =
+    50 +
+    spel.uitvoering.length * 7 +
+    spel.varianten.length * 15 +
+    Math.ceil(spel.coachTip.length / 85) * 6;
+  if (d.y + Math.min(schatting, 215) > H - 26) d.newPage();
+
   d.pdf.setFillColor(...NAVY);
   d.pdf.rect(M, d.y, CW, 11, "F");
   d.pdf.setFont("helvetica", "bold");
@@ -153,11 +160,14 @@ function spelBlok(d: Doc, spel: Spel, label: string) {
   spel.varianten.forEach((v) => {
     d.pdf.setFont("helvetica", "bold");
     d.pdf.setFontSize(10);
-    d.pdf.setTextColor(...NAVY);
     const lines = d.pdf.splitTextToSize(v.tekst, CW - 6);
     d.space(lines.length * 5 + 7);
+    d.pdf.setFont("helvetica", "bold");
+    d.pdf.setFontSize(10);
+    d.pdf.setTextColor(...NAVY);
     d.pdf.text(v.groep, M, d.y + 4);
     d.pdf.setFont("helvetica", "normal");
+    d.pdf.setFontSize(10);
     d.pdf.setTextColor(...GRIJS);
     d.pdf.text(lines, M, d.y + 9);
     d.y += lines.length * 5 + 8;
@@ -165,6 +175,7 @@ function spelBlok(d: Doc, spel: Spel, label: string) {
 
   d.tipBox(spel.coachTip);
 }
+
 
 function cover(d: Doc, titel: string, ondertitel: string) {
   d.newPage(false);
