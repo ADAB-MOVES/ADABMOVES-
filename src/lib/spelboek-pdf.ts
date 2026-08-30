@@ -139,13 +139,16 @@ function spelBlok(d: Doc, spel: Spel, label: string) {
   });
   d.y += 15;
 
+  d.space(24);
   d.sub("Benodigdheden", GOUD, false);
   d.body(spel.benodigdheden.join(" · "));
   d.y += 2;
 
+  d.space(24);
   d.sub("Uitvoering", GOUD, false);
   d.bullets(spel.uitvoering, true);
 
+  d.space(30);
   d.sub("Per leeftijdsgroep", GOUD, false);
   spel.varianten.forEach((v) => {
     d.pdf.setFont("helvetica", "bold");
