@@ -34,6 +34,7 @@ import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
 import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
 import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
 import { Route as AanbodCommunityIndexRouteImport } from './routes/aanbod.community.index'
+import { Route as SpelboekMaandNummerRouteImport } from './routes/spelboek.maand.$nummer'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as AanbodCommunityKinderenRouteImport } from './routes/aanbod.community.kinderen'
@@ -166,6 +167,11 @@ const AanbodCommunityIndexRoute = AanbodCommunityIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AanbodCommunityRoute,
 } as any)
+const SpelboekMaandNummerRoute = SpelboekMaandNummerRouteImport.update({
+  id: '/maand/$nummer',
+  path: '/maand/$nummer',
+  getParentRoute: () => SpelboekRoute,
+} as any)
 const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   id: '/lovable/email/suppression',
   path: '/lovable/email/suppression',
@@ -228,6 +234,7 @@ export interface FileRoutesByFullPath {
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
+  '/spelboek/maand/$nummer': typeof SpelboekMaandNummerRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -257,6 +264,7 @@ export interface FileRoutesByTo {
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
+  '/spelboek/maand/$nummer': typeof SpelboekMaandNummerRoute
   '/aanbod/community': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -291,6 +299,7 @@ export interface FileRoutesById {
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
+  '/spelboek/maand/$nummer': typeof SpelboekMaandNummerRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -326,6 +335,7 @@ export interface FileRouteTypes {
     | '/aanbod/community/kinderen'
     | '/api/public/contact'
     | '/lovable/email/suppression'
+    | '/spelboek/maand/$nummer'
     | '/aanbod/community/'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -355,6 +365,7 @@ export interface FileRouteTypes {
     | '/aanbod/community/kinderen'
     | '/api/public/contact'
     | '/lovable/email/suppression'
+    | '/spelboek/maand/$nummer'
     | '/aanbod/community'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -388,6 +399,7 @@ export interface FileRouteTypes {
     | '/aanbod/community/kinderen'
     | '/api/public/contact'
     | '/lovable/email/suppression'
+    | '/spelboek/maand/$nummer'
     | '/aanbod/community/'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -593,6 +605,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AanbodCommunityIndexRouteImport
       parentRoute: typeof AanbodCommunityRoute
     }
+    '/spelboek/maand/$nummer': {
+      id: '/spelboek/maand/$nummer'
+      path: '/maand/$nummer'
+      fullPath: '/spelboek/maand/$nummer'
+      preLoaderRoute: typeof SpelboekMaandNummerRouteImport
+      parentRoute: typeof SpelboekRoute
+    }
     '/lovable/email/suppression': {
       id: '/lovable/email/suppression'
       path: '/lovable/email/suppression'
@@ -690,10 +709,12 @@ const OverOnsRouteWithChildren =
 
 interface SpelboekRouteChildren {
   SpelboekIndexRoute: typeof SpelboekIndexRoute
+  SpelboekMaandNummerRoute: typeof SpelboekMaandNummerRoute
 }
 
 const SpelboekRouteChildren: SpelboekRouteChildren = {
   SpelboekIndexRoute: SpelboekIndexRoute,
+  SpelboekMaandNummerRoute: SpelboekMaandNummerRoute,
 }
 
 const SpelboekRouteWithChildren = SpelboekRoute._addFileChildren(
