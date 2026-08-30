@@ -13,6 +13,7 @@ import { Route as VoorwaardenRouteImport } from './routes/voorwaarden'
 import { Route as VisieRouteImport } from './routes/visie'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as ToegankelijkheidRouteImport } from './routes/toegankelijkheid'
+import { Route as SpelboekRouteImport } from './routes/spelboek'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
@@ -57,6 +58,11 @@ const UnsubscribeRoute = UnsubscribeRouteImport.update({
 const ToegankelijkheidRoute = ToegankelijkheidRouteImport.update({
   id: '/toegankelijkheid',
   path: '/toegankelijkheid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpelboekRoute = SpelboekRouteImport.update({
+  id: '/spelboek',
+  path: '/spelboek',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -197,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/spelboek': typeof SpelboekRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
@@ -226,6 +233,7 @@ export interface FileRoutesByTo {
   '/disclaimer': typeof DisclaimerRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/spelboek': typeof SpelboekRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
@@ -257,6 +265,7 @@ export interface FileRoutesById {
   '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/spelboek': typeof SpelboekRoute
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
@@ -290,6 +299,7 @@ export interface FileRouteTypes {
     | '/over-ons'
     | '/privacy'
     | '/sitemap.xml'
+    | '/spelboek'
     | '/toegankelijkheid'
     | '/unsubscribe'
     | '/visie'
@@ -319,6 +329,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/privacy'
     | '/sitemap.xml'
+    | '/spelboek'
     | '/toegankelijkheid'
     | '/unsubscribe'
     | '/visie'
@@ -349,6 +360,7 @@ export interface FileRouteTypes {
     | '/over-ons'
     | '/privacy'
     | '/sitemap.xml'
+    | '/spelboek'
     | '/toegankelijkheid'
     | '/unsubscribe'
     | '/visie'
@@ -381,6 +393,7 @@ export interface RootRouteChildren {
   OverOnsRoute: typeof OverOnsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SpelboekRoute: typeof SpelboekRoute
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   VisieRoute: typeof VisieRoute
@@ -421,6 +434,13 @@ declare module '@tanstack/react-router' {
       path: '/toegankelijkheid'
       fullPath: '/toegankelijkheid'
       preLoaderRoute: typeof ToegankelijkheidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spelboek': {
+      id: '/spelboek'
+      path: '/spelboek'
+      fullPath: '/spelboek'
+      preLoaderRoute: typeof SpelboekRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -660,6 +680,7 @@ const rootRouteChildren: RootRouteChildren = {
   OverOnsRoute: OverOnsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SpelboekRoute: SpelboekRoute,
   ToegankelijkheidRoute: ToegankelijkheidRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   VisieRoute: VisieRoute,
