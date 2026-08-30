@@ -13,6 +13,7 @@ import { Route as VoorwaardenRouteImport } from './routes/voorwaarden'
 import { Route as VisieRouteImport } from './routes/visie'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as ToegankelijkheidRouteImport } from './routes/toegankelijkheid'
+import { Route as SpelboekRouteImport } from './routes/spelboek'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
@@ -21,8 +22,11 @@ import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AanbodRouteImport } from './routes/aanbod'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SpelboekIndexRouteImport } from './routes/spelboek.index'
 import { Route as OverOnsIndexRouteImport } from './routes/over-ons.index'
 import { Route as AanbodIndexRouteImport } from './routes/aanbod.index'
+import { Route as SpelboekMethodeRouteImport } from './routes/spelboek.methode'
+import { Route as SpelboekMateriaalRouteImport } from './routes/spelboek.materiaal'
 import { Route as OverOnsVerhaalRouteImport } from './routes/over-ons.verhaal'
 import { Route as OverOnsMissieVisieRouteImport } from './routes/over-ons.missie-visie'
 import { Route as OverOnsMethodeRouteImport } from './routes/over-ons.methode'
@@ -32,6 +36,7 @@ import { Route as AanbodScholenRouteImport } from './routes/aanbod.scholen'
 import { Route as AanbodEventsRouteImport } from './routes/aanbod.events'
 import { Route as AanbodCommunityRouteImport } from './routes/aanbod.community'
 import { Route as AanbodCommunityIndexRouteImport } from './routes/aanbod.community.index'
+import { Route as SpelboekMaandNummerRouteImport } from './routes/spelboek.maand.$nummer'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as AanbodCommunityKinderenRouteImport } from './routes/aanbod.community.kinderen'
@@ -57,6 +62,11 @@ const UnsubscribeRoute = UnsubscribeRouteImport.update({
 const ToegankelijkheidRoute = ToegankelijkheidRouteImport.update({
   id: '/toegankelijkheid',
   path: '/toegankelijkheid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpelboekRoute = SpelboekRouteImport.update({
+  id: '/spelboek',
+  path: '/spelboek',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -99,6 +109,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpelboekIndexRoute = SpelboekIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SpelboekRoute,
+} as any)
 const OverOnsIndexRoute = OverOnsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -108,6 +123,16 @@ const AanbodIndexRoute = AanbodIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AanbodRoute,
+} as any)
+const SpelboekMethodeRoute = SpelboekMethodeRouteImport.update({
+  id: '/methode',
+  path: '/methode',
+  getParentRoute: () => SpelboekRoute,
+} as any)
+const SpelboekMateriaalRoute = SpelboekMateriaalRouteImport.update({
+  id: '/materiaal',
+  path: '/materiaal',
+  getParentRoute: () => SpelboekRoute,
 } as any)
 const OverOnsVerhaalRoute = OverOnsVerhaalRouteImport.update({
   id: '/verhaal',
@@ -154,6 +179,11 @@ const AanbodCommunityIndexRoute = AanbodCommunityIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AanbodCommunityRoute,
 } as any)
+const SpelboekMaandNummerRoute = SpelboekMaandNummerRouteImport.update({
+  id: '/maand/$nummer',
+  path: '/maand/$nummer',
+  getParentRoute: () => SpelboekRoute,
+} as any)
 const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   id: '/lovable/email/suppression',
   path: '/lovable/email/suppression',
@@ -197,6 +227,7 @@ export interface FileRoutesByFullPath {
   '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/spelboek': typeof SpelboekRouteWithChildren
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
@@ -209,11 +240,15 @@ export interface FileRoutesByFullPath {
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/spelboek/materiaal': typeof SpelboekMateriaalRoute
+  '/spelboek/methode': typeof SpelboekMethodeRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
+  '/spelboek/': typeof SpelboekIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
+  '/spelboek/maand/$nummer': typeof SpelboekMaandNummerRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -237,11 +272,15 @@ export interface FileRoutesByTo {
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/spelboek/materiaal': typeof SpelboekMateriaalRoute
+  '/spelboek/methode': typeof SpelboekMethodeRoute
   '/aanbod': typeof AanbodIndexRoute
   '/over-ons': typeof OverOnsIndexRoute
+  '/spelboek': typeof SpelboekIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
+  '/spelboek/maand/$nummer': typeof SpelboekMaandNummerRoute
   '/aanbod/community': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -257,6 +296,7 @@ export interface FileRoutesById {
   '/over-ons': typeof OverOnsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/spelboek': typeof SpelboekRouteWithChildren
   '/toegankelijkheid': typeof ToegankelijkheidRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/visie': typeof VisieRoute
@@ -269,11 +309,15 @@ export interface FileRoutesById {
   '/over-ons/methode': typeof OverOnsMethodeRoute
   '/over-ons/missie-visie': typeof OverOnsMissieVisieRoute
   '/over-ons/verhaal': typeof OverOnsVerhaalRoute
+  '/spelboek/materiaal': typeof SpelboekMateriaalRoute
+  '/spelboek/methode': typeof SpelboekMethodeRoute
   '/aanbod/': typeof AanbodIndexRoute
   '/over-ons/': typeof OverOnsIndexRoute
+  '/spelboek/': typeof SpelboekIndexRoute
   '/aanbod/community/kinderen': typeof AanbodCommunityKinderenRoute
   '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
+  '/spelboek/maand/$nummer': typeof SpelboekMaandNummerRoute
   '/aanbod/community/': typeof AanbodCommunityIndexRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -290,6 +334,7 @@ export interface FileRouteTypes {
     | '/over-ons'
     | '/privacy'
     | '/sitemap.xml'
+    | '/spelboek'
     | '/toegankelijkheid'
     | '/unsubscribe'
     | '/visie'
@@ -302,11 +347,15 @@ export interface FileRouteTypes {
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
+    | '/spelboek/materiaal'
+    | '/spelboek/methode'
     | '/aanbod/'
     | '/over-ons/'
+    | '/spelboek/'
     | '/aanbod/community/kinderen'
     | '/api/public/contact'
     | '/lovable/email/suppression'
+    | '/spelboek/maand/$nummer'
     | '/aanbod/community/'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -330,11 +379,15 @@ export interface FileRouteTypes {
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
+    | '/spelboek/materiaal'
+    | '/spelboek/methode'
     | '/aanbod'
     | '/over-ons'
+    | '/spelboek'
     | '/aanbod/community/kinderen'
     | '/api/public/contact'
     | '/lovable/email/suppression'
+    | '/spelboek/maand/$nummer'
     | '/aanbod/community'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -349,6 +402,7 @@ export interface FileRouteTypes {
     | '/over-ons'
     | '/privacy'
     | '/sitemap.xml'
+    | '/spelboek'
     | '/toegankelijkheid'
     | '/unsubscribe'
     | '/visie'
@@ -361,11 +415,15 @@ export interface FileRouteTypes {
     | '/over-ons/methode'
     | '/over-ons/missie-visie'
     | '/over-ons/verhaal'
+    | '/spelboek/materiaal'
+    | '/spelboek/methode'
     | '/aanbod/'
     | '/over-ons/'
+    | '/spelboek/'
     | '/aanbod/community/kinderen'
     | '/api/public/contact'
     | '/lovable/email/suppression'
+    | '/spelboek/maand/$nummer'
     | '/aanbod/community/'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -381,6 +439,7 @@ export interface RootRouteChildren {
   OverOnsRoute: typeof OverOnsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SpelboekRoute: typeof SpelboekRouteWithChildren
   ToegankelijkheidRoute: typeof ToegankelijkheidRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   VisieRoute: typeof VisieRoute
@@ -421,6 +480,13 @@ declare module '@tanstack/react-router' {
       path: '/toegankelijkheid'
       fullPath: '/toegankelijkheid'
       preLoaderRoute: typeof ToegankelijkheidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spelboek': {
+      id: '/spelboek'
+      path: '/spelboek'
+      fullPath: '/spelboek'
+      preLoaderRoute: typeof SpelboekRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -479,6 +545,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/spelboek/': {
+      id: '/spelboek/'
+      path: '/'
+      fullPath: '/spelboek/'
+      preLoaderRoute: typeof SpelboekIndexRouteImport
+      parentRoute: typeof SpelboekRoute
+    }
     '/over-ons/': {
       id: '/over-ons/'
       path: '/'
@@ -492,6 +565,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/aanbod/'
       preLoaderRoute: typeof AanbodIndexRouteImport
       parentRoute: typeof AanbodRoute
+    }
+    '/spelboek/methode': {
+      id: '/spelboek/methode'
+      path: '/methode'
+      fullPath: '/spelboek/methode'
+      preLoaderRoute: typeof SpelboekMethodeRouteImport
+      parentRoute: typeof SpelboekRoute
+    }
+    '/spelboek/materiaal': {
+      id: '/spelboek/materiaal'
+      path: '/materiaal'
+      fullPath: '/spelboek/materiaal'
+      preLoaderRoute: typeof SpelboekMateriaalRouteImport
+      parentRoute: typeof SpelboekRoute
     }
     '/over-ons/verhaal': {
       id: '/over-ons/verhaal'
@@ -555,6 +642,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/aanbod/community/'
       preLoaderRoute: typeof AanbodCommunityIndexRouteImport
       parentRoute: typeof AanbodCommunityRoute
+    }
+    '/spelboek/maand/$nummer': {
+      id: '/spelboek/maand/$nummer'
+      path: '/maand/$nummer'
+      fullPath: '/spelboek/maand/$nummer'
+      preLoaderRoute: typeof SpelboekMaandNummerRouteImport
+      parentRoute: typeof SpelboekRoute
     }
     '/lovable/email/suppression': {
       id: '/lovable/email/suppression'
@@ -651,6 +745,24 @@ const OverOnsRouteChildren: OverOnsRouteChildren = {
 const OverOnsRouteWithChildren =
   OverOnsRoute._addFileChildren(OverOnsRouteChildren)
 
+interface SpelboekRouteChildren {
+  SpelboekMateriaalRoute: typeof SpelboekMateriaalRoute
+  SpelboekMethodeRoute: typeof SpelboekMethodeRoute
+  SpelboekIndexRoute: typeof SpelboekIndexRoute
+  SpelboekMaandNummerRoute: typeof SpelboekMaandNummerRoute
+}
+
+const SpelboekRouteChildren: SpelboekRouteChildren = {
+  SpelboekMateriaalRoute: SpelboekMateriaalRoute,
+  SpelboekMethodeRoute: SpelboekMethodeRoute,
+  SpelboekIndexRoute: SpelboekIndexRoute,
+  SpelboekMaandNummerRoute: SpelboekMaandNummerRoute,
+}
+
+const SpelboekRouteWithChildren = SpelboekRoute._addFileChildren(
+  SpelboekRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AanbodRoute: AanbodRouteWithChildren,
@@ -660,6 +772,7 @@ const rootRouteChildren: RootRouteChildren = {
   OverOnsRoute: OverOnsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SpelboekRoute: SpelboekRouteWithChildren,
   ToegankelijkheidRoute: ToegankelijkheidRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   VisieRoute: VisieRoute,
