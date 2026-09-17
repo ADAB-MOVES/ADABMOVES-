@@ -69,7 +69,7 @@ export const Route = createRootRoute({
               alternateName: "Adab Moves",
               url: "https://www.adabmoves.nl",
               email: "adabmoves@gmail.com",
-              telephone: "+31611879789",
+              telephone: "+31644593254",
               description:
                 "Islamitische multisport- en jongerenorganisatie. Sport voor kinderen en jongeren, kickboksen, weerbaarheidstraining, workshops voor scholen en karaktervorming — in Amsterdam, Haarlem, Zaandam, Almere, Amstelveen en Hoofddorp.",
               areaServed: [
