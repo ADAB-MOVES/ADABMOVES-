@@ -1,7 +1,7 @@
 // Centrale WhatsApp/contact helpers
-export const PHONE_RAW = "31611879789"; // landcode + nummer (zonder leading 0)
-export const PHONE_DISPLAY = "+31 6 11 87 97 89";
-export const PHONE_TEL = "+31611879789";
+export const PHONE_RAW = "31644593254"; // landcode + nummer (zonder leading 0)
+export const PHONE_DISPLAY = "+31 6 44 59 32 54";
+export const PHONE_TEL = "+31644593254";
 export const EMAIL = "adabmoves@gmail.com";
 
 // api.whatsapp.com is meer betrouwbaar op desktop dan wa.me
